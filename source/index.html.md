@@ -41,19 +41,18 @@ Event Explorer
 
 ## Perform simple query on event data
 ```shell
-curl "app.rakam.io/event-explorer/analyze"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/event-explorer/analyze" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "measure" : {
     "column" : "str",
-    "aggregation" : "str"
+    "aggregation" : "COUNT"
   },
   "grouping" : {
-    "type" : "str",
+    "type" : "COLUMN",
     "value" : "str"
   },
   "segment" : {
-    "type" : "str",
+    "type" : "COLUMN",
     "value" : "str"
   },
   "filterExpression" : "str",
@@ -110,7 +109,7 @@ $api->analyzeEvents(analyze_request);
 {
   "metadata" : [ {
     "name" : "str",
-    "type" : "str",
+    "type" : "STRING",
     "unique" : true,
     "descriptiveName" : "str",
     "description" : "str",
@@ -153,8 +152,7 @@ $api->analyzeEvents(analyze_request);
 
 ## Event statistics
 ```shell
-curl "app.rakam.io/event-explorer/extra_dimensions"
-  -H "read_key: myread_key"-X GET
+curl "app.rakam.io/event-explorer/extra_dimensions" -H "read_key: myread_key" -X GET
 ```
 
 ```python
@@ -215,12 +213,11 @@ $api->getExtraDimensions();
 
 ## Create Pre-computed table
 ```shell
-curl "app.rakam.io/event-explorer/pre_calculate"
-  -H "master_key: mymaster_key"-X POST -d @- << EOF 
+curl "app.rakam.io/event-explorer/pre_calculate" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "collections" : [ "str" ],
   "dimensions" : [ "str" ],
-  "aggregations" : [ "str" ],
+  "aggregations" : [ "COUNT" ],
   "measures" : [ "str" ],
   "tableName" : "str"
 }
@@ -296,8 +293,7 @@ $api->createPrecomputedTable(body);
 
 ## Event statistics
 ```shell
-curl "app.rakam.io/event-explorer/statistics"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/event-explorer/statistics" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "collections" : [ "str" ],
   "dimension" : "str",
@@ -353,7 +349,7 @@ $api->getEventStatistics(body);
 {
   "metadata" : [ {
     "name" : "str",
-    "type" : "str",
+    "type" : "STRING",
     "unique" : true,
     "descriptiveName" : "str",
     "description" : "str",
@@ -398,8 +394,7 @@ Funnel Analyzer
 
 ## Execute query
 ```shell
-curl "app.rakam.io/funnel/analyze"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/funnel/analyze" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "steps" : [ {
     "collection" : "str"
@@ -408,7 +403,7 @@ curl "app.rakam.io/funnel/analyze"
   "startDate" : "2015-01-20",
   "window" : {
     "value" : 1,
-    "type" : "str"
+    "type" : "DAY"
   },
   "endDate" : "2015-01-20"
 }
@@ -461,7 +456,7 @@ $api->analyzeFunnel(funnel_query);
 {
   "metadata" : [ {
     "name" : "str",
-    "type" : "str",
+    "type" : "STRING",
     "unique" : true,
     "descriptiveName" : "str",
     "description" : "str",
@@ -507,13 +502,12 @@ Realtime
 
 ## Create report
 ```shell
-curl "app.rakam.io/realtime/create"
-  -H "master_key: mymaster_key"-X POST -d @- << EOF 
+curl "app.rakam.io/realtime/create" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "name" : "str",
   "measures" : [ {
     "column" : "str",
-    "aggregation" : "str"
+    "aggregation" : "COUNT"
   } ],
   "table_name" : "str",
   "collections" : [ "str" ],
@@ -593,8 +587,7 @@ $api->createTable(real_time_report);
 
 ## Delete report
 ```shell
-curl "app.rakam.io/realtime/delete"
-  -H "master_key: mymaster_key"-X POST -d @- << EOF 
+curl "app.rakam.io/realtime/delete" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "table_name" : "str"
 }
@@ -666,14 +659,13 @@ $api->deleteTable(body);
 
 ## Get report
 ```shell
-curl "app.rakam.io/realtime/get"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/realtime/get" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "table_name" : "str",
   "filter" : "str",
   "measure" : {
     "column" : "str",
-    "aggregation" : "str"
+    "aggregation" : "COUNT"
   },
   "dimensions" : [ "str" ],
   "aggregate" : true,
@@ -755,8 +747,7 @@ $api->queryTable(realtime_query_table);
 
 ## List queries
 ```shell
-curl "app.rakam.io/realtime/list"
-  -H "read_key: myread_key"-X POST
+curl "app.rakam.io/realtime/list" -H "read_key: myread_key" -X POST
 ```
 
 ```python
@@ -828,8 +819,7 @@ Retention Analyzer module
 
 ## Execute query
 ```shell
-curl "app.rakam.io/retention/analyze"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/retention/analyze" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "first_action" : {
     "collection" : "str"
@@ -838,7 +828,7 @@ curl "app.rakam.io/retention/analyze"
     "collection" : "str"
   },
   "dimension" : "str",
-  "date_unit" : "str",
+  "date_unit" : "DAY",
   "period" : 1,
   "startDate" : "2015-01-20",
   "endDate" : "2015-01-20"
@@ -892,7 +882,7 @@ $api->analyzeRetention(retention_query);
 {
   "metadata" : [ {
     "name" : "str",
-    "type" : "str",
+    "type" : "STRING",
     "unique" : true,
     "descriptiveName" : "str",
     "description" : "str",
@@ -940,8 +930,7 @@ User
 
 ## Create multiple new users
 ```shell
-curl "app.rakam.io/user/batch/create"
-  -H "write_key: mywrite_key"-X POST -d @- << EOF 
+curl "app.rakam.io/user/batch/create" -H "write_key: mywrite_key" -X POST -d @- << EOF 
 {
   "users" : [ {
     "id" : "object",
@@ -1025,8 +1014,7 @@ Returns user ids. User id may be string or numeric.
 
 ## Create new user
 ```shell
-curl "app.rakam.io/user/create"
--X POST -d @- << EOF 
+curl "app.rakam.io/user/create" -X POST -d @- << EOF 
 {
   "id" : "object",
   "api" : {
@@ -1092,9 +1080,9 @@ $api->createUser(user);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|id|false|object||
-|api|false|[UserContext](#usercontext)||
-|properties|false|object||
+|id|true|object||
+|api|true|[UserContext](#usercontext)||
+|properties|true|object||
 
 
 ### Responses for status codes
@@ -1105,8 +1093,7 @@ $api->createUser(user);
 
 ## Get events of the user
 ```shell
-curl "app.rakam.io/user/create_segment"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/user/create_segment" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "name" : "str",
   "table_name" : "str",
@@ -1121,7 +1108,7 @@ curl "app.rakam.io/user/create_segment"
       "field" : "str",
       "minimum" : 1,
       "maximum" : 1,
-      "type" : "str"
+      "type" : "COUNT"
     },
     "filterExpression" : "str"
   } ],
@@ -1199,8 +1186,7 @@ $api->createSegment(user_create_segment);
 
 ## Get user
 ```shell
-curl "app.rakam.io/user/get"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/user/get" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "user" : "object"
 }
@@ -1281,8 +1267,7 @@ $api->getUser(user_get_user);
 
 ## Get events of the user
 ```shell
-curl "app.rakam.io/user/get_events"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/user/get_events" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "user" : "str",
   "limit" : 1,
@@ -1360,8 +1345,7 @@ $api->getEvents(body);
 
 ## Set user property
 ```shell
-curl "app.rakam.io/user/increment_property"
-  -H "master_key: mymaster_key"-X POST -d @- << EOF 
+curl "app.rakam.io/user/increment_property" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "api" : {
     "api_key" : "str",
@@ -1447,8 +1431,7 @@ $api->incrementProperty(user_increment_property);
 
 ## Merge user with anonymous id
 ```shell
-curl "app.rakam.io/user/merge"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/user/merge" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "user" : "str",
   "api" : {
@@ -1533,8 +1516,7 @@ true
 
 ## Get user storage metadata
 ```shell
-curl "app.rakam.io/user/metadata"
-  -H "read_key: myread_key"-X GET
+curl "app.rakam.io/user/metadata" -H "read_key: myread_key" -X GET
 ```
 
 ```python
@@ -1583,7 +1565,7 @@ $api->getMetadata();
 {
   "columns" : [ {
     "name" : "str",
-    "type" : "str",
+    "type" : "STRING",
     "unique" : true,
     "descriptiveName" : "str",
     "description" : "str",
@@ -1603,8 +1585,7 @@ $api->getMetadata();
 
 ## Search users
 ```shell
-curl "app.rakam.io/user/search"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/user/search" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "columns" : [ "str" ],
   "filter" : "str",
@@ -1618,13 +1599,13 @@ curl "app.rakam.io/user/search"
       "field" : "str",
       "minimum" : 1,
       "maximum" : 1,
-      "type" : "str"
+      "type" : "COUNT"
     },
     "filterExpression" : "str"
   } ],
   "sorting" : {
     "column" : "str",
-    "order" : "str"
+    "order" : "asc"
   },
   "offset" : "str",
   "limit" : 1
@@ -1678,7 +1659,7 @@ $api->searchUsers(user_search_users);
 {
   "metadata" : [ {
     "name" : "str",
-    "type" : "str",
+    "type" : "STRING",
     "unique" : true,
     "descriptiveName" : "str",
     "description" : "str",
@@ -1720,8 +1701,7 @@ $api->searchUsers(user_search_users);
 
 ## Set user properties
 ```shell
-curl "app.rakam.io/user/set_properties"
--X POST -d @- << EOF 
+curl "app.rakam.io/user/set_properties" -X POST -d @- << EOF 
 {
   "id" : "object",
   "api" : {
@@ -1787,9 +1767,9 @@ $api->setProperties(user);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|id|false|object||
-|api|false|[UserContext](#usercontext)||
-|properties|false|object||
+|id|true|object||
+|api|true|[UserContext](#usercontext)||
+|properties|true|object||
 
 
 ### Responses for status codes
@@ -1800,8 +1780,7 @@ $api->setProperties(user);
 
 ## Set user properties once
 ```shell
-curl "app.rakam.io/user/set_properties_once"
--X POST -d @- << EOF 
+curl "app.rakam.io/user/set_properties_once" -X POST -d @- << EOF 
 {
   "id" : "object",
   "api" : {
@@ -1867,9 +1846,9 @@ $api->setPropertiesOnce(user);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|id|false|object||
-|api|false|[UserContext](#usercontext)||
-|properties|false|object||
+|id|true|object||
+|api|true|[UserContext](#usercontext)||
+|properties|true|object||
 
 
 ### Responses for status codes
@@ -1880,8 +1859,7 @@ $api->setPropertiesOnce(user);
 
 ## Unset user property
 ```shell
-curl "app.rakam.io/user/unset_properties"
--X POST -d @- << EOF 
+curl "app.rakam.io/user/unset_properties" -X POST -d @- << EOF 
 {
   "api" : {
     "api_key" : "str",
@@ -1968,8 +1946,7 @@ User Action
 
 ## Apply batch operation
 ```shell
-curl "app.rakam.io/user/action/email/batch"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/user/action/email/batch" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "filter" : "str",
   "event_filters" : [ {
@@ -1982,7 +1959,7 @@ curl "app.rakam.io/user/action/email/batch"
       "field" : "str",
       "minimum" : 1,
       "maximum" : 1,
-      "type" : "str"
+      "type" : "COUNT"
     },
     "filterExpression" : "str"
   } ],
@@ -2063,8 +2040,7 @@ $api->batch(user_email_action_batch);
 
 ## Perform action for single user
 ```shell
-curl "app.rakam.io/user/action/email/single"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/user/action/email/single" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "user" : "str",
   "config" : {
@@ -2148,10 +2124,9 @@ Recipe
 
 ## Export recipe
 ```shell
-curl "app.rakam.io/recipe/export"
-  -H "master_key: mymaster_key"-X GET -d @- << EOF 
+curl "app.rakam.io/recipe/export" -H "master_key: mymaster_key" -X GET -d @- << EOF 
 {
-  "type" : "str"
+  "type" : "JSON"
 }
 EOF
 ```
@@ -2200,7 +2175,7 @@ $api->exportRecipe(body);
 
 ```json
 {
-  "strategy" : "str",
+  "strategy" : "DEFAULT",
   "collections" : {
     "prop" : { }
   },
@@ -2243,8 +2218,7 @@ $api->exportRecipe(body);
 
 ## Install recipe
 ```shell
-curl "app.rakam.io/recipe/install"
-  -H "master_key: mymaster_key"-X POST
+curl "app.rakam.io/recipe/install" -H "master_key: mymaster_key" -X POST
 ```
 
 ```python
@@ -2306,10 +2280,9 @@ $api->installRecipe();
 
 ## Export recipe
 ```shell
-curl "app.rakam.io/ui/recipe/export"
-  -H "master_key: mymaster_key"-X GET -d @- << EOF 
+curl "app.rakam.io/ui/recipe/export" -H "master_key: mymaster_key" -X GET -d @- << EOF 
 {
-  "type" : "str"
+  "type" : "JSON"
 }
 EOF
 ```
@@ -2413,8 +2386,7 @@ $api->exportUIRecipe(body);
 
 ## Install recipe
 ```shell
-curl "app.rakam.io/ui/recipe/install"
-  -H "master_key: mymaster_key"-X POST
+curl "app.rakam.io/ui/recipe/install" -H "master_key: mymaster_key" -X POST
 ```
 
 ```python
@@ -2481,8 +2453,7 @@ System related actions
 
 ## List installed modules
 ```shell
-curl "app.rakam.io/admin/configurations"
-  -H "master_key: mymaster_key"-X GET
+curl "app.rakam.io/admin/configurations" -H "master_key: mymaster_key" -X GET
 ```
 
 ```python
@@ -2555,8 +2526,7 @@ $api->getConfigurations();
 
 ## Check lock key
 ```shell
-curl "app.rakam.io/admin/lock_key"
-  -H "master_key: mymaster_key"-X POST -d @- << EOF 
+curl "app.rakam.io/admin/lock_key" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "lock_key" : "str"
 }
@@ -2625,8 +2595,7 @@ true
 
 ## Get types
 ```shell
-curl "app.rakam.io/admin/types"
-  -H "master_key: mymaster_key"-X GET
+curl "app.rakam.io/admin/types" -H "master_key: mymaster_key" -X GET
 ```
 
 ```python
@@ -2687,8 +2656,7 @@ $api->getTypes();
 
 ## Create API Keys
 ```shell
-curl "app.rakam.io/project/check-api-keys"
--X POST -d @- << EOF 
+curl "app.rakam.io/project/check-api-keys" -X POST -d @- << EOF 
 {
   "keys" : [ {
     "master_key" : "str",
@@ -2761,8 +2729,7 @@ $api->checkApiKeys(project_check_api_keys);
 
 ## Get collection names
 ```shell
-curl "app.rakam.io/project/collection"
-  -H "read_key: myread_key"-X POST
+curl "app.rakam.io/project/collection" -H "read_key: myread_key" -X POST
 ```
 
 ```python
@@ -2821,8 +2788,7 @@ $api->collections();
 
 ## Create project
 ```shell
-curl "app.rakam.io/project/create"
--X POST -d @- << EOF 
+curl "app.rakam.io/project/create" -X POST -d @- << EOF 
 {
   "lock_key" : "str",
   "name" : "str"
@@ -2895,8 +2861,7 @@ $api->createProject(body);
 
 ## Create API Keys
 ```shell
-curl "app.rakam.io/project/create-api-keys"
-  -H "master_key: mymaster_key"-X POST
+curl "app.rakam.io/project/create-api-keys" -H "master_key: mymaster_key" -X POST
 ```
 
 ```python
@@ -2959,8 +2924,7 @@ $api->createApiKeys();
 
 ## Delete project
 ```shell
-curl "app.rakam.io/project/delete"
-  -H "master_key: mymaster_key"-X DELETE
+curl "app.rakam.io/project/delete" -H "master_key: mymaster_key" -X DELETE
 ```
 
 ```python
@@ -3022,8 +2986,7 @@ $api->deleteProject();
 
 ## List created projects
 ```shell
-curl "app.rakam.io/project/list"
-  -H "read_key: myread_key"-X GET
+curl "app.rakam.io/project/list" -H "read_key: myread_key" -X GET
 ```
 
 ```python
@@ -3082,8 +3045,7 @@ $api->getProjects();
 
 ## Revoke API Keys
 ```shell
-curl "app.rakam.io/project/revoke-api-keys"
-  -H "master_key: mymaster_key"-X DELETE
+curl "app.rakam.io/project/revoke-api-keys" -H "master_key: mymaster_key" -X DELETE
 ```
 
 ```python
@@ -3145,8 +3107,7 @@ $api->revokeApiKeys();
 
 ## Get collection schema
 ```shell
-curl "app.rakam.io/project/schema"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/project/schema" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "names" : [ "str" ]
 }
@@ -3200,7 +3161,7 @@ $api->schema(body);
   "name" : "str",
   "fields" : [ {
     "name" : "str",
-    "type" : "str",
+    "type" : "STRING",
     "unique" : true,
     "descriptiveName" : "str",
     "description" : "str",
@@ -3225,13 +3186,12 @@ $api->schema(body);
 
 ## Add fields to collections
 ```shell
-curl "app.rakam.io/project/schema/add"
-  -H "master_key: mymaster_key"-X POST -d @- << EOF 
+curl "app.rakam.io/project/schema/add" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "collection" : "str",
   "fields" : [ {
     "name" : "str",
-    "type" : "str",
+    "type" : "STRING",
     "unique" : true,
     "descriptiveName" : "str",
     "description" : "str",
@@ -3286,7 +3246,7 @@ $api->addFieldsToSchema(project_add_fields_to_schema);
 ```json
 [ {
   "name" : "str",
-  "type" : "str",
+  "type" : "STRING",
   "unique" : true,
   "descriptiveName" : "str",
   "description" : "str",
@@ -3311,11 +3271,10 @@ $api->addFieldsToSchema(project_add_fields_to_schema);
 
 ## Add fields to collections by transforming other schemas
 ```shell
-curl "app.rakam.io/project/schema/add/custom"
-  -H "master_key: mymaster_key"-X POST -d @- << EOF 
+curl "app.rakam.io/project/schema/add/custom" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "collection" : "str",
-  "schema_type" : "str",
+  "schema_type" : "AVRO",
   "schema" : "str"
 }
 EOF
@@ -3366,7 +3325,7 @@ $api->addCustomFieldsToSchema(body);
 ```json
 [ {
   "name" : "str",
-  "type" : "str",
+  "type" : "STRING",
   "unique" : true,
   "descriptiveName" : "str",
   "description" : "str",
@@ -3392,8 +3351,7 @@ $api->addCustomFieldsToSchema(body);
 
 ## Get project stats
 ```shell
-curl "app.rakam.io/project/stats"
--X POST -d @- << EOF 
+curl "app.rakam.io/project/stats" -X POST -d @- << EOF 
 [ "object" ]
 EOF
 ```
@@ -3465,8 +3423,7 @@ Collect data
 
 ## Collect multiple events
 ```shell
-curl "app.rakam.io/event/batch"
--X POST -d @- << EOF 
+curl "app.rakam.io/event/batch" -X POST -d @- << EOF 
 {
   "api" : {
     "api_key" : "str",
@@ -3572,8 +3529,7 @@ Returns 1 if the events are collected.
 
 ## Collect Bulk events
 ```shell
-curl "app.rakam.io/event/bulk"
--X POST -d @- << EOF 
+curl "app.rakam.io/event/bulk" -X POST -d @- << EOF 
 {
   "api" : {
     "api_key" : "str",
@@ -3682,8 +3638,7 @@ Bulk API requires master_key as api key and designed to handle large value of da
 
 ## Commit Bulk events
 ```shell
-curl "app.rakam.io/event/bulk/commit"
-  -H "master_key: mymaster_key"-X POST -d @- << EOF 
+curl "app.rakam.io/event/bulk/commit" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "collections" : [ "str" ]
 }
@@ -3755,13 +3710,12 @@ $api->commitBulkEvents(body);
 
 ## Collect bulk events from remote
 ```shell
-curl "app.rakam.io/event/bulk/remote"
--X POST -d @- << EOF 
+curl "app.rakam.io/event/bulk/remote" -X POST -d @- << EOF 
 {
   "collection" : "str",
   "urls" : [ "str" ],
-  "type" : "str",
-  "compression" : "str",
+  "type" : "AVRO",
+  "compression" : "GZIP",
   "options" : {
     "prop" : { }
   }
@@ -3833,8 +3787,7 @@ $api->bulkEventsRemote(bulk_event_remote);
 
 ## Collect event
 ```shell
-curl "app.rakam.io/event/collect"
--X POST -d @- << EOF 
+curl "app.rakam.io/event/collect" -X POST -d @- << EOF 
 {
   "collection" : "str",
   "api" : {
@@ -3925,11 +3878,10 @@ Analyze data
 
 ## Execute query on event data-set
 ```shell
-curl "app.rakam.io/query/execute"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/query/execute" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "query" : "str",
-  "export_type" : "str",
+  "export_type" : "AVRO",
   "limit" : 1
 }
 EOF
@@ -3981,7 +3933,7 @@ $api->execute(body);
 {
   "metadata" : [ {
     "name" : "str",
-    "type" : "str",
+    "type" : "STRING",
     "unique" : true,
     "descriptiveName" : "str",
     "description" : "str",
@@ -4020,8 +3972,7 @@ $api->execute(body);
 
 ## Explain query
 ```shell
-curl "app.rakam.io/query/explain"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/query/explain" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "query" : "str"
 }
@@ -4077,7 +4028,7 @@ $api->explain(body);
     "expression" : "str"
   } ],
   "orderBy" : [ {
-    "ordering" : "str",
+    "ordering" : "ASCENDING",
     "index" : 1,
     "expression" : "str"
   } ],
@@ -4101,8 +4052,7 @@ $api->explain(body);
 
 ## Test query
 ```shell
-curl "app.rakam.io/query/metadata"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/query/metadata" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "query" : "str"
 }
@@ -4154,7 +4104,7 @@ $api->metadata(body);
 ```json
 [ {
   "name" : "str",
-  "type" : "str",
+  "type" : "STRING",
   "unique" : true,
   "descriptiveName" : "str",
   "description" : "str",
@@ -4183,8 +4133,7 @@ Materialized view
 
 ## Create view
 ```shell
-curl "app.rakam.io/materialized-view/create"
-  -H "master_key: mymaster_key"-X POST -d @- << EOF 
+curl "app.rakam.io/materialized-view/create" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "table_name" : "str",
   "name" : "str",
@@ -4270,8 +4219,7 @@ $api->createView(materialized_view);
 
 ## Delete materialized view
 ```shell
-curl "app.rakam.io/materialized-view/delete"
-  -H "master_key: mymaster_key"-X POST -d @- << EOF 
+curl "app.rakam.io/materialized-view/delete" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "table_name" : "str"
 }
@@ -4343,8 +4291,7 @@ $api->deleteView(body);
 
 ## Get view
 ```shell
-curl "app.rakam.io/materialized-view/get"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/materialized-view/get" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "table_name" : "str"
 }
@@ -4423,8 +4370,7 @@ $api->getView(body);
 
 ## List views
 ```shell
-curl "app.rakam.io/materialized-view/list"
-  -H "read_key: myread_key"-X POST
+curl "app.rakam.io/materialized-view/list" -H "read_key: myread_key" -X POST
 ```
 
 ```python
@@ -4493,8 +4439,7 @@ $api->listViews();
 
 ## Get schemas
 ```shell
-curl "app.rakam.io/materialized-view/schema"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/materialized-view/schema" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "names" : [ "str" ]
 }
@@ -4548,7 +4493,7 @@ $api->getSchemaOfView(body);
   "name" : "str",
   "fields" : [ {
     "name" : "str",
-    "type" : "str",
+    "type" : "STRING",
     "unique" : true,
     "descriptiveName" : "str",
     "description" : "str",
@@ -4578,8 +4523,7 @@ Continuous query
 
 ## Create stream
 ```shell
-curl "app.rakam.io/continuous-query/create"
-  -H "master_key: mymaster_key"-X POST -d @- << EOF 
+curl "app.rakam.io/continuous-query/create" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "name" : "str",
   "query" : "str",
@@ -4666,8 +4610,7 @@ Compared to reports, continuous queries continuously aggregate the data on the f
 
 ## Delete stream
 ```shell
-curl "app.rakam.io/continuous-query/delete"
-  -H "master_key: mymaster_key"-X POST -d @- << EOF 
+curl "app.rakam.io/continuous-query/delete" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "table_name" : "str"
 }
@@ -4739,8 +4682,7 @@ $api->deleteQuery(body);
 
 ## Get continuous query
 ```shell
-curl "app.rakam.io/continuous-query/get"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/continuous-query/get" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "table_name" : "str"
 }
@@ -4817,8 +4759,7 @@ $api->getQuery(body);
 
 ## List queries
 ```shell
-curl "app.rakam.io/continuous-query/list"
-  -H "read_key: myread_key"-X POST
+curl "app.rakam.io/continuous-query/list" -H "read_key: myread_key" -X POST
 ```
 
 ```python
@@ -4885,8 +4826,7 @@ $api->listQueries();
 
 ## Get query schema
 ```shell
-curl "app.rakam.io/continuous-query/schema"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/continuous-query/schema" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "names" : [ "str" ]
 }
@@ -4940,7 +4880,7 @@ $api->getSchemaOfQuery(body);
   "name" : "str",
   "fields" : [ {
     "name" : "str",
-    "type" : "str",
+    "type" : "STRING",
     "unique" : true,
     "descriptiveName" : "str",
     "description" : "str",
@@ -4965,8 +4905,7 @@ $api->getSchemaOfQuery(body);
 
 ## Test continuous query
 ```shell
-curl "app.rakam.io/continuous-query/test"
-  -H "read_key: myread_key"-X POST -d @- << EOF 
+curl "app.rakam.io/continuous-query/test" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "query" : "str"
 }
@@ -5038,9 +4977,9 @@ true
 ### User
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|id||false|object||
-|api||false|[UserContext](#usercontext)||
-|properties||false|object||
+|id||true|object||
+|api||true|[UserContext](#usercontext)||
+|properties||true|object||
 
 
 ### Recipe
