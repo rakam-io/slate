@@ -163,19 +163,18 @@ BasePath: /</p>
 <p>Event Explorer</p>
 
 <h2 id="perform-simple-query-on-event-data">Perform simple query on event data</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event-explorer/analyze"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event-explorer/analyze"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "measure" : {
     "column" : "str",
-    "aggregation" : "str"
+    "aggregation" : "COUNT"
   },
   "grouping" : {
-    "type" : "str",
+    "type" : "COLUMN",
     "value" : "str"
   },
   "segment" : {
-    "type" : "str",
+    "type" : "COLUMN",
     "value" : "str"
   },
   "filterExpression" : "str",
@@ -226,7 +225,7 @@ $api-&gt;analyzeEvents(analyze_request);
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -320,8 +319,7 @@ $api-&gt;analyzeEvents(analyze_request);
 </tbody></table>
 
 <h2 id="event-statistics">Event statistics</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event-explorer/extra_dimensions"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X GET
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event-explorer/extra_dimensions"</span> -H <span class="s2">"read_key: myread_key"</span> -X GET
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -385,12 +383,11 @@ $api-&gt;getExtraDimensions();
 </tbody></table>
 
 <h2 id="create-pre-computed-table">Create Pre-computed table</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event-explorer/pre_calculate"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event-explorer/pre_calculate"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "collections" : [ "str" ],
   "dimensions" : [ "str" ],
-  "aggregations" : [ "str" ],
+  "aggregations" : [ "COUNT" ],
   "measures" : [ "str" ],
   "tableName" : "str"
 }
@@ -501,8 +498,7 @@ $api-&gt;createPrecomputedTable(body);
 </tbody></table>
 
 <h2 id="event-statistics">Event statistics</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event-explorer/statistics"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event-explorer/statistics"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "collections" : [ "str" ],
   "dimension" : "str",
@@ -552,7 +548,7 @@ $api-&gt;getEventStatistics(body);
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -632,8 +628,7 @@ $api-&gt;getEventStatistics(body);
 <p>Funnel Analyzer</p>
 
 <h2 id="execute-query">Execute query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/funnel/analyze"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/funnel/analyze"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "steps" : [ {
     "collection" : "str"
@@ -642,7 +637,7 @@ $api-&gt;getEventStatistics(body);
   "startDate" : "2015-01-20",
   "window" : {
     "value" : 1,
-    "type" : "str"
+    "type" : "DAY"
   },
   "endDate" : "2015-01-20"
 }
@@ -689,7 +684,7 @@ $api-&gt;analyzeFunnel(funnel_query);
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -775,13 +770,12 @@ $api-&gt;analyzeFunnel(funnel_query);
 <p>Realtime</p>
 
 <h2 id="create-report">Create report</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/create"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/create"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "name" : "str",
   "measures" : [ {
     "column" : "str",
-    "aggregation" : "str"
+    "aggregation" : "COUNT"
   } ],
   "table_name" : "str",
   "collections" : [ "str" ],
@@ -901,8 +895,7 @@ $api-&gt;createTable(real_time_report);
 </tbody></table>
 
 <h2 id="delete-report">Delete report</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/delete"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/delete"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "table_name" : "str"
 }
@@ -989,14 +982,13 @@ $api-&gt;deleteTable(body);
 </tbody></table>
 
 <h2 id="get-report">Get report</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/get"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/get"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "table_name" : "str",
   "filter" : "str",
   "measure" : {
     "column" : "str",
-    "aggregation" : "str"
+    "aggregation" : "COUNT"
   },
   "dimensions" : [ "str" ],
   "aggregate" : true,
@@ -1125,8 +1117,7 @@ $api-&gt;queryTable(realtime_query_table);
 </tbody></table>
 
 <h2 id="list-queries">List queries</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/list"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/list"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -1200,8 +1191,7 @@ $api-&gt;listTables();
 <p>Retention Analyzer module</p>
 
 <h2 id="execute-query">Execute query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/retention/analyze"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/retention/analyze"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "first_action" : {
     "collection" : "str"
@@ -1210,7 +1200,7 @@ $api-&gt;listTables();
     "collection" : "str"
   },
   "dimension" : "str",
-  "date_unit" : "str",
+  "date_unit" : "DAY",
   "period" : 1,
   "startDate" : "2015-01-20",
   "endDate" : "2015-01-20"
@@ -1258,7 +1248,7 @@ $api-&gt;analyzeRetention(retention_query);
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -1356,8 +1346,7 @@ $api-&gt;analyzeRetention(retention_query);
 <p>User</p>
 
 <h2 id="create-multiple-new-users">Create multiple new users</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/batch/create"</span>
-  -H <span class="s2">"write_key: mywrite_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/batch/create"</span> -H <span class="s2">"write_key: mywrite_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "users" : [ {
     "id" : "object",
@@ -1455,8 +1444,7 @@ $api-&gt;createUsers(user_create_users);
 <p>Returns user ids. User id may be string or numeric.</p>
 
 <h2 id="create-new-user">Create new user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/create"</span>
--X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/create"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "id" : "object",
   "api" : {
@@ -1527,19 +1515,19 @@ $api-&gt;createUser(user);
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>false</td>
+<td>true</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>api</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#usercontext">UserContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>properties</td>
-<td>false</td>
+<td>true</td>
 <td>object</td>
 <td></td>
 </tr>
@@ -1558,8 +1546,7 @@ $api-&gt;createUser(user);
 </tbody></table>
 
 <h2 id="get-events-of-the-user">Get events of the user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/create_segment"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/create_segment"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "name" : "str",
   "table_name" : "str",
@@ -1574,7 +1561,7 @@ $api-&gt;createUser(user);
       "field" : "str",
       "minimum" : 1,
       "maximum" : 1,
-      "type" : "str"
+      "type" : "COUNT"
     },
     "filterExpression" : "str"
   } ],
@@ -1689,8 +1676,7 @@ $api-&gt;createSegment(user_create_segment);
 </tbody></table>
 
 <h2 id="get-user">Get user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/get"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/get"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "user" : "object"
 }
@@ -1788,8 +1774,7 @@ $api-&gt;getUser(user_get_user);
 </tbody></table>
 
 <h2 id="get-events-of-the-user">Get events of the user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/get_events"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/get_events"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "user" : "str",
   "limit" : 1,
@@ -1894,8 +1879,7 @@ $api-&gt;getEvents(body);
 </tbody></table>
 
 <h2 id="set-user-property">Set user property</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/increment_property"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/increment_property"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "api" : {
     "api_key" : "str",
@@ -2013,8 +1997,7 @@ $api-&gt;incrementProperty(user_increment_property);
 </tbody></table>
 
 <h2 id="merge-user-with-anonymous-id">Merge user with anonymous id</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/merge"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/merge"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "user" : "str",
   "api" : {
@@ -2136,8 +2119,7 @@ $api-&gt;mergeUser(user_merge_user);
 </tbody></table>
 
 <h2 id="get-user-storage-metadata">Get user storage metadata</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/metadata"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X GET
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/metadata"</span> -H <span class="s2">"read_key: myread_key"</span> -X GET
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -2180,7 +2162,7 @@ $api-&gt;getMetadata();
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"columns"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -2209,8 +2191,7 @@ $api-&gt;getMetadata();
 </tbody></table>
 
 <h2 id="search-users">Search users</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/search"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/search"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "columns" : [ "str" ],
   "filter" : "str",
@@ -2224,13 +2205,13 @@ $api-&gt;getMetadata();
       "field" : "str",
       "minimum" : 1,
       "maximum" : 1,
-      "type" : "str"
+      "type" : "COUNT"
     },
     "filterExpression" : "str"
   } ],
   "sorting" : {
     "column" : "str",
-    "order" : "str"
+    "order" : "asc"
   },
   "offset" : "str",
   "limit" : 1
@@ -2278,7 +2259,7 @@ $api-&gt;searchUsers(user_search_users);
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -2366,8 +2347,7 @@ $api-&gt;searchUsers(user_search_users);
 </tbody></table>
 
 <h2 id="set-user-properties">Set user properties</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/set_properties"</span>
--X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/set_properties"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "id" : "object",
   "api" : {
@@ -2438,19 +2418,19 @@ $api-&gt;setProperties(user);
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>false</td>
+<td>true</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>api</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#usercontext">UserContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>properties</td>
-<td>false</td>
+<td>true</td>
 <td>object</td>
 <td></td>
 </tr>
@@ -2471,8 +2451,7 @@ $api-&gt;setProperties(user);
 </tbody></table>
 
 <h2 id="set-user-properties-once">Set user properties once</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/set_properties_once"</span>
--X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/set_properties_once"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "id" : "object",
   "api" : {
@@ -2543,19 +2522,19 @@ $api-&gt;setPropertiesOnce(user);
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>false</td>
+<td>true</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>api</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#usercontext">UserContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>properties</td>
-<td>false</td>
+<td>true</td>
 <td>object</td>
 <td></td>
 </tr>
@@ -2576,8 +2555,7 @@ $api-&gt;setPropertiesOnce(user);
 </tbody></table>
 
 <h2 id="unset-user-property">Unset user property</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/unset_properties"</span>
--X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/unset_properties"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "api" : {
     "api_key" : "str",
@@ -2688,8 +2666,7 @@ $api-&gt;unsetProperty(user_unset_property);
 <p>User Action</p>
 
 <h2 id="apply-batch-operation">Apply batch operation</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/action/email/batch"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/action/email/batch"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "filter" : "str",
   "event_filters" : [ {
@@ -2702,7 +2679,7 @@ $api-&gt;unsetProperty(user_unset_property);
       "field" : "str",
       "minimum" : 1,
       "maximum" : 1,
-      "type" : "str"
+      "type" : "COUNT"
     },
     "filterExpression" : "str"
   } ],
@@ -2808,8 +2785,7 @@ $api-&gt;batch(user_email_action_batch);
 </tbody></table>
 
 <h2 id="perform-action-for-single-user">Perform action for single user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/action/email/single"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/action/email/single"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "user" : "str",
   "config" : {
@@ -2912,10 +2888,9 @@ $api-&gt;send(user_email_action_send);
 <p>Recipe</p>
 
 <h2 id="export-recipe">Export recipe</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/recipe/export"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X GET -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/recipe/export"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X GET -d @- <span class="sh">&lt;&lt; EOF 
 {
-  "type" : "str"
+  "type" : "JSON"
 }
 EOF
 </span></code></pre>
@@ -2958,7 +2933,7 @@ $api-&gt;exportRecipe(body);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"strategy"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"strategy"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"collections"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -3022,8 +2997,7 @@ $api-&gt;exportRecipe(body);
 </tbody></table>
 
 <h2 id="install-recipe">Install recipe</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/recipe/install"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/recipe/install"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3088,10 +3062,9 @@ $api-&gt;installRecipe();
 </tbody></table>
 
 <h2 id="export-recipe">Export recipe</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/ui/recipe/export"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X GET -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/ui/recipe/export"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X GET -d @- <span class="sh">&lt;&lt; EOF 
 {
-  "type" : "str"
+  "type" : "JSON"
 }
 EOF
 </span></code></pre>
@@ -3210,8 +3183,7 @@ $api-&gt;exportUIRecipe(body);
 </tbody></table>
 
 <h2 id="install-recipe">Install recipe</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/ui/recipe/install"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/ui/recipe/install"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3280,8 +3252,7 @@ $api-&gt;installUIRecipe();
 <p>System related actions</p>
 
 <h2 id="list-installed-modules">List installed modules</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/configurations"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X GET
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/configurations"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X GET
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3357,8 +3328,7 @@ $api-&gt;getConfigurations();
 </tbody></table>
 
 <h2 id="check-lock-key">Check lock key</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/lock_key"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/lock_key"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "lock_key" : "str"
 }
@@ -3442,8 +3412,7 @@ $api-&gt;checkLockKey(body);
 </tbody></table>
 
 <h2 id="get-types">Get types</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/types"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X GET
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/types"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X GET
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3507,8 +3476,7 @@ $api-&gt;getTypes();
 </tbody></table>
 
 <h2 id="create-api-keys">Create API Keys</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/check-api-keys"</span>
--X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/check-api-keys"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "keys" : [ {
     "master_key" : "str",
@@ -3599,8 +3567,7 @@ $api-&gt;checkApiKeys(project_check_api_keys);
 </tbody></table>
 
 <h2 id="get-collection-names">Get collection names</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/collection"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/collection"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3662,8 +3629,7 @@ $api-&gt;collections();
 </tbody></table>
 
 <h2 id="create-project">Create project</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/create"</span>
--X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/create"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "lock_key" : "str",
   "name" : "str"
@@ -3754,8 +3720,7 @@ $api-&gt;createProject(body);
 </tbody></table>
 
 <h2 id="create-api-keys">Create API Keys</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/create-api-keys"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/create-api-keys"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3821,8 +3786,7 @@ $api-&gt;createApiKeys();
 </tbody></table>
 
 <h2 id="delete-project">Delete project</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/delete"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X DELETE
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/delete"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X DELETE
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3887,8 +3851,7 @@ $api-&gt;deleteProject();
 </tbody></table>
 
 <h2 id="list-created-projects">List created projects</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/list"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X GET
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/list"</span> -H <span class="s2">"read_key: myread_key"</span> -X GET
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3950,8 +3913,7 @@ $api-&gt;getProjects();
 </tbody></table>
 
 <h2 id="revoke-api-keys">Revoke API Keys</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/revoke-api-keys"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X DELETE
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/revoke-api-keys"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X DELETE
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -4016,8 +3978,7 @@ $api-&gt;revokeApiKeys();
 </tbody></table>
 
 <h2 id="get-collection-schema">Get collection schema</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "names" : [ "str" ]
 }
@@ -4065,7 +4026,7 @@ $api-&gt;schema(body);
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"fields"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -4111,13 +4072,12 @@ $api-&gt;schema(body);
 </tbody></table>
 
 <h2 id="add-fields-to-collections">Add fields to collections</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema/add"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema/add"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "collection" : "str",
   "fields" : [ {
     "name" : "str",
-    "type" : "str",
+    "type" : "STRING",
     "unique" : true,
     "descriptiveName" : "str",
     "description" : "str",
@@ -4166,7 +4126,7 @@ $api-&gt;addFieldsToSchema(project_add_fields_to_schema);
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -4217,11 +4177,10 @@ $api-&gt;addFieldsToSchema(project_add_fields_to_schema);
 </tbody></table>
 
 <h2 id="add-fields-to-collections-by-transforming-other-schemas">Add fields to collections by transforming other schemas</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema/add/custom"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema/add/custom"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "collection" : "str",
-  "schema_type" : "str",
+  "schema_type" : "AVRO",
   "schema" : "str"
 }
 EOF
@@ -4266,7 +4225,7 @@ $api-&gt;addCustomFieldsToSchema(body);
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -4323,8 +4282,7 @@ $api-&gt;addCustomFieldsToSchema(body);
 </tbody></table>
 
 <h2 id="get-project-stats">Get project stats</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/stats"</span>
--X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/stats"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 [ "object" ]
 EOF
 </span></code></pre>
@@ -4408,8 +4366,7 @@ $api-&gt;getStats(project_get_stats);
 <p>Collect data</p>
 
 <h2 id="collect-multiple-events">Collect multiple events</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/batch"</span>
--X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/batch"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "api" : {
     "api_key" : "str",
@@ -4534,8 +4491,7 @@ $api-&gt;batchEvents(event_list);
 <p>Returns 1 if the events are collected.</p>
 
 <h2 id="collect-bulk-events">Collect Bulk events</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk"</span>
--X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "api" : {
     "api_key" : "str",
@@ -4661,8 +4617,7 @@ $api-&gt;bulkEvents(event_list);
 <p>Bulk API requires master_key as api key and designed to handle large value of data. The endpoint also accepts application/avro and text/csv formats. You need need to set &lsquo;collection&rsquo; and &#39;master_key&rsquo; query parameters if the content-type is not application/json.</p>
 
 <h2 id="commit-bulk-events">Commit Bulk events</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk/commit"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk/commit"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "collections" : [ "str" ]
 }
@@ -4751,13 +4706,12 @@ $api-&gt;commitBulkEvents(body);
 </tbody></table>
 
 <h2 id="collect-bulk-events-from-remote">Collect bulk events from remote</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk/remote"</span>
--X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk/remote"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "collection" : "str",
   "urls" : [ "str" ],
-  "type" : "str",
-  "compression" : "str",
+  "type" : "AVRO",
+  "compression" : "GZIP",
   "options" : {
     "prop" : { }
   }
@@ -4864,8 +4818,7 @@ $api-&gt;bulkEventsRemote(bulk_event_remote);
 </tbody></table>
 
 <h2 id="collect-event">Collect event</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/collect"</span>
--X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/collect"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "collection" : "str",
   "api" : {
@@ -4978,11 +4931,10 @@ $api-&gt;collectEvent(event);
 <p>Analyze data</p>
 
 <h2 id="execute-query-on-event-data-set">Execute query on event data-set</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/query/execute"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/query/execute"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "query" : "str",
-  "export_type" : "str",
+  "export_type" : "AVRO",
   "limit" : 1
 }
 EOF
@@ -5028,7 +4980,7 @@ $api-&gt;execute(body);
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -5098,8 +5050,7 @@ $api-&gt;execute(body);
 </tbody></table>
 
 <h2 id="explain-query">Explain query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/query/explain"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/query/explain"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "query" : "str"
 }
@@ -5149,7 +5100,7 @@ $api-&gt;explain(body);
     </span><span class="nt">"expression"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"orderBy"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"ordering"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ordering"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ASCENDING"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"expression"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
@@ -5194,8 +5145,7 @@ $api-&gt;explain(body);
 </tbody></table>
 
 <h2 id="test-query">Test query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/query/metadata"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/query/metadata"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "query" : "str"
 }
@@ -5241,7 +5191,7 @@ $api-&gt;metadata(body);
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -5290,8 +5240,7 @@ $api-&gt;metadata(body);
 <p>Materialized view</p>
 
 <h2 id="create-view">Create view</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/create"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/create"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "table_name" : "str",
   "name" : "str",
@@ -5422,8 +5371,7 @@ $api-&gt;createView(materialized_view);
 </tbody></table>
 
 <h2 id="delete-materialized-view">Delete materialized view</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/delete"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/delete"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "table_name" : "str"
 }
@@ -5510,8 +5458,7 @@ $api-&gt;deleteView(body);
 </tbody></table>
 
 <h2 id="get-view">Get view</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/get"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/get"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "table_name" : "str"
 }
@@ -5605,8 +5552,7 @@ $api-&gt;getView(body);
 </tbody></table>
 
 <h2 id="list-views">List views</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/list"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/list"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -5678,8 +5624,7 @@ $api-&gt;listViews();
 </tbody></table>
 
 <h2 id="get-schemas">Get schemas</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/schema"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/schema"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "names" : [ "str" ]
 }
@@ -5727,7 +5672,7 @@ $api-&gt;getSchemaOfView(body);
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"fields"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -5777,8 +5722,7 @@ $api-&gt;getSchemaOfView(body);
 <p>Continuous query</p>
 
 <h2 id="create-stream">Create stream</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/create"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/create"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "name" : "str",
   "query" : "str",
@@ -5901,8 +5845,7 @@ Rakam will process data in batches keep the result of query in-memory all the ti
 Compared to reports, continuous queries continuously aggregate the data on the fly and the result is always available either in-memory or disk.</p>
 
 <h2 id="delete-stream">Delete stream</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/delete"</span>
-  -H <span class="s2">"master_key: mymaster_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/delete"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "table_name" : "str"
 }
@@ -5989,8 +5932,7 @@ $api-&gt;deleteQuery(body);
 </tbody></table>
 
 <h2 id="get-continuous-query">Get continuous query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/get"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/get"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "table_name" : "str"
 }
@@ -6082,8 +6024,7 @@ $api-&gt;getQuery(body);
 </tbody></table>
 
 <h2 id="list-queries">List queries</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/list"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/list"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -6153,8 +6094,7 @@ $api-&gt;listQueries();
 </tbody></table>
 
 <h2 id="get-query-schema">Get query schema</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/schema"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/schema"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "names" : [ "str" ]
 }
@@ -6202,7 +6142,7 @@ $api-&gt;getSchemaOfQuery(body);
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"fields"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
@@ -6248,8 +6188,7 @@ $api-&gt;getSchemaOfQuery(body);
 </tbody></table>
 
 <h2 id="test-continuous-query">Test continuous query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/test"</span>
-  -H <span class="s2">"read_key: myread_key"</span>-X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/test"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
   "query" : "str"
 }
@@ -6348,21 +6287,21 @@ $api-&gt;testQuery(body);
 <tr>
 <td>id</td>
 <td></td>
-<td>false</td>
+<td>true</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>api</td>
 <td></td>
-<td>false</td>
+<td>true</td>
 <td><a href="#usercontext">UserContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>properties</td>
 <td></td>
-<td>false</td>
+<td>true</td>
 <td>object</td>
 <td></td>
 </tr>
