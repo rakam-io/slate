@@ -5,13 +5,10 @@
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
-
 Licensed under the Apache License, Version 2.0 (the "License"); you may
 not use this file except in compliance with the License. You may obtain
 a copy of the License at
-
   http://www.apache.org/licenses/LICENSE-2.0
-
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -35,6 +32,10 @@ html, body {
   -webkit-text-size-adjust: none; /* Never autoresize text */
 }
 
+a {
+  color: $nav-text;
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
@@ -45,14 +46,12 @@ html, body {
   border-radius: 40px;
   width: 20px;
 }
-
+ 
 @mixin embossed-bg {
   background:
     linear-gradient(to bottom, rgba(#000, 0.2), rgba(#000, 0) 8px),
     linear-gradient(to top, rgba(#000, 0.2), rgba(#000, 0) 8px),
-    linear-gradient(to bottom, rgba($nav-embossed-border-top, 1), rgba($nav-embossed-border-top, 0) 1.5px),
-    linear-gradient(to top, rgba($nav-embossed-border-bottom, 1), rgba($nav-embossed-border-bottom, 0) 1.5px),
-    $nav-subitem-bg;
+    $nav-subitem-bg; 
 }
 
 .tocify-wrapper {
@@ -66,9 +65,8 @@ html, body {
   left: 0;
   bottom: 0;
   width: $nav-width;
+  box-shadow:1px 0 2px #eee;
   background-color: $nav-bg;
-  font-size: 13px;
-  font-weight: bold;
 
   // language selector for mobile devices
   .lang-selector {
@@ -147,11 +145,12 @@ html, body {
 
 
   .tocify-item>a, .toc-footer li {
-    padding: 0 $nav-padding 0 $nav-padding;
+    padding: 2px $nav-padding 2px $nav-padding;
     display: block;
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size:15px;
   }
 
   // The Table of Contents is composed of multiple nested
@@ -161,7 +160,7 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 28px;
+    line-height: 35px;
   }
 
   li {
@@ -172,8 +171,7 @@ html, body {
   }
 
   // This is the currently selected ToC entry
-  .tocify-focus {
-    box-shadow: 0px 1px 0px $nav-active-shadow;
+  .tocify-focus a {
     background-color: $nav-active-bg;
     color: $nav-active-text;
   }
@@ -182,7 +180,7 @@ html, body {
   // in the table of contents.
   .tocify-subheader {
     display: none; // tocify will override this when needed
-    background-color: $nav-subitem-bg;
+    box-shadow:0 0px 3px rgba(55, 67, 85, 0.18);
     font-weight: 500;
     .tocify-item>a {
       padding-left: $nav-padding + $nav-indent;
@@ -190,7 +188,6 @@ html, body {
     }
 
     // for embossed look:
-    @include embossed-bg;
     &>li:last-child {
       box-shadow: none; // otherwise it'll overflow out of the subheader
     }
@@ -296,8 +293,8 @@ html, body {
     float:left;
     color: $lang-select-text;
     text-decoration: none;
-    padding: 0 10px;
-    line-height: 30px;
+    padding: 0 15px;
+    line-height: 35px;
     outline: 0;
 
     &:active, &:focus {
@@ -339,7 +336,6 @@ html, body {
     padding: 0 $main-padding;
     box-sizing: border-box;
     display: block;
-    text-shadow: $main-embossed-text-shadow;
 
     @extend %left-col;
   }
@@ -358,10 +354,10 @@ html, body {
     font-size: 30px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #eee;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #eee;
     background-image: linear-gradient(to bottom, #fff, #f9f9f9);
   }
 
@@ -375,7 +371,7 @@ html, body {
     font-size: 20px;
     margin-top: 4em;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #eee;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
     background-image: linear-gradient(to bottom, rgba(#fff, 0.4), rgba(#fff, 0));
@@ -408,6 +404,9 @@ html, body {
   table {
     margin-bottom: 1em;
     overflow: auto;
+    background-color:#f7f7f7;
+    padding-bottom:10px;
+    padding-top:5px;
     th,td {
       text-align: left;
       vertical-align: top;
@@ -416,7 +415,7 @@ html, body {
 
     th {
       padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #eee;
       vertical-align: bottom;
     }
 
@@ -425,7 +424,7 @@ html, body {
     }
 
     tr:last-child {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #eee;
     }
 
     tr:nth-child(odd)>td {
@@ -470,7 +469,6 @@ html, body {
   aside {
     padding-top: 1em;
     padding-bottom: 1em;
-    text-shadow: 0 1px 0 lighten($aside-notice-bg, 15%);
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
@@ -478,12 +476,10 @@ html, body {
 
     &.warning {
       background-color: $aside-warning-bg;
-      text-shadow: 0 1px 0 lighten($aside-warning-bg, 15%);
     }
 
     &.success {
       background-color: $aside-success-bg;
-      text-shadow: 0 1px 0 lighten($aside-success-bg, 15%);
     }
   }
 
@@ -510,7 +506,6 @@ html, body {
     margin: -2px;
     border-radius: 4px;
     border: 1px solid #F7E633;
-    text-shadow: 1px 1px 0 #666;
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
   }
 }
@@ -533,7 +528,6 @@ html, body {
     clear:right;
 
     box-sizing: border-box;
-    text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
 
     @extend %right-col;
 
@@ -542,7 +536,7 @@ html, body {
     a {
       color: #fff;
       text-decoration: none;
-      border-bottom: dashed 1px #ccc;
+      border-bottom: dashed 1px #eee;
     }
   }
 
@@ -555,9 +549,7 @@ html, body {
       background-color: $code-annotation-bg;
       border-radius: 5px;
       padding: $code-annotation-padding;
-      color: #ccc;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #404040;
+      color: #eee;
     }
   }
 }
@@ -625,3 +617,51 @@ html, body {
 .highlight, .highlight .w {
   background-color: $code-bg;
 }
+
+#top-menu a {
+    color: rgba(255, 255, 255, 0.69);
+    font-size: 11px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 15px;
+    text-transform: uppercase;
+}
+
+a.nice {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 10px;
+    padding: 9px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    margin-top: -9px;
+}
+
+#top-menu a:hover {
+    color: #fff;
+}
+
+a.nice:hover {
+    color: white !important;
+    border-color: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.27);
+}
+
+#logo-large {
+    font-size: 1.7em;
+    color: #fff;
+    margin: 11px 13px;
+    font-family: 'Roboto Condensed', sans-serif;
+    float: left;
+    width: 210px;
+    background-size: 100px;
+    display: block;
+}
+
+pre.highlight code {
+  padding:0
+}
+ body, .tocify-wrapper {
+ margin-top:50px
+ }
