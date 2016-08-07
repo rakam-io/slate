@@ -401,7 +401,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">EventexplorerApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">create_precomputed_table</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">create_precomputed_table</span><span class="p">(</span><span class="n">create_precomputed_table</span><span class="p">);</span>
 
 
 </code></pre>
@@ -411,7 +411,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">EventexplorerApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventexplorerApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">createPrecomputedTable</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">createPrecomputedTable</span><span class="o">(</span><span class="n">createPrecomputedTable</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -423,7 +423,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\EventexplorerApi($api_client);
-$api-&gt;createPrecomputedTable(body);
+$api-&gt;createPrecomputedTable(create_precomputed_table);
 
 
 </code></pre>
@@ -515,7 +515,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">EventexplorerApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_event_statistics</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">get_event_statistics</span><span class="p">(</span><span class="n">event_explorer_get_event_statistics</span><span class="p">);</span>
 
 
 </code></pre>
@@ -525,7 +525,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">EventexplorerApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventexplorerApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getEventStatistics</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">getEventStatistics</span><span class="o">(</span><span class="n">eventExplorerGetEventStatistics</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -537,7 +537,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\EventexplorerApi($api_client);
-$api-&gt;getEventStatistics(body);
+$api-&gt;getEventStatistics(event_explorer_get_event_statistics);
 
 
 </code></pre>
@@ -597,13 +597,13 @@ $api-&gt;getEventStatistics(body);
 </tr>
 <tr>
 <td>startDate</td>
-<td>true</td>
+<td>false</td>
 <td>string (date)</td>
 <td></td>
 </tr>
 <tr>
 <td>endDate</td>
-<td>true</td>
+<td>false</td>
 <td>string (date)</td>
 <td></td>
 </tr>
@@ -909,7 +909,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RealtimeApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">delete_table</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">delete_table</span><span class="p">(</span><span class="n">realtime_delete_table</span><span class="p">);</span>
 
 
 </code></pre>
@@ -919,7 +919,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">RealtimeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RealtimeApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">deleteTable</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">deleteTable</span><span class="o">(</span><span class="n">realtimeDeleteTable</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -931,7 +931,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\RealtimeApi($api_client);
-$api-&gt;deleteTable(body);
+$api-&gt;deleteTable(realtime_delete_table);
 
 
 </code></pre>
@@ -961,7 +961,7 @@ $api-&gt;deleteTable(body);
 </thead><tbody>
 <tr>
 <td>table_name</td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -1158,13 +1158,13 @@ $api-&gt;listTables();
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"partition_keys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"tableName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"partitionKeys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -1341,9 +1341,130 @@ $api-&gt;analyzeRetention(retention_query);
 </tr>
 </tbody></table>
 
+<h1 id="event-stream">Event stream</h1>
+
+<p>Event Stream Module</p>
+
 <h1 id="user">User</h1>
 
 <p>User</p>
+
+<h2 id="batch-operation-on-a-single-user-properties">Batch operation on a single user properties</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/batch"</span> -H <span class="s2">"write_key: mywrite_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "id" : "object",
+  "api" : {
+    "api_key" : "str",
+    "library" : {
+      "name" : "str",
+      "version" : "str"
+    },
+    "upload_time" : 1,
+    "checksum" : "str"
+  },
+  "data" : [ {
+    "set_properties" : "object",
+    "set_properties_once" : "object",
+    "increment_properties" : {
+      "prop" : { }
+    },
+    "unset_properties" : [ "str" ],
+    "time" : 1,
+    "user" : "object"
+  } ]
+}
+EOF
+</span></code></pre>
+<pre class="highlight python"><code>
+<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
+<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
+
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'write_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
+<span class="n">api</span><span class="o">.</span><span class="n">batch_single_user_operations</span><span class="p">(</span><span class="n">single_user_batch_operation_request</span><span class="p">);</span>
+
+
+</code></pre>
+<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
+
+<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
+<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"write_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
+<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">batchSingleUserOperations</span><span class="o">(</span><span class="n">singleUserBatchOperationRequest</span><span class="o">);</span>
+
+</code></pre>
+<pre class="highlight php"><code>
+
+require_once('/path/to/io.rakam.client.api');
+
+$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+
+$api_client-&gt;getConfig().setApiKey("write_key", "myApiKey");
+
+$api = new Swagger\Client\UserApi($api_client);
+$api-&gt;batchSingleUserOperations(single_user_batch_operation_request);
+
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="mi">1</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /user/batch</code></p>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>false</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>api</td>
+<td>false</td>
+<td><a href="#usercontext">UserContext</a></td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td>false</td>
+<td><a href="#singleuserbatchoperations">SingleUserBatchOperations</a> array</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses-for-status-codes">Responses for status codes</h3>
+
+<table><thead>
+<tr>
+<th>200</th>
+<th>403</th>
+<th>404</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>integer (int32)</td>
+<td><a href="#errormessage">ErrorMessage</a></td>
+<td><a href="#errormessage">ErrorMessage</a></td>
+</tr>
+</tbody></table>
 
 <h2 id="create-multiple-new-users">Create multiple new users</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/batch/create"</span> -H <span class="s2">"write_key: mywrite_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
@@ -1442,6 +1563,117 @@ $api-&gt;createUsers(user_create_users);
 </tbody></table>
 
 <p>Returns user ids. User id may be string or numeric.</p>
+
+<h2 id="batch-operations-on-user-properties">Batch operations on user properties</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/batch_operations"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "api" : {
+    "api_key" : "str",
+    "library" : {
+      "name" : "str",
+      "version" : "str"
+    },
+    "upload_time" : 1,
+    "checksum" : "str"
+  },
+  "data" : [ {
+    "id" : "object",
+    "set_properties" : "object",
+    "set_properties_once" : "object",
+    "increment_properties" : {
+      "prop" : { }
+    },
+    "unset_properties" : [ "str" ],
+    "time" : 1,
+    "user" : "object"
+  } ]
+}
+EOF
+</span></code></pre>
+<pre class="highlight python"><code>
+<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
+<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
+
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
+<span class="n">api</span><span class="o">.</span><span class="n">batch_user_operations</span><span class="p">(</span><span class="n">batch_user_operation_request</span><span class="p">);</span>
+
+
+</code></pre>
+<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
+
+<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
+<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
+<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">batchUserOperations</span><span class="o">(</span><span class="n">batchUserOperationRequest</span><span class="o">);</span>
+
+</code></pre>
+<pre class="highlight php"><code>
+
+require_once('/path/to/io.rakam.client.api');
+
+$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+
+$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\UserApi($api_client);
+$api-&gt;batchUserOperations(batch_user_operation_request);
+
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="mi">1</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /user/batch_operations</code></p>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api</td>
+<td>false</td>
+<td><a href="#usercontext">UserContext</a></td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td>false</td>
+<td><a href="#batchuseroperations">BatchUserOperations</a> array</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses-for-status-codes">Responses for status codes</h3>
+
+<table><thead>
+<tr>
+<th>200</th>
+<th>403</th>
+<th>404</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>integer (int32)</td>
+<td><a href="#errormessage">ErrorMessage</a></td>
+<td><a href="#errormessage">ErrorMessage</a></td>
+</tr>
+</tbody></table>
 
 <h2 id="create-new-user">Create new user</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/create"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
@@ -1790,7 +2022,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_events</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">get_events</span><span class="p">(</span><span class="n">user_get_events</span><span class="p">);</span>
 
 
 </code></pre>
@@ -1800,7 +2032,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getEvents</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">getEvents</span><span class="o">(</span><span class="n">userGetEvents</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -1812,7 +2044,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\UserApi($api_client);
-$api-&gt;getEvents(body);
+$api-&gt;getEvents(user_get_events);
 
 
 </code></pre>
@@ -1844,7 +2076,7 @@ $api-&gt;getEvents(body);
 </thead><tbody>
 <tr>
 <td>user</td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -1991,128 +2223,6 @@ $api-&gt;incrementProperty(user_increment_property);
 </thead><tbody>
 <tr>
 <td><a href="#successmessage">SuccessMessage</a></td>
-<td><a href="#errormessage">ErrorMessage</a></td>
-<td><a href="#errormessage">ErrorMessage</a></td>
-</tr>
-</tbody></table>
-
-<h2 id="merge-user-with-anonymous-id">Merge user with anonymous id</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/merge"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
-{
-  "user" : "str",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
-  "anonymous_id" : "str",
-  "created_at" : "2016-03-03T10:15:30.00Z",
-  "merged_at" : "2016-03-03T10:15:30.00Z"
-}
-EOF
-</span></code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">merge_user</span><span class="p">(</span><span class="n">user_merge_user</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">mergeUser</span><span class="o">(</span><span class="n">userMergeUser</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;mergeUser(user_merge_user);
-
-
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="kc">true</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST /user/merge</code></p>
-
-<h3 id="body-parameters">Body Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>user</td>
-<td>false</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>api</td>
-<td>false</td>
-<td><a href="#usercontext">UserContext</a></td>
-<td></td>
-</tr>
-<tr>
-<td>anonymous_id</td>
-<td>false</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>created_at</td>
-<td>false</td>
-<td>string (date-time)</td>
-<td></td>
-</tr>
-<tr>
-<td>merged_at</td>
-<td>false</td>
-<td>string (date-time)</td>
-<td></td>
-</tr>
-</tbody></table>
-
-<h3 id="responses-for-status-codes">Responses for status codes</h3>
-
-<table><thead>
-<tr>
-<th>200</th>
-<th>403</th>
-<th>404</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>boolean</td>
 <td><a href="#errormessage">ErrorMessage</a></td>
 <td><a href="#errormessage">ErrorMessage</a></td>
 </tr>
@@ -2888,12 +2998,8 @@ $api-&gt;send(user_email_action_send);
 <p>Recipe</p>
 
 <h2 id="export-recipe">Export recipe</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/recipe/export"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X GET -d @- <span class="sh">&lt;&lt; EOF 
-{
-  "type" : "JSON"
-}
-EOF
-</span></code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/recipe/export"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X GET
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -2902,7 +3008,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RecipeApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">export_recipe</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">export_recipe</span><span class="p">(</span><span class="n">accept</span><span class="p">);</span>
 
 
 </code></pre>
@@ -2912,7 +3018,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">RecipeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RecipeApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">exportRecipe</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">exportRecipe</span><span class="o">(</span><span class="n">accept</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -2924,7 +3030,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\RecipeApi($api_client);
-$api-&gt;exportRecipe(body);
+$api-&gt;exportRecipe(accept);
 
 
 </code></pre>
@@ -2949,13 +3055,13 @@ $api-&gt;exportRecipe(body);
     </span><span class="nt">"last_update"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-03T10:15:30.00Z"</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"continuous_queries"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"partition_keys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">],</span><span class="w">
     </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"tableName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"partitionKeys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2964,7 +3070,7 @@ $api-&gt;exportRecipe(body);
 
 <p><code class="prettyprint">GET /recipe/export</code></p>
 
-<h3 id="body-parameters">Body Parameters</h3>
+<h3 id="header-parameters">Header Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2975,9 +3081,9 @@ $api-&gt;exportRecipe(body);
 </tr>
 </thead><tbody>
 <tr>
-<td>type</td>
-<td>false</td>
-<td>enum (JSON, YAML)</td>
+<td>Accept</td>
+<td>true</td>
+<td>string</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -3046,192 +3152,6 @@ $api-&gt;installRecipe();
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST /recipe/install</code></p>
-
-<h3 id="responses-for-status-codes">Responses for status codes</h3>
-
-<table><thead>
-<tr>
-<th>200</th>
-<th>403</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><a href="#successmessage">SuccessMessage</a></td>
-<td><a href="#errormessage">ErrorMessage</a></td>
-</tr>
-</tbody></table>
-
-<h2 id="export-recipe">Export recipe</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/ui/recipe/export"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X GET -d @- <span class="sh">&lt;&lt; EOF 
-{
-  "type" : "JSON"
-}
-EOF
-</span></code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RecipeApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">export_ui_recipe</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.RecipeApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">RecipeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RecipeApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">exportUIRecipe</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\RecipeApi($api_client);
-$api-&gt;exportUIRecipe(body);
-
-
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"custom_reports"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reportType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"custom_pages"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"slug"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"files"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"dashboards"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"directive"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"reports"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"slug"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"shared"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"hasPermission"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET /ui/recipe/export</code></p>
-
-<h3 id="body-parameters">Body Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td>false</td>
-<td>enum (JSON, YAML)</td>
-<td></td>
-</tr>
-</tbody></table>
-
-<h3 id="responses-for-status-codes">Responses for status codes</h3>
-
-<table><thead>
-<tr>
-<th>200</th>
-<th>403</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><a href="#uirecipe">UIRecipe</a></td>
-<td><a href="#errormessage">ErrorMessage</a></td>
-</tr>
-</tbody></table>
-
-<h2 id="install-recipe">Install recipe</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/ui/recipe/install"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RecipeApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">install_ui_recipe</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.RecipeApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">RecipeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RecipeApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">installUIRecipe</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\RecipeApi($api_client);
-$api-&gt;installUIRecipe();
-
-
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST /ui/recipe/install</code></p>
 
 <h3 id="responses-for-status-codes">Responses for status codes</h3>
 
@@ -3342,7 +3262,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">check_lock_key</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">check_lock_key</span><span class="p">(</span><span class="n">check_lock_key</span><span class="p">);</span>
 
 
 </code></pre>
@@ -3352,7 +3272,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">checkLockKey</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">checkLockKey</span><span class="o">(</span><span class="n">checkLockKey</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -3364,7 +3284,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;checkLockKey(body);
+$api-&gt;checkLockKey(check_lock_key);
 
 
 </code></pre>
@@ -3643,7 +3563,7 @@ EOF
 <span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">create_project</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">create_project</span><span class="p">(</span><span class="n">create_project</span><span class="p">);</span>
 
 
 </code></pre>
@@ -3653,7 +3573,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 
 <span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">createProject</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">createProject</span><span class="o">(</span><span class="n">createProject</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -3664,7 +3584,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;createProject(body);
+$api-&gt;createProject(create_project);
 
 
 </code></pre>
@@ -3923,7 +3843,7 @@ $api-&gt;getProjects();
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">revoke_api_keys</span><span class="p">();</span>
+<span class="n">api</span><span class="o">.</span><span class="n">revoke_api_keys</span><span class="p">(</span><span class="n">master_key</span><span class="p">);</span>
 
 
 </code></pre>
@@ -3933,7 +3853,7 @@ $api-&gt;getProjects();
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">revokeApiKeys</span><span class="o">();</span>
+<span class="n">api</span><span class="o">.</span><span class="na">revokeApiKeys</span><span class="o">(</span><span class="n">masterKey</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -3945,7 +3865,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;revokeApiKeys();
+$api-&gt;revokeApiKeys(master_key);
 
 
 </code></pre>
@@ -3962,6 +3882,24 @@ $api-&gt;revokeApiKeys();
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">DELETE /project/revoke-api-keys</code></p>
+
+<h3 id="header-parameters">Header Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>master_key</td>
+<td>true</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
 
 <h3 id="responses-for-status-codes">Responses for status codes</h3>
 
@@ -3992,7 +3930,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">project_schema</span><span class="p">);</span>
 
 
 </code></pre>
@@ -4002,7 +3940,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">schema</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">schema</span><span class="o">(</span><span class="n">projectSchema</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -4014,7 +3952,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;schema(body);
+$api-&gt;schema(project_schema);
 
 
 </code></pre>
@@ -4193,7 +4131,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">add_custom_fields_to_schema</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">add_custom_fields_to_schema</span><span class="p">(</span><span class="n">project_add_custom_fields_to_schema</span><span class="p">);</span>
 
 
 </code></pre>
@@ -4203,7 +4141,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">addCustomFieldsToSchema</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">addCustomFieldsToSchema</span><span class="o">(</span><span class="n">projectAddCustomFieldsToSchema</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -4215,7 +4153,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;addCustomFieldsToSchema(body);
+$api-&gt;addCustomFieldsToSchema(project_add_custom_fields_to_schema);
 
 
 </code></pre>
@@ -4249,19 +4187,19 @@ $api-&gt;addCustomFieldsToSchema(body);
 </thead><tbody>
 <tr>
 <td>collection</td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>schema_type</td>
-<td>true</td>
+<td>false</td>
 <td>enum (AVRO)</td>
 <td></td>
 </tr>
 <tr>
 <td>schema</td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -4631,7 +4569,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">CollectApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">commit_bulk_events</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">commit_bulk_events</span><span class="p">(</span><span class="n">commit_bulk_events</span><span class="p">);</span>
 
 
 </code></pre>
@@ -4641,7 +4579,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">CollectApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CollectApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">commitBulkEvents</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">commitBulkEvents</span><span class="o">(</span><span class="n">commitBulkEvents</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -4653,7 +4591,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\CollectApi($api_client);
-$api-&gt;commitBulkEvents(body);
+$api-&gt;commitBulkEvents(commit_bulk_events);
 
 
 </code></pre>
@@ -4947,7 +4885,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">QueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">execute</span><span class="p">);</span>
 
 
 </code></pre>
@@ -4957,7 +4895,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">QueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">execute</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -4969,7 +4907,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\QueryApi($api_client);
-$api-&gt;execute(body);
+$api-&gt;execute(execute);
 
 
 </code></pre>
@@ -5064,7 +5002,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">QueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="n">explain</span><span class="p">);</span>
 
 
 </code></pre>
@@ -5074,7 +5012,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">QueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">explain</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">explain</span><span class="o">(</span><span class="n">explain</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -5086,7 +5024,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\QueryApi($api_client);
-$api-&gt;explain(body);
+$api-&gt;explain(explain);
 
 
 </code></pre>
@@ -5159,7 +5097,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">QueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="n">query_metadata</span><span class="p">);</span>
 
 
 </code></pre>
@@ -5169,7 +5107,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">QueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">metadata</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">metadata</span><span class="o">(</span><span class="n">queryMetadata</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -5181,7 +5119,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\QueryApi($api_client);
-$api-&gt;metadata(body);
+$api-&gt;metadata(query_metadata);
 
 
 </code></pre>
@@ -5215,7 +5153,7 @@ $api-&gt;metadata(body);
 </thead><tbody>
 <tr>
 <td>query</td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -5385,7 +5323,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">delete_view</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">delete_view</span><span class="p">(</span><span class="n">materialized_view_delete_view</span><span class="p">);</span>
 
 
 </code></pre>
@@ -5395,7 +5333,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">deleteView</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">deleteView</span><span class="o">(</span><span class="n">materializedViewDeleteView</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -5407,7 +5345,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\MaterializedviewApi($api_client);
-$api-&gt;deleteView(body);
+$api-&gt;deleteView(materialized_view_delete_view);
 
 
 </code></pre>
@@ -5437,7 +5375,7 @@ $api-&gt;deleteView(body);
 </thead><tbody>
 <tr>
 <td>table_name</td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -5472,7 +5410,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_view</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">get_view</span><span class="p">(</span><span class="n">materialized_view_get_view</span><span class="p">);</span>
 
 
 </code></pre>
@@ -5482,7 +5420,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getView</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">getView</span><span class="o">(</span><span class="n">materializedViewGetView</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -5494,7 +5432,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\MaterializedviewApi($api_client);
-$api-&gt;getView(body);
+$api-&gt;getView(materialized_view_get_view);
 
 
 </code></pre>
@@ -5531,7 +5469,7 @@ $api-&gt;getView(body);
 </thead><tbody>
 <tr>
 <td>table_name</td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -5638,7 +5576,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_schema_of_view</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">get_schema_of_view</span><span class="p">(</span><span class="n">materialized_view_get_schema_of_view</span><span class="p">);</span>
 
 
 </code></pre>
@@ -5648,7 +5586,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getSchemaOfView</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">getSchemaOfView</span><span class="o">(</span><span class="n">materializedViewGetSchemaOfView</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -5660,7 +5598,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\MaterializedviewApi($api_client);
-$api-&gt;getSchemaOfView(body);
+$api-&gt;getSchemaOfView(materialized_view_get_schema_of_view);
 
 
 </code></pre>
@@ -5724,13 +5662,16 @@ $api-&gt;getSchemaOfView(body);
 <h2 id="create-stream">Create stream</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/create"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
 {
-  "name" : "str",
-  "query" : "str",
-  "options" : {
-    "prop" : { }
+  "continuous_query" : {
+    "table_name" : "str",
+    "name" : "str",
+    "query" : "str",
+    "partition_keys" : [ "str" ],
+    "options" : {
+      "prop" : { }
+    }
   },
-  "tableName" : "str",
-  "partitionKeys" : [ "str" ]
+  "replay" : true
 }
 EOF
 </span></code></pre>
@@ -5742,7 +5683,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">create_query</span><span class="p">(</span><span class="n">continuous_query</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">create_query</span><span class="p">(</span><span class="n">continuous_query_create_query</span><span class="p">);</span>
 
 
 </code></pre>
@@ -5752,7 +5693,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">continuousQuery</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">continuousQueryCreateQuery</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -5764,7 +5705,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api-&gt;createQuery(continuous_query);
+$api-&gt;createQuery(continuous_query_create_query);
 
 
 </code></pre>
@@ -5793,33 +5734,15 @@ $api-&gt;createQuery(continuous_query);
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
-<td>true</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>query</td>
-<td>true</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>options</td>
+<td>continuous_query</td>
 <td>false</td>
-<td>object</td>
+<td><a href="#continuousquery">ContinuousQuery</a></td>
 <td></td>
 </tr>
 <tr>
-<td>tableName</td>
+<td>replay</td>
 <td>false</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>partitionKeys</td>
-<td>false</td>
-<td>string array</td>
+<td>boolean</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -5859,7 +5782,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">delete_query</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">delete_query</span><span class="p">(</span><span class="n">continuous_query_delete_query</span><span class="p">);</span>
 
 
 </code></pre>
@@ -5869,7 +5792,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">deleteQuery</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">deleteQuery</span><span class="o">(</span><span class="n">continuousQueryDeleteQuery</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -5881,7 +5804,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api-&gt;deleteQuery(body);
+$api-&gt;deleteQuery(continuous_query_delete_query);
 
 
 </code></pre>
@@ -5911,7 +5834,7 @@ $api-&gt;deleteQuery(body);
 </thead><tbody>
 <tr>
 <td>table_name</td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -5946,7 +5869,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_query</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">get_query</span><span class="p">(</span><span class="n">continuous_query_get_query</span><span class="p">);</span>
 
 
 </code></pre>
@@ -5956,7 +5879,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getQuery</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">getQuery</span><span class="o">(</span><span class="n">continuousQueryGetQuery</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -5968,7 +5891,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api-&gt;getQuery(body);
+$api-&gt;getQuery(continuous_query_get_query);
 
 
 </code></pre>
@@ -5977,13 +5900,13 @@ $api-&gt;getQuery(body);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"partition_keys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"tableName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"partitionKeys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -6003,7 +5926,7 @@ $api-&gt;getQuery(body);
 </thead><tbody>
 <tr>
 <td>table_name</td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -6065,13 +5988,13 @@ $api-&gt;listQueries();
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"partition_keys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"tableName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"partitionKeys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -6108,7 +6031,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_schema_of_query</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">get_schema_of_query</span><span class="p">(</span><span class="n">continuous_query_get_schema_of_query</span><span class="p">);</span>
 
 
 </code></pre>
@@ -6118,7 +6041,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getSchemaOfQuery</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">getSchemaOfQuery</span><span class="o">(</span><span class="n">continuousQueryGetSchemaOfQuery</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -6130,7 +6053,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api-&gt;getSchemaOfQuery(body);
+$api-&gt;getSchemaOfQuery(continuous_query_get_schema_of_query);
 
 
 </code></pre>
@@ -6202,7 +6125,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">test_query</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">test_query</span><span class="p">(</span><span class="n">continuous_query_test_query</span><span class="p">);</span>
 
 
 </code></pre>
@@ -6212,7 +6135,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">testQuery</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">testQuery</span><span class="o">(</span><span class="n">continuousQueryTestQuery</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -6224,7 +6147,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api-&gt;testQuery(body);
+$api-&gt;testQuery(continuous_query_test_query);
 
 
 </code></pre>
@@ -6251,7 +6174,7 @@ $api-&gt;testQuery(body);
 </thead><tbody>
 <tr>
 <td>query</td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -6469,6 +6392,13 @@ $api-&gt;testQuery(body);
 </tr>
 </thead><tbody>
 <tr>
+<td>table_name</td>
+<td></td>
+<td>true</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
 <td>name</td>
 <td></td>
 <td>true</td>
@@ -6483,65 +6413,17 @@ $api-&gt;testQuery(body);
 <td></td>
 </tr>
 <tr>
-<td>options</td>
-<td></td>
-<td>false</td>
-<td>object</td>
-<td></td>
-</tr>
-<tr>
-<td>tableName</td>
-<td></td>
-<td>false</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>partitionKeys</td>
+<td>partition_keys</td>
 <td></td>
 <td>false</td>
 <td>string array</td>
 <td></td>
 </tr>
-</tbody></table>
-
-<h3 id="uirecipe">UIRecipe</h3>
-
-<table><thead>
 <tr>
-<th>name</th>
-<th>description</th>
-<th>required</th>
-<th>schema</th>
-<th>default</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>custom_reports</td>
+<td>options</td>
 <td></td>
 <td>false</td>
-<td><a href="#customreport">CustomReport</a> array</td>
-<td></td>
-</tr>
-<tr>
-<td>custom_pages</td>
-<td></td>
-<td>false</td>
-<td><a href="#page">Page</a> array</td>
-<td></td>
-</tr>
-<tr>
-<td>dashboards</td>
-<td></td>
-<td>false</td>
-<td><a href="#dashboardbuilder">DashboardBuilder</a> array</td>
-<td></td>
-</tr>
-<tr>
-<td>reports</td>
-<td></td>
-<td>false</td>
-<td><a href="#report">Report</a> array</td>
+<td>object</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -6623,6 +6505,68 @@ $api-&gt;testQuery(body);
 <td></td>
 <td>true</td>
 <td>enum (COUNT, COUNT_UNIQUE, SUM, MINIMUM, MAXIMUM, AVERAGE, APPROXIMATE_UNIQUE)</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="batchuseroperations">BatchUserOperations</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>required</th>
+<th>schema</th>
+<th>default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td></td>
+<td>true</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>set_properties</td>
+<td></td>
+<td>true</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>set_properties_once</td>
+<td></td>
+<td>true</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>increment_properties</td>
+<td></td>
+<td>true</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>unset_properties</td>
+<td></td>
+<td>true</td>
+<td>string array</td>
+<td></td>
+</tr>
+<tr>
+<td>time</td>
+<td></td>
+<td>true</td>
+<td>integer (int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>user</td>
+<td></td>
+<td>false</td>
+<td>object</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -7114,6 +7058,61 @@ $api-&gt;testQuery(body);
 <td></td>
 <td>false</td>
 <td><a href="#configitem">ConfigItem</a> array</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="singleuserbatchoperations">SingleUserBatchOperations</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>required</th>
+<th>schema</th>
+<th>default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>set_properties</td>
+<td></td>
+<td>true</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>set_properties_once</td>
+<td></td>
+<td>true</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>increment_properties</td>
+<td></td>
+<td>true</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>unset_properties</td>
+<td></td>
+<td>true</td>
+<td>string array</td>
+<td></td>
+</tr>
+<tr>
+<td>time</td>
+<td></td>
+<td>true</td>
+<td>integer (int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>user</td>
+<td></td>
+<td>false</td>
+<td>object</td>
 <td></td>
 </tr>
 </tbody></table>
