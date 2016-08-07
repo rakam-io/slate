@@ -233,7 +233,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.EventexplorerApi();
-api.create_precomputed_table(body);
+api.create_precomputed_table(create_precomputed_table);
 
 
 ```
@@ -245,7 +245,7 @@ import io.rakam.client.api.EventexplorerApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
 EventexplorerApi api = new EventexplorerApi(apiClient);
-api.createPrecomputedTable(body);
+api.createPrecomputedTable(createPrecomputedTable);
 
 ```
 
@@ -259,7 +259,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\EventexplorerApi($api_client);
-$api->createPrecomputedTable(body);
+$api->createPrecomputedTable(create_precomputed_table);
 
 
 ```
@@ -312,7 +312,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.EventexplorerApi();
-api.get_event_statistics(body);
+api.get_event_statistics(event_explorer_get_event_statistics);
 
 
 ```
@@ -324,7 +324,7 @@ import io.rakam.client.api.EventexplorerApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 EventexplorerApi api = new EventexplorerApi(apiClient);
-api.getEventStatistics(body);
+api.getEventStatistics(eventExplorerGetEventStatistics);
 
 ```
 
@@ -338,7 +338,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\EventexplorerApi($api_client);
-$api->getEventStatistics(body);
+$api->getEventStatistics(event_explorer_get_event_statistics);
 
 
 ```
@@ -377,8 +377,8 @@ $api->getEventStatistics(body);
 |----|----|----|----|
 |collections|false|string array||
 |dimension|false|string||
-|startDate|true|string (date)||
-|endDate|true|string (date)||
+|startDate|false|string (date)||
+|endDate|false|string (date)||
 
 
 ### Responses for status codes
@@ -603,7 +603,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.RealtimeApi();
-api.delete_table(body);
+api.delete_table(realtime_delete_table);
 
 
 ```
@@ -615,7 +615,7 @@ import io.rakam.client.api.RealtimeApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
 RealtimeApi api = new RealtimeApi(apiClient);
-api.deleteTable(body);
+api.deleteTable(realtimeDeleteTable);
 
 ```
 
@@ -629,7 +629,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\RealtimeApi($api_client);
-$api->deleteTable(body);
+$api->deleteTable(realtime_delete_table);
 
 
 ```
@@ -648,7 +648,7 @@ $api->deleteTable(body);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|table_name|true|string||
+|table_name|false|string||
 
 
 ### Responses for status codes
@@ -794,13 +794,13 @@ $api->listTables();
 
 ```json
 [ {
+  "table_name" : "str",
   "name" : "str",
   "query" : "str",
+  "partition_keys" : [ "str" ],
   "options" : {
     "prop" : { }
-  },
-  "tableName" : "str",
-  "partitionKeys" : [ "str" ]
+  }
 } ]
 ```
 
@@ -923,10 +923,105 @@ $api->analyzeRetention(retention_query);
 |[QueryResult](#queryresult)|[ErrorMessage](#errormessage)|
 
 
+# Event stream
+
+
+Event Stream Module
+
 # User
 
 
 User
+
+## Batch operation on a single user properties
+```shell
+curl "app.rakam.io/user/batch" -H "write_key: mywrite_key" -X POST -d @- << EOF 
+{
+  "id" : "object",
+  "api" : {
+    "api_key" : "str",
+    "library" : {
+      "name" : "str",
+      "version" : "str"
+    },
+    "upload_time" : 1,
+    "checksum" : "str"
+  },
+  "data" : [ {
+    "set_properties" : "object",
+    "set_properties_once" : "object",
+    "increment_properties" : {
+      "prop" : { }
+    },
+    "unset_properties" : [ "str" ],
+    "time" : 1,
+    "user" : "object"
+  } ]
+}
+EOF
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("app.rakam.io")
+apiClient.configuration.api_key['write_key'] = 'myApiKey'
+
+api = client.UserApi();
+api.batch_single_user_operations(single_user_batch_operation_request);
+
+
+```
+
+```java
+import io.rakam.client.api.ApiClient;
+import io.rakam.client.api.UserApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("write_key").setApiKey("myApiKey");
+UserApi api = new UserApi(apiClient);
+api.batchSingleUserOperations(singleUserBatchOperationRequest);
+
+```
+
+```php
+
+
+require_once('/path/to/io.rakam.client.api');
+
+$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+
+$api_client->getConfig().setApiKey("write_key", "myApiKey");
+
+$api = new Swagger\Client\UserApi($api_client);
+$api->batchSingleUserOperations(single_user_batch_operation_request);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+1
+```
+
+### HTTP Request
+`POST /user/batch`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|id|false|object||
+|api|false|[UserContext](#usercontext)||
+|data|false|[SingleUserBatchOperations](#singleuserbatchoperations) array||
+
+
+### Responses for status codes
+|200|403|404|
+|----|----|----|
+|integer (int32)|[ErrorMessage](#errormessage)|[ErrorMessage](#errormessage)|
+
 
 ## Create multiple new users
 ```shell
@@ -1011,6 +1106,95 @@ $api->createUsers(user_create_users);
 
 
 Returns user ids. User id may be string or numeric.
+
+## Batch operations on user properties
+```shell
+curl "app.rakam.io/user/batch_operations" -H "master_key: mymaster_key" -X POST -d @- << EOF 
+{
+  "api" : {
+    "api_key" : "str",
+    "library" : {
+      "name" : "str",
+      "version" : "str"
+    },
+    "upload_time" : 1,
+    "checksum" : "str"
+  },
+  "data" : [ {
+    "id" : "object",
+    "set_properties" : "object",
+    "set_properties_once" : "object",
+    "increment_properties" : {
+      "prop" : { }
+    },
+    "unset_properties" : [ "str" ],
+    "time" : 1,
+    "user" : "object"
+  } ]
+}
+EOF
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("app.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
+
+api = client.UserApi();
+api.batch_user_operations(batch_user_operation_request);
+
+
+```
+
+```java
+import io.rakam.client.api.ApiClient;
+import io.rakam.client.api.UserApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+UserApi api = new UserApi(apiClient);
+api.batchUserOperations(batchUserOperationRequest);
+
+```
+
+```php
+
+
+require_once('/path/to/io.rakam.client.api');
+
+$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\UserApi($api_client);
+$api->batchUserOperations(batch_user_operation_request);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+1
+```
+
+### HTTP Request
+`POST /user/batch_operations`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|api|false|[UserContext](#usercontext)||
+|data|false|[BatchUserOperations](#batchuseroperations) array||
+
+
+### Responses for status codes
+|200|403|404|
+|----|----|----|
+|integer (int32)|[ErrorMessage](#errormessage)|[ErrorMessage](#errormessage)|
+
 
 ## Create new user
 ```shell
@@ -1285,7 +1469,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.UserApi();
-api.get_events(body);
+api.get_events(user_get_events);
 
 
 ```
@@ -1297,7 +1481,7 @@ import io.rakam.client.api.UserApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 UserApi api = new UserApi(apiClient);
-api.getEvents(body);
+api.getEvents(userGetEvents);
 
 ```
 
@@ -1311,7 +1495,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\UserApi($api_client);
-$api->getEvents(body);
+$api->getEvents(user_get_events);
 
 
 ```
@@ -1332,7 +1516,7 @@ $api->getEvents(body);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|user|true|string||
+|user|false|string||
 |limit|false|integer (int32)||
 |offset|false|string (date-time)||
 
@@ -1427,91 +1611,6 @@ $api->incrementProperty(user_increment_property);
 |200|403|404|
 |----|----|----|
 |[SuccessMessage](#successmessage)|[ErrorMessage](#errormessage)|[ErrorMessage](#errormessage)|
-
-
-## Merge user with anonymous id
-```shell
-curl "app.rakam.io/user/merge" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "user" : "str",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
-  "anonymous_id" : "str",
-  "created_at" : "2016-03-03T10:15:30.00Z",
-  "merged_at" : "2016-03-03T10:15:30.00Z"
-}
-EOF
-```
-
-```python
-
-from ..api_client import ApiClient;
-from ..configuration import Configuration
-
-apiClient = client.ApiClient("app.rakam.io")
-apiClient.configuration.api_key['read_key'] = 'myApiKey'
-
-api = client.UserApi();
-api.merge_user(user_merge_user);
-
-
-```
-
-```java
-import io.rakam.client.api.ApiClient;
-import io.rakam.client.api.UserApi;
-
-ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-UserApi api = new UserApi(apiClient);
-api.mergeUser(userMergeUser);
-
-```
-
-```php
-
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client->getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\UserApi($api_client);
-$api->mergeUser(user_merge_user);
-
-
-```
-
-> The above command returns JSON structured like this:
-
-```json
-true
-```
-
-### HTTP Request
-`POST /user/merge`
-### Body Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|user|false|string||
-|api|false|[UserContext](#usercontext)||
-|anonymous_id|false|string||
-|created_at|false|string (date-time)||
-|merged_at|false|string (date-time)||
-
-
-### Responses for status codes
-|200|403|404|
-|----|----|----|
-|boolean|[ErrorMessage](#errormessage)|[ErrorMessage](#errormessage)|
 
 
 ## Get user storage metadata
@@ -2124,11 +2223,7 @@ Recipe
 
 ## Export recipe
 ```shell
-curl "app.rakam.io/recipe/export" -H "master_key: mymaster_key" -X GET -d @- << EOF 
-{
-  "type" : "JSON"
-}
-EOF
+curl "app.rakam.io/recipe/export" -H "master_key: mymaster_key" -X GET
 ```
 
 ```python
@@ -2140,7 +2235,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.RecipeApi();
-api.export_recipe(body);
+api.export_recipe(accept);
 
 
 ```
@@ -2152,7 +2247,7 @@ import io.rakam.client.api.RecipeApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
 RecipeApi api = new RecipeApi(apiClient);
-api.exportRecipe(body);
+api.exportRecipe(accept);
 
 ```
 
@@ -2166,7 +2261,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\RecipeApi($api_client);
-$api->exportRecipe(body);
+$api->exportRecipe(accept);
 
 
 ```
@@ -2191,23 +2286,23 @@ $api->exportRecipe(body);
     "last_update" : "2016-03-03T10:15:30.00Z"
   } ],
   "continuous_queries" : [ {
+    "table_name" : "str",
     "name" : "str",
     "query" : "str",
+    "partition_keys" : [ "str" ],
     "options" : {
       "prop" : { }
-    },
-    "tableName" : "str",
-    "partitionKeys" : [ "str" ]
+    }
   } ]
 }
 ```
 
 ### HTTP Request
 `GET /recipe/export`
-### Body Parameters
+### Header Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|type|false|enum (JSON, YAML)||
+|Accept|true|string||
 
 
 ### Responses for status codes
@@ -2272,174 +2367,6 @@ $api->installRecipe();
 
 ### HTTP Request
 `POST /recipe/install`
-### Responses for status codes
-|200|403|
-|----|----|
-|[SuccessMessage](#successmessage)|[ErrorMessage](#errormessage)|
-
-
-## Export recipe
-```shell
-curl "app.rakam.io/ui/recipe/export" -H "master_key: mymaster_key" -X GET -d @- << EOF 
-{
-  "type" : "JSON"
-}
-EOF
-```
-
-```python
-
-from ..api_client import ApiClient;
-from ..configuration import Configuration
-
-apiClient = client.ApiClient("app.rakam.io")
-apiClient.configuration.api_key['master_key'] = 'myApiKey'
-
-api = client.RecipeApi();
-api.export_ui_recipe(body);
-
-
-```
-
-```java
-import io.rakam.client.api.ApiClient;
-import io.rakam.client.api.RecipeApi;
-
-ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-RecipeApi api = new RecipeApi(apiClient);
-api.exportUIRecipe(body);
-
-```
-
-```php
-
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client->getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\RecipeApi($api_client);
-$api->exportUIRecipe(body);
-
-
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "custom_reports" : [ {
-    "name" : "str",
-    "data" : "object",
-    "reportType" : "str"
-  } ],
-  "custom_pages" : [ {
-    "name" : "str",
-    "slug" : "str",
-    "category" : "str",
-    "files" : {
-      "prop" : { }
-    }
-  } ],
-  "dashboards" : [ {
-    "name" : "str",
-    "items" : [ {
-      "id" : 1,
-      "name" : "str",
-      "directive" : "str",
-      "data" : {
-        "prop" : { }
-      }
-    } ]
-  } ],
-  "reports" : [ {
-    "slug" : "str",
-    "category" : "str",
-    "name" : "str",
-    "query" : "str",
-    "options" : {
-      "prop" : { }
-    },
-    "shared" : true,
-    "hasPermission" : true,
-    "userId" : 1
-  } ]
-}
-```
-
-### HTTP Request
-`GET /ui/recipe/export`
-### Body Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|type|false|enum (JSON, YAML)||
-
-
-### Responses for status codes
-|200|403|
-|----|----|
-|[UIRecipe](#uirecipe)|[ErrorMessage](#errormessage)|
-
-
-## Install recipe
-```shell
-curl "app.rakam.io/ui/recipe/install" -H "master_key: mymaster_key" -X POST
-```
-
-```python
-
-from ..api_client import ApiClient;
-from ..configuration import Configuration
-
-apiClient = client.ApiClient("app.rakam.io")
-apiClient.configuration.api_key['master_key'] = 'myApiKey'
-
-api = client.RecipeApi();
-api.install_ui_recipe();
-
-
-```
-
-```java
-import io.rakam.client.api.ApiClient;
-import io.rakam.client.api.RecipeApi;
-
-ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-RecipeApi api = new RecipeApi(apiClient);
-api.installUIRecipe();
-
-```
-
-```php
-
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client->getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\RecipeApi($api_client);
-$api->installUIRecipe();
-
-
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "message" : "str",
-  "success" : true
-}
-```
-
-### HTTP Request
-`POST /ui/recipe/install`
 ### Responses for status codes
 |200|403|
 |----|----|
@@ -2542,7 +2469,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.check_lock_key(body);
+api.check_lock_key(check_lock_key);
 
 
 ```
@@ -2554,7 +2481,7 @@ import io.rakam.client.api.AdminApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
 AdminApi api = new AdminApi(apiClient);
-api.checkLockKey(body);
+api.checkLockKey(checkLockKey);
 
 ```
 
@@ -2568,7 +2495,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->checkLockKey(body);
+$api->checkLockKey(check_lock_key);
 
 
 ```
@@ -2804,7 +2731,7 @@ from ..configuration import Configuration
 apiClient = client.ApiClient("app.rakam.io")
 
 api = client.AdminApi();
-api.create_project(body);
+api.create_project(create_project);
 
 
 ```
@@ -2816,7 +2743,7 @@ import io.rakam.client.api.AdminApi;
 ApiClient apiClient = new ApiClient();
 
 AdminApi api = new AdminApi(apiClient);
-api.createProject(body);
+api.createProject(createProject);
 
 ```
 
@@ -2829,7 +2756,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->createProject(body);
+$api->createProject(create_project);
 
 
 ```
@@ -3057,7 +2984,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.revoke_api_keys();
+api.revoke_api_keys(master_key);
 
 
 ```
@@ -3069,7 +2996,7 @@ import io.rakam.client.api.AdminApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
 AdminApi api = new AdminApi(apiClient);
-api.revokeApiKeys();
+api.revokeApiKeys(masterKey);
 
 ```
 
@@ -3083,7 +3010,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->revokeApiKeys();
+$api->revokeApiKeys(master_key);
 
 
 ```
@@ -3099,6 +3026,12 @@ $api->revokeApiKeys();
 
 ### HTTP Request
 `DELETE /project/revoke-api-keys`
+### Header Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|master_key|true|string||
+
+
 ### Responses for status codes
 |200|403|
 |----|----|
@@ -3123,7 +3056,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.schema(body);
+api.schema(project_schema);
 
 
 ```
@@ -3135,7 +3068,7 @@ import io.rakam.client.api.AdminApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 AdminApi api = new AdminApi(apiClient);
-api.schema(body);
+api.schema(projectSchema);
 
 ```
 
@@ -3149,7 +3082,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->schema(body);
+$api->schema(project_schema);
 
 
 ```
@@ -3289,7 +3222,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.add_custom_fields_to_schema(body);
+api.add_custom_fields_to_schema(project_add_custom_fields_to_schema);
 
 
 ```
@@ -3301,7 +3234,7 @@ import io.rakam.client.api.AdminApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
 AdminApi api = new AdminApi(apiClient);
-api.addCustomFieldsToSchema(body);
+api.addCustomFieldsToSchema(projectAddCustomFieldsToSchema);
 
 ```
 
@@ -3315,7 +3248,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->addCustomFieldsToSchema(body);
+$api->addCustomFieldsToSchema(project_add_custom_fields_to_schema);
 
 
 ```
@@ -3338,9 +3271,9 @@ $api->addCustomFieldsToSchema(body);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|collection|true|string||
-|schema_type|true|enum (AVRO)||
-|schema|true|string||
+|collection|false|string||
+|schema_type|false|enum (AVRO)||
+|schema|false|string||
 
 
 ### Responses for status codes
@@ -3654,7 +3587,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.CollectApi();
-api.commit_bulk_events(body);
+api.commit_bulk_events(commit_bulk_events);
 
 
 ```
@@ -3666,7 +3599,7 @@ import io.rakam.client.api.CollectApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
 CollectApi api = new CollectApi(apiClient);
-api.commitBulkEvents(body);
+api.commitBulkEvents(commitBulkEvents);
 
 ```
 
@@ -3680,7 +3613,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\CollectApi($api_client);
-$api->commitBulkEvents(body);
+$api->commitBulkEvents(commit_bulk_events);
 
 
 ```
@@ -3896,7 +3829,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.QueryApi();
-api.execute(body);
+api.execute(execute);
 
 
 ```
@@ -3908,7 +3841,7 @@ import io.rakam.client.api.QueryApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 QueryApi api = new QueryApi(apiClient);
-api.execute(body);
+api.execute(execute);
 
 ```
 
@@ -3922,7 +3855,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\QueryApi($api_client);
-$api->execute(body);
+$api->execute(execute);
 
 
 ```
@@ -3988,7 +3921,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.QueryApi();
-api.explain(body);
+api.explain(explain);
 
 
 ```
@@ -4000,7 +3933,7 @@ import io.rakam.client.api.QueryApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 QueryApi api = new QueryApi(apiClient);
-api.explain(body);
+api.explain(explain);
 
 ```
 
@@ -4014,7 +3947,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\QueryApi($api_client);
-$api->explain(body);
+$api->explain(explain);
 
 
 ```
@@ -4068,7 +4001,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.QueryApi();
-api.metadata(body);
+api.metadata(query_metadata);
 
 
 ```
@@ -4080,7 +4013,7 @@ import io.rakam.client.api.QueryApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 QueryApi api = new QueryApi(apiClient);
-api.metadata(body);
+api.metadata(queryMetadata);
 
 ```
 
@@ -4094,7 +4027,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\QueryApi($api_client);
-$api->metadata(body);
+$api->metadata(query_metadata);
 
 
 ```
@@ -4117,7 +4050,7 @@ $api->metadata(body);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|query|true|string||
+|query|false|string||
 
 
 ### Responses for status codes
@@ -4235,7 +4168,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.MaterializedviewApi();
-api.delete_view(body);
+api.delete_view(materialized_view_delete_view);
 
 
 ```
@@ -4247,7 +4180,7 @@ import io.rakam.client.api.MaterializedviewApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
 MaterializedviewApi api = new MaterializedviewApi(apiClient);
-api.deleteView(body);
+api.deleteView(materializedViewDeleteView);
 
 ```
 
@@ -4261,7 +4194,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\MaterializedviewApi($api_client);
-$api->deleteView(body);
+$api->deleteView(materialized_view_delete_view);
 
 
 ```
@@ -4280,7 +4213,7 @@ $api->deleteView(body);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|table_name|true|string||
+|table_name|false|string||
 
 
 ### Responses for status codes
@@ -4307,7 +4240,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.MaterializedviewApi();
-api.get_view(body);
+api.get_view(materialized_view_get_view);
 
 
 ```
@@ -4319,7 +4252,7 @@ import io.rakam.client.api.MaterializedviewApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 MaterializedviewApi api = new MaterializedviewApi(apiClient);
-api.getView(body);
+api.getView(materializedViewGetView);
 
 ```
 
@@ -4333,7 +4266,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\MaterializedviewApi($api_client);
-$api->getView(body);
+$api->getView(materialized_view_get_view);
 
 
 ```
@@ -4359,7 +4292,7 @@ $api->getView(body);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|table_name|true|string||
+|table_name|false|string||
 
 
 ### Responses for status codes
@@ -4455,7 +4388,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.MaterializedviewApi();
-api.get_schema_of_view(body);
+api.get_schema_of_view(materialized_view_get_schema_of_view);
 
 
 ```
@@ -4467,7 +4400,7 @@ import io.rakam.client.api.MaterializedviewApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 MaterializedviewApi api = new MaterializedviewApi(apiClient);
-api.getSchemaOfView(body);
+api.getSchemaOfView(materializedViewGetSchemaOfView);
 
 ```
 
@@ -4481,7 +4414,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\MaterializedviewApi($api_client);
-$api->getSchemaOfView(body);
+$api->getSchemaOfView(materialized_view_get_schema_of_view);
 
 
 ```
@@ -4525,13 +4458,16 @@ Continuous query
 ```shell
 curl "app.rakam.io/continuous-query/create" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
-  "name" : "str",
-  "query" : "str",
-  "options" : {
-    "prop" : { }
+  "continuous_query" : {
+    "table_name" : "str",
+    "name" : "str",
+    "query" : "str",
+    "partition_keys" : [ "str" ],
+    "options" : {
+      "prop" : { }
+    }
   },
-  "tableName" : "str",
-  "partitionKeys" : [ "str" ]
+  "replay" : true
 }
 EOF
 ```
@@ -4545,7 +4481,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.ContinuousqueryApi();
-api.create_query(continuous_query);
+api.create_query(continuous_query_create_query);
 
 
 ```
@@ -4557,7 +4493,7 @@ import io.rakam.client.api.ContinuousqueryApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
 ContinuousqueryApi api = new ContinuousqueryApi(apiClient);
-api.createQuery(continuousQuery);
+api.createQuery(continuousQueryCreateQuery);
 
 ```
 
@@ -4571,7 +4507,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api->createQuery(continuous_query);
+$api->createQuery(continuous_query_create_query);
 
 
 ```
@@ -4590,11 +4526,8 @@ $api->createQuery(continuous_query);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|name|true|string||
-|query|true|string||
-|options|false|object||
-|tableName|false|string||
-|partitionKeys|false|string array||
+|continuous_query|false|[ContinuousQuery](#continuousquery)||
+|replay|false|boolean||
 
 
 ### Responses for status codes
@@ -4626,7 +4559,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.ContinuousqueryApi();
-api.delete_query(body);
+api.delete_query(continuous_query_delete_query);
 
 
 ```
@@ -4638,7 +4571,7 @@ import io.rakam.client.api.ContinuousqueryApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
 ContinuousqueryApi api = new ContinuousqueryApi(apiClient);
-api.deleteQuery(body);
+api.deleteQuery(continuousQueryDeleteQuery);
 
 ```
 
@@ -4652,7 +4585,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api->deleteQuery(body);
+$api->deleteQuery(continuous_query_delete_query);
 
 
 ```
@@ -4671,7 +4604,7 @@ $api->deleteQuery(body);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|table_name|true|string||
+|table_name|false|string||
 
 
 ### Responses for status codes
@@ -4698,7 +4631,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.ContinuousqueryApi();
-api.get_query(body);
+api.get_query(continuous_query_get_query);
 
 
 ```
@@ -4710,7 +4643,7 @@ import io.rakam.client.api.ContinuousqueryApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 ContinuousqueryApi api = new ContinuousqueryApi(apiClient);
-api.getQuery(body);
+api.getQuery(continuousQueryGetQuery);
 
 ```
 
@@ -4724,7 +4657,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api->getQuery(body);
+$api->getQuery(continuous_query_get_query);
 
 
 ```
@@ -4733,13 +4666,13 @@ $api->getQuery(body);
 
 ```json
 {
+  "table_name" : "str",
   "name" : "str",
   "query" : "str",
+  "partition_keys" : [ "str" ],
   "options" : {
     "prop" : { }
-  },
-  "tableName" : "str",
-  "partitionKeys" : [ "str" ]
+  }
 }
 ```
 
@@ -4748,7 +4681,7 @@ $api->getQuery(body);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|table_name|true|string||
+|table_name|false|string||
 
 
 ### Responses for status codes
@@ -4806,13 +4739,13 @@ $api->listQueries();
 
 ```json
 [ {
+  "table_name" : "str",
   "name" : "str",
   "query" : "str",
+  "partition_keys" : [ "str" ],
   "options" : {
     "prop" : { }
-  },
-  "tableName" : "str",
-  "partitionKeys" : [ "str" ]
+  }
 } ]
 ```
 
@@ -4842,7 +4775,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.ContinuousqueryApi();
-api.get_schema_of_query(body);
+api.get_schema_of_query(continuous_query_get_schema_of_query);
 
 
 ```
@@ -4854,7 +4787,7 @@ import io.rakam.client.api.ContinuousqueryApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 ContinuousqueryApi api = new ContinuousqueryApi(apiClient);
-api.getSchemaOfQuery(body);
+api.getSchemaOfQuery(continuousQueryGetSchemaOfQuery);
 
 ```
 
@@ -4868,7 +4801,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api->getSchemaOfQuery(body);
+$api->getSchemaOfQuery(continuous_query_get_schema_of_query);
 
 
 ```
@@ -4921,7 +4854,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.ContinuousqueryApi();
-api.test_query(body);
+api.test_query(continuous_query_test_query);
 
 
 ```
@@ -4933,7 +4866,7 @@ import io.rakam.client.api.ContinuousqueryApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 ContinuousqueryApi api = new ContinuousqueryApi(apiClient);
-api.testQuery(body);
+api.testQuery(continuousQueryTestQuery);
 
 ```
 
@@ -4947,7 +4880,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api->testQuery(body);
+$api->testQuery(continuous_query_test_query);
 
 
 ```
@@ -4963,7 +4896,7 @@ true
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|query|true|string||
+|query|false|string||
 
 
 ### Responses for status codes
@@ -5019,20 +4952,11 @@ true
 ### ContinuousQuery
 |name|description|required|schema|default|
 |----|----|----|----|----|
+|table_name||true|string||
 |name||true|string||
 |query||true|string||
+|partition_keys||false|string array||
 |options||false|object||
-|tableName||false|string||
-|partitionKeys||false|string array||
-
-
-### UIRecipe
-|name|description|required|schema|default|
-|----|----|----|----|----|
-|custom_reports||false|[CustomReport](#customreport) array||
-|custom_pages||false|[Page](#page) array||
-|dashboards||false|[DashboardBuilder](#dashboardbuilder) array||
-|reports||false|[Report](#report) array||
 
 
 ### SuccessMessage
@@ -5054,6 +4978,18 @@ true
 |----|----|----|----|----|
 |column||true|string||
 |aggregation||true|enum (COUNT, COUNT_UNIQUE, SUM, MINIMUM, MAXIMUM, AVERAGE, APPROXIMATE_UNIQUE)||
+
+
+### BatchUserOperations
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|id||true|object||
+|set_properties||true|object||
+|set_properties_once||true|object||
+|increment_properties||true|object||
+|unset_properties||true|string array||
+|time||true|integer (int64)||
+|user||false|object||
 
 
 ### UserContext
@@ -5165,6 +5101,17 @@ true
 |isActive||false|boolean|false|
 |condition||false|[Condition](#condition)||
 |properties||false|[ConfigItem](#configitem) array||
+
+
+### SingleUserBatchOperations
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|set_properties||true|object||
+|set_properties_once||true|object||
+|increment_properties||true|object||
+|unset_properties||true|string array||
+|time||true|integer (int64)||
+|user||false|object||
 
 
 ### MaterializedViewSchema
