@@ -92,7 +92,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;java&quot;,&quot;php&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;curl&quot;,&quot;java&quot;,&quot;php&quot;,&quot;python&quot;]">
   <div class="header" style="
     position: fixed;
     top: 0;
@@ -115,7 +115,7 @@
     <div class="tocify-wrapper">
      <!--<h1 class="text-logo" style="margin: 7px 15px">RAKAM</h1>-->
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="curl">curl</a>
               <a href="#" data-language-name="java">java</a>
               <a href="#" data-language-name="php">php</a>
               <a href="#" data-language-name="python">python</a>
@@ -141,7 +141,7 @@
 
 <h3 id="version">Version</h3>
 
-<p>Version: 0.5</p>
+<p>Version: 0.7</p>
 
 <h2 id="contact-information">Contact Information</h2>
 
@@ -163,27 +163,14 @@ BasePath: /</p>
 <p>Event Explorer</p>
 
 <h2 id="perform-simple-query-on-event-data">Perform simple query on event data</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event-explorer/analyze"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/event-explorer/analyze" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
-  "measure" : {
-    "column" : "str",
-    "aggregation" : "COUNT"
-  },
-  "grouping" : {
-    "type" : "COLUMN",
-    "value" : "str"
-  },
-  "segment" : {
-    "type" : "COLUMN",
-    "value" : "str"
-  },
-  "filterExpression" : "str",
-  "startDate" : "2015-01-20",
-  "endDate" : "2015-01-20",
+  "startDate" : "2016-03-03T10:15:30.00Z",
+  "endDate" : "2016-03-03T10:15:30.00Z",
   "collections" : [ "str" ]
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -225,24 +212,15 @@ $api-&gt;analyzeEvents(analyze_request);
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"object"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sqlState"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errorCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errorLine"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"charPositionInLine"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"failed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -286,19 +264,19 @@ $api-&gt;analyzeEvents(analyze_request);
 </tr>
 <tr>
 <td>startDate</td>
-<td>false</td>
-<td>string (date)</td>
+<td>true</td>
+<td>string (date-time)</td>
 <td></td>
 </tr>
 <tr>
 <td>endDate</td>
-<td>false</td>
-<td>string (date)</td>
+<td>true</td>
+<td>string (date-time)</td>
 <td></td>
 </tr>
 <tr>
 <td>collections</td>
-<td>false</td>
+<td>true</td>
 <td>string array</td>
 <td></td>
 </tr>
@@ -319,7 +297,7 @@ $api-&gt;analyzeEvents(analyze_request);
 </tbody></table>
 
 <h2 id="event-statistics">Event statistics</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event-explorer/extra_dimensions"</span> -H <span class="s2">"read_key: myread_key"</span> -X GET
+<pre class="highlight plaintext"><code>curl "app.rakam.io/event-explorer/extra_dimensions" -H "read_key: myread_key" -X GET
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -383,7 +361,7 @@ $api-&gt;getExtraDimensions();
 </tbody></table>
 
 <h2 id="create-pre-computed-table">Create Pre-computed table</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event-explorer/pre_calculate"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/event-explorer/pre_calculate" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 {
   "collections" : [ "str" ],
   "dimensions" : [ "str" ],
@@ -392,7 +370,7 @@ $api-&gt;getExtraDimensions();
   "tableName" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -498,15 +476,13 @@ $api-&gt;createPrecomputedTable(create_precomputed_table);
 </tbody></table>
 
 <h2 id="event-statistics">Event statistics</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event-explorer/statistics"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/event-explorer/statistics" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
-  "collections" : [ "str" ],
-  "dimension" : "str",
-  "startDate" : "2015-01-20",
-  "endDate" : "2015-01-20"
+  "startDate" : "2016-03-03T10:15:30.00Z",
+  "endDate" : "2016-03-03T10:15:30.00Z"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -548,24 +524,15 @@ $api-&gt;getEventStatistics(event_explorer_get_event_statistics);
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"object"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sqlState"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errorCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errorLine"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"charPositionInLine"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"failed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -597,14 +564,14 @@ $api-&gt;getEventStatistics(event_explorer_get_event_statistics);
 </tr>
 <tr>
 <td>startDate</td>
-<td>false</td>
-<td>string (date)</td>
+<td>true</td>
+<td>string (date-time)</td>
 <td></td>
 </tr>
 <tr>
 <td>endDate</td>
-<td>false</td>
-<td>string (date)</td>
+<td>true</td>
+<td>string (date-time)</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -628,21 +595,14 @@ $api-&gt;getEventStatistics(event_explorer_get_event_statistics);
 <p>Funnel Analyzer</p>
 
 <h2 id="execute-query">Execute query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/funnel/analyze"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/funnel/analyze" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
-  "steps" : [ {
-    "collection" : "str"
-  } ],
-  "dimension" : "str",
+  "steps" : [ { } ],
   "startDate" : "2015-01-20",
-  "window" : {
-    "value" : 1,
-    "type" : "DAY"
-  },
   "endDate" : "2015-01-20"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -684,24 +644,15 @@ $api-&gt;analyzeFunnel(funnel_query);
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"object"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sqlState"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errorCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errorLine"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"charPositionInLine"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"failed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -721,7 +672,7 @@ $api-&gt;analyzeFunnel(funnel_query);
 </thead><tbody>
 <tr>
 <td>steps</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#funnelstep">FunnelStep</a> array</td>
 <td></td>
 </tr>
@@ -733,7 +684,7 @@ $api-&gt;analyzeFunnel(funnel_query);
 </tr>
 <tr>
 <td>startDate</td>
-<td>false</td>
+<td>true</td>
 <td>string (date)</td>
 <td></td>
 </tr>
@@ -745,8 +696,14 @@ $api-&gt;analyzeFunnel(funnel_query);
 </tr>
 <tr>
 <td>endDate</td>
-<td>false</td>
+<td>true</td>
 <td>string (date)</td>
+<td></td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>false</td>
+<td>string</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -770,7 +727,7 @@ $api-&gt;analyzeFunnel(funnel_query);
 <p>Realtime</p>
 
 <h2 id="create-report">Create report</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/create"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/realtime/create" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 {
   "name" : "str",
   "measures" : [ {
@@ -778,12 +735,10 @@ $api-&gt;analyzeFunnel(funnel_query);
     "aggregation" : "COUNT"
   } ],
   "table_name" : "str",
-  "collections" : [ "str" ],
-  "filter" : "str",
-  "dimensions" : [ "str" ]
+  "collections" : [ "str" ]
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -823,8 +778,7 @@ $api-&gt;createTable(real_time_report);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -844,25 +798,25 @@ $api-&gt;createTable(real_time_report);
 </thead><tbody>
 <tr>
 <td>name</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>measures</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#measure">Measure</a> array</td>
 <td></td>
 </tr>
 <tr>
 <td>table_name</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>collections</td>
-<td>false</td>
+<td>true</td>
 <td>string array</td>
 <td></td>
 </tr>
@@ -895,12 +849,12 @@ $api-&gt;createTable(real_time_report);
 </tbody></table>
 
 <h2 id="delete-report">Delete report</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/delete"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/realtime/delete" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 {
   "table_name" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -940,8 +894,7 @@ $api-&gt;deleteTable(realtime_delete_table);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -961,7 +914,7 @@ $api-&gt;deleteTable(realtime_delete_table);
 </thead><tbody>
 <tr>
 <td>table_name</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -982,21 +935,16 @@ $api-&gt;deleteTable(realtime_delete_table);
 </tbody></table>
 
 <h2 id="get-report">Get report</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/get"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/realtime/get" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
   "table_name" : "str",
-  "filter" : "str",
   "measure" : {
     "column" : "str",
     "aggregation" : "COUNT"
-  },
-  "dimensions" : [ "str" ],
-  "aggregate" : true,
-  "date_start" : "2016-03-03T10:15:30.00Z",
-  "date_end" : "2016-03-03T10:15:30.00Z"
+  }
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -1035,11 +983,7 @@ $api-&gt;queryTable(realtime_query_table);
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"start"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"end"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -1058,7 +1002,7 @@ $api-&gt;queryTable(realtime_query_table);
 </thead><tbody>
 <tr>
 <td>table_name</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -1070,7 +1014,7 @@ $api-&gt;queryTable(realtime_query_table);
 </tr>
 <tr>
 <td>measure</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#measure">Measure</a></td>
 <td></td>
 </tr>
@@ -1117,7 +1061,7 @@ $api-&gt;queryTable(realtime_query_table);
 </tbody></table>
 
 <h2 id="list-queries">List queries</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/list"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST
+<pre class="highlight plaintext"><code>curl "app.rakam.io/realtime/list" -H "read_key: myread_key" -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -1158,13 +1102,8 @@ $api-&gt;listTables();
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"partition_keys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -1191,22 +1130,17 @@ $api-&gt;listTables();
 <p>Retention Analyzer module</p>
 
 <h2 id="execute-query">Execute query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/retention/analyze"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/retention/analyze" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
-  "first_action" : {
-    "collection" : "str"
-  },
-  "returning_action" : {
-    "collection" : "str"
-  },
+  "first_action" : { },
+  "returning_action" : { },
   "dimension" : "str",
   "date_unit" : "DAY",
-  "period" : 1,
   "startDate" : "2015-01-20",
   "endDate" : "2015-01-20"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -1248,24 +1182,15 @@ $api-&gt;analyzeRetention(retention_query);
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"object"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sqlState"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errorCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errorLine"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"charPositionInLine"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"failed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1285,25 +1210,25 @@ $api-&gt;analyzeRetention(retention_query);
 </thead><tbody>
 <tr>
 <td>first_action</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#retentionaction">RetentionAction</a></td>
 <td></td>
 </tr>
 <tr>
 <td>returning_action</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#retentionaction">RetentionAction</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dimension</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>date_unit</td>
-<td>false</td>
+<td>true</td>
 <td>enum (DAY, WEEK, MONTH)</td>
 <td></td>
 </tr>
@@ -1315,13 +1240,25 @@ $api-&gt;analyzeRetention(retention_query);
 </tr>
 <tr>
 <td>startDate</td>
-<td>false</td>
+<td>true</td>
 <td>string (date)</td>
 <td></td>
 </tr>
 <tr>
-<td>endDate</td>
+<td>timezone</td>
 <td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>approximate</td>
+<td>false</td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td>endDate</td>
+<td>true</td>
 <td>string (date)</td>
 <td></td>
 </tr>
@@ -1350,31 +1287,16 @@ $api-&gt;analyzeRetention(retention_query);
 <p>User</p>
 
 <h2 id="batch-operation-on-a-single-user-properties">Batch operation on a single user properties</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/batch"</span> -H <span class="s2">"write_key: mywrite_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/batch" -H "write_key: mywrite_key" -X POST -d @- &lt;&lt; EOF 
 {
   "id" : "object",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "data" : [ {
-    "set_properties" : "object",
-    "set_properties_once" : "object",
-    "increment_properties" : {
-      "prop" : { }
-    },
-    "unset_properties" : [ "str" ],
-    "time" : 1,
-    "user" : "object"
+    "time" : 1
   } ]
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -1432,19 +1354,19 @@ $api-&gt;batchSingleUserOperations(single_user_batch_operation_request);
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>false</td>
+<td>true</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>api</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#usercontext">UserContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>data</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#singleuserbatchoperations">SingleUserBatchOperations</a> array</td>
 <td></td>
 </tr>
@@ -1455,8 +1377,8 @@ $api-&gt;batchSingleUserOperations(single_user_batch_operation_request);
 <table><thead>
 <tr>
 <th>200</th>
-<th>403</th>
 <th>404</th>
+<th>403</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1467,24 +1389,16 @@ $api-&gt;batchSingleUserOperations(single_user_batch_operation_request);
 </tbody></table>
 
 <h2 id="create-multiple-new-users">Create multiple new users</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/batch/create"</span> -H <span class="s2">"write_key: mywrite_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/batch/create" -H "write_key: mywrite_key" -X POST -d @- &lt;&lt; EOF 
 {
   "users" : [ {
     "id" : "object",
-    "api" : {
-      "api_key" : "str",
-      "library" : {
-        "name" : "str",
-        "version" : "str"
-      },
-      "upload_time" : 1,
-      "checksum" : "str"
-    },
+    "api" : { },
     "properties" : "object"
   } ]
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -1542,7 +1456,7 @@ $api-&gt;createUsers(user_create_users);
 </thead><tbody>
 <tr>
 <td>users</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#user">User</a> array</td>
 <td></td>
 </tr>
@@ -1565,31 +1479,15 @@ $api-&gt;createUsers(user_create_users);
 <p>Returns user ids. User id may be string or numeric.</p>
 
 <h2 id="batch-operations-on-user-properties">Batch operations on user properties</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/batch_operations"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/batch_operations" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 {
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "data" : [ {
-    "id" : "object",
-    "set_properties" : "object",
-    "set_properties_once" : "object",
-    "increment_properties" : {
-      "prop" : { }
-    },
-    "unset_properties" : [ "str" ],
-    "time" : 1,
-    "user" : "object"
+    "id" : "object"
   } ]
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -1647,13 +1545,13 @@ $api-&gt;batchUserOperations(batch_user_operation_request);
 </thead><tbody>
 <tr>
 <td>api</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#usercontext">UserContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>data</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#batchuseroperations">BatchUserOperations</a> array</td>
 <td></td>
 </tr>
@@ -1664,8 +1562,8 @@ $api-&gt;batchUserOperations(batch_user_operation_request);
 <table><thead>
 <tr>
 <th>200</th>
-<th>403</th>
 <th>404</th>
+<th>403</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1676,22 +1574,14 @@ $api-&gt;batchUserOperations(batch_user_operation_request);
 </tbody></table>
 
 <h2 id="create-new-user">Create new user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/create"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/create" -X POST -d @- &lt;&lt; EOF 
 {
   "id" : "object",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "properties" : "object"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -1749,7 +1639,7 @@ $api-&gt;createUser(user);
 <td>id</td>
 <td>true</td>
 <td>object</td>
-<td></td>
+<td>The value may be a string or a numeric value.</td>
 </tr>
 <tr>
 <td>api</td>
@@ -1778,35 +1668,20 @@ $api-&gt;createUser(user);
 </tbody></table>
 
 <h2 id="get-events-of-the-user">Get events of the user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/create_segment"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/create_segment" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 {
   "name" : "str",
   "table_name" : "str",
-  "filter_expression" : "str",
-  "event_filters" : [ {
-    "collection" : "str",
-    "timeframe" : {
-      "start" : "2016-03-03T10:15:30.00Z",
-      "end" : "2016-03-03T10:15:30.00Z"
-    },
-    "aggregation" : {
-      "field" : "str",
-      "minimum" : 1,
-      "maximum" : 1,
-      "type" : "COUNT"
-    },
-    "filterExpression" : "str"
-  } ],
   "cache_eviction" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
 <span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
+<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
 <span class="n">api</span><span class="o">.</span><span class="n">create_segment</span><span class="p">(</span><span class="n">user_create_segment</span><span class="p">);</span>
@@ -1817,7 +1692,7 @@ EOF
 <span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
 
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
+<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
 <span class="n">api</span><span class="o">.</span><span class="na">createSegment</span><span class="o">(</span><span class="n">userCreateSegment</span><span class="o">);</span>
 
@@ -1828,7 +1703,7 @@ require_once('/path/to/io.rakam.client.api');
 
 $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
+$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\UserApi($api_client);
 $api-&gt;createSegment(user_create_segment);
@@ -1840,8 +1715,7 @@ $api-&gt;createSegment(user_create_segment);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1861,13 +1735,13 @@ $api-&gt;createSegment(user_create_segment);
 </thead><tbody>
 <tr>
 <td>name</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>table_name</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -1885,7 +1759,7 @@ $api-&gt;createSegment(user_create_segment);
 </tr>
 <tr>
 <td>cache_eviction</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -1896,8 +1770,8 @@ $api-&gt;createSegment(user_create_segment);
 <table><thead>
 <tr>
 <th>200</th>
-<th>403</th>
 <th>404</th>
+<th>403</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1908,12 +1782,12 @@ $api-&gt;createSegment(user_create_segment);
 </tbody></table>
 
 <h2 id="get-user">Get user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/get"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/get" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
   "user" : "object"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -1954,15 +1828,7 @@ $api-&gt;getUser(user_get_user);
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"api"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"api_key"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"library"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"upload_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"checksum"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"api"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nt">"properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1983,7 +1849,7 @@ $api-&gt;getUser(user_get_user);
 </thead><tbody>
 <tr>
 <td>user</td>
-<td>false</td>
+<td>true</td>
 <td>object</td>
 <td></td>
 </tr>
@@ -1994,8 +1860,8 @@ $api-&gt;getUser(user_get_user);
 <table><thead>
 <tr>
 <th>200</th>
-<th>403</th>
 <th>404</th>
+<th>403</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2006,14 +1872,12 @@ $api-&gt;getUser(user_get_user);
 </tbody></table>
 
 <h2 id="get-events-of-the-user">Get events of the user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/get_events"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/get_events" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
-  "user" : "str",
-  "limit" : 1,
-  "offset" : "2016-03-03T10:15:30.00Z"
+  "user" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -2052,12 +1916,7 @@ $api-&gt;getEvents(user_get_events);
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"collection"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -2076,7 +1935,7 @@ $api-&gt;getEvents(user_get_events);
 </thead><tbody>
 <tr>
 <td>user</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -2084,6 +1943,12 @@ $api-&gt;getEvents(user_get_events);
 <td>limit</td>
 <td>false</td>
 <td>integer (int32)</td>
+<td></td>
+</tr>
+<tr>
+<td>properties</td>
+<td>false</td>
+<td>string array</td>
 <td></td>
 </tr>
 <tr>
@@ -2099,8 +1964,8 @@ $api-&gt;getEvents(user_get_events);
 <table><thead>
 <tr>
 <th>200</th>
-<th>403</th>
 <th>404</th>
+<th>403</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2111,23 +1976,15 @@ $api-&gt;getEvents(user_get_events);
 </tbody></table>
 
 <h2 id="set-user-property">Set user property</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/increment_property"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/increment_property" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 {
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "id" : "str",
   "property" : "str",
   "value" : 1.0
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -2167,8 +2024,7 @@ $api-&gt;incrementProperty(user_increment_property);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2188,25 +2044,25 @@ $api-&gt;incrementProperty(user_increment_property);
 </thead><tbody>
 <tr>
 <td>api</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#usercontext">UserContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>id</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>property</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>value</td>
-<td>false</td>
+<td>true</td>
 <td>number (double)</td>
 <td></td>
 </tr>
@@ -2217,8 +2073,8 @@ $api-&gt;incrementProperty(user_increment_property);
 <table><thead>
 <tr>
 <th>200</th>
-<th>403</th>
 <th>404</th>
+<th>403</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2229,7 +2085,7 @@ $api-&gt;incrementProperty(user_increment_property);
 </tbody></table>
 
 <h2 id="get-user-storage-metadata">Get user storage metadata</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/metadata"</span> -H <span class="s2">"read_key: myread_key"</span> -X GET
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/metadata" -H "read_key: myread_key" -X GET
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -2269,17 +2125,7 @@ $api-&gt;getMetadata();
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"columns"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"identifierColumn"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -2301,33 +2147,10 @@ $api-&gt;getMetadata();
 </tbody></table>
 
 <h2 id="search-users">Search users</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/search"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
-{
-  "columns" : [ "str" ],
-  "filter" : "str",
-  "event_filters" : [ {
-    "collection" : "str",
-    "timeframe" : {
-      "start" : "2016-03-03T10:15:30.00Z",
-      "end" : "2016-03-03T10:15:30.00Z"
-    },
-    "aggregation" : {
-      "field" : "str",
-      "minimum" : 1,
-      "maximum" : 1,
-      "type" : "COUNT"
-    },
-    "filterExpression" : "str"
-  } ],
-  "sorting" : {
-    "column" : "str",
-    "order" : "asc"
-  },
-  "offset" : "str",
-  "limit" : 1
-}
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/search" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
+{ }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -2369,24 +2192,15 @@ $api-&gt;searchUsers(user_search_users);
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"object"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sqlState"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errorCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errorLine"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"charPositionInLine"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"failed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2457,22 +2271,14 @@ $api-&gt;searchUsers(user_search_users);
 </tbody></table>
 
 <h2 id="set-user-properties">Set user properties</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/set_properties"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/set_properties" -X POST -d @- &lt;&lt; EOF 
 {
   "id" : "object",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "properties" : "object"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -2530,7 +2336,7 @@ $api-&gt;setProperties(user);
 <td>id</td>
 <td>true</td>
 <td>object</td>
-<td></td>
+<td>The value may be a string or a numeric value.</td>
 </tr>
 <tr>
 <td>api</td>
@@ -2561,22 +2367,14 @@ $api-&gt;setProperties(user);
 </tbody></table>
 
 <h2 id="set-user-properties-once">Set user properties once</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/set_properties_once"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/set_properties_once" -X POST -d @- &lt;&lt; EOF 
 {
   "id" : "object",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "properties" : "object"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -2634,7 +2432,7 @@ $api-&gt;setPropertiesOnce(user);
 <td>id</td>
 <td>true</td>
 <td>object</td>
-<td></td>
+<td>The value may be a string or a numeric value.</td>
 </tr>
 <tr>
 <td>api</td>
@@ -2665,22 +2463,14 @@ $api-&gt;setPropertiesOnce(user);
 </tbody></table>
 
 <h2 id="unset-user-property">Unset user property</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/unset_properties"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/unset_properties" -X POST -d @- &lt;&lt; EOF 
 {
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "id" : "object",
   "properties" : [ "str" ]
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -2718,8 +2508,7 @@ $api-&gt;unsetProperty(user_unset_property);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2739,19 +2528,19 @@ $api-&gt;unsetProperty(user_unset_property);
 </thead><tbody>
 <tr>
 <td>api</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#usercontext">UserContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>id</td>
-<td>false</td>
+<td>true</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>properties</td>
-<td>false</td>
+<td>true</td>
 <td>string array</td>
 <td></td>
 </tr>
@@ -2776,35 +2565,15 @@ $api-&gt;unsetProperty(user_unset_property);
 <p>User Action</p>
 
 <h2 id="apply-batch-operation">Apply batch operation</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/action/email/batch"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/action/email/batch" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
-  "filter" : "str",
-  "event_filters" : [ {
-    "collection" : "str",
-    "timeframe" : {
-      "start" : "2016-03-03T10:15:30.00Z",
-      "end" : "2016-03-03T10:15:30.00Z"
-    },
-    "aggregation" : {
-      "field" : "str",
-      "minimum" : 1,
-      "maximum" : 1,
-      "type" : "COUNT"
-    },
-    "filterExpression" : "str"
-  } ],
   "config" : {
     "title" : "str",
-    "content" : "str",
-    "columnName" : "str",
-    "defaultValues" : {
-      "prop" : { }
-    },
-    "richText" : true
+    "content" : "str"
   }
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -2874,7 +2643,7 @@ $api-&gt;batch(user_email_action_batch);
 </tr>
 <tr>
 <td>config</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#emailactionconfig">EmailActionConfig</a></td>
 <td></td>
 </tr>
@@ -2895,21 +2664,16 @@ $api-&gt;batch(user_email_action_batch);
 </tbody></table>
 
 <h2 id="perform-action-for-single-user">Perform action for single user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/action/email/single"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/user/action/email/single" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
   "user" : "str",
   "config" : {
     "title" : "str",
-    "content" : "str",
-    "columnName" : "str",
-    "defaultValues" : {
-      "prop" : { }
-    },
-    "richText" : true
+    "content" : "str"
   }
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -2967,13 +2731,13 @@ $api-&gt;send(user_email_action_send);
 </thead><tbody>
 <tr>
 <td>user</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>config</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#emailactionconfig">EmailActionConfig</a></td>
 <td></td>
 </tr>
@@ -2998,7 +2762,7 @@ $api-&gt;send(user_email_action_send);
 <p>Recipe</p>
 
 <h2 id="export-recipe">Export recipe</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/recipe/export"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X GET
+<pre class="highlight plaintext"><code>curl "app.rakam.io/recipe/export" -H "master_key: mymaster_key" -X GET
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3038,32 +2802,7 @@ $api-&gt;exportRecipe(accept);
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"strategy"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"collections"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"materialized_views"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"update_interval"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"incremental"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"last_update"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-03T10:15:30.00Z"</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"continuous_queries"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"partition_keys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -3103,7 +2842,7 @@ $api-&gt;exportRecipe(accept);
 </tbody></table>
 
 <h2 id="install-recipe">Install recipe</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/recipe/install"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST
+<pre class="highlight plaintext"><code>curl "app.rakam.io/recipe/install" -H "master_key: mymaster_key" -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3144,8 +2883,7 @@ $api-&gt;installRecipe();
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -3172,7 +2910,7 @@ $api-&gt;installRecipe();
 <p>System related actions</p>
 
 <h2 id="list-installed-modules">List installed modules</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/configurations"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X GET
+<pre class="highlight plaintext"><code>curl "app.rakam.io/admin/configurations" -H "master_key: mymaster_key" -X GET
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3212,21 +2950,7 @@ $api-&gt;getConfigurations();
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"className"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"isActive"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"condition"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"property"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"expectedValue"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"property"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"defaultValue"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -3247,13 +2971,73 @@ $api-&gt;getConfigurations();
 </tr>
 </tbody></table>
 
-<h2 id="check-lock-key">Check lock key</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/lock_key"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
-{
-  "lock_key" : "str"
-}
-EOF
+<h2 id="list-event-mappers">List event mappers</h2>
+<pre class="highlight plaintext"><code>curl "app.rakam.io/admin/event_mappers" -H "master_key: mymaster_key" -X GET
+</code></pre>
+<pre class="highlight python"><code>
+<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
+<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
+
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
+<span class="n">api</span><span class="o">.</span><span class="n">get_event_mappers</span><span class="p">();</span>
+
+
+</code></pre>
+<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
+
+<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
+<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
+<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">getEventMappers</span><span class="o">();</span>
+
+</code></pre>
+<pre class="highlight php"><code>
+
+require_once('/path/to/io.rakam.client.api');
+
+$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+
+$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\AdminApi($api_client);
+$api-&gt;getEventMappers();
+
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /admin/event_mappers</code></p>
+
+<h3 id="responses-for-status-codes">Responses for status codes</h3>
+
+<table><thead>
+<tr>
+<th>200</th>
+<th>403</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#eventmapperdescription">EventMapperDescription</a> array</td>
+<td><a href="#errormessage">ErrorMessage</a></td>
+</tr>
+</tbody></table>
+
+<h2 id="check-lock-key">Check lock key</h2>
+<pre class="highlight plaintext"><code>curl "app.rakam.io/admin/lock_key" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
+{ }
+EOF
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -3332,7 +3116,7 @@ $api-&gt;checkLockKey(check_lock_key);
 </tbody></table>
 
 <h2 id="get-types">Get types</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/types"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X GET
+<pre class="highlight plaintext"><code>curl "app.rakam.io/admin/types" -H "master_key: mymaster_key" -X GET
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3396,17 +3180,13 @@ $api-&gt;getTypes();
 </tbody></table>
 
 <h2 id="create-api-keys">Create API Keys</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/check-api-keys"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/project/check-api-keys" -X POST -d @- &lt;&lt; EOF 
 {
-  "keys" : [ {
-    "master_key" : "str",
-    "read_key" : "str",
-    "write_key" : "str"
-  } ],
+  "keys" : [ { } ],
   "project" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -3462,13 +3242,13 @@ $api-&gt;checkApiKeys(project_check_api_keys);
 </thead><tbody>
 <tr>
 <td>keys</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#projectapikeys">ProjectApiKeys</a> array</td>
 <td></td>
 </tr>
 <tr>
 <td>project</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -3487,7 +3267,7 @@ $api-&gt;checkApiKeys(project_check_api_keys);
 </tbody></table>
 
 <h2 id="get-collection-names">Get collection names</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/collection"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST
+<pre class="highlight plaintext"><code>curl "app.rakam.io/project/collection" -H "read_key: myread_key" -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3549,13 +3329,12 @@ $api-&gt;collections();
 </tbody></table>
 
 <h2 id="create-project">Create project</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/create"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/project/create" -X POST -d @- &lt;&lt; EOF 
 {
-  "lock_key" : "str",
   "name" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -3592,11 +3371,7 @@ $api-&gt;createProject(create_project);
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"master_key"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"read_key"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"write_key"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -3640,7 +3415,7 @@ $api-&gt;createProject(create_project);
 </tbody></table>
 
 <h2 id="create-api-keys">Create API Keys</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/create-api-keys"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST
+<pre class="highlight plaintext"><code>curl "app.rakam.io/project/create-api-keys" -H "master_key: mymaster_key" -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3680,11 +3455,7 @@ $api-&gt;createApiKeys();
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"master_key"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"read_key"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"write_key"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -3706,7 +3477,7 @@ $api-&gt;createApiKeys();
 </tbody></table>
 
 <h2 id="delete-project">Delete project</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/delete"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X DELETE
+<pre class="highlight plaintext"><code>curl "app.rakam.io/project/delete" -H "master_key: mymaster_key" -X DELETE
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3747,8 +3518,7 @@ $api-&gt;deleteProject();
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -3771,7 +3541,9 @@ $api-&gt;deleteProject();
 </tbody></table>
 
 <h2 id="list-created-projects">List created projects</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/list"</span> -H <span class="s2">"read_key: myread_key"</span> -X GET
+<pre class="highlight plaintext"><code>curl "app.rakam.io/project/list" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
+{ }
+EOF
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -3781,7 +3553,7 @@ $api-&gt;deleteProject();
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_projects</span><span class="p">();</span>
+<span class="n">api</span><span class="o">.</span><span class="n">get_projects</span><span class="p">(</span><span class="n">get_projects</span><span class="p">);</span>
 
 
 </code></pre>
@@ -3791,7 +3563,7 @@ $api-&gt;deleteProject();
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getProjects</span><span class="o">();</span>
+<span class="n">api</span><span class="o">.</span><span class="na">getProjects</span><span class="o">(</span><span class="n">getProjects</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -3803,7 +3575,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;getProjects();
+$api-&gt;getProjects(get_projects);
 
 
 </code></pre>
@@ -3816,7 +3588,25 @@ $api-&gt;getProjects();
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /project/list</code></p>
+<p><code class="prettyprint">POST /project/list</code></p>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lock_key</td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
 
 <h3 id="responses-for-status-codes">Responses for status codes</h3>
 
@@ -3833,17 +3623,21 @@ $api-&gt;getProjects();
 </tbody></table>
 
 <h2 id="revoke-api-keys">Revoke API Keys</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/revoke-api-keys"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X DELETE
+<pre class="highlight plaintext"><code>curl "app.rakam.io/project/revoke-api-keys" -X POST -d @- &lt;&lt; EOF 
+{
+  "project" : "str",
+  "master_key" : "str"
+}
+EOF
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
 <span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">revoke_api_keys</span><span class="p">(</span><span class="n">master_key</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">revoke_api_keys</span><span class="p">(</span><span class="n">revoke_api_keys</span><span class="p">);</span>
 
 
 </code></pre>
@@ -3851,9 +3645,9 @@ $api-&gt;getProjects();
 <span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
 
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
+
 <span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">revokeApiKeys</span><span class="o">(</span><span class="n">masterKey</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">revokeApiKeys</span><span class="o">(</span><span class="n">revokeApiKeys</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -3862,10 +3656,9 @@ require_once('/path/to/io.rakam.client.api');
 
 $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;revokeApiKeys(master_key);
+$api-&gt;revokeApiKeys(revoke_api_keys);
 
 
 </code></pre>
@@ -3874,16 +3667,15 @@ $api-&gt;revokeApiKeys(master_key);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE /project/revoke-api-keys</code></p>
+<p><code class="prettyprint">POST /project/revoke-api-keys</code></p>
 
-<h3 id="header-parameters">Header Parameters</h3>
+<h3 id="body-parameters">Body Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3893,6 +3685,12 @@ $api-&gt;revokeApiKeys(master_key);
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>project</td>
+<td>true</td>
+<td>string</td>
+<td></td>
+</tr>
 <tr>
 <td>master_key</td>
 <td>true</td>
@@ -3906,22 +3704,18 @@ $api-&gt;revokeApiKeys(master_key);
 <table><thead>
 <tr>
 <th>200</th>
-<th>403</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><a href="#successmessage">SuccessMessage</a></td>
-<td><a href="#errormessage">ErrorMessage</a></td>
 </tr>
 </tbody></table>
 
 <h2 id="get-collection-schema">Get collection schema</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
-{
-  "names" : [ "str" ]
-}
+<pre class="highlight plaintext"><code>curl "app.rakam.io/project/schema" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
+{ }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -3960,17 +3754,7 @@ $api-&gt;schema(project_schema);
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fields"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -4010,20 +3794,16 @@ $api-&gt;schema(project_schema);
 </tbody></table>
 
 <h2 id="add-fields-to-collections">Add fields to collections</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema/add"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/project/schema/add" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 {
   "collection" : "str",
   "fields" : [ {
     "name" : "str",
-    "type" : "STRING",
-    "unique" : true,
-    "descriptiveName" : "str",
-    "description" : "str",
-    "category" : "str"
+    "type" : "STRING"
   } ]
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -4064,11 +3844,7 @@ $api-&gt;addFieldsToSchema(project_add_fields_to_schema);
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="w">
 </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -4088,13 +3864,13 @@ $api-&gt;addFieldsToSchema(project_add_fields_to_schema);
 </thead><tbody>
 <tr>
 <td>collection</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>fields</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#schemafield">SchemaField</a> array</td>
 <td></td>
 </tr>
@@ -4115,14 +3891,14 @@ $api-&gt;addFieldsToSchema(project_add_fields_to_schema);
 </tbody></table>
 
 <h2 id="add-fields-to-collections-by-transforming-other-schemas">Add fields to collections by transforming other schemas</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema/add/custom"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/project/schema/add/custom" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 {
   "collection" : "str",
   "schema_type" : "AVRO",
   "schema" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -4163,11 +3939,7 @@ $api-&gt;addCustomFieldsToSchema(project_add_custom_fields_to_schema);
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="w">
 </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -4187,19 +3959,19 @@ $api-&gt;addCustomFieldsToSchema(project_add_custom_fields_to_schema);
 </thead><tbody>
 <tr>
 <td>collection</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>schema_type</td>
-<td>false</td>
+<td>true</td>
 <td>enum (AVRO)</td>
 <td></td>
 </tr>
 <tr>
 <td>schema</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -4220,10 +3992,10 @@ $api-&gt;addCustomFieldsToSchema(project_add_custom_fields_to_schema);
 </tbody></table>
 
 <h2 id="get-project-stats">Get project stats</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/stats"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/project/stats" -X POST -d @- &lt;&lt; EOF 
 [ "object" ]
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -4304,47 +4076,17 @@ $api-&gt;getStats(project_get_stats);
 <p>Collect data</p>
 
 <h2 id="collect-multiple-events">Collect multiple events</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/batch"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/event/batch" -X POST -d @- &lt;&lt; EOF 
 {
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "api_version" : "str",
-    "upload_time" : 1,
-    "checksum" : "str",
-    "plugins" : [ {
-      "name" : "str",
-      "arguments" : {
-        "prop" : { }
-      }
-    } ]
-  },
+  "api" : { },
   "events" : [ {
     "collection" : "str",
-    "api" : {
-      "api_key" : "str",
-      "library" : {
-        "name" : "str",
-        "version" : "str"
-      },
-      "api_version" : "str",
-      "upload_time" : 1,
-      "checksum" : "str",
-      "plugins" : [ {
-        "name" : "str",
-        "arguments" : {
-          "prop" : { }
-        }
-      } ]
-    },
+    "api" : { },
     "properties" : "object"
   } ]
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -4400,13 +4142,13 @@ $api-&gt;batchEvents(event_list);
 </thead><tbody>
 <tr>
 <td>api</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#eventcontext">EventContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>events</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#event">Event</a> array</td>
 <td></td>
 </tr>
@@ -4429,47 +4171,17 @@ $api-&gt;batchEvents(event_list);
 <p>Returns 1 if the events are collected.</p>
 
 <h2 id="collect-bulk-events">Collect Bulk events</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/event/bulk" -X POST -d @- &lt;&lt; EOF 
 {
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "api_version" : "str",
-    "upload_time" : 1,
-    "checksum" : "str",
-    "plugins" : [ {
-      "name" : "str",
-      "arguments" : {
-        "prop" : { }
-      }
-    } ]
-  },
+  "api" : { },
   "events" : [ {
     "collection" : "str",
-    "api" : {
-      "api_key" : "str",
-      "library" : {
-        "name" : "str",
-        "version" : "str"
-      },
-      "api_version" : "str",
-      "upload_time" : 1,
-      "checksum" : "str",
-      "plugins" : [ {
-        "name" : "str",
-        "arguments" : {
-          "prop" : { }
-        }
-      } ]
-    },
+    "api" : { },
     "properties" : "object"
   } ]
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -4507,8 +4219,7 @@ $api-&gt;bulkEvents(event_list);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -4528,13 +4239,13 @@ $api-&gt;bulkEvents(event_list);
 </thead><tbody>
 <tr>
 <td>api</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#eventcontext">EventContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>events</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#event">Event</a> array</td>
 <td></td>
 </tr>
@@ -4554,108 +4265,15 @@ $api-&gt;bulkEvents(event_list);
 
 <p>Bulk API requires master_key as api key and designed to handle large value of data. The endpoint also accepts application/avro and text/csv formats. You need need to set &lsquo;collection&rsquo; and &#39;master_key&rsquo; query parameters if the content-type is not application/json.</p>
 
-<h2 id="commit-bulk-events">Commit Bulk events</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk/commit"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
-{
-  "collections" : [ "str" ]
-}
-EOF
-</span></code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">CollectApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">commit_bulk_events</span><span class="p">(</span><span class="n">commit_bulk_events</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.CollectApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">CollectApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CollectApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">commitBulkEvents</span><span class="o">(</span><span class="n">commitBulkEvents</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\CollectApi($api_client);
-$api-&gt;commitBulkEvents(commit_bulk_events);
-
-
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST /event/bulk/commit</code></p>
-
-<h3 id="body-parameters">Body Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>collections</td>
-<td>true</td>
-<td>string array</td>
-<td></td>
-</tr>
-</tbody></table>
-
-<h3 id="responses-for-status-codes">Responses for status codes</h3>
-
-<table><thead>
-<tr>
-<th>200</th>
-<th>403</th>
-<th>409</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><a href="#successmessage">SuccessMessage</a></td>
-<td><a href="#errormessage">ErrorMessage</a></td>
-<td><a href="#errormessage">ErrorMessage</a></td>
-</tr>
-</tbody></table>
-
 <h2 id="collect-bulk-events-from-remote">Collect bulk events from remote</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk/remote"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/event/bulk/remote" -X POST -d @- &lt;&lt; EOF 
 {
   "collection" : "str",
   "urls" : [ "str" ],
-  "type" : "AVRO",
-  "compression" : "GZIP",
-  "options" : {
-    "prop" : { }
-  }
+  "type" : "AVRO"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -4711,19 +4329,19 @@ $api-&gt;bulkEventsRemote(bulk_event_remote);
 </thead><tbody>
 <tr>
 <td>collection</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>urls</td>
-<td>false</td>
+<td>true</td>
 <td>string array</td>
 <td></td>
 </tr>
 <tr>
 <td>type</td>
-<td>false</td>
+<td>true</td>
 <td>enum (AVRO, CSV, JSON)</td>
 <td></td>
 </tr>
@@ -4756,29 +4374,14 @@ $api-&gt;bulkEventsRemote(bulk_event_remote);
 </tbody></table>
 
 <h2 id="collect-event">Collect event</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/collect"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/event/collect" -X POST -d @- &lt;&lt; EOF 
 {
   "collection" : "str",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "api_version" : "str",
-    "upload_time" : 1,
-    "checksum" : "str",
-    "plugins" : [ {
-      "name" : "str",
-      "arguments" : {
-        "prop" : { }
-      }
-    } ]
-  },
+  "api" : { },
   "properties" : "object"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -4836,7 +4439,7 @@ $api-&gt;collectEvent(event);
 <td>collection</td>
 <td>true</td>
 <td>string</td>
-<td></td>
+<td>The collection of event (pageview, touch, click etc.)</td>
 </tr>
 <tr>
 <td>api</td>
@@ -4848,6 +4451,97 @@ $api-&gt;collectEvent(event);
 <td>properties</td>
 <td>true</td>
 <td>object</td>
+<td>The properties of the event</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses-for-status-codes">Responses for status codes</h3>
+
+<table><thead>
+<tr>
+<th>200</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>integer (int32)</td>
+</tr>
+</tbody></table>
+
+<h2 id="copy-events-directly-to-database">Copy events directly to database</h2>
+<pre class="highlight plaintext"><code>curl "app.rakam.io/event/copy" -X POST -d @- &lt;&lt; EOF 
+{
+  "api" : { },
+  "events" : [ {
+    "collection" : "str",
+    "api" : { },
+    "properties" : "object"
+  } ]
+}
+EOF
+</code></pre>
+<pre class="highlight python"><code>
+<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
+<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
+
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">CollectApi</span><span class="p">();</span>
+<span class="n">api</span><span class="o">.</span><span class="n">copy_events</span><span class="p">(</span><span class="n">event_list</span><span class="p">);</span>
+
+
+</code></pre>
+<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.rakam.client.api.CollectApi</span><span class="o">;</span>
+
+<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
+
+<span class="n">CollectApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CollectApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">copyEvents</span><span class="o">(</span><span class="n">eventList</span><span class="o">);</span>
+
+</code></pre>
+<pre class="highlight php"><code>
+
+require_once('/path/to/io.rakam.client.api');
+
+$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+
+
+$api = new Swagger\Client\CollectApi($api_client);
+$api-&gt;copyEvents(event_list);
+
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="mi">1</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /event/copy</code></p>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api</td>
+<td>true</td>
+<td><a href="#eventcontext">EventContext</a></td>
+<td></td>
+</tr>
+<tr>
+<td>events</td>
+<td>true</td>
+<td><a href="#event">Event</a> array</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -4869,14 +4563,12 @@ $api-&gt;collectEvent(event);
 <p>Analyze data</p>
 
 <h2 id="execute-query-on-event-data-set">Execute query on event data-set</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/query/execute"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/query/execute" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
-  "query" : "str",
-  "export_type" : "AVRO",
-  "limit" : 1
+  "query" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -4885,7 +4577,7 @@ EOF
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">QueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">execute</span><span class="p">);</span>
+<span class="n">api</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query_request</span><span class="p">);</span>
 
 
 </code></pre>
@@ -4895,7 +4587,7 @@ EOF
 <span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">QueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">execute</span><span class="o">);</span>
+<span class="n">api</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">queryRequest</span><span class="o">);</span>
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -4907,7 +4599,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\QueryApi($api_client);
-$api-&gt;execute(execute);
+$api-&gt;execute(query_request);
 
 
 </code></pre>
@@ -4915,28 +4607,7 @@ $api-&gt;execute(execute);
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"object"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sqlState"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errorCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errorLine"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"charPositionInLine"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"failed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -4961,9 +4632,21 @@ $api-&gt;execute(execute);
 </tr>
 <tr>
 <td>export_type</td>
-<td>true</td>
+<td>false</td>
 <td>enum (AVRO, CSV, JSON)</td>
 <td></td>
+</tr>
+<tr>
+<td>sampling</td>
+<td>false</td>
+<td><a href="#querysampling">QuerySampling</a></td>
+<td></td>
+</tr>
+<tr>
+<td>default_schema</td>
+<td>false</td>
+<td>string</td>
+<td>collection</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -4982,18 +4665,18 @@ $api-&gt;execute(execute);
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="#queryresult">QueryResult</a></td>
+<td><a href="#responsequeryresult">ResponseQueryResult</a></td>
 <td><a href="#errormessage">ErrorMessage</a></td>
 </tr>
 </tbody></table>
 
 <h2 id="explain-query">Explain query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/query/explain"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/query/explain" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
   "query" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -5032,18 +4715,7 @@ $api-&gt;explain(explain);
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"groupBy"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"expression"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"orderBy"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"ordering"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ASCENDING"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"expression"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -5083,12 +4755,12 @@ $api-&gt;explain(explain);
 </tbody></table>
 
 <h2 id="test-query">Test query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/query/metadata"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/query/metadata" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
   "query" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -5129,11 +4801,7 @@ $api-&gt;metadata(query_metadata);
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="w">
 </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -5153,7 +4821,7 @@ $api-&gt;metadata(query_metadata);
 </thead><tbody>
 <tr>
 <td>query</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -5178,20 +4846,14 @@ $api-&gt;metadata(query_metadata);
 <p>Materialized view</p>
 
 <h2 id="create-view">Create view</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/create"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/materialized-view/create" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 {
   "table_name" : "str",
   "name" : "str",
-  "query" : "str",
-  "update_interval" : "str",
-  "incremental" : true,
-  "options" : {
-    "prop" : { }
-  },
-  "last_update" : "2016-03-03T10:15:30.00Z"
+  "query" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -5231,8 +4893,7 @@ $api-&gt;createView(materialized_view);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -5286,12 +4947,6 @@ $api-&gt;createView(materialized_view);
 <td>object</td>
 <td></td>
 </tr>
-<tr>
-<td>last_update</td>
-<td>false</td>
-<td>string (date-time)</td>
-<td></td>
-</tr>
 </tbody></table>
 
 <h3 id="responses-for-status-codes">Responses for status codes</h3>
@@ -5309,12 +4964,12 @@ $api-&gt;createView(materialized_view);
 </tbody></table>
 
 <h2 id="delete-materialized-view">Delete materialized view</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/delete"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/materialized-view/delete" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 {
   "table_name" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -5354,8 +5009,7 @@ $api-&gt;deleteView(materialized_view_delete_view);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -5375,7 +5029,7 @@ $api-&gt;deleteView(materialized_view_delete_view);
 </thead><tbody>
 <tr>
 <td>table_name</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -5396,12 +5050,12 @@ $api-&gt;deleteView(materialized_view_delete_view);
 </tbody></table>
 
 <h2 id="get-view">Get view</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/get"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/materialized-view/get" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
   "table_name" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -5443,13 +5097,7 @@ $api-&gt;getView(materialized_view_get_view);
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"update_interval"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"incremental"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"last_update"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-03T10:15:30.00Z"</span><span class="w">
+  </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -5469,7 +5117,7 @@ $api-&gt;getView(materialized_view_get_view);
 </thead><tbody>
 <tr>
 <td>table_name</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -5490,7 +5138,7 @@ $api-&gt;getView(materialized_view_get_view);
 </tbody></table>
 
 <h2 id="list-views">List views</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/list"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST
+<pre class="highlight plaintext"><code>curl "app.rakam.io/materialized-view/list" -H "read_key: myread_key" -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -5533,13 +5181,7 @@ $api-&gt;listViews();
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"update_interval"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"incremental"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"last_update"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-03T10:15:30.00Z"</span><span class="w">
+  </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -5562,12 +5204,10 @@ $api-&gt;listViews();
 </tbody></table>
 
 <h2 id="get-schemas">Get schemas</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/schema"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
-{
-  "names" : [ "str" ]
-}
+<pre class="highlight plaintext"><code>curl "app.rakam.io/materialized-view/schema" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
+{ }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -5606,17 +5246,7 @@ $api-&gt;getSchemaOfView(materialized_view_get_schema_of_view);
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fields"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -5660,21 +5290,15 @@ $api-&gt;getSchemaOfView(materialized_view_get_schema_of_view);
 <p>Continuous query</p>
 
 <h2 id="create-stream">Create stream</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/create"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/continuous-query/create" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 {
   "continuous_query" : {
-    "table_name" : "str",
     "name" : "str",
-    "query" : "str",
-    "partition_keys" : [ "str" ],
-    "options" : {
-      "prop" : { }
-    }
-  },
-  "replay" : true
+    "query" : "str"
+  }
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -5714,8 +5338,7 @@ $api-&gt;createQuery(continuous_query_create_query);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -5735,7 +5358,7 @@ $api-&gt;createQuery(continuous_query_create_query);
 </thead><tbody>
 <tr>
 <td>continuous_query</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#continuousquery">ContinuousQuery</a></td>
 <td></td>
 </tr>
@@ -5768,12 +5391,12 @@ Rakam will process data in batches keep the result of query in-memory all the ti
 Compared to reports, continuous queries continuously aggregate the data on the fly and the result is always available either in-memory or disk.</p>
 
 <h2 id="delete-stream">Delete stream</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/delete"</span> -H <span class="s2">"master_key: mymaster_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/continuous-query/delete" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 {
   "table_name" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -5813,8 +5436,7 @@ $api-&gt;deleteQuery(continuous_query_delete_query);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -5834,7 +5456,7 @@ $api-&gt;deleteQuery(continuous_query_delete_query);
 </thead><tbody>
 <tr>
 <td>table_name</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -5855,12 +5477,12 @@ $api-&gt;deleteQuery(continuous_query_delete_query);
 </tbody></table>
 
 <h2 id="get-continuous-query">Get continuous query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/get"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/continuous-query/get" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
   "table_name" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -5900,13 +5522,8 @@ $api-&gt;getQuery(continuous_query_get_query);
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"partition_keys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -5926,7 +5543,7 @@ $api-&gt;getQuery(continuous_query_get_query);
 </thead><tbody>
 <tr>
 <td>table_name</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -5947,7 +5564,7 @@ $api-&gt;getQuery(continuous_query_get_query);
 </tbody></table>
 
 <h2 id="list-queries">List queries</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/list"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST
+<pre class="highlight plaintext"><code>curl "app.rakam.io/continuous-query/list" -H "read_key: myread_key" -X POST
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -5988,13 +5605,8 @@ $api-&gt;listQueries();
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"partition_keys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
 </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -6017,12 +5629,10 @@ $api-&gt;listQueries();
 </tbody></table>
 
 <h2 id="get-query-schema">Get query schema</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/schema"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
-{
-  "names" : [ "str" ]
-}
+<pre class="highlight plaintext"><code>curl "app.rakam.io/continuous-query/schema" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
+{ }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -6061,17 +5671,7 @@ $api-&gt;getSchemaOfQuery(continuous_query_get_schema_of_query);
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fields"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"unique"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"descriptiveName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
-  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -6111,12 +5711,12 @@ $api-&gt;getSchemaOfQuery(continuous_query_get_schema_of_query);
 </tbody></table>
 
 <h2 id="test-continuous-query">Test continuous query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/test"</span> -H <span class="s2">"read_key: myread_key"</span> -X POST -d @- <span class="sh">&lt;&lt; EOF 
+<pre class="highlight plaintext"><code>curl "app.rakam.io/continuous-query/test" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 {
   "query" : "str"
 }
 EOF
-</span></code></pre>
+</code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
@@ -6174,7 +5774,7 @@ $api-&gt;testQuery(continuous_query_test_query);
 </thead><tbody>
 <tr>
 <td>query</td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -6209,7 +5809,7 @@ $api-&gt;testQuery(continuous_query_test_query);
 </thead><tbody>
 <tr>
 <td>id</td>
-<td></td>
+<td>The value may be a string or a numeric value.</td>
 <td>true</td>
 <td>object</td>
 <td></td>
@@ -6353,7 +5953,7 @@ $api-&gt;testQuery(continuous_query_test_query);
 <tr>
 <td>result</td>
 <td>Each row is an array that contains the values for the columns that are defined in metadata property.</td>
-<td>false</td>
+<td>true</td>
 <td>object array array</td>
 <td></td>
 </tr>
@@ -6376,7 +5976,7 @@ $api-&gt;testQuery(continuous_query_test_query);
 <td></td>
 <td>false</td>
 <td>boolean</td>
-<td>false</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -6394,20 +5994,20 @@ $api-&gt;testQuery(continuous_query_test_query);
 <tr>
 <td>table_name</td>
 <td></td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>name</td>
-<td></td>
+<td>Name</td>
 <td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>query</td>
-<td></td>
+<td>The sql query that will be executed and materialized</td>
 <td>true</td>
 <td>string</td>
 <td></td>
@@ -6421,9 +6021,16 @@ $api-&gt;testQuery(continuous_query_test_query);
 </tr>
 <tr>
 <td>options</td>
-<td></td>
+<td>Additional information about the continuous query</td>
 <td>false</td>
 <td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>windowDuration</td>
+<td></td>
+<td>false</td>
+<td>string</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -6451,7 +6058,7 @@ $api-&gt;testQuery(continuous_query_test_query);
 <td></td>
 <td>false</td>
 <td>boolean</td>
-<td>false</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -6530,111 +6137,36 @@ $api-&gt;testQuery(continuous_query_test_query);
 <tr>
 <td>set_properties</td>
 <td></td>
-<td>true</td>
+<td>false</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>set_properties_once</td>
 <td></td>
-<td>true</td>
+<td>false</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>increment_properties</td>
 <td></td>
-<td>true</td>
+<td>false</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>unset_properties</td>
 <td></td>
-<td>true</td>
+<td>false</td>
 <td>string array</td>
 <td></td>
 </tr>
 <tr>
 <td>time</td>
 <td></td>
-<td>true</td>
+<td>false</td>
 <td>integer (int64)</td>
-<td></td>
-</tr>
-<tr>
-<td>user</td>
-<td></td>
-<td>false</td>
-<td>object</td>
-<td></td>
-</tr>
-</tbody></table>
-
-<h3 id="usercontext">UserContext</h3>
-
-<table><thead>
-<tr>
-<th>name</th>
-<th>description</th>
-<th>required</th>
-<th>schema</th>
-<th>default</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>api_key</td>
-<td></td>
-<td>true</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>library</td>
-<td></td>
-<td>true</td>
-<td><a href="#library">Library</a></td>
-<td></td>
-</tr>
-<tr>
-<td>upload_time</td>
-<td></td>
-<td>true</td>
-<td>integer (int64)</td>
-<td></td>
-</tr>
-<tr>
-<td>checksum</td>
-<td></td>
-<td>true</td>
-<td>string</td>
-<td></td>
-</tr>
-</tbody></table>
-
-<h3 id="reference">Reference</h3>
-
-<table><thead>
-<tr>
-<th>name</th>
-<th>description</th>
-<th>required</th>
-<th>schema</th>
-<th>default</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td></td>
-<td>false</td>
-<td>enum (COLUMN, REFERENCE)</td>
-<td></td>
-</tr>
-<tr>
-<td>value</td>
-<td></td>
-<td>false</td>
-<td>string</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -6666,7 +6198,102 @@ $api-&gt;testQuery(continuous_query_test_query);
 </tr>
 </tbody></table>
 
-<h3 id="precalculatedtable">PrecalculatedTable</h3>
+<h3 id="usercontext">UserContext</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>required</th>
+<th>schema</th>
+<th>default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api_key</td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>library</td>
+<td></td>
+<td>false</td>
+<td><a href="#library">Library</a></td>
+<td></td>
+</tr>
+<tr>
+<td>upload_time</td>
+<td></td>
+<td>false</td>
+<td>integer (int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>checksum</td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="reference">Reference</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>required</th>
+<th>schema</th>
+<th>default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td></td>
+<td>true</td>
+<td>enum (COLUMN, REFERENCE)</td>
+<td></td>
+</tr>
+<tr>
+<td>value</td>
+<td></td>
+<td>true</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="querysampling">QuerySampling</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>required</th>
+<th>schema</th>
+<th>default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>method</td>
+<td></td>
+<td>false</td>
+<td>enum (BERNOULLI, SYSTEM)</td>
+<td></td>
+</tr>
+<tr>
+<td>percentage</td>
+<td></td>
+<td>false</td>
+<td>integer (int32)</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="eventmapperdescription">EventMapperDescription</h3>
 
 <table><thead>
 <tr>
@@ -6685,9 +6312,50 @@ $api-&gt;testQuery(continuous_query_test_query);
 <td></td>
 </tr>
 <tr>
-<td>tableName</td>
+<td>description</td>
 <td></td>
 <td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>dependentFields</td>
+<td></td>
+<td>false</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>constantFields</td>
+<td></td>
+<td>false</td>
+<td><a href="#schemafield">SchemaField</a> array</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="precalculatedtable">PrecalculatedTable</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>required</th>
+<th>schema</th>
+<th>default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td></td>
+<td>true</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>tableName</td>
+<td></td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -6707,14 +6375,14 @@ $api-&gt;testQuery(continuous_query_test_query);
 <tr>
 <td>title</td>
 <td></td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>content</td>
 <td></td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -6737,7 +6405,7 @@ $api-&gt;testQuery(continuous_query_test_query);
 <td></td>
 <td>false</td>
 <td>boolean</td>
-<td>false</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -6773,6 +6441,13 @@ $api-&gt;testQuery(continuous_query_test_query);
 </tr>
 </thead><tbody>
 <tr>
+<td>with</td>
+<td></td>
+<td>false</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
 <td>groupBy</td>
 <td></td>
 <td>false</td>
@@ -6791,6 +6466,47 @@ $api-&gt;testQuery(continuous_query_test_query);
 <td></td>
 <td>false</td>
 <td>integer (int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>queryLocation</td>
+<td></td>
+<td>false</td>
+<td><a href="#nodelocation">NodeLocation</a></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="projectapikeys">ProjectApiKeys</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>required</th>
+<th>schema</th>
+<th>default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>master_key</td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>read_key</td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>write_key</td>
+<td></td>
+<td>false</td>
+<td>string</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -6829,40 +6545,6 @@ $api-&gt;testQuery(continuous_query_test_query);
 </tr>
 <tr>
 <td>filterExpression</td>
-<td></td>
-<td>false</td>
-<td>string</td>
-<td></td>
-</tr>
-</tbody></table>
-
-<h3 id="projectapikeys">ProjectApiKeys</h3>
-
-<table><thead>
-<tr>
-<th>name</th>
-<th>description</th>
-<th>required</th>
-<th>schema</th>
-<th>default</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>master_key</td>
-<td></td>
-<td>false</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>read_key</td>
-<td></td>
-<td>false</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>write_key</td>
 <td></td>
 <td>false</td>
 <td>string</td>
@@ -6911,43 +6593,36 @@ $api-&gt;testQuery(continuous_query_test_query);
 <tr>
 <td>api_key</td>
 <td></td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>library</td>
-<td></td>
-<td>true</td>
+<td>Optional library information for statistics</td>
+<td>false</td>
 <td><a href="#library">Library</a></td>
 <td></td>
 </tr>
 <tr>
 <td>api_version</td>
 <td></td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>upload_time</td>
 <td></td>
-<td>true</td>
+<td>false</td>
 <td>integer (int64)</td>
 <td></td>
 </tr>
 <tr>
 <td>checksum</td>
-<td></td>
-<td>true</td>
+<td>Optional checksum for verify the body content</td>
+<td>false</td>
 <td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>plugins</td>
-<td></td>
-<td>true</td>
-<td><a href="#mappingplugin">MappingPlugin</a> array</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -6966,14 +6641,14 @@ $api-&gt;testQuery(continuous_query_test_query);
 <tr>
 <td>name</td>
 <td></td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>type</td>
 <td></td>
-<td>false</td>
+<td>true</td>
 <td>enum (STRING, INTEGER, DECIMAL, DOUBLE, LONG, BOOLEAN, DATE, TIME, TIMESTAMP, BINARY, ARRAY_STRING, ARRAY_INTEGER, ARRAY_DECIMAL, ARRAY_DOUBLE, ARRAY_LONG, ARRAY_BOOLEAN, ARRAY_DATE, ARRAY_TIME, ARRAY_TIMESTAMP, ARRAY_BINARY, MAP_STRING, MAP_INTEGER, MAP_DECIMAL, MAP_DOUBLE, MAP_LONG, MAP_BOOLEAN, MAP_DATE, MAP_TIME, MAP_TIMESTAMP, MAP_BINARY)</td>
 <td></td>
 </tr>
@@ -6982,7 +6657,7 @@ $api-&gt;testQuery(continuous_query_test_query);
 <td></td>
 <td>false</td>
 <td>boolean</td>
-<td>false</td>
+<td></td>
 </tr>
 <tr>
 <td>descriptiveName</td>
@@ -7044,7 +6719,7 @@ $api-&gt;testQuery(continuous_query_test_query);
 <td></td>
 <td>false</td>
 <td>boolean</td>
-<td>false</td>
+<td></td>
 </tr>
 <tr>
 <td>condition</td>
@@ -7058,61 +6733,6 @@ $api-&gt;testQuery(continuous_query_test_query);
 <td></td>
 <td>false</td>
 <td><a href="#configitem">ConfigItem</a> array</td>
-<td></td>
-</tr>
-</tbody></table>
-
-<h3 id="singleuserbatchoperations">SingleUserBatchOperations</h3>
-
-<table><thead>
-<tr>
-<th>name</th>
-<th>description</th>
-<th>required</th>
-<th>schema</th>
-<th>default</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>set_properties</td>
-<td></td>
-<td>true</td>
-<td>object</td>
-<td></td>
-</tr>
-<tr>
-<td>set_properties_once</td>
-<td></td>
-<td>true</td>
-<td>object</td>
-<td></td>
-</tr>
-<tr>
-<td>increment_properties</td>
-<td></td>
-<td>true</td>
-<td>object</td>
-<td></td>
-</tr>
-<tr>
-<td>unset_properties</td>
-<td></td>
-<td>true</td>
-<td>string array</td>
-<td></td>
-</tr>
-<tr>
-<td>time</td>
-<td></td>
-<td>true</td>
-<td>integer (int64)</td>
-<td></td>
-</tr>
-<tr>
-<td>user</td>
-<td></td>
-<td>false</td>
-<td>object</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -7144,6 +6764,61 @@ $api-&gt;testQuery(continuous_query_test_query);
 </tr>
 </tbody></table>
 
+<h3 id="singleuserbatchoperations">SingleUserBatchOperations</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>required</th>
+<th>schema</th>
+<th>default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>set_properties</td>
+<td></td>
+<td>false</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>set_properties_once</td>
+<td></td>
+<td>false</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>increment_properties</td>
+<td></td>
+<td>false</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>unset_properties</td>
+<td></td>
+<td>false</td>
+<td>string array</td>
+<td></td>
+</tr>
+<tr>
+<td>time</td>
+<td></td>
+<td>true</td>
+<td>integer (int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>user</td>
+<td></td>
+<td>false</td>
+<td>object</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="event">Event</h3>
 
 <table><thead>
@@ -7157,7 +6832,7 @@ $api-&gt;testQuery(continuous_query_test_query);
 </thead><tbody>
 <tr>
 <td>collection</td>
-<td></td>
+<td>The collection of event (pageview, touch, click etc.)</td>
 <td>true</td>
 <td>string</td>
 <td></td>
@@ -7171,7 +6846,7 @@ $api-&gt;testQuery(continuous_query_test_query);
 </tr>
 <tr>
 <td>properties</td>
-<td></td>
+<td>The properties of the event</td>
 <td>true</td>
 <td>object</td>
 <td></td>
@@ -7249,20 +6924,13 @@ $api-&gt;testQuery(continuous_query_test_query);
 <td></td>
 <td>false</td>
 <td>boolean</td>
-<td>false</td>
+<td></td>
 </tr>
 <tr>
 <td>options</td>
 <td></td>
 <td>false</td>
 <td>object</td>
-<td></td>
-</tr>
-<tr>
-<td>last_update</td>
-<td></td>
-<td>false</td>
-<td>string (date-time)</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -7281,15 +6949,49 @@ $api-&gt;testQuery(continuous_query_test_query);
 <tr>
 <td>error</td>
 <td></td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>error_code</td>
 <td></td>
-<td>false</td>
+<td>true</td>
 <td>integer (int32)</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="responsequeryresult">ResponseQueryResult</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>required</th>
+<th>schema</th>
+<th>default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td></td>
+<td>false</td>
+<td><a href="#queryresult">QueryResult</a></td>
+<td></td>
+</tr>
+<tr>
+<td>status</td>
+<td></td>
+<td>false</td>
+<td><a href="#httpresponsestatus">HttpResponseStatus</a></td>
+<td></td>
+</tr>
+<tr>
+<td>cookies</td>
+<td></td>
+<td>false</td>
+<td><a href="#cookie">Cookie</a> array</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -7357,7 +7059,7 @@ $api-&gt;testQuery(continuous_query_test_query);
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="curl">curl</a>
                 <a href="#" data-language-name="java">java</a>
                 <a href="#" data-language-name="php">php</a>
                 <a href="#" data-language-name="python">python</a>
