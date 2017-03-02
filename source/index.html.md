@@ -1,7 +1,7 @@
 ---
 title: API Reference
 language_tabs:
-  - shell
+  - curl
   - java
   - php
   - python
@@ -20,7 +20,7 @@ We have language bindings in java, php, python! You can view code examples in th
 An analytics platform API that lets you create your own analytics services.
 
 ### Version
-Version: 0.5
+Version: 0.7
 
 ## Contact Information
 Email: contact@rakam.io
@@ -40,24 +40,11 @@ BasePath: /
 Event Explorer
 
 ## Perform simple query on event data
-```shell
+```curl
 curl "app.rakam.io/event-explorer/analyze" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
-  "measure" : {
-    "column" : "str",
-    "aggregation" : "COUNT"
-  },
-  "grouping" : {
-    "type" : "COLUMN",
-    "value" : "str"
-  },
-  "segment" : {
-    "type" : "COLUMN",
-    "value" : "str"
-  },
-  "filterExpression" : "str",
-  "startDate" : "2015-01-20",
-  "endDate" : "2015-01-20",
+  "startDate" : "2016-03-03T10:15:30.00Z",
+  "endDate" : "2016-03-03T10:15:30.00Z",
   "collections" : [ "str" ]
 }
 EOF
@@ -109,24 +96,15 @@ $api->analyzeEvents(analyze_request);
 {
   "metadata" : [ {
     "name" : "str",
-    "type" : "STRING",
-    "unique" : true,
-    "descriptiveName" : "str",
-    "description" : "str",
-    "category" : "str"
+    "type" : "STRING"
   } ],
   "result" : [ [ "object" ] ],
   "error" : {
-    "message" : "str",
-    "sqlState" : "str",
-    "errorCode" : 1,
-    "errorLine" : 1,
-    "charPositionInLine" : 1
+    "message" : "str"
   },
   "properties" : {
     "prop" : { }
-  },
-  "failed" : true
+  }
 }
 ```
 
@@ -139,9 +117,9 @@ $api->analyzeEvents(analyze_request);
 |grouping|false|[Reference](#reference)||
 |segment|false|[Reference](#reference)||
 |filterExpression|false|string||
-|startDate|false|string (date)||
-|endDate|false|string (date)||
-|collections|false|string array||
+|startDate|true|string (date-time)||
+|endDate|true|string (date-time)||
+|collections|true|string array||
 
 
 ### Responses for status codes
@@ -151,7 +129,7 @@ $api->analyzeEvents(analyze_request);
 
 
 ## Event statistics
-```shell
+```curl
 curl "app.rakam.io/event-explorer/extra_dimensions" -H "read_key: myread_key" -X GET
 ```
 
@@ -212,7 +190,7 @@ $api->getExtraDimensions();
 
 
 ## Create Pre-computed table
-```shell
+```curl
 curl "app.rakam.io/event-explorer/pre_calculate" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "collections" : [ "str" ],
@@ -292,13 +270,11 @@ $api->createPrecomputedTable(create_precomputed_table);
 
 
 ## Event statistics
-```shell
+```curl
 curl "app.rakam.io/event-explorer/statistics" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
-  "collections" : [ "str" ],
-  "dimension" : "str",
-  "startDate" : "2015-01-20",
-  "endDate" : "2015-01-20"
+  "startDate" : "2016-03-03T10:15:30.00Z",
+  "endDate" : "2016-03-03T10:15:30.00Z"
 }
 EOF
 ```
@@ -349,24 +325,15 @@ $api->getEventStatistics(event_explorer_get_event_statistics);
 {
   "metadata" : [ {
     "name" : "str",
-    "type" : "STRING",
-    "unique" : true,
-    "descriptiveName" : "str",
-    "description" : "str",
-    "category" : "str"
+    "type" : "STRING"
   } ],
   "result" : [ [ "object" ] ],
   "error" : {
-    "message" : "str",
-    "sqlState" : "str",
-    "errorCode" : 1,
-    "errorLine" : 1,
-    "charPositionInLine" : 1
+    "message" : "str"
   },
   "properties" : {
     "prop" : { }
-  },
-  "failed" : true
+  }
 }
 ```
 
@@ -377,8 +344,8 @@ $api->getEventStatistics(event_explorer_get_event_statistics);
 |----|----|----|----|
 |collections|false|string array||
 |dimension|false|string||
-|startDate|false|string (date)||
-|endDate|false|string (date)||
+|startDate|true|string (date-time)||
+|endDate|true|string (date-time)||
 
 
 ### Responses for status codes
@@ -393,18 +360,11 @@ $api->getEventStatistics(event_explorer_get_event_statistics);
 Funnel Analyzer
 
 ## Execute query
-```shell
+```curl
 curl "app.rakam.io/funnel/analyze" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
-  "steps" : [ {
-    "collection" : "str"
-  } ],
-  "dimension" : "str",
+  "steps" : [ { } ],
   "startDate" : "2015-01-20",
-  "window" : {
-    "value" : 1,
-    "type" : "DAY"
-  },
   "endDate" : "2015-01-20"
 }
 EOF
@@ -456,24 +416,15 @@ $api->analyzeFunnel(funnel_query);
 {
   "metadata" : [ {
     "name" : "str",
-    "type" : "STRING",
-    "unique" : true,
-    "descriptiveName" : "str",
-    "description" : "str",
-    "category" : "str"
+    "type" : "STRING"
   } ],
   "result" : [ [ "object" ] ],
   "error" : {
-    "message" : "str",
-    "sqlState" : "str",
-    "errorCode" : 1,
-    "errorLine" : 1,
-    "charPositionInLine" : 1
+    "message" : "str"
   },
   "properties" : {
     "prop" : { }
-  },
-  "failed" : true
+  }
 }
 ```
 
@@ -482,11 +433,12 @@ $api->analyzeFunnel(funnel_query);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|steps|false|[FunnelStep](#funnelstep) array||
+|steps|true|[FunnelStep](#funnelstep) array||
 |dimension|false|string||
-|startDate|false|string (date)||
+|startDate|true|string (date)||
 |window|false|[FunnelWindow](#funnelwindow)||
-|endDate|false|string (date)||
+|endDate|true|string (date)||
+|timezone|false|string||
 
 
 ### Responses for status codes
@@ -501,7 +453,7 @@ $api->analyzeFunnel(funnel_query);
 Realtime
 
 ## Create report
-```shell
+```curl
 curl "app.rakam.io/realtime/create" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "name" : "str",
@@ -510,9 +462,7 @@ curl "app.rakam.io/realtime/create" -H "master_key: mymaster_key" -X POST -d @- 
     "aggregation" : "COUNT"
   } ],
   "table_name" : "str",
-  "collections" : [ "str" ],
-  "filter" : "str",
-  "dimensions" : [ "str" ]
+  "collections" : [ "str" ]
 }
 EOF
 ```
@@ -561,8 +511,7 @@ $api->createTable(real_time_report);
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
@@ -571,10 +520,10 @@ $api->createTable(real_time_report);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|name|false|string||
-|measures|false|[Measure](#measure) array||
-|table_name|false|string||
-|collections|false|string array||
+|name|true|string||
+|measures|true|[Measure](#measure) array||
+|table_name|true|string||
+|collections|true|string array||
 |filter|false|string||
 |dimensions|false|string array||
 
@@ -586,7 +535,7 @@ $api->createTable(real_time_report);
 
 
 ## Delete report
-```shell
+```curl
 curl "app.rakam.io/realtime/delete" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "table_name" : "str"
@@ -638,8 +587,7 @@ $api->deleteTable(realtime_delete_table);
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
@@ -648,7 +596,7 @@ $api->deleteTable(realtime_delete_table);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|table_name|false|string||
+|table_name|true|string||
 
 
 ### Responses for status codes
@@ -658,19 +606,14 @@ $api->deleteTable(realtime_delete_table);
 
 
 ## Get report
-```shell
+```curl
 curl "app.rakam.io/realtime/get" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "table_name" : "str",
-  "filter" : "str",
   "measure" : {
     "column" : "str",
     "aggregation" : "COUNT"
-  },
-  "dimensions" : [ "str" ],
-  "aggregate" : true,
-  "date_start" : "2016-03-03T10:15:30.00Z",
-  "date_end" : "2016-03-03T10:15:30.00Z"
+  }
 }
 EOF
 ```
@@ -718,11 +661,7 @@ $api->queryTable(realtime_query_table);
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "start" : 1,
-  "end" : 1,
-  "result" : "object"
-}
+{ }
 ```
 
 ### HTTP Request
@@ -730,9 +669,9 @@ $api->queryTable(realtime_query_table);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|table_name|false|string||
+|table_name|true|string||
 |filter|false|string||
-|measure|false|[Measure](#measure)||
+|measure|true|[Measure](#measure)||
 |dimensions|false|string array||
 |aggregate|false|boolean||
 |date_start|false|string (date-time)||
@@ -746,7 +685,7 @@ $api->queryTable(realtime_query_table);
 
 
 ## List queries
-```shell
+```curl
 curl "app.rakam.io/realtime/list" -H "read_key: myread_key" -X POST
 ```
 
@@ -794,13 +733,8 @@ $api->listTables();
 
 ```json
 [ {
-  "table_name" : "str",
   "name" : "str",
-  "query" : "str",
-  "partition_keys" : [ "str" ],
-  "options" : {
-    "prop" : { }
-  }
+  "query" : "str"
 } ]
 ```
 
@@ -818,18 +752,13 @@ $api->listTables();
 Retention Analyzer module
 
 ## Execute query
-```shell
+```curl
 curl "app.rakam.io/retention/analyze" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
-  "first_action" : {
-    "collection" : "str"
-  },
-  "returning_action" : {
-    "collection" : "str"
-  },
+  "first_action" : { },
+  "returning_action" : { },
   "dimension" : "str",
   "date_unit" : "DAY",
-  "period" : 1,
   "startDate" : "2015-01-20",
   "endDate" : "2015-01-20"
 }
@@ -882,24 +811,15 @@ $api->analyzeRetention(retention_query);
 {
   "metadata" : [ {
     "name" : "str",
-    "type" : "STRING",
-    "unique" : true,
-    "descriptiveName" : "str",
-    "description" : "str",
-    "category" : "str"
+    "type" : "STRING"
   } ],
   "result" : [ [ "object" ] ],
   "error" : {
-    "message" : "str",
-    "sqlState" : "str",
-    "errorCode" : 1,
-    "errorLine" : 1,
-    "charPositionInLine" : 1
+    "message" : "str"
   },
   "properties" : {
     "prop" : { }
-  },
-  "failed" : true
+  }
 }
 ```
 
@@ -908,13 +828,15 @@ $api->analyzeRetention(retention_query);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|first_action|false|[RetentionAction](#retentionaction)||
-|returning_action|false|[RetentionAction](#retentionaction)||
-|dimension|false|string||
-|date_unit|false|enum (DAY, WEEK, MONTH)||
+|first_action|true|[RetentionAction](#retentionaction)||
+|returning_action|true|[RetentionAction](#retentionaction)||
+|dimension|true|string||
+|date_unit|true|enum (DAY, WEEK, MONTH)||
 |period|false|integer (int32)||
-|startDate|false|string (date)||
-|endDate|false|string (date)||
+|startDate|true|string (date)||
+|timezone|false|string||
+|approximate|false|boolean||
+|endDate|true|string (date)||
 
 
 ### Responses for status codes
@@ -934,28 +856,13 @@ Event Stream Module
 User
 
 ## Batch operation on a single user properties
-```shell
+```curl
 curl "app.rakam.io/user/batch" -H "write_key: mywrite_key" -X POST -d @- << EOF 
 {
   "id" : "object",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "data" : [ {
-    "set_properties" : "object",
-    "set_properties_once" : "object",
-    "increment_properties" : {
-      "prop" : { }
-    },
-    "unset_properties" : [ "str" ],
-    "time" : 1,
-    "user" : "object"
+    "time" : 1
   } ]
 }
 EOF
@@ -1012,32 +919,24 @@ $api->batchSingleUserOperations(single_user_batch_operation_request);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|id|false|object||
-|api|false|[UserContext](#usercontext)||
-|data|false|[SingleUserBatchOperations](#singleuserbatchoperations) array||
+|id|true|object||
+|api|true|[UserContext](#usercontext)||
+|data|true|[SingleUserBatchOperations](#singleuserbatchoperations) array||
 
 
 ### Responses for status codes
-|200|403|404|
+|200|404|403|
 |----|----|----|
 |integer (int32)|[ErrorMessage](#errormessage)|[ErrorMessage](#errormessage)|
 
 
 ## Create multiple new users
-```shell
+```curl
 curl "app.rakam.io/user/batch/create" -H "write_key: mywrite_key" -X POST -d @- << EOF 
 {
   "users" : [ {
     "id" : "object",
-    "api" : {
-      "api_key" : "str",
-      "library" : {
-        "name" : "str",
-        "version" : "str"
-      },
-      "upload_time" : 1,
-      "checksum" : "str"
-    },
+    "api" : { },
     "properties" : "object"
   } ]
 }
@@ -1095,7 +994,7 @@ $api->createUsers(user_create_users);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|users|false|[User](#user) array||
+|users|true|[User](#user) array||
 
 
 ### Responses for status codes
@@ -1108,28 +1007,12 @@ $api->createUsers(user_create_users);
 Returns user ids. User id may be string or numeric.
 
 ## Batch operations on user properties
-```shell
+```curl
 curl "app.rakam.io/user/batch_operations" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "data" : [ {
-    "id" : "object",
-    "set_properties" : "object",
-    "set_properties_once" : "object",
-    "increment_properties" : {
-      "prop" : { }
-    },
-    "unset_properties" : [ "str" ],
-    "time" : 1,
-    "user" : "object"
+    "id" : "object"
   } ]
 }
 EOF
@@ -1186,30 +1069,22 @@ $api->batchUserOperations(batch_user_operation_request);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|api|false|[UserContext](#usercontext)||
-|data|false|[BatchUserOperations](#batchuseroperations) array||
+|api|true|[UserContext](#usercontext)||
+|data|true|[BatchUserOperations](#batchuseroperations) array||
 
 
 ### Responses for status codes
-|200|403|404|
+|200|404|403|
 |----|----|----|
 |integer (int32)|[ErrorMessage](#errormessage)|[ErrorMessage](#errormessage)|
 
 
 ## Create new user
-```shell
+```curl
 curl "app.rakam.io/user/create" -X POST -d @- << EOF 
 {
   "id" : "object",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "properties" : "object"
 }
 EOF
@@ -1264,7 +1139,7 @@ $api->createUser(user);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|id|true|object||
+|id|true|object|The value may be a string or a numeric value.|
 |api|true|[UserContext](#usercontext)||
 |properties|true|object||
 
@@ -1276,26 +1151,11 @@ $api->createUser(user);
 
 
 ## Get events of the user
-```shell
-curl "app.rakam.io/user/create_segment" -H "read_key: myread_key" -X POST -d @- << EOF 
+```curl
+curl "app.rakam.io/user/create_segment" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "name" : "str",
   "table_name" : "str",
-  "filter_expression" : "str",
-  "event_filters" : [ {
-    "collection" : "str",
-    "timeframe" : {
-      "start" : "2016-03-03T10:15:30.00Z",
-      "end" : "2016-03-03T10:15:30.00Z"
-    },
-    "aggregation" : {
-      "field" : "str",
-      "minimum" : 1,
-      "maximum" : 1,
-      "type" : "COUNT"
-    },
-    "filterExpression" : "str"
-  } ],
   "cache_eviction" : "str"
 }
 EOF
@@ -1307,7 +1167,7 @@ from ..api_client import ApiClient;
 from ..configuration import Configuration
 
 apiClient = client.ApiClient("app.rakam.io")
-apiClient.configuration.api_key['read_key'] = 'myApiKey'
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.UserApi();
 api.create_segment(user_create_segment);
@@ -1320,7 +1180,7 @@ import io.rakam.client.api.ApiClient;
 import io.rakam.client.api.UserApi;
 
 ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
 UserApi api = new UserApi(apiClient);
 api.createSegment(userCreateSegment);
 
@@ -1333,7 +1193,7 @@ require_once('/path/to/io.rakam.client.api');
 
 $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 
-$api_client->getConfig().setApiKey("read_key", "myApiKey");
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\UserApi($api_client);
 $api->createSegment(user_create_segment);
@@ -1345,8 +1205,7 @@ $api->createSegment(user_create_segment);
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
@@ -1355,21 +1214,21 @@ $api->createSegment(user_create_segment);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|name|false|string||
-|table_name|false|string||
+|name|true|string||
+|table_name|true|string||
 |filter_expression|false|string||
 |event_filters|false|[EventFilter](#eventfilter) array||
-|cache_eviction|false|string||
+|cache_eviction|true|string||
 
 
 ### Responses for status codes
-|200|403|404|
+|200|404|403|
 |----|----|----|
 |[SuccessMessage](#successmessage)|[ErrorMessage](#errormessage)|[ErrorMessage](#errormessage)|
 
 
 ## Get user
-```shell
+```curl
 curl "app.rakam.io/user/get" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "user" : "object"
@@ -1422,15 +1281,7 @@ $api->getUser(user_get_user);
 ```json
 {
   "id" : "object",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "properties" : "object"
 }
 ```
@@ -1440,22 +1291,20 @@ $api->getUser(user_get_user);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|user|false|object||
+|user|true|object||
 
 
 ### Responses for status codes
-|200|403|404|
+|200|404|403|
 |----|----|----|
 |[User](#user)|[ErrorMessage](#errormessage)|[ErrorMessage](#errormessage)|
 
 
 ## Get events of the user
-```shell
+```curl
 curl "app.rakam.io/user/get_events" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
-  "user" : "str",
-  "limit" : 1,
-  "offset" : "2016-03-03T10:15:30.00Z"
+  "user" : "str"
 }
 EOF
 ```
@@ -1503,12 +1352,7 @@ $api->getEvents(user_get_events);
 > The above command returns JSON structured like this:
 
 ```json
-[ {
-  "collection" : "str",
-  "properties" : {
-    "prop" : { }
-  }
-} ]
+[ { } ]
 ```
 
 ### HTTP Request
@@ -1516,30 +1360,23 @@ $api->getEvents(user_get_events);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|user|false|string||
+|user|true|string||
 |limit|false|integer (int32)||
+|properties|false|string array||
 |offset|false|string (date-time)||
 
 
 ### Responses for status codes
-|200|403|404|
+|200|404|403|
 |----|----|----|
 |[CollectionEvent](#collectionevent) array|[ErrorMessage](#errormessage)|[ErrorMessage](#errormessage)|
 
 
 ## Set user property
-```shell
+```curl
 curl "app.rakam.io/user/increment_property" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "id" : "str",
   "property" : "str",
   "value" : 1.0
@@ -1591,8 +1428,7 @@ $api->incrementProperty(user_increment_property);
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
@@ -1601,20 +1437,20 @@ $api->incrementProperty(user_increment_property);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|api|false|[UserContext](#usercontext)||
-|id|false|string||
-|property|false|string||
-|value|false|number (double)||
+|api|true|[UserContext](#usercontext)||
+|id|true|string||
+|property|true|string||
+|value|true|number (double)||
 
 
 ### Responses for status codes
-|200|403|404|
+|200|404|403|
 |----|----|----|
 |[SuccessMessage](#successmessage)|[ErrorMessage](#errormessage)|[ErrorMessage](#errormessage)|
 
 
 ## Get user storage metadata
-```shell
+```curl
 curl "app.rakam.io/user/metadata" -H "read_key: myread_key" -X GET
 ```
 
@@ -1661,17 +1497,7 @@ $api->getMetadata();
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "columns" : [ {
-    "name" : "str",
-    "type" : "STRING",
-    "unique" : true,
-    "descriptiveName" : "str",
-    "description" : "str",
-    "category" : "str"
-  } ],
-  "identifierColumn" : "str"
-}
+{ }
 ```
 
 ### HTTP Request
@@ -1683,32 +1509,9 @@ $api->getMetadata();
 
 
 ## Search users
-```shell
+```curl
 curl "app.rakam.io/user/search" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "columns" : [ "str" ],
-  "filter" : "str",
-  "event_filters" : [ {
-    "collection" : "str",
-    "timeframe" : {
-      "start" : "2016-03-03T10:15:30.00Z",
-      "end" : "2016-03-03T10:15:30.00Z"
-    },
-    "aggregation" : {
-      "field" : "str",
-      "minimum" : 1,
-      "maximum" : 1,
-      "type" : "COUNT"
-    },
-    "filterExpression" : "str"
-  } ],
-  "sorting" : {
-    "column" : "str",
-    "order" : "asc"
-  },
-  "offset" : "str",
-  "limit" : 1
-}
+{ }
 EOF
 ```
 
@@ -1758,24 +1561,15 @@ $api->searchUsers(user_search_users);
 {
   "metadata" : [ {
     "name" : "str",
-    "type" : "STRING",
-    "unique" : true,
-    "descriptiveName" : "str",
-    "description" : "str",
-    "category" : "str"
+    "type" : "STRING"
   } ],
   "result" : [ [ "object" ] ],
   "error" : {
-    "message" : "str",
-    "sqlState" : "str",
-    "errorCode" : 1,
-    "errorLine" : 1,
-    "charPositionInLine" : 1
+    "message" : "str"
   },
   "properties" : {
     "prop" : { }
-  },
-  "failed" : true
+  }
 }
 ```
 
@@ -1799,19 +1593,11 @@ $api->searchUsers(user_search_users);
 
 
 ## Set user properties
-```shell
+```curl
 curl "app.rakam.io/user/set_properties" -X POST -d @- << EOF 
 {
   "id" : "object",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "properties" : "object"
 }
 EOF
@@ -1866,7 +1652,7 @@ $api->setProperties(user);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|id|true|object||
+|id|true|object|The value may be a string or a numeric value.|
 |api|true|[UserContext](#usercontext)||
 |properties|true|object||
 
@@ -1878,19 +1664,11 @@ $api->setProperties(user);
 
 
 ## Set user properties once
-```shell
+```curl
 curl "app.rakam.io/user/set_properties_once" -X POST -d @- << EOF 
 {
   "id" : "object",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "properties" : "object"
 }
 EOF
@@ -1945,7 +1723,7 @@ $api->setPropertiesOnce(user);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|id|true|object||
+|id|true|object|The value may be a string or a numeric value.|
 |api|true|[UserContext](#usercontext)||
 |properties|true|object||
 
@@ -1957,18 +1735,10 @@ $api->setPropertiesOnce(user);
 
 
 ## Unset user property
-```shell
+```curl
 curl "app.rakam.io/user/unset_properties" -X POST -d @- << EOF 
 {
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "upload_time" : 1,
-    "checksum" : "str"
-  },
+  "api" : { },
   "id" : "object",
   "properties" : [ "str" ]
 }
@@ -2017,8 +1787,7 @@ $api->unsetProperty(user_unset_property);
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
@@ -2027,9 +1796,9 @@ $api->unsetProperty(user_unset_property);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|api|false|[UserContext](#usercontext)||
-|id|false|object||
-|properties|false|string array||
+|api|true|[UserContext](#usercontext)||
+|id|true|object||
+|properties|true|string array||
 
 
 ### Responses for status codes
@@ -2044,32 +1813,12 @@ $api->unsetProperty(user_unset_property);
 User Action
 
 ## Apply batch operation
-```shell
+```curl
 curl "app.rakam.io/user/action/email/batch" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
-  "filter" : "str",
-  "event_filters" : [ {
-    "collection" : "str",
-    "timeframe" : {
-      "start" : "2016-03-03T10:15:30.00Z",
-      "end" : "2016-03-03T10:15:30.00Z"
-    },
-    "aggregation" : {
-      "field" : "str",
-      "minimum" : 1,
-      "maximum" : 1,
-      "type" : "COUNT"
-    },
-    "filterExpression" : "str"
-  } ],
   "config" : {
     "title" : "str",
-    "content" : "str",
-    "columnName" : "str",
-    "defaultValues" : {
-      "prop" : { }
-    },
-    "richText" : true
+    "content" : "str"
   }
 }
 EOF
@@ -2128,7 +1877,7 @@ $api->batch(user_email_action_batch);
 |----|----|----|----|
 |filter|false|string||
 |event_filters|false|[EventFilter](#eventfilter) array||
-|config|false|[EmailActionConfig](#emailactionconfig)||
+|config|true|[EmailActionConfig](#emailactionconfig)||
 
 
 ### Responses for status codes
@@ -2138,18 +1887,13 @@ $api->batch(user_email_action_batch);
 
 
 ## Perform action for single user
-```shell
+```curl
 curl "app.rakam.io/user/action/email/single" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "user" : "str",
   "config" : {
     "title" : "str",
-    "content" : "str",
-    "columnName" : "str",
-    "defaultValues" : {
-      "prop" : { }
-    },
-    "richText" : true
+    "content" : "str"
   }
 }
 EOF
@@ -2206,8 +1950,8 @@ true
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|user|false|string||
-|config|false|[EmailActionConfig](#emailactionconfig)||
+|user|true|string||
+|config|true|[EmailActionConfig](#emailactionconfig)||
 
 
 ### Responses for status codes
@@ -2222,7 +1966,7 @@ true
 Recipe
 
 ## Export recipe
-```shell
+```curl
 curl "app.rakam.io/recipe/export" -H "master_key: mymaster_key" -X GET
 ```
 
@@ -2269,32 +2013,7 @@ $api->exportRecipe(accept);
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "strategy" : "DEFAULT",
-  "collections" : {
-    "prop" : { }
-  },
-  "materialized_views" : [ {
-    "table_name" : "str",
-    "name" : "str",
-    "query" : "str",
-    "update_interval" : "str",
-    "incremental" : true,
-    "options" : {
-      "prop" : { }
-    },
-    "last_update" : "2016-03-03T10:15:30.00Z"
-  } ],
-  "continuous_queries" : [ {
-    "table_name" : "str",
-    "name" : "str",
-    "query" : "str",
-    "partition_keys" : [ "str" ],
-    "options" : {
-      "prop" : { }
-    }
-  } ]
-}
+{ }
 ```
 
 ### HTTP Request
@@ -2312,7 +2031,7 @@ $api->exportRecipe(accept);
 
 
 ## Install recipe
-```shell
+```curl
 curl "app.rakam.io/recipe/install" -H "master_key: mymaster_key" -X POST
 ```
 
@@ -2360,8 +2079,7 @@ $api->installRecipe();
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
@@ -2379,7 +2097,7 @@ $api->installRecipe();
 System related actions
 
 ## List installed modules
-```shell
+```curl
 curl "app.rakam.io/admin/configurations" -H "master_key: mymaster_key" -X GET
 ```
 
@@ -2426,21 +2144,7 @@ $api->getConfigurations();
 > The above command returns JSON structured like this:
 
 ```json
-[ {
-  "name" : "str",
-  "description" : "str",
-  "className" : "str",
-  "isActive" : true,
-  "condition" : {
-    "property" : "str",
-    "expectedValue" : "str"
-  },
-  "properties" : [ {
-    "property" : "str",
-    "defaultValue" : "str",
-    "description" : "str"
-  } ]
-} ]
+[ { } ]
 ```
 
 ### HTTP Request
@@ -2451,12 +2155,69 @@ $api->getConfigurations();
 |[ModuleDescriptor](#moduledescriptor) array|[ErrorMessage](#errormessage)|
 
 
+## List event mappers
+```curl
+curl "app.rakam.io/admin/event_mappers" -H "master_key: mymaster_key" -X GET
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("app.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
+
+api = client.AdminApi();
+api.get_event_mappers();
+
+
+```
+
+```java
+import io.rakam.client.api.ApiClient;
+import io.rakam.client.api.AdminApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+AdminApi api = new AdminApi(apiClient);
+api.getEventMappers();
+
+```
+
+```php
+
+
+require_once('/path/to/io.rakam.client.api');
+
+$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\AdminApi($api_client);
+$api->getEventMappers();
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[ { } ]
+```
+
+### HTTP Request
+`GET /admin/event_mappers`
+### Responses for status codes
+|200|403|
+|----|----|
+|[EventMapperDescription](#eventmapperdescription) array|[ErrorMessage](#errormessage)|
+
+
 ## Check lock key
-```shell
+```curl
 curl "app.rakam.io/admin/lock_key" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "lock_key" : "str"
-}
+{ }
 EOF
 ```
 
@@ -2521,7 +2282,7 @@ true
 
 
 ## Get types
-```shell
+```curl
 curl "app.rakam.io/admin/types" -H "master_key: mymaster_key" -X GET
 ```
 
@@ -2582,14 +2343,10 @@ $api->getTypes();
 
 
 ## Create API Keys
-```shell
+```curl
 curl "app.rakam.io/project/check-api-keys" -X POST -d @- << EOF 
 {
-  "keys" : [ {
-    "master_key" : "str",
-    "read_key" : "str",
-    "write_key" : "str"
-  } ],
+  "keys" : [ { } ],
   "project" : "str"
 }
 EOF
@@ -2644,8 +2401,8 @@ $api->checkApiKeys(project_check_api_keys);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|keys|false|[ProjectApiKeys](#projectapikeys) array||
-|project|false|string||
+|keys|true|[ProjectApiKeys](#projectapikeys) array||
+|project|true|string||
 
 
 ### Responses for status codes
@@ -2655,7 +2412,7 @@ $api->checkApiKeys(project_check_api_keys);
 
 
 ## Get collection names
-```shell
+```curl
 curl "app.rakam.io/project/collection" -H "read_key: myread_key" -X POST
 ```
 
@@ -2714,10 +2471,9 @@ $api->collections();
 
 
 ## Create project
-```shell
+```curl
 curl "app.rakam.io/project/create" -X POST -d @- << EOF 
 {
-  "lock_key" : "str",
   "name" : "str"
 }
 EOF
@@ -2764,11 +2520,7 @@ $api->createProject(create_project);
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "master_key" : "str",
-  "read_key" : "str",
-  "write_key" : "str"
-}
+{ }
 ```
 
 ### HTTP Request
@@ -2787,7 +2539,7 @@ $api->createProject(create_project);
 
 
 ## Create API Keys
-```shell
+```curl
 curl "app.rakam.io/project/create-api-keys" -H "master_key: mymaster_key" -X POST
 ```
 
@@ -2834,11 +2586,7 @@ $api->createApiKeys();
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "master_key" : "str",
-  "read_key" : "str",
-  "write_key" : "str"
-}
+{ }
 ```
 
 ### HTTP Request
@@ -2850,7 +2598,7 @@ $api->createApiKeys();
 
 
 ## Delete project
-```shell
+```curl
 curl "app.rakam.io/project/delete" -H "master_key: mymaster_key" -X DELETE
 ```
 
@@ -2898,8 +2646,7 @@ $api->deleteProject();
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
@@ -2912,8 +2659,10 @@ $api->deleteProject();
 
 
 ## List created projects
-```shell
-curl "app.rakam.io/project/list" -H "read_key: myread_key" -X GET
+```curl
+curl "app.rakam.io/project/list" -H "read_key: myread_key" -X POST -d @- << EOF 
+{ }
+EOF
 ```
 
 ```python
@@ -2925,7 +2674,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.get_projects();
+api.get_projects(get_projects);
 
 
 ```
@@ -2937,7 +2686,7 @@ import io.rakam.client.api.AdminApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 AdminApi api = new AdminApi(apiClient);
-api.getProjects();
+api.getProjects(getProjects);
 
 ```
 
@@ -2951,7 +2700,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->getProjects();
+$api->getProjects(get_projects);
 
 
 ```
@@ -2963,7 +2712,13 @@ $api->getProjects();
 ```
 
 ### HTTP Request
-`GET /project/list`
+`POST /project/list`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|lock_key|false|string||
+
+
 ### Responses for status codes
 |200|403|
 |----|----|
@@ -2971,8 +2726,13 @@ $api->getProjects();
 
 
 ## Revoke API Keys
-```shell
-curl "app.rakam.io/project/revoke-api-keys" -H "master_key: mymaster_key" -X DELETE
+```curl
+curl "app.rakam.io/project/revoke-api-keys" -X POST -d @- << EOF 
+{
+  "project" : "str",
+  "master_key" : "str"
+}
+EOF
 ```
 
 ```python
@@ -2981,10 +2741,9 @@ from ..api_client import ApiClient;
 from ..configuration import Configuration
 
 apiClient = client.ApiClient("app.rakam.io")
-apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.revoke_api_keys(master_key);
+api.revoke_api_keys(revoke_api_keys);
 
 
 ```
@@ -2994,9 +2753,9 @@ import io.rakam.client.api.ApiClient;
 import io.rakam.client.api.AdminApi;
 
 ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+
 AdminApi api = new AdminApi(apiClient);
-api.revokeApiKeys(masterKey);
+api.revokeApiKeys(revokeApiKeys);
 
 ```
 
@@ -3007,10 +2766,9 @@ require_once('/path/to/io.rakam.client.api');
 
 $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 
-$api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->revokeApiKeys(master_key);
+$api->revokeApiKeys(revoke_api_keys);
 
 
 ```
@@ -3019,31 +2777,29 @@ $api->revokeApiKeys(master_key);
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
 ### HTTP Request
-`DELETE /project/revoke-api-keys`
-### Header Parameters
+`POST /project/revoke-api-keys`
+### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
+|project|true|string||
 |master_key|true|string||
 
 
 ### Responses for status codes
-|200|403|
-|----|----|
-|[SuccessMessage](#successmessage)|[ErrorMessage](#errormessage)|
+|200|
+|----|
+|[SuccessMessage](#successmessage)|
 
 
 ## Get collection schema
-```shell
+```curl
 curl "app.rakam.io/project/schema" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "names" : [ "str" ]
-}
+{ }
 EOF
 ```
 
@@ -3090,17 +2846,7 @@ $api->schema(project_schema);
 > The above command returns JSON structured like this:
 
 ```json
-[ {
-  "name" : "str",
-  "fields" : [ {
-    "name" : "str",
-    "type" : "STRING",
-    "unique" : true,
-    "descriptiveName" : "str",
-    "description" : "str",
-    "category" : "str"
-  } ]
-} ]
+[ { } ]
 ```
 
 ### HTTP Request
@@ -3118,17 +2864,13 @@ $api->schema(project_schema);
 
 
 ## Add fields to collections
-```shell
+```curl
 curl "app.rakam.io/project/schema/add" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "collection" : "str",
   "fields" : [ {
     "name" : "str",
-    "type" : "STRING",
-    "unique" : true,
-    "descriptiveName" : "str",
-    "description" : "str",
-    "category" : "str"
+    "type" : "STRING"
   } ]
 }
 EOF
@@ -3179,11 +2921,7 @@ $api->addFieldsToSchema(project_add_fields_to_schema);
 ```json
 [ {
   "name" : "str",
-  "type" : "STRING",
-  "unique" : true,
-  "descriptiveName" : "str",
-  "description" : "str",
-  "category" : "str"
+  "type" : "STRING"
 } ]
 ```
 
@@ -3192,8 +2930,8 @@ $api->addFieldsToSchema(project_add_fields_to_schema);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|collection|false|string||
-|fields|false|[SchemaField](#schemafield) array||
+|collection|true|string||
+|fields|true|[SchemaField](#schemafield) array||
 
 
 ### Responses for status codes
@@ -3203,7 +2941,7 @@ $api->addFieldsToSchema(project_add_fields_to_schema);
 
 
 ## Add fields to collections by transforming other schemas
-```shell
+```curl
 curl "app.rakam.io/project/schema/add/custom" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "collection" : "str",
@@ -3258,11 +2996,7 @@ $api->addCustomFieldsToSchema(project_add_custom_fields_to_schema);
 ```json
 [ {
   "name" : "str",
-  "type" : "STRING",
-  "unique" : true,
-  "descriptiveName" : "str",
-  "description" : "str",
-  "category" : "str"
+  "type" : "STRING"
 } ]
 ```
 
@@ -3271,9 +3005,9 @@ $api->addCustomFieldsToSchema(project_add_custom_fields_to_schema);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|collection|false|string||
-|schema_type|false|enum (AVRO)||
-|schema|false|string||
+|collection|true|string||
+|schema_type|true|enum (AVRO)||
+|schema|true|string||
 
 
 ### Responses for status codes
@@ -3283,7 +3017,7 @@ $api->addCustomFieldsToSchema(project_add_custom_fields_to_schema);
 
 
 ## Get project stats
-```shell
+```curl
 curl "app.rakam.io/project/stats" -X POST -d @- << EOF 
 [ "object" ]
 EOF
@@ -3355,43 +3089,13 @@ $api->getStats(project_get_stats);
 Collect data
 
 ## Collect multiple events
-```shell
+```curl
 curl "app.rakam.io/event/batch" -X POST -d @- << EOF 
 {
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "api_version" : "str",
-    "upload_time" : 1,
-    "checksum" : "str",
-    "plugins" : [ {
-      "name" : "str",
-      "arguments" : {
-        "prop" : { }
-      }
-    } ]
-  },
+  "api" : { },
   "events" : [ {
     "collection" : "str",
-    "api" : {
-      "api_key" : "str",
-      "library" : {
-        "name" : "str",
-        "version" : "str"
-      },
-      "api_version" : "str",
-      "upload_time" : 1,
-      "checksum" : "str",
-      "plugins" : [ {
-        "name" : "str",
-        "arguments" : {
-          "prop" : { }
-        }
-      } ]
-    },
+    "api" : { },
     "properties" : "object"
   } ]
 }
@@ -3447,8 +3151,8 @@ $api->batchEvents(event_list);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|api|false|[EventContext](#eventcontext)||
-|events|false|[Event](#event) array||
+|api|true|[EventContext](#eventcontext)||
+|events|true|[Event](#event) array||
 
 
 ### Responses for status codes
@@ -3461,43 +3165,13 @@ $api->batchEvents(event_list);
 Returns 1 if the events are collected.
 
 ## Collect Bulk events
-```shell
+```curl
 curl "app.rakam.io/event/bulk" -X POST -d @- << EOF 
 {
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "api_version" : "str",
-    "upload_time" : 1,
-    "checksum" : "str",
-    "plugins" : [ {
-      "name" : "str",
-      "arguments" : {
-        "prop" : { }
-      }
-    } ]
-  },
+  "api" : { },
   "events" : [ {
     "collection" : "str",
-    "api" : {
-      "api_key" : "str",
-      "library" : {
-        "name" : "str",
-        "version" : "str"
-      },
-      "api_version" : "str",
-      "upload_time" : 1,
-      "checksum" : "str",
-      "plugins" : [ {
-        "name" : "str",
-        "arguments" : {
-          "prop" : { }
-        }
-      } ]
-    },
+    "api" : { },
     "properties" : "object"
   } ]
 }
@@ -3546,8 +3220,7 @@ $api->bulkEvents(event_list);
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
@@ -3556,8 +3229,8 @@ $api->bulkEvents(event_list);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|api|false|[EventContext](#eventcontext)||
-|events|false|[Event](#event) array||
+|api|true|[EventContext](#eventcontext)||
+|events|true|[Event](#event) array||
 
 
 ### Responses for status codes
@@ -3569,89 +3242,13 @@ $api->bulkEvents(event_list);
 
 Bulk API requires master_key as api key and designed to handle large value of data. The endpoint also accepts application/avro and text/csv formats. You need need to set 'collection' and 'master_key' query parameters if the content-type is not application/json.
 
-## Commit Bulk events
-```shell
-curl "app.rakam.io/event/bulk/commit" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "collections" : [ "str" ]
-}
-EOF
-```
-
-```python
-
-from ..api_client import ApiClient;
-from ..configuration import Configuration
-
-apiClient = client.ApiClient("app.rakam.io")
-apiClient.configuration.api_key['master_key'] = 'myApiKey'
-
-api = client.CollectApi();
-api.commit_bulk_events(commit_bulk_events);
-
-
-```
-
-```java
-import io.rakam.client.api.ApiClient;
-import io.rakam.client.api.CollectApi;
-
-ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-CollectApi api = new CollectApi(apiClient);
-api.commitBulkEvents(commitBulkEvents);
-
-```
-
-```php
-
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client->getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\CollectApi($api_client);
-$api->commitBulkEvents(commit_bulk_events);
-
-
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "message" : "str",
-  "success" : true
-}
-```
-
-### HTTP Request
-`POST /event/bulk/commit`
-### Body Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|collections|true|string array||
-
-
-### Responses for status codes
-|200|403|409|
-|----|----|----|
-|[SuccessMessage](#successmessage)|[ErrorMessage](#errormessage)|[ErrorMessage](#errormessage)|
-
-
 ## Collect bulk events from remote
-```shell
+```curl
 curl "app.rakam.io/event/bulk/remote" -X POST -d @- << EOF 
 {
   "collection" : "str",
   "urls" : [ "str" ],
-  "type" : "AVRO",
-  "compression" : "GZIP",
-  "options" : {
-    "prop" : { }
-  }
+  "type" : "AVRO"
 }
 EOF
 ```
@@ -3705,9 +3302,9 @@ $api->bulkEventsRemote(bulk_event_remote);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|collection|false|string||
-|urls|false|string array||
-|type|false|enum (AVRO, CSV, JSON)||
+|collection|true|string||
+|urls|true|string array||
+|type|true|enum (AVRO, CSV, JSON)||
 |compression|false|enum (GZIP)||
 |options|false|object||
 
@@ -3719,26 +3316,11 @@ $api->bulkEventsRemote(bulk_event_remote);
 
 
 ## Collect event
-```shell
+```curl
 curl "app.rakam.io/event/collect" -X POST -d @- << EOF 
 {
   "collection" : "str",
-  "api" : {
-    "api_key" : "str",
-    "library" : {
-      "name" : "str",
-      "version" : "str"
-    },
-    "api_version" : "str",
-    "upload_time" : 1,
-    "checksum" : "str",
-    "plugins" : [ {
-      "name" : "str",
-      "arguments" : {
-        "prop" : { }
-      }
-    } ]
-  },
+  "api" : { },
   "properties" : "object"
 }
 EOF
@@ -3793,9 +3375,82 @@ $api->collectEvent(event);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|collection|true|string||
+|collection|true|string|The collection of event (pageview, touch, click etc.)|
 |api|true|[EventContext](#eventcontext)||
-|properties|true|object||
+|properties|true|object|The properties of the event|
+
+
+### Responses for status codes
+|200|
+|----|
+|integer (int32)|
+
+
+## Copy events directly to database
+```curl
+curl "app.rakam.io/event/copy" -X POST -d @- << EOF 
+{
+  "api" : { },
+  "events" : [ {
+    "collection" : "str",
+    "api" : { },
+    "properties" : "object"
+  } ]
+}
+EOF
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("app.rakam.io")
+
+api = client.CollectApi();
+api.copy_events(event_list);
+
+
+```
+
+```java
+import io.rakam.client.api.ApiClient;
+import io.rakam.client.api.CollectApi;
+
+ApiClient apiClient = new ApiClient();
+
+CollectApi api = new CollectApi(apiClient);
+api.copyEvents(eventList);
+
+```
+
+```php
+
+
+require_once('/path/to/io.rakam.client.api');
+
+$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+
+
+$api = new Swagger\Client\CollectApi($api_client);
+$api->copyEvents(event_list);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+1
+```
+
+### HTTP Request
+`POST /event/copy`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|api|true|[EventContext](#eventcontext)||
+|events|true|[Event](#event) array||
 
 
 ### Responses for status codes
@@ -3810,12 +3465,10 @@ $api->collectEvent(event);
 Analyze data
 
 ## Execute query on event data-set
-```shell
+```curl
 curl "app.rakam.io/query/execute" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
-  "query" : "str",
-  "export_type" : "AVRO",
-  "limit" : 1
+  "query" : "str"
 }
 EOF
 ```
@@ -3829,7 +3482,7 @@ apiClient = client.ApiClient("app.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.QueryApi();
-api.execute(execute);
+api.execute(query_request);
 
 
 ```
@@ -3841,7 +3494,7 @@ import io.rakam.client.api.QueryApi;
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 QueryApi api = new QueryApi(apiClient);
-api.execute(execute);
+api.execute(queryRequest);
 
 ```
 
@@ -3855,7 +3508,7 @@ $api_client = new Swagger\Client\ApiClient('app.rakam.io');
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\QueryApi($api_client);
-$api->execute(execute);
+$api->execute(query_request);
 
 
 ```
@@ -3863,28 +3516,7 @@ $api->execute(execute);
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "metadata" : [ {
-    "name" : "str",
-    "type" : "STRING",
-    "unique" : true,
-    "descriptiveName" : "str",
-    "description" : "str",
-    "category" : "str"
-  } ],
-  "result" : [ [ "object" ] ],
-  "error" : {
-    "message" : "str",
-    "sqlState" : "str",
-    "errorCode" : 1,
-    "errorLine" : 1,
-    "charPositionInLine" : 1
-  },
-  "properties" : {
-    "prop" : { }
-  },
-  "failed" : true
-}
+{ }
 ```
 
 ### HTTP Request
@@ -3893,18 +3525,20 @@ $api->execute(execute);
 |Parameter|Required|Type|Description|
 |----|----|----|----|
 |query|true|string||
-|export_type|true|enum (AVRO, CSV, JSON)||
+|export_type|false|enum (AVRO, CSV, JSON)||
+|sampling|false|[QuerySampling](#querysampling)||
+|default_schema|false|string|collection|
 |limit|false|integer (int32)||
 
 
 ### Responses for status codes
 |200|403|
 |----|----|
-|[QueryResult](#queryresult)|[ErrorMessage](#errormessage)|
+|[ResponseQueryResult](#responsequeryresult)|[ErrorMessage](#errormessage)|
 
 
 ## Explain query
-```shell
+```curl
 curl "app.rakam.io/query/explain" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "query" : "str"
@@ -3955,18 +3589,7 @@ $api->explain(explain);
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "groupBy" : [ {
-    "index" : 1,
-    "expression" : "str"
-  } ],
-  "orderBy" : [ {
-    "ordering" : "ASCENDING",
-    "index" : 1,
-    "expression" : "str"
-  } ],
-  "limit" : 1
-}
+{ }
 ```
 
 ### HTTP Request
@@ -3984,7 +3607,7 @@ $api->explain(explain);
 
 
 ## Test query
-```shell
+```curl
 curl "app.rakam.io/query/metadata" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "query" : "str"
@@ -4037,11 +3660,7 @@ $api->metadata(query_metadata);
 ```json
 [ {
   "name" : "str",
-  "type" : "STRING",
-  "unique" : true,
-  "descriptiveName" : "str",
-  "description" : "str",
-  "category" : "str"
+  "type" : "STRING"
 } ]
 ```
 
@@ -4050,7 +3669,7 @@ $api->metadata(query_metadata);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|query|false|string||
+|query|true|string||
 
 
 ### Responses for status codes
@@ -4065,18 +3684,12 @@ $api->metadata(query_metadata);
 Materialized view
 
 ## Create view
-```shell
+```curl
 curl "app.rakam.io/materialized-view/create" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "table_name" : "str",
   "name" : "str",
-  "query" : "str",
-  "update_interval" : "str",
-  "incremental" : true,
-  "options" : {
-    "prop" : { }
-  },
-  "last_update" : "2016-03-03T10:15:30.00Z"
+  "query" : "str"
 }
 EOF
 ```
@@ -4125,8 +3738,7 @@ $api->createView(materialized_view);
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
@@ -4141,7 +3753,6 @@ $api->createView(materialized_view);
 |update_interval|false|string||
 |incremental|false|boolean||
 |options|false|object||
-|last_update|false|string (date-time)||
 
 
 ### Responses for status codes
@@ -4151,7 +3762,7 @@ $api->createView(materialized_view);
 
 
 ## Delete materialized view
-```shell
+```curl
 curl "app.rakam.io/materialized-view/delete" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "table_name" : "str"
@@ -4203,8 +3814,7 @@ $api->deleteView(materialized_view_delete_view);
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
@@ -4213,7 +3823,7 @@ $api->deleteView(materialized_view_delete_view);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|table_name|false|string||
+|table_name|true|string||
 
 
 ### Responses for status codes
@@ -4223,7 +3833,7 @@ $api->deleteView(materialized_view_delete_view);
 
 
 ## Get view
-```shell
+```curl
 curl "app.rakam.io/materialized-view/get" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "table_name" : "str"
@@ -4277,13 +3887,7 @@ $api->getView(materialized_view_get_view);
 {
   "table_name" : "str",
   "name" : "str",
-  "query" : "str",
-  "update_interval" : "str",
-  "incremental" : true,
-  "options" : {
-    "prop" : { }
-  },
-  "last_update" : "2016-03-03T10:15:30.00Z"
+  "query" : "str"
 }
 ```
 
@@ -4292,7 +3896,7 @@ $api->getView(materialized_view_get_view);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|table_name|false|string||
+|table_name|true|string||
 
 
 ### Responses for status codes
@@ -4302,7 +3906,7 @@ $api->getView(materialized_view_get_view);
 
 
 ## List views
-```shell
+```curl
 curl "app.rakam.io/materialized-view/list" -H "read_key: myread_key" -X POST
 ```
 
@@ -4352,13 +3956,7 @@ $api->listViews();
 [ {
   "table_name" : "str",
   "name" : "str",
-  "query" : "str",
-  "update_interval" : "str",
-  "incremental" : true,
-  "options" : {
-    "prop" : { }
-  },
-  "last_update" : "2016-03-03T10:15:30.00Z"
+  "query" : "str"
 } ]
 ```
 
@@ -4371,11 +3969,9 @@ $api->listViews();
 
 
 ## Get schemas
-```shell
+```curl
 curl "app.rakam.io/materialized-view/schema" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "names" : [ "str" ]
-}
+{ }
 EOF
 ```
 
@@ -4422,17 +4018,7 @@ $api->getSchemaOfView(materialized_view_get_schema_of_view);
 > The above command returns JSON structured like this:
 
 ```json
-[ {
-  "name" : "str",
-  "fields" : [ {
-    "name" : "str",
-    "type" : "STRING",
-    "unique" : true,
-    "descriptiveName" : "str",
-    "description" : "str",
-    "category" : "str"
-  } ]
-} ]
+[ { } ]
 ```
 
 ### HTTP Request
@@ -4455,19 +4041,13 @@ $api->getSchemaOfView(materialized_view_get_schema_of_view);
 Continuous query
 
 ## Create stream
-```shell
+```curl
 curl "app.rakam.io/continuous-query/create" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "continuous_query" : {
-    "table_name" : "str",
     "name" : "str",
-    "query" : "str",
-    "partition_keys" : [ "str" ],
-    "options" : {
-      "prop" : { }
-    }
-  },
-  "replay" : true
+    "query" : "str"
+  }
 }
 EOF
 ```
@@ -4516,8 +4096,7 @@ $api->createQuery(continuous_query_create_query);
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
@@ -4526,7 +4105,7 @@ $api->createQuery(continuous_query_create_query);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|continuous_query|false|[ContinuousQuery](#continuousquery)||
+|continuous_query|true|[ContinuousQuery](#continuousquery)||
 |replay|false|boolean||
 
 
@@ -4542,7 +4121,7 @@ Rakam will process data in batches keep the result of query in-memory all the ti
 Compared to reports, continuous queries continuously aggregate the data on the fly and the result is always available either in-memory or disk.
 
 ## Delete stream
-```shell
+```curl
 curl "app.rakam.io/continuous-query/delete" -H "master_key: mymaster_key" -X POST -d @- << EOF 
 {
   "table_name" : "str"
@@ -4594,8 +4173,7 @@ $api->deleteQuery(continuous_query_delete_query);
 
 ```json
 {
-  "message" : "str",
-  "success" : true
+  "message" : "str"
 }
 ```
 
@@ -4604,7 +4182,7 @@ $api->deleteQuery(continuous_query_delete_query);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|table_name|false|string||
+|table_name|true|string||
 
 
 ### Responses for status codes
@@ -4614,7 +4192,7 @@ $api->deleteQuery(continuous_query_delete_query);
 
 
 ## Get continuous query
-```shell
+```curl
 curl "app.rakam.io/continuous-query/get" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "table_name" : "str"
@@ -4666,13 +4244,8 @@ $api->getQuery(continuous_query_get_query);
 
 ```json
 {
-  "table_name" : "str",
   "name" : "str",
-  "query" : "str",
-  "partition_keys" : [ "str" ],
-  "options" : {
-    "prop" : { }
-  }
+  "query" : "str"
 }
 ```
 
@@ -4681,7 +4254,7 @@ $api->getQuery(continuous_query_get_query);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|table_name|false|string||
+|table_name|true|string||
 
 
 ### Responses for status codes
@@ -4691,7 +4264,7 @@ $api->getQuery(continuous_query_get_query);
 
 
 ## List queries
-```shell
+```curl
 curl "app.rakam.io/continuous-query/list" -H "read_key: myread_key" -X POST
 ```
 
@@ -4739,13 +4312,8 @@ $api->listQueries();
 
 ```json
 [ {
-  "table_name" : "str",
   "name" : "str",
-  "query" : "str",
-  "partition_keys" : [ "str" ],
-  "options" : {
-    "prop" : { }
-  }
+  "query" : "str"
 } ]
 ```
 
@@ -4758,11 +4326,9 @@ $api->listQueries();
 
 
 ## Get query schema
-```shell
+```curl
 curl "app.rakam.io/continuous-query/schema" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "names" : [ "str" ]
-}
+{ }
 EOF
 ```
 
@@ -4809,17 +4375,7 @@ $api->getSchemaOfQuery(continuous_query_get_schema_of_query);
 > The above command returns JSON structured like this:
 
 ```json
-[ {
-  "name" : "str",
-  "fields" : [ {
-    "name" : "str",
-    "type" : "STRING",
-    "unique" : true,
-    "descriptiveName" : "str",
-    "description" : "str",
-    "category" : "str"
-  } ]
-} ]
+[ { } ]
 ```
 
 ### HTTP Request
@@ -4837,7 +4393,7 @@ $api->getSchemaOfQuery(continuous_query_get_schema_of_query);
 
 
 ## Test continuous query
-```shell
+```curl
 curl "app.rakam.io/continuous-query/test" -H "read_key: myread_key" -X POST -d @- << EOF 
 {
   "query" : "str"
@@ -4896,7 +4452,7 @@ true
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|query|false|string||
+|query|true|string||
 
 
 ### Responses for status codes
@@ -4910,7 +4466,7 @@ true
 ### User
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|id||true|object||
+|id|The value may be a string or a numeric value.|true|object||
 |api||true|[UserContext](#usercontext)||
 |properties||true|object||
 
@@ -4943,27 +4499,28 @@ true
 |name|description|required|schema|default|
 |----|----|----|----|----|
 |metadata||true|[SchemaField](#schemafield) array||
-|result|Each row is an array that contains the values for the columns that are defined in metadata property.|false|object array array||
+|result|Each row is an array that contains the values for the columns that are defined in metadata property.|true|object array array||
 |error||true|[QueryError](#queryerror)||
 |properties||true|object||
-|failed||false|boolean|false|
+|failed||false|boolean||
 
 
 ### ContinuousQuery
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|table_name||true|string||
-|name||true|string||
-|query||true|string||
+|table_name||false|string||
+|name|Name|true|string||
+|query|The sql query that will be executed and materialized|true|string||
 |partition_keys||false|string array||
-|options||false|object||
+|options|Additional information about the continuous query|false|object||
+|windowDuration||false|string||
 
 
 ### SuccessMessage
 |name|description|required|schema|default|
 |----|----|----|----|----|
 |message||true|string||
-|success||false|boolean|false|
+|success||false|boolean||
 
 
 ### MetadataResponse
@@ -4984,28 +4541,11 @@ true
 |name|description|required|schema|default|
 |----|----|----|----|----|
 |id||true|object||
-|set_properties||true|object||
-|set_properties_once||true|object||
-|increment_properties||true|object||
-|unset_properties||true|string array||
-|time||true|integer (int64)||
-|user||false|object||
-
-
-### UserContext
-|name|description|required|schema|default|
-|----|----|----|----|----|
-|api_key||true|string||
-|library||true|[Library](#library)||
-|upload_time||true|integer (int64)||
-|checksum||true|string||
-
-
-### Reference
-|name|description|required|schema|default|
-|----|----|----|----|----|
-|type||false|enum (COLUMN, REFERENCE)||
-|value||false|string||
+|set_properties||false|object||
+|set_properties_once||false|object||
+|increment_properties||false|object||
+|unset_properties||false|string array||
+|time||false|integer (int64)||
 
 
 ### CollectionEvent
@@ -5015,21 +4555,53 @@ true
 |properties||false|object||
 
 
-### PrecalculatedTable
+### UserContext
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|api_key||false|string||
+|library||false|[Library](#library)||
+|upload_time||false|integer (int64)||
+|checksum||false|string||
+
+
+### Reference
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|type||true|enum (COLUMN, REFERENCE)||
+|value||true|string||
+
+
+### QuerySampling
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|method||false|enum (BERNOULLI, SYSTEM)||
+|percentage||false|integer (int32)||
+
+
+### EventMapperDescription
 |name|description|required|schema|default|
 |----|----|----|----|----|
 |name||false|string||
-|tableName||false|string||
+|description||false|string||
+|dependentFields||false|object||
+|constantFields||false|[SchemaField](#schemafield) array||
+
+
+### PrecalculatedTable
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|name||true|string||
+|tableName||true|string||
 
 
 ### EmailActionConfig
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|title||false|string||
-|content||false|string||
+|title||true|string||
+|content||true|string||
 |columnName||false|string||
 |defaultValues||false|object||
-|richText||false|boolean|false|
+|richText||false|boolean||
 
 
 ### RetentionAction
@@ -5041,9 +4613,19 @@ true
 ### ResponseQuery
 |name|description|required|schema|default|
 |----|----|----|----|----|
+|with||false|object||
 |groupBy||false|[GroupBy](#groupby) array||
 |orderBy||false|[Ordering](#ordering) array||
 |limit||false|integer (int64)||
+|queryLocation||false|[NodeLocation](#nodelocation)||
+
+
+### ProjectApiKeys
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|master_key||false|string||
+|read_key||false|string||
+|write_key||false|string||
 
 
 ### EventFilter
@@ -5053,14 +4635,6 @@ true
 |timeframe||false|[Timeframe](#timeframe)||
 |aggregation||false|[EventFilterAggregation](#eventfilteraggregation)||
 |filterExpression||false|string||
-
-
-### ProjectApiKeys
-|name|description|required|schema|default|
-|----|----|----|----|----|
-|master_key||false|string||
-|read_key||false|string||
-|write_key||false|string||
 
 
 ### Sorting
@@ -5073,20 +4647,19 @@ true
 ### EventContext
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|api_key||true|string||
-|library||true|[Library](#library)||
-|api_version||true|string||
-|upload_time||true|integer (int64)||
-|checksum||true|string||
-|plugins||true|[MappingPlugin](#mappingplugin) array||
+|api_key||false|string||
+|library|Optional library information for statistics|false|[Library](#library)||
+|api_version||false|string||
+|upload_time||false|integer (int64)||
+|checksum|Optional checksum for verify the body content|false|string||
 
 
 ### SchemaField
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|name||false|string||
-|type||false|enum (STRING, INTEGER, DECIMAL, DOUBLE, LONG, BOOLEAN, DATE, TIME, TIMESTAMP, BINARY, ARRAY_STRING, ARRAY_INTEGER, ARRAY_DECIMAL, ARRAY_DOUBLE, ARRAY_LONG, ARRAY_BOOLEAN, ARRAY_DATE, ARRAY_TIME, ARRAY_TIMESTAMP, ARRAY_BINARY, MAP_STRING, MAP_INTEGER, MAP_DECIMAL, MAP_DOUBLE, MAP_LONG, MAP_BOOLEAN, MAP_DATE, MAP_TIME, MAP_TIMESTAMP, MAP_BINARY)||
-|unique||false|boolean|false|
+|name||true|string||
+|type||true|enum (STRING, INTEGER, DECIMAL, DOUBLE, LONG, BOOLEAN, DATE, TIME, TIMESTAMP, BINARY, ARRAY_STRING, ARRAY_INTEGER, ARRAY_DECIMAL, ARRAY_DOUBLE, ARRAY_LONG, ARRAY_BOOLEAN, ARRAY_DATE, ARRAY_TIME, ARRAY_TIMESTAMP, ARRAY_BINARY, MAP_STRING, MAP_INTEGER, MAP_DECIMAL, MAP_DOUBLE, MAP_LONG, MAP_BOOLEAN, MAP_DATE, MAP_TIME, MAP_TIMESTAMP, MAP_BINARY)||
+|unique||false|boolean||
 |descriptiveName||false|string||
 |description||false|string||
 |category||false|string||
@@ -5098,20 +4671,9 @@ true
 |name||false|string||
 |description||false|string||
 |className||false|string||
-|isActive||false|boolean|false|
+|isActive||false|boolean||
 |condition||false|[Condition](#condition)||
 |properties||false|[ConfigItem](#configitem) array||
-
-
-### SingleUserBatchOperations
-|name|description|required|schema|default|
-|----|----|----|----|----|
-|set_properties||true|object||
-|set_properties_once||true|object||
-|increment_properties||true|object||
-|unset_properties||true|string array||
-|time||true|integer (int64)||
-|user||false|object||
 
 
 ### MaterializedViewSchema
@@ -5121,12 +4683,23 @@ true
 |fields||false|[SchemaField](#schemafield) array||
 
 
+### SingleUserBatchOperations
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|set_properties||false|object||
+|set_properties_once||false|object||
+|increment_properties||false|object||
+|unset_properties||false|string array||
+|time||true|integer (int64)||
+|user||false|object||
+
+
 ### Event
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|collection||true|string||
+|collection|The collection of event (pageview, touch, click etc.)|true|string||
 |api||true|[EventContext](#eventcontext)||
-|properties||true|object||
+|properties|The properties of the event|true|object||
 
 
 ### Collection
@@ -5143,16 +4716,23 @@ true
 |name||true|string||
 |query||true|string||
 |update_interval||false|string||
-|incremental||false|boolean|false|
+|incremental||false|boolean||
 |options||false|object||
-|last_update||false|string (date-time)||
 
 
 ### ErrorMessage
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|error||false|string||
-|error_code||false|integer (int32)||
+|error||true|string||
+|error_code||true|integer (int32)||
+
+
+### ResponseQueryResult
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|data||false|[QueryResult](#queryresult)||
+|status||false|[HttpResponseStatus](#httpresponsestatus)||
+|cookies||false|[Cookie](#cookie) array||
 
 
 ### FunnelStep
