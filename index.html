@@ -92,7 +92,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;curl&quot;,&quot;java&quot;,&quot;php&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;curl&quot;,null]">
   <div class="header" style="
     position: fixed;
     top: 0;
@@ -116,9 +116,7 @@
      <!--<h1 class="text-logo" style="margin: 7px 15px">RAKAM</h1>-->
         <div class="lang-selector">
               <a href="#" data-language-name="curl">curl</a>
-              <a href="#" data-language-name="java">java</a>
-              <a href="#" data-language-name="php">php</a>
-              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name=""></a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -134,7 +132,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id="introduction">Introduction</h1>
-<pre class="highlight plaintext"><code>We have language bindings in java, php, python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+<pre class="highlight plaintext"><code>We have language bindings in html! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 </code></pre>
 
 <p>An analytics platform API that lets you create your own analytics services.</p>
@@ -170,40 +168,6 @@ BasePath: /</p>
   "collections" : [ "str" ]
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">EventexplorerApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">analyze_events</span><span class="p">(</span><span class="n">analyze_request</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.EventexplorerApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">EventexplorerApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventexplorerApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">analyzeEvents</span><span class="o">(</span><span class="n">analyzeRequest</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\EventexplorerApi($api_client);
-$api-&gt;analyzeEvents(analyze_request);
-
-
 </code></pre>
 
 <blockquote>
@@ -299,40 +263,6 @@ $api-&gt;analyzeEvents(analyze_request);
 <h2 id="event-statistics">Event statistics</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/event-explorer/extra_dimensions" -H "read_key: myread_key" -X GET
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">EventexplorerApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_extra_dimensions</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.EventexplorerApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">EventexplorerApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventexplorerApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getExtraDimensions</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\EventexplorerApi($api_client);
-$api-&gt;getExtraDimensions();
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -370,40 +300,6 @@ $api-&gt;getExtraDimensions();
   "tableName" : "str"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">EventexplorerApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">create_precomputed_table</span><span class="p">(</span><span class="n">create_precomputed_table</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.EventexplorerApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">EventexplorerApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventexplorerApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">createPrecomputedTable</span><span class="o">(</span><span class="n">createPrecomputedTable</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\EventexplorerApi($api_client);
-$api-&gt;createPrecomputedTable(create_precomputed_table);
-
-
 </code></pre>
 
 <blockquote>
@@ -482,40 +378,6 @@ $api-&gt;createPrecomputedTable(create_precomputed_table);
   "endDate" : "2016-03-03T10:15:30.00Z"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">EventexplorerApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_event_statistics</span><span class="p">(</span><span class="n">event_explorer_get_event_statistics</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.EventexplorerApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">EventexplorerApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventexplorerApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getEventStatistics</span><span class="o">(</span><span class="n">eventExplorerGetEventStatistics</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\EventexplorerApi($api_client);
-$api-&gt;getEventStatistics(event_explorer_get_event_statistics);
-
-
 </code></pre>
 
 <blockquote>
@@ -602,40 +464,6 @@ $api-&gt;getEventStatistics(event_explorer_get_event_statistics);
   "endDate" : "2015-01-20"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">FunnelApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">analyze_funnel</span><span class="p">(</span><span class="n">funnel_query</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.FunnelApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">FunnelApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FunnelApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">analyzeFunnel</span><span class="o">(</span><span class="n">funnelQuery</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\FunnelApi($api_client);
-$api-&gt;analyzeFunnel(funnel_query);
-
-
 </code></pre>
 
 <blockquote>
@@ -739,40 +567,6 @@ $api-&gt;analyzeFunnel(funnel_query);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RealtimeApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span><span class="n">real_time_report</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.RealtimeApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">RealtimeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RealtimeApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">createTable</span><span class="o">(</span><span class="n">realTimeReport</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\RealtimeApi($api_client);
-$api-&gt;createTable(real_time_report);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -855,40 +649,6 @@ $api-&gt;createTable(real_time_report);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RealtimeApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">delete_table</span><span class="p">(</span><span class="n">realtime_delete_table</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.RealtimeApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">RealtimeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RealtimeApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">deleteTable</span><span class="o">(</span><span class="n">realtimeDeleteTable</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\RealtimeApi($api_client);
-$api-&gt;deleteTable(realtime_delete_table);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -944,40 +704,6 @@ $api-&gt;deleteTable(realtime_delete_table);
   }
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RealtimeApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">query_table</span><span class="p">(</span><span class="n">realtime_query_table</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.RealtimeApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">RealtimeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RealtimeApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">queryTable</span><span class="o">(</span><span class="n">realtimeQueryTable</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\RealtimeApi($api_client);
-$api-&gt;queryTable(realtime_query_table);
-
-
 </code></pre>
 
 <blockquote>
@@ -1063,40 +789,6 @@ $api-&gt;queryTable(realtime_query_table);
 <h2 id="list-queries">List queries</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/realtime/list" -H "read_key: myread_key" -X POST
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RealtimeApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">list_tables</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.RealtimeApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">RealtimeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RealtimeApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">listTables</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\RealtimeApi($api_client);
-$api-&gt;listTables();
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1140,40 +832,6 @@ $api-&gt;listTables();
   "endDate" : "2015-01-20"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RetentionApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">analyze_retention</span><span class="p">(</span><span class="n">retention_query</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.RetentionApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">RetentionApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RetentionApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">analyzeRetention</span><span class="o">(</span><span class="n">retentionQuery</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\RetentionApi($api_client);
-$api-&gt;analyzeRetention(retention_query);
-
-
 </code></pre>
 
 <blockquote>
@@ -1297,40 +955,6 @@ $api-&gt;analyzeRetention(retention_query);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'write_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">batch_single_user_operations</span><span class="p">(</span><span class="n">single_user_batch_operation_request</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"write_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">batchSingleUserOperations</span><span class="o">(</span><span class="n">singleUserBatchOperationRequest</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("write_key", "myApiKey");
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;batchSingleUserOperations(single_user_batch_operation_request);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1399,40 +1023,6 @@ $api-&gt;batchSingleUserOperations(single_user_batch_operation_request);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'write_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">create_users</span><span class="p">(</span><span class="n">user_create_users</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"write_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">createUsers</span><span class="o">(</span><span class="n">userCreateUsers</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("write_key", "myApiKey");
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;createUsers(user_create_users);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1487,40 +1077,6 @@ $api-&gt;createUsers(user_create_users);
   } ]
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">batch_user_operations</span><span class="p">(</span><span class="n">batch_user_operation_request</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">batchUserOperations</span><span class="o">(</span><span class="n">batchUserOperationRequest</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;batchUserOperations(batch_user_operation_request);
-
-
 </code></pre>
 
 <blockquote>
@@ -1581,38 +1137,6 @@ $api-&gt;batchUserOperations(batch_user_operation_request);
   "properties" : "object"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">createUser</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;createUser(user);
-
-
 </code></pre>
 
 <blockquote>
@@ -1675,40 +1199,6 @@ $api-&gt;createUser(user);
   "cache_eviction" : "str"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">create_segment</span><span class="p">(</span><span class="n">user_create_segment</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">createSegment</span><span class="o">(</span><span class="n">userCreateSegment</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;createSegment(user_create_segment);
-
-
 </code></pre>
 
 <blockquote>
@@ -1788,40 +1278,6 @@ $api-&gt;createSegment(user_create_segment);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_user</span><span class="p">(</span><span class="n">user_get_user</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getUser</span><span class="o">(</span><span class="n">userGetUser</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;getUser(user_get_user);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1877,40 +1333,6 @@ $api-&gt;getUser(user_get_user);
   "user" : "str"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_events</span><span class="p">(</span><span class="n">user_get_events</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getEvents</span><span class="o">(</span><span class="n">userGetEvents</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;getEvents(user_get_events);
-
-
 </code></pre>
 
 <blockquote>
@@ -1985,40 +1407,6 @@ $api-&gt;getEvents(user_get_events);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">increment_property</span><span class="p">(</span><span class="n">user_increment_property</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">incrementProperty</span><span class="o">(</span><span class="n">userIncrementProperty</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;incrementProperty(user_increment_property);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2087,40 +1475,6 @@ $api-&gt;incrementProperty(user_increment_property);
 <h2 id="get-user-storage-metadata">Get user storage metadata</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/user/metadata" -H "read_key: myread_key" -X GET
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getMetadata</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;getMetadata();
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2150,40 +1504,6 @@ $api-&gt;getMetadata();
 <pre class="highlight plaintext"><code>curl "app.rakam.io/user/search" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 { }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">search_users</span><span class="p">(</span><span class="n">user_search_users</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">searchUsers</span><span class="o">(</span><span class="n">userSearchUsers</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;searchUsers(user_search_users);
-
-
 </code></pre>
 
 <blockquote>
@@ -2279,38 +1599,6 @@ $api-&gt;searchUsers(user_search_users);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">setProperties</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;setProperties(user);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2375,38 +1663,6 @@ $api-&gt;setProperties(user);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">set_properties_once</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">setPropertiesOnce</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;setPropertiesOnce(user);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2470,38 +1726,6 @@ $api-&gt;setPropertiesOnce(user);
   "properties" : [ "str" ]
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">unset_property</span><span class="p">(</span><span class="n">user_unset_property</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UserApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">unsetProperty</span><span class="o">(</span><span class="n">userUnsetProperty</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\UserApi($api_client);
-$api-&gt;unsetProperty(user_unset_property);
-
-
 </code></pre>
 
 <blockquote>
@@ -2574,40 +1798,6 @@ $api-&gt;unsetProperty(user_unset_property);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UseractionApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">user_email_action_batch</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UseractionApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">UseractionApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UseractionApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">batch</span><span class="o">(</span><span class="n">userEmailActionBatch</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\UseractionApi($api_client);
-$api-&gt;batch(user_email_action_batch);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2674,40 +1864,6 @@ $api-&gt;batch(user_email_action_batch);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UseractionApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">user_email_action_send</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.UseractionApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">UseractionApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UseractionApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">userEmailActionSend</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\UseractionApi($api_client);
-$api-&gt;send(user_email_action_send);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2764,40 +1920,6 @@ $api-&gt;send(user_email_action_send);
 <h2 id="export-recipe">Export recipe</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/recipe/export" -H "master_key: mymaster_key" -X GET
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RecipeApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">export_recipe</span><span class="p">(</span><span class="n">accept</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.RecipeApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">RecipeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RecipeApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">exportRecipe</span><span class="o">(</span><span class="n">accept</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\RecipeApi($api_client);
-$api-&gt;exportRecipe(accept);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2844,40 +1966,6 @@ $api-&gt;exportRecipe(accept);
 <h2 id="install-recipe">Install recipe</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/recipe/install" -H "master_key: mymaster_key" -X POST
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RecipeApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">install_recipe</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.RecipeApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">RecipeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RecipeApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">installRecipe</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\RecipeApi($api_client);
-$api-&gt;installRecipe();
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2912,40 +2000,6 @@ $api-&gt;installRecipe();
 <h2 id="list-installed-modules">List installed modules</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/admin/configurations" -H "master_key: mymaster_key" -X GET
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_configurations</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getConfigurations</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;getConfigurations();
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -2973,40 +2027,6 @@ $api-&gt;getConfigurations();
 
 <h2 id="list-event-mappers">List event mappers</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/admin/event_mappers" -H "master_key: mymaster_key" -X GET
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_event_mappers</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getEventMappers</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;getEventMappers();
-
-
 </code></pre>
 
 <blockquote>
@@ -3037,40 +2057,6 @@ $api-&gt;getEventMappers();
 <pre class="highlight plaintext"><code>curl "app.rakam.io/admin/lock_key" -H "master_key: mymaster_key" -X POST -d @- &lt;&lt; EOF 
 { }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">check_lock_key</span><span class="p">(</span><span class="n">check_lock_key</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">checkLockKey</span><span class="o">(</span><span class="n">checkLockKey</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;checkLockKey(check_lock_key);
-
-
 </code></pre>
 
 <blockquote>
@@ -3118,40 +2104,6 @@ $api-&gt;checkLockKey(check_lock_key);
 <h2 id="get-types">Get types</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/admin/types" -H "master_key: mymaster_key" -X GET
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_types</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getTypes</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;getTypes();
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -3186,38 +2138,6 @@ $api-&gt;getTypes();
   "project" : "str"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">check_api_keys</span><span class="p">(</span><span class="n">project_check_api_keys</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">checkApiKeys</span><span class="o">(</span><span class="n">projectCheckApiKeys</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;checkApiKeys(project_check_api_keys);
-
-
 </code></pre>
 
 <blockquote>
@@ -3269,40 +2189,6 @@ $api-&gt;checkApiKeys(project_check_api_keys);
 <h2 id="get-collection-names">Get collection names</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/project/collection" -H "read_key: myread_key" -X POST
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">collections</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">collections</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;collections();
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -3334,38 +2220,6 @@ $api-&gt;collections();
   "name" : "str"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">create_project</span><span class="p">(</span><span class="n">create_project</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">createProject</span><span class="o">(</span><span class="n">createProject</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;createProject(create_project);
-
-
 </code></pre>
 
 <blockquote>
@@ -3417,40 +2271,6 @@ $api-&gt;createProject(create_project);
 <h2 id="create-api-keys">Create API Keys</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/project/create-api-keys" -H "master_key: mymaster_key" -X POST
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">create_api_keys</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">createApiKeys</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;createApiKeys();
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -3478,40 +2298,6 @@ $api-&gt;createApiKeys();
 
 <h2 id="delete-project">Delete project</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/project/delete" -H "master_key: mymaster_key" -X DELETE
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">delete_project</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">deleteProject</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;deleteProject();
-
-
 </code></pre>
 
 <blockquote>
@@ -3544,40 +2330,6 @@ $api-&gt;deleteProject();
 <pre class="highlight plaintext"><code>curl "app.rakam.io/project/list" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 { }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_projects</span><span class="p">(</span><span class="n">get_projects</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getProjects</span><span class="o">(</span><span class="n">getProjects</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;getProjects(get_projects);
-
-
 </code></pre>
 
 <blockquote>
@@ -3629,38 +2381,6 @@ $api-&gt;getProjects(get_projects);
   "master_key" : "str"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">revoke_api_keys</span><span class="p">(</span><span class="n">revoke_api_keys</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">revokeApiKeys</span><span class="o">(</span><span class="n">revokeApiKeys</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;revokeApiKeys(revoke_api_keys);
-
-
 </code></pre>
 
 <blockquote>
@@ -3716,40 +2436,6 @@ $api-&gt;revokeApiKeys(revoke_api_keys);
 { }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">project_schema</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">schema</span><span class="o">(</span><span class="n">projectSchema</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;schema(project_schema);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -3803,40 +2489,6 @@ $api-&gt;schema(project_schema);
   } ]
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">add_fields_to_schema</span><span class="p">(</span><span class="n">project_add_fields_to_schema</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">addFieldsToSchema</span><span class="o">(</span><span class="n">projectAddFieldsToSchema</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;addFieldsToSchema(project_add_fields_to_schema);
-
-
 </code></pre>
 
 <blockquote>
@@ -3898,40 +2550,6 @@ $api-&gt;addFieldsToSchema(project_add_fields_to_schema);
   "schema" : "str"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">add_custom_fields_to_schema</span><span class="p">(</span><span class="n">project_add_custom_fields_to_schema</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">addCustomFieldsToSchema</span><span class="o">(</span><span class="n">projectAddCustomFieldsToSchema</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;addCustomFieldsToSchema(project_add_custom_fields_to_schema);
-
-
 </code></pre>
 
 <blockquote>
@@ -3996,38 +2614,6 @@ $api-&gt;addCustomFieldsToSchema(project_add_custom_fields_to_schema);
 [ "object" ]
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_stats</span><span class="p">(</span><span class="n">project_get_stats</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.AdminApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getStats</span><span class="o">(</span><span class="n">projectGetStats</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\AdminApi($api_client);
-$api-&gt;getStats(project_get_stats);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -4086,38 +2672,6 @@ $api-&gt;getStats(project_get_stats);
   } ]
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">CollectApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">batch_events</span><span class="p">(</span><span class="n">event_list</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.CollectApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">CollectApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CollectApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">batchEvents</span><span class="o">(</span><span class="n">eventList</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\CollectApi($api_client);
-$api-&gt;batchEvents(event_list);
-
-
 </code></pre>
 
 <blockquote>
@@ -4182,38 +2736,6 @@ $api-&gt;batchEvents(event_list);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">CollectApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">bulk_events</span><span class="p">(</span><span class="n">event_list</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.CollectApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">CollectApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CollectApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">bulkEvents</span><span class="o">(</span><span class="n">eventList</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\CollectApi($api_client);
-$api-&gt;bulkEvents(event_list);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -4273,38 +2795,6 @@ $api-&gt;bulkEvents(event_list);
   "type" : "AVRO"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">CollectApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">bulk_events_remote</span><span class="p">(</span><span class="n">bulk_event_remote</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.CollectApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">CollectApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CollectApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">bulkEventsRemote</span><span class="o">(</span><span class="n">bulkEventRemote</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\CollectApi($api_client);
-$api-&gt;bulkEventsRemote(bulk_event_remote);
-
-
 </code></pre>
 
 <blockquote>
@@ -4382,38 +2872,6 @@ $api-&gt;bulkEventsRemote(bulk_event_remote);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">CollectApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">collect_event</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.CollectApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">CollectApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CollectApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">collectEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\CollectApi($api_client);
-$api-&gt;collectEvent(event);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -4479,38 +2937,6 @@ $api-&gt;collectEvent(event);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">CollectApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">copy_events</span><span class="p">(</span><span class="n">event_list</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.CollectApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-
-<span class="n">CollectApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CollectApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">copyEvents</span><span class="o">(</span><span class="n">eventList</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-
-$api = new Swagger\Client\CollectApi($api_client);
-$api-&gt;copyEvents(event_list);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -4568,40 +2994,6 @@ $api-&gt;copyEvents(event_list);
   "query" : "str"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">QueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query_request</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.QueryApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">QueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">queryRequest</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\QueryApi($api_client);
-$api-&gt;execute(query_request);
-
-
 </code></pre>
 
 <blockquote>
@@ -4677,40 +3069,6 @@ $api-&gt;execute(query_request);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">QueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="n">explain</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.QueryApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">QueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">explain</span><span class="o">(</span><span class="n">explain</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\QueryApi($api_client);
-$api-&gt;explain(explain);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -4760,40 +3118,6 @@ $api-&gt;explain(explain);
   "query" : "str"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">QueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="n">query_metadata</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.QueryApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">QueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">metadata</span><span class="o">(</span><span class="n">queryMetadata</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\QueryApi($api_client);
-$api-&gt;metadata(query_metadata);
-
-
 </code></pre>
 
 <blockquote>
@@ -4853,40 +3177,6 @@ $api-&gt;metadata(query_metadata);
   "query" : "str"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">create_view</span><span class="p">(</span><span class="n">materialized_view</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.MaterializedviewApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">createView</span><span class="o">(</span><span class="n">materializedView</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\MaterializedviewApi($api_client);
-$api-&gt;createView(materialized_view);
-
-
 </code></pre>
 
 <blockquote>
@@ -4970,40 +3260,6 @@ $api-&gt;createView(materialized_view);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">delete_view</span><span class="p">(</span><span class="n">materialized_view_delete_view</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.MaterializedviewApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">deleteView</span><span class="o">(</span><span class="n">materializedViewDeleteView</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\MaterializedviewApi($api_client);
-$api-&gt;deleteView(materialized_view_delete_view);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -5056,40 +3312,6 @@ $api-&gt;deleteView(materialized_view_delete_view);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_view</span><span class="p">(</span><span class="n">materialized_view_get_view</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.MaterializedviewApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getView</span><span class="o">(</span><span class="n">materializedViewGetView</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\MaterializedviewApi($api_client);
-$api-&gt;getView(materialized_view_get_view);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -5140,40 +3362,6 @@ $api-&gt;getView(materialized_view_get_view);
 <h2 id="list-views">List views</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/materialized-view/list" -H "read_key: myread_key" -X POST
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">list_views</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.MaterializedviewApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">listViews</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\MaterializedviewApi($api_client);
-$api-&gt;listViews();
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -5207,40 +3395,6 @@ $api-&gt;listViews();
 <pre class="highlight plaintext"><code>curl "app.rakam.io/materialized-view/schema" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 { }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_schema_of_view</span><span class="p">(</span><span class="n">materialized_view_get_schema_of_view</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.MaterializedviewApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getSchemaOfView</span><span class="o">(</span><span class="n">materializedViewGetSchemaOfView</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\MaterializedviewApi($api_client);
-$api-&gt;getSchemaOfView(materialized_view_get_schema_of_view);
-
-
 </code></pre>
 
 <blockquote>
@@ -5298,40 +3452,6 @@ $api-&gt;getSchemaOfView(materialized_view_get_schema_of_view);
   }
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">create_query</span><span class="p">(</span><span class="n">continuous_query_create_query</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.ContinuousqueryApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">continuousQueryCreateQuery</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api-&gt;createQuery(continuous_query_create_query);
-
-
 </code></pre>
 
 <blockquote>
@@ -5397,40 +3517,6 @@ Compared to reports, continuous queries continuously aggregate the data on the f
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">delete_query</span><span class="p">(</span><span class="n">continuous_query_delete_query</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.ContinuousqueryApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"master_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">deleteQuery</span><span class="o">(</span><span class="n">continuousQueryDeleteQuery</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api-&gt;deleteQuery(continuous_query_delete_query);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -5483,40 +3569,6 @@ $api-&gt;deleteQuery(continuous_query_delete_query);
 }
 EOF
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_query</span><span class="p">(</span><span class="n">continuous_query_get_query</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.ContinuousqueryApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getQuery</span><span class="o">(</span><span class="n">continuousQueryGetQuery</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api-&gt;getQuery(continuous_query_get_query);
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -5566,40 +3618,6 @@ $api-&gt;getQuery(continuous_query_get_query);
 <h2 id="list-queries">List queries</h2>
 <pre class="highlight plaintext"><code>curl "app.rakam.io/continuous-query/list" -H "read_key: myread_key" -X POST
 </code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">list_queries</span><span class="p">();</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.ContinuousqueryApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">listQueries</span><span class="o">();</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api-&gt;listQueries();
-
-
-</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -5632,40 +3650,6 @@ $api-&gt;listQueries();
 <pre class="highlight plaintext"><code>curl "app.rakam.io/continuous-query/schema" -H "read_key: myread_key" -X POST -d @- &lt;&lt; EOF 
 { }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">get_schema_of_query</span><span class="p">(</span><span class="n">continuous_query_get_schema_of_query</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.ContinuousqueryApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">getSchemaOfQuery</span><span class="o">(</span><span class="n">continuousQueryGetSchemaOfQuery</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api-&gt;getSchemaOfQuery(continuous_query_get_schema_of_query);
-
-
 </code></pre>
 
 <blockquote>
@@ -5716,40 +3700,6 @@ $api-&gt;getSchemaOfQuery(continuous_query_get_schema_of_query);
   "query" : "str"
 }
 EOF
-</code></pre>
-<pre class="highlight python"><code>
-<span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
-<span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
-
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
-<span class="n">api</span><span class="o">.</span><span class="n">test_query</span><span class="p">(</span><span class="n">continuous_query_test_query</span><span class="p">);</span>
-
-
-</code></pre>
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">io.rakam.client.api.ApiClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">io.rakam.client.api.ContinuousqueryApi</span><span class="o">;</span>
-
-<span class="n">ApiClient</span> <span class="n">apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiClient</span><span class="o">();</span>
-<span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
-<span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">(</span><span class="n">apiClient</span><span class="o">);</span>
-<span class="n">api</span><span class="o">.</span><span class="na">testQuery</span><span class="o">(</span><span class="n">continuousQueryTestQuery</span><span class="o">);</span>
-
-</code></pre>
-<pre class="highlight php"><code>
-
-require_once('/path/to/io.rakam.client.api');
-
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
-
-$api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api-&gt;testQuery(continuous_query_test_query);
-
-
 </code></pre>
 
 <blockquote>
@@ -7060,9 +5010,7 @@ $api-&gt;testQuery(continuous_query_test_query);
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="curl">curl</a>
-                <a href="#" data-language-name="java">java</a>
-                <a href="#" data-language-name="php">php</a>
-                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name=""></a>
           </div>
       </div>
     </div>
