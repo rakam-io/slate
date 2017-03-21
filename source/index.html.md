@@ -53,7 +53,8 @@ curl "app.rakam.io/event-explorer/analyze" -H "read_key: myread_key" -X POST -d 
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}");
@@ -63,17 +64,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//event-explorer/analyze");
+```c#
+var client = new RestClient("https://app.rakam.io//event-explorer/analyze");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -99,10 +100,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//event-explorer/analyze',
@@ -115,10 +116,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -134,10 +135,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//event-explorer/analyze"
 
@@ -145,10 +146,10 @@ payload = "{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//event-explorer/analyze")
@@ -162,7 +163,6 @@ request.body = "{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"st
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -208,7 +208,8 @@ ruby
 curl "app.rakam.io/event-explorer/extra_dimensions" -H "read_key: myread_key" -X GET
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//event-explorer/extra_dimensions")
@@ -216,16 +217,16 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//event-explorer/extra_dimensions");
+```c#
+var client = new RestClient("https://app.rakam.io//event-explorer/extra_dimensions");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -248,10 +249,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'GET',
   url: 'https://app.rakam.io//event-explorer/extra_dimensions' };
@@ -262,10 +263,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -276,20 +277,20 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//event-explorer/extra_dimensions"
 
 response = requests.request("GET", url)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//event-explorer/extra_dimensions")
@@ -302,7 +303,6 @@ request = Net::HTTP::Get.new(url)
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -334,7 +334,8 @@ curl "app.rakam.io/event-explorer/pre_calculate" -H "master_key: mymaster_key" -
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"collections\":[\"str\"],\"dimensions\":[\"str\"],\"aggregations\":[\"COUNT\"],\"measures\":[\"str\"],\"tableName\":\"str\"}");
@@ -344,17 +345,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//event-explorer/pre_calculate");
+```c#
+var client = new RestClient("https://app.rakam.io//event-explorer/pre_calculate");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"collections\":[\"str\"],\"dimensions\":[\"str\"],\"aggregations\":[\"COUNT\"],\"measures\":[\"str\"],\"tableName\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -380,10 +381,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//event-explorer/pre_calculate',
@@ -401,10 +402,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -420,10 +421,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//event-explorer/pre_calculate"
 
@@ -431,10 +432,10 @@ payload = "{\"collections\":[\"str\"],\"dimensions\":[\"str\"],\"aggregations\":
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//event-explorer/pre_calculate")
@@ -448,7 +449,6 @@ request.body = "{\"collections\":[\"str\"],\"dimensions\":[\"str\"],\"aggregatio
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -488,7 +488,8 @@ curl "app.rakam.io/event-explorer/statistics" -H "read_key: myread_key" -X POST 
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"startDate\":\"str\",\"endDate\":\"str\"}");
@@ -498,17 +499,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//event-explorer/statistics");
+```c#
+var client = new RestClient("https://app.rakam.io//event-explorer/statistics");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"startDate\":\"str\",\"endDate\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -534,10 +535,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//event-explorer/statistics',
@@ -550,10 +551,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -569,10 +570,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//event-explorer/statistics"
 
@@ -580,10 +581,10 @@ payload = "{\"startDate\":\"str\",\"endDate\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//event-explorer/statistics")
@@ -597,7 +598,6 @@ request.body = "{\"startDate\":\"str\",\"endDate\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -651,7 +651,8 @@ curl "app.rakam.io/funnel/analyze" -H "read_key: myread_key" -X POST -d @- << EO
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"steps\":[{}],\"startDate\":\"str\",\"endDate\":\"str\"}");
@@ -661,17 +662,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//funnel/analyze");
+```c#
+var client = new RestClient("https://app.rakam.io//funnel/analyze");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"steps\":[{}],\"startDate\":\"str\",\"endDate\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -697,10 +698,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//funnel/analyze',
@@ -713,10 +714,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -732,10 +733,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//funnel/analyze"
 
@@ -743,10 +744,10 @@ payload = "{\"steps\":[{}],\"startDate\":\"str\",\"endDate\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//funnel/analyze")
@@ -760,7 +761,6 @@ request.body = "{\"steps\":[{}],\"startDate\":\"str\",\"endDate\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -820,7 +820,8 @@ curl "app.rakam.io/realtime/create" -H "master_key: mymaster_key" -X POST -d @- 
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collections\":[\"str\"]}");
@@ -830,17 +831,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//realtime/create");
+```c#
+var client = new RestClient("https://app.rakam.io//realtime/create");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collections\":[\"str\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -866,10 +867,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//realtime/create',
@@ -886,10 +887,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -905,10 +906,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//realtime/create"
 
@@ -916,10 +917,10 @@ payload = "{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collecti
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//realtime/create")
@@ -933,7 +934,6 @@ request.body = "{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"col
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -972,7 +972,8 @@ curl "app.rakam.io/realtime/delete" -H "master_key: mymaster_key" -X POST -d @- 
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\"}");
@@ -982,17 +983,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//realtime/delete");
+```c#
+var client = new RestClient("https://app.rakam.io//realtime/delete");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -1018,10 +1019,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//realtime/delete',
@@ -1034,10 +1035,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -1053,10 +1054,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//realtime/delete"
 
@@ -1064,10 +1065,10 @@ payload = "{\"table_name\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//realtime/delete")
@@ -1081,7 +1082,6 @@ request.body = "{\"table_name\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -1119,7 +1119,8 @@ curl "app.rakam.io/realtime/get" -H "read_key: myread_key" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\",\"measure\":{}}");
@@ -1129,17 +1130,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//realtime/get");
+```c#
+var client = new RestClient("https://app.rakam.io//realtime/get");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\",\"measure\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -1165,10 +1166,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//realtime/get',
@@ -1181,10 +1182,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -1200,10 +1201,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//realtime/get"
 
@@ -1211,10 +1212,10 @@ payload = "{\"table_name\":\"str\",\"measure\":{}}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//realtime/get")
@@ -1228,7 +1229,6 @@ request.body = "{\"table_name\":\"str\",\"measure\":{}}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -1262,7 +1262,8 @@ ruby
 curl "app.rakam.io/realtime/list" -H "read_key: myread_key" -X POST
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//realtime/list")
@@ -1270,16 +1271,16 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//realtime/list");
+```c#
+var client = new RestClient("https://app.rakam.io//realtime/list");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -1302,10 +1303,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST', url: 'https://app.rakam.io//realtime/list' };
 
@@ -1315,10 +1316,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -1329,20 +1330,20 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//realtime/list"
 
 response = requests.request("POST", url)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//realtime/list")
@@ -1355,7 +1356,6 @@ request = Net::HTTP::Post.new(url)
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -1394,7 +1394,8 @@ curl "app.rakam.io/retention/analyze" -H "read_key: myread_key" -X POST -d @- <<
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"first_action\":{},\"returning_action\":{},\"dimension\":\"str\",\"date_unit\":\"DAY\",\"startDate\":\"str\",\"endDate\":\"str\"}");
@@ -1404,17 +1405,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//retention/analyze");
+```c#
+var client = new RestClient("https://app.rakam.io//retention/analyze");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"first_action\":{},\"returning_action\":{},\"dimension\":\"str\",\"date_unit\":\"DAY\",\"startDate\":\"str\",\"endDate\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -1440,10 +1441,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//retention/analyze',
@@ -1462,10 +1463,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -1481,10 +1482,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//retention/analyze"
 
@@ -1492,10 +1493,10 @@ payload = "{\"first_action\":{},\"returning_action\":{},\"dimension\":\"str\",\"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//retention/analyze")
@@ -1509,7 +1510,6 @@ request.body = "{\"first_action\":{},\"returning_action\":{},\"dimension\":\"str
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -1575,7 +1575,8 @@ curl "app.rakam.io/user/batch" -H "write_key: mywrite_key" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"id\":{},\"api\":{},\"data\":[{}]}");
@@ -1585,17 +1586,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/batch");
+```c#
+var client = new RestClient("https://app.rakam.io//user/batch");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"id\":{},\"api\":{},\"data\":[{}]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -1621,10 +1622,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/batch',
@@ -1637,10 +1638,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -1656,10 +1657,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/batch"
 
@@ -1667,10 +1668,10 @@ payload = "{\"id\":{},\"api\":{},\"data\":[{}]}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/batch")
@@ -1684,7 +1685,6 @@ request.body = "{\"id\":{},\"api\":{},\"data\":[{}]}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -1722,7 +1722,8 @@ curl "app.rakam.io/user/batch/create" -H "write_key: mywrite_key" -X POST -d @- 
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"users\":[null]}");
@@ -1732,17 +1733,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/batch/create");
+```c#
+var client = new RestClient("https://app.rakam.io//user/batch/create");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"users\":[null]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -1768,10 +1769,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/batch/create',
@@ -1784,10 +1785,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -1803,10 +1804,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/batch/create"
 
@@ -1814,10 +1815,10 @@ payload = "{\"users\":[null]}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/batch/create")
@@ -1831,7 +1832,6 @@ request.body = "{\"users\":[null]}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -1869,7 +1869,8 @@ curl "app.rakam.io/user/batch_operations" -H "master_key: mymaster_key" -X POST 
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"api\":{},\"data\":[{}]}");
@@ -1879,17 +1880,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/batch_operations");
+```c#
+var client = new RestClient("https://app.rakam.io//user/batch_operations");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"api\":{},\"data\":[{}]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -1915,10 +1916,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/batch_operations',
@@ -1931,10 +1932,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -1950,10 +1951,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/batch_operations"
 
@@ -1961,10 +1962,10 @@ payload = "{\"api\":{},\"data\":[{}]}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/batch_operations")
@@ -1978,7 +1979,6 @@ request.body = "{\"api\":{},\"data\":[{}]}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -2013,7 +2013,8 @@ curl "app.rakam.io/user/create" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"id\":{},\"api\":{},\"properties\":{}}");
@@ -2023,17 +2024,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/create");
+```c#
+var client = new RestClient("https://app.rakam.io//user/create");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"id\":{},\"api\":{},\"properties\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -2059,10 +2060,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/create',
@@ -2075,10 +2076,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -2094,10 +2095,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/create"
 
@@ -2105,10 +2106,10 @@ payload = "{\"id\":{},\"api\":{},\"properties\":{}}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/create")
@@ -2122,7 +2123,6 @@ request.body = "{\"id\":{},\"api\":{},\"properties\":{}}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -2158,7 +2158,8 @@ curl "app.rakam.io/user/create_segment" -H "master_key: mymaster_key" -X POST -d
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"name\":\"str\",\"table_name\":\"str\",\"cache_eviction\":\"str\"}");
@@ -2168,17 +2169,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/create_segment");
+```c#
+var client = new RestClient("https://app.rakam.io//user/create_segment");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"name\":\"str\",\"table_name\":\"str\",\"cache_eviction\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -2204,10 +2205,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/create_segment',
@@ -2220,10 +2221,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -2239,10 +2240,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/create_segment"
 
@@ -2250,10 +2251,10 @@ payload = "{\"name\":\"str\",\"table_name\":\"str\",\"cache_eviction\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/create_segment")
@@ -2267,7 +2268,6 @@ request.body = "{\"name\":\"str\",\"table_name\":\"str\",\"cache_eviction\":\"st
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -2305,7 +2305,8 @@ curl "app.rakam.io/user/get" -H "read_key: myread_key" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"user\":{}}");
@@ -2315,17 +2316,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/get");
+```c#
+var client = new RestClient("https://app.rakam.io//user/get");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"user\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -2351,10 +2352,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/get',
@@ -2367,10 +2368,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -2386,10 +2387,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/get"
 
@@ -2397,10 +2398,10 @@ payload = "{\"user\":{}}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/get")
@@ -2414,7 +2415,6 @@ request.body = "{\"user\":{}}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -2450,7 +2450,8 @@ curl "app.rakam.io/user/get_events" -H "read_key: myread_key" -X POST -d @- << E
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"user\":\"str\"}");
@@ -2460,17 +2461,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/get_events");
+```c#
+var client = new RestClient("https://app.rakam.io//user/get_events");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"user\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -2496,10 +2497,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/get_events',
@@ -2512,10 +2513,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -2531,10 +2532,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/get_events"
 
@@ -2542,10 +2543,10 @@ payload = "{\"user\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/get_events")
@@ -2559,7 +2560,6 @@ request.body = "{\"user\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -2597,7 +2597,8 @@ curl "app.rakam.io/user/increment_property" -H "master_key: mymaster_key" -X POS
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"api\":{},\"id\":\"str\",\"property\":\"str\",\"value\":7}");
@@ -2607,17 +2608,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/increment_property");
+```c#
+var client = new RestClient("https://app.rakam.io//user/increment_property");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"api\":{},\"id\":\"str\",\"property\":\"str\",\"value\":7}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -2643,10 +2644,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/increment_property',
@@ -2659,10 +2660,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -2678,10 +2679,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/increment_property"
 
@@ -2689,10 +2690,10 @@ payload = "{\"api\":{},\"id\":\"str\",\"property\":\"str\",\"value\":7}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/increment_property")
@@ -2706,7 +2707,6 @@ request.body = "{\"api\":{},\"id\":\"str\",\"property\":\"str\",\"value\":7}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -2739,7 +2739,8 @@ ruby
 curl "app.rakam.io/user/metadata" -H "read_key: myread_key" -X GET
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//user/metadata")
@@ -2747,16 +2748,16 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/metadata");
+```c#
+var client = new RestClient("https://app.rakam.io//user/metadata");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -2779,10 +2780,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'GET', url: 'https://app.rakam.io//user/metadata' };
 
@@ -2792,10 +2793,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -2806,20 +2807,20 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/metadata"
 
 response = requests.request("GET", url)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/metadata")
@@ -2832,7 +2833,6 @@ request = Net::HTTP::Get.new(url)
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -2856,7 +2856,8 @@ curl "app.rakam.io/user/search" -H "read_key: myread_key" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"columns\":[\"str\"],\"filter\":\"str\",\"event_filters\":[{}],\"sorting\":{},\"offset\":\"str\",\"limit\":4}");
@@ -2866,17 +2867,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/search");
+```c#
+var client = new RestClient("https://app.rakam.io//user/search");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"columns\":[\"str\"],\"filter\":\"str\",\"event_filters\":[{}],\"sorting\":{},\"offset\":\"str\",\"limit\":4}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -2902,10 +2903,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/search',
@@ -2924,10 +2925,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -2943,10 +2944,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/search"
 
@@ -2954,10 +2955,10 @@ payload = "{\"columns\":[\"str\"],\"filter\":\"str\",\"event_filters\":[{}],\"so
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/search")
@@ -2971,7 +2972,6 @@ request.body = "{\"columns\":[\"str\"],\"filter\":\"str\",\"event_filters\":[{}]
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -3022,7 +3022,8 @@ curl "app.rakam.io/user/set_properties" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"id\":{},\"api\":{},\"properties\":{}}");
@@ -3032,17 +3033,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/set_properties");
+```c#
+var client = new RestClient("https://app.rakam.io//user/set_properties");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"id\":{},\"api\":{},\"properties\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -3068,10 +3069,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/set_properties',
@@ -3084,10 +3085,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -3103,10 +3104,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/set_properties"
 
@@ -3114,10 +3115,10 @@ payload = "{\"id\":{},\"api\":{},\"properties\":{}}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/set_properties")
@@ -3131,7 +3132,6 @@ request.body = "{\"id\":{},\"api\":{},\"properties\":{}}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -3167,7 +3167,8 @@ curl "app.rakam.io/user/set_properties_once" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"id\":{},\"api\":{},\"properties\":{}}");
@@ -3177,17 +3178,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/set_properties_once");
+```c#
+var client = new RestClient("https://app.rakam.io//user/set_properties_once");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"id\":{},\"api\":{},\"properties\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -3213,10 +3214,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/set_properties_once',
@@ -3229,10 +3230,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -3248,10 +3249,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/set_properties_once"
 
@@ -3259,10 +3260,10 @@ payload = "{\"id\":{},\"api\":{},\"properties\":{}}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/set_properties_once")
@@ -3276,7 +3277,6 @@ request.body = "{\"id\":{},\"api\":{},\"properties\":{}}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -3312,7 +3312,8 @@ curl "app.rakam.io/user/unset_properties" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"api\":{},\"id\":{},\"properties\":[\"str\"]}");
@@ -3322,17 +3323,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/unset_properties");
+```c#
+var client = new RestClient("https://app.rakam.io//user/unset_properties");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"api\":{},\"id\":{},\"properties\":[\"str\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -3358,10 +3359,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/unset_properties',
@@ -3374,10 +3375,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -3393,10 +3394,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/unset_properties"
 
@@ -3404,10 +3405,10 @@ payload = "{\"api\":{},\"id\":{},\"properties\":[\"str\"]}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/unset_properties")
@@ -3421,7 +3422,6 @@ request.body = "{\"api\":{},\"id\":{},\"properties\":[\"str\"]}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -3465,7 +3465,8 @@ curl "app.rakam.io/user/action/email/batch" -H "read_key: myread_key" -X POST -d
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"config\":{}}");
@@ -3475,17 +3476,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/action/email/batch");
+```c#
+var client = new RestClient("https://app.rakam.io//user/action/email/batch");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"config\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -3511,10 +3512,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/action/email/batch',
@@ -3527,10 +3528,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -3546,10 +3547,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/action/email/batch"
 
@@ -3557,10 +3558,10 @@ payload = "{\"config\":{}}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/action/email/batch")
@@ -3574,7 +3575,6 @@ request.body = "{\"config\":{}}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -3612,7 +3612,8 @@ curl "app.rakam.io/user/action/email/single" -H "read_key: myread_key" -X POST -
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"user\":\"str\",\"config\":{}}");
@@ -3622,17 +3623,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//user/action/email/single");
+```c#
+var client = new RestClient("https://app.rakam.io//user/action/email/single");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"user\":\"str\",\"config\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -3658,10 +3659,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/action/email/single',
@@ -3674,10 +3675,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -3693,10 +3694,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//user/action/email/single"
 
@@ -3704,10 +3705,10 @@ payload = "{\"user\":\"str\",\"config\":{}}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//user/action/email/single")
@@ -3721,7 +3722,6 @@ request.body = "{\"user\":\"str\",\"config\":{}}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -3755,7 +3755,8 @@ Recipe
 curl "app.rakam.io/recipe/export" -H "master_key: mymaster_key" -X GET
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//recipe/export")
@@ -3764,17 +3765,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//recipe/export");
+```c#
+var client = new RestClient("https://app.rakam.io//recipe/export");
 var request = new RestRequest(Method.GET);
 request.AddHeader("accept", "str");
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -3799,10 +3800,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'GET',
   url: 'https://app.rakam.io//recipe/export',
@@ -3814,10 +3815,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -3832,10 +3833,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//recipe/export"
 
@@ -3844,10 +3845,10 @@ headers = {'accept': 'str'}
 response = requests.request("GET", url, headers=headers)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//recipe/export")
@@ -3861,7 +3862,6 @@ request["accept"] = 'str'
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -3889,7 +3889,8 @@ ruby
 curl "app.rakam.io/recipe/install" -H "master_key: mymaster_key" -X POST
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//recipe/install")
@@ -3897,16 +3898,16 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//recipe/install");
+```c#
+var client = new RestClient("https://app.rakam.io//recipe/install");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -3929,10 +3930,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST', url: 'https://app.rakam.io//recipe/install' };
 
@@ -3942,10 +3943,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -3956,20 +3957,20 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//recipe/install"
 
 response = requests.request("POST", url)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//recipe/install")
@@ -3982,7 +3983,6 @@ request = Net::HTTP::Post.new(url)
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -4011,7 +4011,8 @@ System related actions
 curl "app.rakam.io/admin/configurations" -H "master_key: mymaster_key" -X GET
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//admin/configurations")
@@ -4019,16 +4020,16 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//admin/configurations");
+```c#
+var client = new RestClient("https://app.rakam.io//admin/configurations");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -4051,10 +4052,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'GET',
   url: 'https://app.rakam.io//admin/configurations' };
@@ -4065,10 +4066,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -4079,20 +4080,20 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//admin/configurations"
 
 response = requests.request("GET", url)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//admin/configurations")
@@ -4105,7 +4106,6 @@ request = Net::HTTP::Get.new(url)
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -4127,7 +4127,8 @@ ruby
 curl "app.rakam.io/admin/event_mappers" -H "master_key: mymaster_key" -X GET
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//admin/event_mappers")
@@ -4135,16 +4136,16 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//admin/event_mappers");
+```c#
+var client = new RestClient("https://app.rakam.io//admin/event_mappers");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -4167,10 +4168,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'GET',
   url: 'https://app.rakam.io//admin/event_mappers' };
@@ -4181,10 +4182,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -4195,20 +4196,20 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//admin/event_mappers"
 
 response = requests.request("GET", url)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//admin/event_mappers")
@@ -4221,7 +4222,6 @@ request = Net::HTTP::Get.new(url)
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -4245,7 +4245,8 @@ curl "app.rakam.io/admin/lock_key" -H "master_key: mymaster_key" -X POST -d @- <
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"lock_key\":\"str\"}");
@@ -4255,17 +4256,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//admin/lock_key");
+```c#
+var client = new RestClient("https://app.rakam.io//admin/lock_key");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"lock_key\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -4291,10 +4292,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//admin/lock_key',
@@ -4307,10 +4308,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -4326,10 +4327,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//admin/lock_key"
 
@@ -4337,10 +4338,10 @@ payload = "{\"lock_key\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//admin/lock_key")
@@ -4354,7 +4355,6 @@ request.body = "{\"lock_key\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -4382,7 +4382,8 @@ true
 curl "app.rakam.io/admin/types" -H "master_key: mymaster_key" -X GET
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//admin/types")
@@ -4390,16 +4391,16 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//admin/types");
+```c#
+var client = new RestClient("https://app.rakam.io//admin/types");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -4422,10 +4423,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'GET', url: 'https://app.rakam.io//admin/types' };
 
@@ -4435,10 +4436,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -4449,20 +4450,20 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//admin/types"
 
 response = requests.request("GET", url)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//admin/types")
@@ -4475,7 +4476,6 @@ request = Net::HTTP::Get.new(url)
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -4504,7 +4504,8 @@ curl "app.rakam.io/project/check-api-keys" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"keys\":[{}],\"project\":\"str\"}");
@@ -4514,17 +4515,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//project/check-api-keys");
+```c#
+var client = new RestClient("https://app.rakam.io//project/check-api-keys");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"keys\":[{}],\"project\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -4550,10 +4551,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/check-api-keys',
@@ -4566,10 +4567,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -4585,10 +4586,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//project/check-api-keys"
 
@@ -4596,10 +4597,10 @@ payload = "{\"keys\":[{}],\"project\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//project/check-api-keys")
@@ -4613,7 +4614,6 @@ request.body = "{\"keys\":[{}],\"project\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -4642,7 +4642,8 @@ ruby
 curl "app.rakam.io/project/collection" -H "read_key: myread_key" -X POST
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//project/collection")
@@ -4650,16 +4651,16 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//project/collection");
+```c#
+var client = new RestClient("https://app.rakam.io//project/collection");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -4682,10 +4683,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/collection' };
@@ -4696,10 +4697,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -4710,20 +4711,20 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//project/collection"
 
 response = requests.request("POST", url)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//project/collection")
@@ -4736,7 +4737,6 @@ request = Net::HTTP::Post.new(url)
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -4762,7 +4762,8 @@ curl "app.rakam.io/project/create" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"name\":\"str\"}");
@@ -4772,17 +4773,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//project/create");
+```c#
+var client = new RestClient("https://app.rakam.io//project/create");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"name\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -4808,10 +4809,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/create',
@@ -4824,10 +4825,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -4843,10 +4844,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//project/create"
 
@@ -4854,10 +4855,10 @@ payload = "{\"name\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//project/create")
@@ -4871,7 +4872,6 @@ request.body = "{\"name\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -4900,7 +4900,8 @@ ruby
 curl "app.rakam.io/project/create-api-keys" -H "master_key: mymaster_key" -X POST
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//project/create-api-keys")
@@ -4908,16 +4909,16 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//project/create-api-keys");
+```c#
+var client = new RestClient("https://app.rakam.io//project/create-api-keys");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -4940,10 +4941,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/create-api-keys' };
@@ -4954,10 +4955,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -4968,20 +4969,20 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//project/create-api-keys"
 
 response = requests.request("POST", url)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//project/create-api-keys")
@@ -4994,7 +4995,6 @@ request = Net::HTTP::Post.new(url)
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -5016,7 +5016,8 @@ ruby
 curl "app.rakam.io/project/delete" -H "master_key: mymaster_key" -X DELETE
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//project/delete")
@@ -5024,16 +5025,16 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//project/delete");
+```c#
+var client = new RestClient("https://app.rakam.io//project/delete");
 var request = new RestRequest(Method.DELETE);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -5056,10 +5057,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'DELETE',
   url: 'https://app.rakam.io//project/delete' };
@@ -5070,10 +5071,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -5084,20 +5085,20 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//project/delete"
 
 response = requests.request("DELETE", url)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//project/delete")
@@ -5110,7 +5111,6 @@ request = Net::HTTP::Delete.new(url)
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -5136,7 +5136,8 @@ curl "app.rakam.io/project/list" -H "read_key: myread_key" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"lock_key\":\"str\"}");
@@ -5146,17 +5147,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//project/list");
+```c#
+var client = new RestClient("https://app.rakam.io//project/list");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"lock_key\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -5182,10 +5183,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/list',
@@ -5198,10 +5199,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -5217,10 +5218,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//project/list"
 
@@ -5228,10 +5229,10 @@ payload = "{\"lock_key\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//project/list")
@@ -5245,7 +5246,6 @@ request.body = "{\"lock_key\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -5278,7 +5278,8 @@ curl "app.rakam.io/project/revoke-api-keys" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"project\":\"str\",\"master_key\":\"str\"}");
@@ -5288,17 +5289,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//project/revoke-api-keys");
+```c#
+var client = new RestClient("https://app.rakam.io//project/revoke-api-keys");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"project\":\"str\",\"master_key\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -5324,10 +5325,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/revoke-api-keys',
@@ -5340,10 +5341,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -5359,10 +5360,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//project/revoke-api-keys"
 
@@ -5370,10 +5371,10 @@ payload = "{\"project\":\"str\",\"master_key\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//project/revoke-api-keys")
@@ -5387,7 +5388,6 @@ request.body = "{\"project\":\"str\",\"master_key\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -5420,7 +5420,8 @@ curl "app.rakam.io/project/schema" -H "read_key: myread_key" -X POST -d @- << EO
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"names\":[\"str\"]}");
@@ -5430,17 +5431,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//project/schema");
+```c#
+var client = new RestClient("https://app.rakam.io//project/schema");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"names\":[\"str\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -5466,10 +5467,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/schema',
@@ -5482,10 +5483,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -5501,10 +5502,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//project/schema"
 
@@ -5512,10 +5513,10 @@ payload = "{\"names\":[\"str\"]}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//project/schema")
@@ -5529,7 +5530,6 @@ request.body = "{\"names\":[\"str\"]}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -5565,7 +5565,8 @@ curl "app.rakam.io/project/schema/add" -H "master_key: mymaster_key" -X POST -d 
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"collection\":\"str\",\"fields\":[{}]}");
@@ -5575,17 +5576,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//project/schema/add");
+```c#
+var client = new RestClient("https://app.rakam.io//project/schema/add");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"collection\":\"str\",\"fields\":[{}]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -5611,10 +5612,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/schema/add',
@@ -5627,10 +5628,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -5646,10 +5647,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//project/schema/add"
 
@@ -5657,10 +5658,10 @@ payload = "{\"collection\":\"str\",\"fields\":[{}]}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//project/schema/add")
@@ -5674,7 +5675,6 @@ request.body = "{\"collection\":\"str\",\"fields\":[{}]}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -5712,7 +5712,8 @@ curl "app.rakam.io/project/schema/add/custom" -H "master_key: mymaster_key" -X P
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"collection\":\"str\",\"schema_type\":\"AVRO\",\"schema\":\"str\"}");
@@ -5722,17 +5723,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//project/schema/add/custom");
+```c#
+var client = new RestClient("https://app.rakam.io//project/schema/add/custom");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"collection\":\"str\",\"schema_type\":\"AVRO\",\"schema\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -5758,10 +5759,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/schema/add/custom',
@@ -5774,10 +5775,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -5793,10 +5794,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//project/schema/add/custom"
 
@@ -5804,10 +5805,10 @@ payload = "{\"collection\":\"str\",\"schema_type\":\"AVRO\",\"schema\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//project/schema/add/custom")
@@ -5821,7 +5822,6 @@ request.body = "{\"collection\":\"str\",\"schema_type\":\"AVRO\",\"schema\":\"st
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -5856,7 +5856,8 @@ curl "app.rakam.io/project/stats" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{}");
@@ -5866,17 +5867,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//project/stats");
+```c#
+var client = new RestClient("https://app.rakam.io//project/stats");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -5902,10 +5903,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/stats',
@@ -5918,10 +5919,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -5937,10 +5938,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//project/stats"
 
@@ -5948,10 +5949,10 @@ payload = "{}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//project/stats")
@@ -5965,7 +5966,6 @@ request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -6009,7 +6009,8 @@ curl "app.rakam.io/event/batch" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"api\":{},\"events\":[{}]}");
@@ -6019,17 +6020,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//event/batch");
+```c#
+var client = new RestClient("https://app.rakam.io//event/batch");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"api\":{},\"events\":[{}]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -6055,10 +6056,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//event/batch',
@@ -6071,10 +6072,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -6090,10 +6091,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//event/batch"
 
@@ -6101,10 +6102,10 @@ payload = "{\"api\":{},\"events\":[{}]}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//event/batch")
@@ -6118,7 +6119,6 @@ request.body = "{\"api\":{},\"events\":[{}]}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -6159,7 +6159,8 @@ curl "app.rakam.io/event/bulk" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"api\":{},\"events\":[{}]}");
@@ -6169,17 +6170,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//event/bulk");
+```c#
+var client = new RestClient("https://app.rakam.io//event/bulk");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"api\":{},\"events\":[{}]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -6205,10 +6206,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//event/bulk',
@@ -6221,10 +6222,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -6240,10 +6241,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//event/bulk"
 
@@ -6251,10 +6252,10 @@ payload = "{\"api\":{},\"events\":[{}]}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//event/bulk")
@@ -6268,7 +6269,6 @@ request.body = "{\"api\":{},\"events\":[{}]}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -6308,7 +6308,8 @@ curl "app.rakam.io/event/bulk/remote" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"collection\":\"str\",\"urls\":[\"str\"],\"type\":\"AVRO\"}");
@@ -6318,17 +6319,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//event/bulk/remote");
+```c#
+var client = new RestClient("https://app.rakam.io//event/bulk/remote");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"collection\":\"str\",\"urls\":[\"str\"],\"type\":\"AVRO\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -6354,10 +6355,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//event/bulk/remote',
@@ -6370,10 +6371,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -6389,10 +6390,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//event/bulk/remote"
 
@@ -6400,10 +6401,10 @@ payload = "{\"collection\":\"str\",\"urls\":[\"str\"],\"type\":\"AVRO\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//event/bulk/remote")
@@ -6417,7 +6418,6 @@ request.body = "{\"collection\":\"str\",\"urls\":[\"str\"],\"type\":\"AVRO\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -6455,7 +6455,8 @@ curl "app.rakam.io/event/collect" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"collection\":\"str\",\"api\":{},\"properties\":{}}");
@@ -6465,17 +6466,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//event/collect");
+```c#
+var client = new RestClient("https://app.rakam.io//event/collect");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"collection\":\"str\",\"api\":{},\"properties\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -6501,10 +6502,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//event/collect',
@@ -6517,10 +6518,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -6536,10 +6537,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//event/collect"
 
@@ -6547,10 +6548,10 @@ payload = "{\"collection\":\"str\",\"api\":{},\"properties\":{}}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//event/collect")
@@ -6564,7 +6565,6 @@ request.body = "{\"collection\":\"str\",\"api\":{},\"properties\":{}}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -6603,7 +6603,8 @@ curl "app.rakam.io/event/copy" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"api\":{},\"events\":[{}]}");
@@ -6613,17 +6614,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//event/copy");
+```c#
+var client = new RestClient("https://app.rakam.io//event/copy");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"api\":{},\"events\":[{}]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -6649,10 +6650,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//event/copy',
@@ -6665,10 +6666,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -6684,10 +6685,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//event/copy"
 
@@ -6695,10 +6696,10 @@ payload = "{\"api\":{},\"events\":[{}]}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//event/copy")
@@ -6712,7 +6713,6 @@ request.body = "{\"api\":{},\"events\":[{}]}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -6750,7 +6750,8 @@ curl "app.rakam.io/query/execute" -H "read_key: myread_key" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"query\":\"str\"}");
@@ -6760,17 +6761,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//query/execute");
+```c#
+var client = new RestClient("https://app.rakam.io//query/execute");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"query\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -6796,10 +6797,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//query/execute',
@@ -6812,10 +6813,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -6831,10 +6832,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//query/execute"
 
@@ -6842,10 +6843,10 @@ payload = "{\"query\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//query/execute")
@@ -6859,7 +6860,6 @@ request.body = "{\"query\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -6895,7 +6895,8 @@ curl "app.rakam.io/query/explain" -H "read_key: myread_key" -X POST -d @- << EOF
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"query\":\"str\"}");
@@ -6905,17 +6906,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//query/explain");
+```c#
+var client = new RestClient("https://app.rakam.io//query/explain");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"query\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -6941,10 +6942,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//query/explain',
@@ -6957,10 +6958,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -6976,10 +6977,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//query/explain"
 
@@ -6987,10 +6988,10 @@ payload = "{\"query\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//query/explain")
@@ -7004,7 +7005,6 @@ request.body = "{\"query\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -7036,7 +7036,8 @@ curl "app.rakam.io/query/metadata" -H "read_key: myread_key" -X POST -d @- << EO
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"query\":\"str\"}");
@@ -7046,17 +7047,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//query/metadata");
+```c#
+var client = new RestClient("https://app.rakam.io//query/metadata");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"query\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -7082,10 +7083,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//query/metadata',
@@ -7098,10 +7099,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -7117,10 +7118,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//query/metadata"
 
@@ -7128,10 +7129,10 @@ payload = "{\"query\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//query/metadata")
@@ -7145,7 +7146,6 @@ request.body = "{\"query\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -7187,7 +7187,8 @@ curl "app.rakam.io/materialized-view/create" -H "master_key: mymaster_key" -X PO
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\",\"name\":\"str\",\"query\":\"str\"}");
@@ -7197,17 +7198,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//materialized-view/create");
+```c#
+var client = new RestClient("https://app.rakam.io//materialized-view/create");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\",\"name\":\"str\",\"query\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -7233,10 +7234,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//materialized-view/create',
@@ -7249,10 +7250,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -7268,10 +7269,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//materialized-view/create"
 
@@ -7279,10 +7280,10 @@ payload = "{\"table_name\":\"str\",\"name\":\"str\",\"query\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//materialized-view/create")
@@ -7296,7 +7297,6 @@ request.body = "{\"table_name\":\"str\",\"name\":\"str\",\"query\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -7335,7 +7335,8 @@ curl "app.rakam.io/materialized-view/delete" -H "master_key: mymaster_key" -X PO
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\"}");
@@ -7345,17 +7346,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//materialized-view/delete");
+```c#
+var client = new RestClient("https://app.rakam.io//materialized-view/delete");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -7381,10 +7382,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//materialized-view/delete',
@@ -7397,10 +7398,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -7416,10 +7417,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//materialized-view/delete"
 
@@ -7427,10 +7428,10 @@ payload = "{\"table_name\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//materialized-view/delete")
@@ -7444,7 +7445,6 @@ request.body = "{\"table_name\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -7478,7 +7478,8 @@ curl "app.rakam.io/materialized-view/get" -H "read_key: myread_key" -X POST -d @
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\"}");
@@ -7488,17 +7489,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//materialized-view/get");
+```c#
+var client = new RestClient("https://app.rakam.io//materialized-view/get");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -7524,10 +7525,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//materialized-view/get',
@@ -7540,10 +7541,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -7559,10 +7560,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//materialized-view/get"
 
@@ -7570,10 +7571,10 @@ payload = "{\"table_name\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//materialized-view/get")
@@ -7587,7 +7588,6 @@ request.body = "{\"table_name\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -7619,7 +7619,8 @@ ruby
 curl "app.rakam.io/materialized-view/list" -H "read_key: myread_key" -X POST
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//materialized-view/list")
@@ -7627,16 +7628,16 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//materialized-view/list");
+```c#
+var client = new RestClient("https://app.rakam.io//materialized-view/list");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -7659,10 +7660,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//materialized-view/list' };
@@ -7673,10 +7674,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -7687,20 +7688,20 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//materialized-view/list"
 
 response = requests.request("POST", url)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//materialized-view/list")
@@ -7713,7 +7714,6 @@ request = Net::HTTP::Post.new(url)
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -7741,7 +7741,8 @@ curl "app.rakam.io/materialized-view/schema" -H "read_key: myread_key" -X POST -
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"names\":[\"str\"]}");
@@ -7751,17 +7752,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//materialized-view/schema");
+```c#
+var client = new RestClient("https://app.rakam.io//materialized-view/schema");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"names\":[\"str\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -7787,10 +7788,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//materialized-view/schema',
@@ -7803,10 +7804,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -7822,10 +7823,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//materialized-view/schema"
 
@@ -7833,10 +7834,10 @@ payload = "{\"names\":[\"str\"]}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//materialized-view/schema")
@@ -7850,7 +7851,6 @@ request.body = "{\"names\":[\"str\"]}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -7890,7 +7890,8 @@ curl "app.rakam.io/continuous-query/create" -H "master_key: mymaster_key" -X POS
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"continuous_query\":{}}");
@@ -7900,17 +7901,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//continuous-query/create");
+```c#
+var client = new RestClient("https://app.rakam.io//continuous-query/create");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"continuous_query\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -7936,10 +7937,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//continuous-query/create',
@@ -7952,10 +7953,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -7971,10 +7972,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//continuous-query/create"
 
@@ -7982,10 +7983,10 @@ payload = "{\"continuous_query\":{}}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//continuous-query/create")
@@ -7999,7 +8000,6 @@ request.body = "{\"continuous_query\":{}}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -8039,7 +8039,8 @@ curl "app.rakam.io/continuous-query/delete" -H "master_key: mymaster_key" -X POS
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\"}");
@@ -8049,17 +8050,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//continuous-query/delete");
+```c#
+var client = new RestClient("https://app.rakam.io//continuous-query/delete");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -8085,10 +8086,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//continuous-query/delete',
@@ -8101,10 +8102,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -8120,10 +8121,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//continuous-query/delete"
 
@@ -8131,10 +8132,10 @@ payload = "{\"table_name\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//continuous-query/delete")
@@ -8148,7 +8149,6 @@ request.body = "{\"table_name\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -8182,7 +8182,8 @@ curl "app.rakam.io/continuous-query/get" -H "read_key: myread_key" -X POST -d @-
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\"}");
@@ -8192,17 +8193,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//continuous-query/get");
+```c#
+var client = new RestClient("https://app.rakam.io//continuous-query/get");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -8228,10 +8229,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//continuous-query/get',
@@ -8244,10 +8245,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -8263,10 +8264,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//continuous-query/get"
 
@@ -8274,10 +8275,10 @@ payload = "{\"table_name\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//continuous-query/get")
@@ -8291,7 +8292,6 @@ request.body = "{\"table_name\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -8322,7 +8322,8 @@ ruby
 curl "app.rakam.io/continuous-query/list" -H "read_key: myread_key" -X POST
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 Request request = new Request.Builder()
   .url("https://app.rakam.io//continuous-query/list")
@@ -8330,16 +8331,16 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//continuous-query/list");
+```c#
+var client = new RestClient("https://app.rakam.io//continuous-query/list");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -8362,10 +8363,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//continuous-query/list' };
@@ -8376,10 +8377,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -8390,20 +8391,20 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//continuous-query/list"
 
 response = requests.request("POST", url)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//continuous-query/list")
@@ -8416,7 +8417,6 @@ request = Net::HTTP::Post.new(url)
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -8443,7 +8443,8 @@ curl "app.rakam.io/continuous-query/schema" -H "read_key: myread_key" -X POST -d
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"names\":[\"str\"]}");
@@ -8453,17 +8454,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//continuous-query/schema");
+```c#
+var client = new RestClient("https://app.rakam.io//continuous-query/schema");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"names\":[\"str\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -8489,10 +8490,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//continuous-query/schema',
@@ -8505,10 +8506,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -8524,10 +8525,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//continuous-query/schema"
 
@@ -8535,10 +8536,10 @@ payload = "{\"names\":[\"str\"]}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//continuous-query/schema")
@@ -8552,7 +8553,6 @@ request.body = "{\"names\":[\"str\"]}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
@@ -8584,7 +8584,8 @@ curl "app.rakam.io/continuous-query/test" -H "read_key: myread_key" -X POST -d @
 EOF
 ```
 
-```OkHttpClient client = new OkHttpClient();
+```java
+OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\"query\":\"str\"}");
@@ -8594,17 +8595,17 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-java
 ```
 
-```var client = new RestClient("https://app.rakam.io//continuous-query/test");
+```c#
+var client = new RestClient("https://app.rakam.io//continuous-query/test");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"query\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-c#
 ```
 
-```package main
+```go
+package main
 
 import (
 	"fmt"
@@ -8630,10 +8631,10 @@ func main() {
 	fmt.Println(string(body))
 
 }
-go
 ```
 
-```var request = require("request");
+```node
+var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//continuous-query/test',
@@ -8646,10 +8647,10 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-node
 ```
 
-```<?php
+```php
+<?php
 
 $client = new http\Client;
 $request = new http\Client\Request;
@@ -8665,10 +8666,10 @@ $client->enqueue($request)->send();
 $response = $client->getResponse();
 
 echo $response->getBody();
-php
 ```
 
-```import requests
+```python
+import requests
 
 url = "https://app.rakam.io//continuous-query/test"
 
@@ -8676,10 +8677,10 @@ payload = "{\"query\":\"str\"}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
-python
 ```
 
-```require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://app.rakam.io//continuous-query/test")
@@ -8693,7 +8694,6 @@ request.body = "{\"query\":\"str\"}"
 
 response = http.request(request)
 puts response.read_body
-ruby
 ```
 
 > The above command returns JSON structured like this:
