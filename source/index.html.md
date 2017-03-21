@@ -1,15 +1,18 @@
 ---
 title: API Reference
 language_tabs:
+  - shell
+  - javascript
   - java
-  - c#
+  - csharp
   - go
-  - node
   - php
   - python
   - ruby
+
 toc_footers:
- - <a href='#'>Sign Up for a Developer Key</a>
+ - <a href='https://app.rakam.io/register'>Register for a Developer Key</a>
+
 includes:
     - errors
 search: true
@@ -17,7 +20,7 @@ search: true
 # Introduction
 
 ```
-We have language bindings in java, c#, go, node, php, python, ruby! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in shell, javascript, java, csharp, go, php, python, ruby! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 ```
 
 An analytics platform API that lets you create your own analytics services.
@@ -43,14 +46,26 @@ BasePath: /
 Event Explorer
 
 ## Perform simple query on event data
-```curl
-curl "app.rakam.io/event-explorer/analyze" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "startDate" : "2016-03-03T10:15:30.00Z",
-  "endDate" : "2016-03-03T10:15:30.00Z",
-  "collections" : [ "str" ]
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//event-explorer/analyze \
+  --data '{"startDate":"str","endDate":"str","collections":["str"]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//event-explorer/analyze',
+  body: { startDate: 'str', endDate: 'str', collections: [ 'str' ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -66,7 +81,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//event-explorer/analyze");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}", ParameterType.RequestBody);
@@ -100,22 +115,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//event-explorer/analyze',
-  body: { startDate: 'str', endDate: 'str', collections: [ 'str' ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -204,8 +203,23 @@ puts response.read_body
 
 
 ## Event statistics
-```curl
-curl "app.rakam.io/event-explorer/extra_dimensions" -H "read_key: myread_key" -X GET
+
+```shell
+curl --request GET \
+  --url https://app.rakam.io//event-explorer/extra_dimensions
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://app.rakam.io//event-explorer/extra_dimensions' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -219,7 +233,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//event-explorer/extra_dimensions");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
@@ -249,20 +263,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'GET',
-  url: 'https://app.rakam.io//event-explorer/extra_dimensions' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -322,16 +322,31 @@ puts response.read_body
 
 
 ## Create Pre-computed table
-```curl
-curl "app.rakam.io/event-explorer/pre_calculate" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "collections" : [ "str" ],
-  "dimensions" : [ "str" ],
-  "aggregations" : [ "COUNT" ],
-  "measures" : [ "str" ],
-  "tableName" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//event-explorer/pre_calculate \
+  --data '{"collections":["str"],"dimensions":["str"],"aggregations":["COUNT"],"measures":["str"],"tableName":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//event-explorer/pre_calculate',
+  body: 
+   { collections: [ 'str' ],
+     dimensions: [ 'str' ],
+     aggregations: [ 'COUNT' ],
+     measures: [ 'str' ],
+     tableName: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -347,7 +362,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//event-explorer/pre_calculate");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"collections\":[\"str\"],\"dimensions\":[\"str\"],\"aggregations\":[\"COUNT\"],\"measures\":[\"str\"],\"tableName\":\"str\"}", ParameterType.RequestBody);
@@ -381,27 +396,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//event-explorer/pre_calculate',
-  body: 
-   { collections: [ 'str' ],
-     dimensions: [ 'str' ],
-     aggregations: [ 'COUNT' ],
-     measures: [ 'str' ],
-     tableName: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -479,13 +473,26 @@ puts response.read_body
 
 
 ## Event statistics
-```curl
-curl "app.rakam.io/event-explorer/statistics" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "startDate" : "2016-03-03T10:15:30.00Z",
-  "endDate" : "2016-03-03T10:15:30.00Z"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//event-explorer/statistics \
+  --data '{"startDate":"str","endDate":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//event-explorer/statistics',
+  body: { startDate: 'str', endDate: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -501,7 +508,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//event-explorer/statistics");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"startDate\":\"str\",\"endDate\":\"str\"}", ParameterType.RequestBody);
@@ -535,22 +542,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//event-explorer/statistics',
-  body: { startDate: 'str', endDate: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -641,14 +632,26 @@ puts response.read_body
 Funnel Analyzer
 
 ## Execute query
-```curl
-curl "app.rakam.io/funnel/analyze" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "steps" : [ { } ],
-  "startDate" : "2015-01-20",
-  "endDate" : "2015-01-20"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//funnel/analyze \
+  --data '{"steps":[{}],"startDate":"str","endDate":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//funnel/analyze',
+  body: { steps: [ {} ], startDate: 'str', endDate: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -664,7 +667,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//funnel/analyze");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"steps\":[{}],\"startDate\":\"str\",\"endDate\":\"str\"}", ParameterType.RequestBody);
@@ -698,22 +701,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//funnel/analyze',
-  body: { steps: [ {} ], startDate: 'str', endDate: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -806,18 +793,30 @@ puts response.read_body
 Realtime
 
 ## Create report
-```curl
-curl "app.rakam.io/realtime/create" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "name" : "str",
-  "measures" : [ {
-    "column" : "str",
-    "aggregation" : "COUNT"
-  } ],
-  "table_name" : "str",
-  "collections" : [ "str" ]
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//realtime/create \
+  --data '{"name":"str","measures":[{}],"table_name":"str","collections":["str"]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//realtime/create',
+  body: 
+   { name: 'str',
+     measures: [ {} ],
+     table_name: 'str',
+     collections: [ 'str' ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -833,7 +832,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//realtime/create");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collections\":[\"str\"]}", ParameterType.RequestBody);
@@ -867,26 +866,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//realtime/create',
-  body: 
-   { name: 'str',
-     measures: [ {} ],
-     table_name: 'str',
-     collections: [ 'str' ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -964,12 +943,26 @@ puts response.read_body
 
 
 ## Delete report
-```curl
-curl "app.rakam.io/realtime/delete" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "table_name" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//realtime/delete \
+  --data '{"table_name":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//realtime/delete',
+  body: { table_name: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -985,7 +978,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//realtime/delete");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
@@ -1019,22 +1012,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//realtime/delete',
-  body: { table_name: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -1107,16 +1084,26 @@ puts response.read_body
 
 
 ## Get report
-```curl
-curl "app.rakam.io/realtime/get" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "table_name" : "str",
-  "measure" : {
-    "column" : "str",
-    "aggregation" : "COUNT"
-  }
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//realtime/get \
+  --data '{"table_name":"str","measure":{}}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//realtime/get',
+  body: { table_name: 'str', measure: {} },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -1132,7 +1119,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//realtime/get");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\",\"measure\":{}}", ParameterType.RequestBody);
@@ -1166,22 +1153,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//realtime/get',
-  body: { table_name: 'str', measure: {} },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -1258,8 +1229,22 @@ puts response.read_body
 
 
 ## List queries
-```curl
-curl "app.rakam.io/realtime/list" -H "read_key: myread_key" -X POST
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//realtime/list
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST', url: 'https://app.rakam.io//realtime/list' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -1273,7 +1258,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//realtime/list");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
@@ -1303,19 +1288,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST', url: 'https://app.rakam.io//realtime/list' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -1381,17 +1353,32 @@ puts response.read_body
 Retention Analyzer module
 
 ## Execute query
-```curl
-curl "app.rakam.io/retention/analyze" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "first_action" : { },
-  "returning_action" : { },
-  "dimension" : "str",
-  "date_unit" : "DAY",
-  "startDate" : "2015-01-20",
-  "endDate" : "2015-01-20"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//retention/analyze \
+  --data '{"first_action":{},"returning_action":{},"dimension":"str","date_unit":"DAY","startDate":"str","endDate":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//retention/analyze',
+  body: 
+   { first_action: {},
+     returning_action: {},
+     dimension: 'str',
+     date_unit: 'DAY',
+     startDate: 'str',
+     endDate: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -1407,7 +1394,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//retention/analyze");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"first_action\":{},\"returning_action\":{},\"dimension\":\"str\",\"date_unit\":\"DAY\",\"startDate\":\"str\",\"endDate\":\"str\"}", ParameterType.RequestBody);
@@ -1441,28 +1428,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//retention/analyze',
-  body: 
-   { first_action: {},
-     returning_action: {},
-     dimension: 'str',
-     date_unit: 'DAY',
-     startDate: 'str',
-     endDate: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -1563,16 +1528,26 @@ Event Stream Module
 User
 
 ## Batch operation on a single user properties
-```curl
-curl "app.rakam.io/user/batch" -H "write_key: mywrite_key" -X POST -d @- << EOF 
-{
-  "id" : "object",
-  "api" : { },
-  "data" : [ {
-    "time" : 1
-  } ]
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/batch \
+  --data '{"id":{},"api":{},"data":[{}]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/batch',
+  body: { id: {}, api: {}, data: [ {} ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -1588,7 +1563,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/batch");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"id\":{},\"api\":{},\"data\":[{}]}", ParameterType.RequestBody);
@@ -1622,22 +1597,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/batch',
-  body: { id: {}, api: {}, data: [ {} ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -1710,16 +1669,26 @@ puts response.read_body
 
 
 ## Create multiple new users
-```curl
-curl "app.rakam.io/user/batch/create" -H "write_key: mywrite_key" -X POST -d @- << EOF 
-{
-  "users" : [ {
-    "id" : "object",
-    "api" : { },
-    "properties" : "object"
-  } ]
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/batch/create \
+  --data '{"users":[null]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/batch/create',
+  body: { users: [ null ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -1735,7 +1704,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/batch/create");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"users\":[null]}", ParameterType.RequestBody);
@@ -1769,22 +1738,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/batch/create',
-  body: { users: [ null ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -1858,15 +1811,26 @@ puts response.read_body
 Returns user ids. User id may be string or numeric.
 
 ## Batch operations on user properties
-```curl
-curl "app.rakam.io/user/batch_operations" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "api" : { },
-  "data" : [ {
-    "id" : "object"
-  } ]
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/batch_operations \
+  --data '{"api":{},"data":[{}]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/batch_operations',
+  body: { api: {}, data: [ {} ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -1882,7 +1846,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/batch_operations");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"api\":{},\"data\":[{}]}", ParameterType.RequestBody);
@@ -1916,22 +1880,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/batch_operations',
-  body: { api: {}, data: [ {} ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -2003,14 +1951,26 @@ puts response.read_body
 
 
 ## Create new user
-```curl
-curl "app.rakam.io/user/create" -X POST -d @- << EOF 
-{
-  "id" : "object",
-  "api" : { },
-  "properties" : "object"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/create \
+  --data '{"id":{},"api":{},"properties":{}}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/create',
+  body: { id: {}, api: {}, properties: {} },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -2026,7 +1986,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/create");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"id\":{},\"api\":{},\"properties\":{}}", ParameterType.RequestBody);
@@ -2060,22 +2020,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/create',
-  body: { id: {}, api: {}, properties: {} },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -2148,14 +2092,26 @@ puts response.read_body
 
 
 ## Get events of the user
-```curl
-curl "app.rakam.io/user/create_segment" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "name" : "str",
-  "table_name" : "str",
-  "cache_eviction" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/create_segment \
+  --data '{"name":"str","table_name":"str","cache_eviction":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/create_segment',
+  body: { name: 'str', table_name: 'str', cache_eviction: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -2171,7 +2127,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/create_segment");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"name\":\"str\",\"table_name\":\"str\",\"cache_eviction\":\"str\"}", ParameterType.RequestBody);
@@ -2205,22 +2161,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/create_segment',
-  body: { name: 'str', table_name: 'str', cache_eviction: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -2297,12 +2237,26 @@ puts response.read_body
 
 
 ## Get user
-```curl
-curl "app.rakam.io/user/get" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "user" : "object"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/get \
+  --data '{"user":{}}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/get',
+  body: { user: {} },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -2318,7 +2272,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/get");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"user\":{}}", ParameterType.RequestBody);
@@ -2352,22 +2306,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/get',
-  body: { user: {} },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -2442,12 +2380,26 @@ puts response.read_body
 
 
 ## Get events of the user
-```curl
-curl "app.rakam.io/user/get_events" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "user" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/get_events \
+  --data '{"user":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/get_events',
+  body: { user: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -2463,7 +2415,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/get_events");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"user\":\"str\"}", ParameterType.RequestBody);
@@ -2497,22 +2449,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/get_events',
-  body: { user: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -2586,15 +2522,26 @@ puts response.read_body
 
 
 ## Set user property
-```curl
-curl "app.rakam.io/user/increment_property" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "api" : { },
-  "id" : "str",
-  "property" : "str",
-  "value" : 1.0
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/increment_property \
+  --data '{"api":{},"id":"str","property":"str","value":7}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/increment_property',
+  body: { api: {}, id: 'str', property: 'str', value: 7 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -2610,7 +2557,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/increment_property");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"api\":{},\"id\":\"str\",\"property\":\"str\",\"value\":7}", ParameterType.RequestBody);
@@ -2644,22 +2591,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/increment_property',
-  body: { api: {}, id: 'str', property: 'str', value: 7 },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -2735,8 +2666,22 @@ puts response.read_body
 
 
 ## Get user storage metadata
-```curl
-curl "app.rakam.io/user/metadata" -H "read_key: myread_key" -X GET
+
+```shell
+curl --request GET \
+  --url https://app.rakam.io//user/metadata
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET', url: 'https://app.rakam.io//user/metadata' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -2750,7 +2695,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/metadata");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
@@ -2780,19 +2725,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'GET', url: 'https://app.rakam.io//user/metadata' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -2850,10 +2782,32 @@ puts response.read_body
 
 
 ## Search users
-```curl
-curl "app.rakam.io/user/search" -H "read_key: myread_key" -X POST -d @- << EOF 
-{ }
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/search \
+  --data '{"columns":["str"],"filter":"str","event_filters":[{}],"sorting":{},"offset":"str","limit":4}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/search',
+  body: 
+   { columns: [ 'str' ],
+     filter: 'str',
+     event_filters: [ {} ],
+     sorting: {},
+     offset: 'str',
+     limit: 4 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -2869,7 +2823,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/search");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"columns\":[\"str\"],\"filter\":\"str\",\"event_filters\":[{}],\"sorting\":{},\"offset\":\"str\",\"limit\":4}", ParameterType.RequestBody);
@@ -2903,28 +2857,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/search',
-  body: 
-   { columns: [ 'str' ],
-     filter: 'str',
-     event_filters: [ {} ],
-     sorting: {},
-     offset: 'str',
-     limit: 4 },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -3012,14 +2944,26 @@ puts response.read_body
 
 
 ## Set user properties
-```curl
-curl "app.rakam.io/user/set_properties" -X POST -d @- << EOF 
-{
-  "id" : "object",
-  "api" : { },
-  "properties" : "object"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/set_properties \
+  --data '{"id":{},"api":{},"properties":{}}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/set_properties',
+  body: { id: {}, api: {}, properties: {} },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -3035,7 +2979,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/set_properties");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"id\":{},\"api\":{},\"properties\":{}}", ParameterType.RequestBody);
@@ -3069,22 +3013,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/set_properties',
-  body: { id: {}, api: {}, properties: {} },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -3157,14 +3085,26 @@ puts response.read_body
 
 
 ## Set user properties once
-```curl
-curl "app.rakam.io/user/set_properties_once" -X POST -d @- << EOF 
-{
-  "id" : "object",
-  "api" : { },
-  "properties" : "object"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/set_properties_once \
+  --data '{"id":{},"api":{},"properties":{}}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/set_properties_once',
+  body: { id: {}, api: {}, properties: {} },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -3180,7 +3120,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/set_properties_once");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"id\":{},\"api\":{},\"properties\":{}}", ParameterType.RequestBody);
@@ -3214,22 +3154,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/set_properties_once',
-  body: { id: {}, api: {}, properties: {} },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -3302,14 +3226,26 @@ puts response.read_body
 
 
 ## Unset user property
-```curl
-curl "app.rakam.io/user/unset_properties" -X POST -d @- << EOF 
-{
-  "api" : { },
-  "id" : "object",
-  "properties" : [ "str" ]
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/unset_properties \
+  --data '{"api":{},"id":{},"properties":["str"]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/unset_properties',
+  body: { api: {}, id: {}, properties: [ 'str' ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -3325,7 +3261,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/unset_properties");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"api\":{},\"id\":{},\"properties\":[\"str\"]}", ParameterType.RequestBody);
@@ -3359,22 +3295,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/unset_properties',
-  body: { api: {}, id: {}, properties: [ 'str' ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -3454,15 +3374,26 @@ puts response.read_body
 User Action
 
 ## Apply batch operation
-```curl
-curl "app.rakam.io/user/action/email/batch" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "config" : {
-    "title" : "str",
-    "content" : "str"
-  }
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/action/email/batch \
+  --data '{"config":{}}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/action/email/batch',
+  body: { config: {} },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -3478,7 +3409,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/action/email/batch");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"config\":{}}", ParameterType.RequestBody);
@@ -3512,22 +3443,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/action/email/batch',
-  body: { config: {} },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -3600,16 +3515,26 @@ puts response.read_body
 
 
 ## Perform action for single user
-```curl
-curl "app.rakam.io/user/action/email/single" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "user" : "str",
-  "config" : {
-    "title" : "str",
-    "content" : "str"
-  }
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//user/action/email/single \
+  --data '{"user":"str","config":{}}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//user/action/email/single',
+  body: { user: 'str', config: {} },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -3625,7 +3550,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//user/action/email/single");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"user\":\"str\",\"config\":{}}", ParameterType.RequestBody);
@@ -3659,22 +3584,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/action/email/single',
-  body: { user: 'str', config: {} },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -3751,8 +3660,25 @@ true
 Recipe
 
 ## Export recipe
-```curl
-curl "app.rakam.io/recipe/export" -H "master_key: mymaster_key" -X GET
+
+```shell
+curl --request GET \
+  --url https://app.rakam.io//recipe/export \
+  --header 'accept: str'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://app.rakam.io//recipe/export',
+  headers: { accept: 'str' } };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -3767,7 +3693,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//recipe/export");
 var request = new RestRequest(Method.GET);
 request.AddHeader("accept", "str");
@@ -3800,21 +3726,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'GET',
-  url: 'https://app.rakam.io//recipe/export',
-  headers: { accept: 'str' } };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -3885,8 +3796,22 @@ puts response.read_body
 
 
 ## Install recipe
-```curl
-curl "app.rakam.io/recipe/install" -H "master_key: mymaster_key" -X POST
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//recipe/install
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST', url: 'https://app.rakam.io//recipe/install' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -3900,7 +3825,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//recipe/install");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
@@ -3930,19 +3855,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST', url: 'https://app.rakam.io//recipe/install' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -4007,8 +3919,23 @@ puts response.read_body
 System related actions
 
 ## List installed modules
-```curl
-curl "app.rakam.io/admin/configurations" -H "master_key: mymaster_key" -X GET
+
+```shell
+curl --request GET \
+  --url https://app.rakam.io//admin/configurations
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://app.rakam.io//admin/configurations' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -4022,7 +3949,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//admin/configurations");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
@@ -4052,20 +3979,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'GET',
-  url: 'https://app.rakam.io//admin/configurations' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -4123,8 +4036,23 @@ puts response.read_body
 
 
 ## List event mappers
-```curl
-curl "app.rakam.io/admin/event_mappers" -H "master_key: mymaster_key" -X GET
+
+```shell
+curl --request GET \
+  --url https://app.rakam.io//admin/event_mappers
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://app.rakam.io//admin/event_mappers' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -4138,7 +4066,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//admin/event_mappers");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
@@ -4168,20 +4096,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'GET',
-  url: 'https://app.rakam.io//admin/event_mappers' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -4239,10 +4153,26 @@ puts response.read_body
 
 
 ## Check lock key
-```curl
-curl "app.rakam.io/admin/lock_key" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{ }
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//admin/lock_key \
+  --data '{"lock_key":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//admin/lock_key',
+  body: { lock_key: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -4258,7 +4188,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//admin/lock_key");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"lock_key\":\"str\"}", ParameterType.RequestBody);
@@ -4292,22 +4222,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//admin/lock_key',
-  body: { lock_key: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -4378,8 +4292,22 @@ true
 
 
 ## Get types
-```curl
-curl "app.rakam.io/admin/types" -H "master_key: mymaster_key" -X GET
+
+```shell
+curl --request GET \
+  --url https://app.rakam.io//admin/types
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET', url: 'https://app.rakam.io//admin/types' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -4393,7 +4321,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//admin/types");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
@@ -4423,19 +4351,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'GET', url: 'https://app.rakam.io//admin/types' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -4495,13 +4410,26 @@ puts response.read_body
 
 
 ## Create API Keys
-```curl
-curl "app.rakam.io/project/check-api-keys" -X POST -d @- << EOF 
-{
-  "keys" : [ { } ],
-  "project" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//project/check-api-keys \
+  --data '{"keys":[{}],"project":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//project/check-api-keys',
+  body: { keys: [ {} ], project: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -4517,7 +4445,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//project/check-api-keys");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"keys\":[{}],\"project\":\"str\"}", ParameterType.RequestBody);
@@ -4551,22 +4479,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//project/check-api-keys',
-  body: { keys: [ {} ], project: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -4638,8 +4550,23 @@ puts response.read_body
 
 
 ## Get collection names
-```curl
-curl "app.rakam.io/project/collection" -H "read_key: myread_key" -X POST
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//project/collection
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//project/collection' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -4653,7 +4580,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//project/collection");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
@@ -4683,20 +4610,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//project/collection' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -4754,12 +4667,26 @@ puts response.read_body
 
 
 ## Create project
-```curl
-curl "app.rakam.io/project/create" -X POST -d @- << EOF 
-{
-  "name" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//project/create \
+  --data '{"name":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//project/create',
+  body: { name: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -4775,7 +4702,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//project/create");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"name\":\"str\"}", ParameterType.RequestBody);
@@ -4809,22 +4736,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//project/create',
-  body: { name: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -4896,8 +4807,23 @@ puts response.read_body
 
 
 ## Create API Keys
-```curl
-curl "app.rakam.io/project/create-api-keys" -H "master_key: mymaster_key" -X POST
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//project/create-api-keys
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//project/create-api-keys' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -4911,7 +4837,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//project/create-api-keys");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
@@ -4941,20 +4867,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//project/create-api-keys' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -5012,8 +4924,23 @@ puts response.read_body
 
 
 ## Delete project
-```curl
-curl "app.rakam.io/project/delete" -H "master_key: mymaster_key" -X DELETE
+
+```shell
+curl --request DELETE \
+  --url https://app.rakam.io//project/delete
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'DELETE',
+  url: 'https://app.rakam.io//project/delete' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -5027,7 +4954,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//project/delete");
 var request = new RestRequest(Method.DELETE);
 IRestResponse response = client.Execute(request);
@@ -5057,20 +4984,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'DELETE',
-  url: 'https://app.rakam.io//project/delete' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -5130,10 +5043,26 @@ puts response.read_body
 
 
 ## List created projects
-```curl
-curl "app.rakam.io/project/list" -H "read_key: myread_key" -X POST -d @- << EOF 
-{ }
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//project/list \
+  --data '{"lock_key":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//project/list',
+  body: { lock_key: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -5149,7 +5078,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//project/list");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"lock_key\":\"str\"}", ParameterType.RequestBody);
@@ -5183,22 +5112,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//project/list',
-  body: { lock_key: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -5269,13 +5182,26 @@ puts response.read_body
 
 
 ## Revoke API Keys
-```curl
-curl "app.rakam.io/project/revoke-api-keys" -X POST -d @- << EOF 
-{
-  "project" : "str",
-  "master_key" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//project/revoke-api-keys \
+  --data '{"project":"str","master_key":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//project/revoke-api-keys',
+  body: { project: 'str', master_key: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -5291,7 +5217,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//project/revoke-api-keys");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"project\":\"str\",\"master_key\":\"str\"}", ParameterType.RequestBody);
@@ -5325,22 +5251,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//project/revoke-api-keys',
-  body: { project: 'str', master_key: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -5414,10 +5324,26 @@ puts response.read_body
 
 
 ## Get collection schema
-```curl
-curl "app.rakam.io/project/schema" -H "read_key: myread_key" -X POST -d @- << EOF 
-{ }
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//project/schema \
+  --data '{"names":["str"]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//project/schema',
+  body: { names: [ 'str' ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -5433,7 +5359,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//project/schema");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"names\":[\"str\"]}", ParameterType.RequestBody);
@@ -5467,22 +5393,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//project/schema',
-  body: { names: [ 'str' ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -5553,16 +5463,26 @@ puts response.read_body
 
 
 ## Add fields to collections
-```curl
-curl "app.rakam.io/project/schema/add" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "collection" : "str",
-  "fields" : [ {
-    "name" : "str",
-    "type" : "STRING"
-  } ]
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//project/schema/add \
+  --data '{"collection":"str","fields":[{}]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//project/schema/add',
+  body: { collection: 'str', fields: [ {} ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -5578,7 +5498,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//project/schema/add");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"collection\":\"str\",\"fields\":[{}]}", ParameterType.RequestBody);
@@ -5612,22 +5532,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//project/schema/add',
-  body: { collection: 'str', fields: [ {} ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -5702,14 +5606,26 @@ puts response.read_body
 
 
 ## Add fields to collections by transforming other schemas
-```curl
-curl "app.rakam.io/project/schema/add/custom" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "collection" : "str",
-  "schema_type" : "AVRO",
-  "schema" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//project/schema/add/custom \
+  --data '{"collection":"str","schema_type":"AVRO","schema":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//project/schema/add/custom',
+  body: { collection: 'str', schema_type: 'AVRO', schema: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -5725,7 +5641,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//project/schema/add/custom");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"collection\":\"str\",\"schema_type\":\"AVRO\",\"schema\":\"str\"}", ParameterType.RequestBody);
@@ -5759,22 +5675,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//project/schema/add/custom',
-  body: { collection: 'str', schema_type: 'AVRO', schema: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -5850,10 +5750,26 @@ puts response.read_body
 
 
 ## Get project stats
-```curl
-curl "app.rakam.io/project/stats" -X POST -d @- << EOF 
-[ "object" ]
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//project/stats \
+  --data '{}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//project/stats',
+  body: {},
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -5869,7 +5785,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//project/stats");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{}", ParameterType.RequestBody);
@@ -5903,22 +5819,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//project/stats',
-  body: {},
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -5996,17 +5896,26 @@ puts response.read_body
 Collect data
 
 ## Collect multiple events
-```curl
-curl "app.rakam.io/event/batch" -X POST -d @- << EOF 
-{
-  "api" : { },
-  "events" : [ {
-    "collection" : "str",
-    "api" : { },
-    "properties" : "object"
-  } ]
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//event/batch \
+  --data '{"api":{},"events":[{}]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//event/batch',
+  body: { api: {}, events: [ {} ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -6022,7 +5931,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//event/batch");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"api\":{},\"events\":[{}]}", ParameterType.RequestBody);
@@ -6056,22 +5965,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//event/batch',
-  body: { api: {}, events: [ {} ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -6146,17 +6039,26 @@ puts response.read_body
 Returns 1 if the events are collected.
 
 ## Collect Bulk events
-```curl
-curl "app.rakam.io/event/bulk" -X POST -d @- << EOF 
-{
-  "api" : { },
-  "events" : [ {
-    "collection" : "str",
-    "api" : { },
-    "properties" : "object"
-  } ]
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//event/bulk \
+  --data '{"api":{},"events":[{}]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//event/bulk',
+  body: { api: {}, events: [ {} ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -6172,7 +6074,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//event/bulk");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"api\":{},\"events\":[{}]}", ParameterType.RequestBody);
@@ -6206,22 +6108,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//event/bulk',
-  body: { api: {}, events: [ {} ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -6298,14 +6184,26 @@ puts response.read_body
 Bulk API requires master_key as api key and designed to handle large value of data. The endpoint also accepts application/avro and text/csv formats. You need need to set 'collection' and 'master_key' query parameters if the content-type is not application/json.
 
 ## Collect bulk events from remote
-```curl
-curl "app.rakam.io/event/bulk/remote" -X POST -d @- << EOF 
-{
-  "collection" : "str",
-  "urls" : [ "str" ],
-  "type" : "AVRO"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//event/bulk/remote \
+  --data '{"collection":"str","urls":["str"],"type":"AVRO"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//event/bulk/remote',
+  body: { collection: 'str', urls: [ 'str' ], type: 'AVRO' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -6321,7 +6219,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//event/bulk/remote");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"collection\":\"str\",\"urls\":[\"str\"],\"type\":\"AVRO\"}", ParameterType.RequestBody);
@@ -6355,22 +6253,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//event/bulk/remote',
-  body: { collection: 'str', urls: [ 'str' ], type: 'AVRO' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -6445,14 +6327,26 @@ puts response.read_body
 
 
 ## Collect event
-```curl
-curl "app.rakam.io/event/collect" -X POST -d @- << EOF 
-{
-  "collection" : "str",
-  "api" : { },
-  "properties" : "object"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//event/collect \
+  --data '{"collection":"str","api":{},"properties":{}}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//event/collect',
+  body: { collection: 'str', api: {}, properties: {} },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -6468,7 +6362,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//event/collect");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"collection\":\"str\",\"api\":{},\"properties\":{}}", ParameterType.RequestBody);
@@ -6502,22 +6396,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//event/collect',
-  body: { collection: 'str', api: {}, properties: {} },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -6590,17 +6468,26 @@ puts response.read_body
 
 
 ## Copy events directly to database
-```curl
-curl "app.rakam.io/event/copy" -X POST -d @- << EOF 
-{
-  "api" : { },
-  "events" : [ {
-    "collection" : "str",
-    "api" : { },
-    "properties" : "object"
-  } ]
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//event/copy \
+  --data '{"api":{},"events":[{}]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//event/copy',
+  body: { api: {}, events: [ {} ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -6616,7 +6503,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//event/copy");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"api\":{},\"events\":[{}]}", ParameterType.RequestBody);
@@ -6650,22 +6537,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//event/copy',
-  body: { api: {}, events: [ {} ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -6742,12 +6613,26 @@ puts response.read_body
 Analyze data
 
 ## Execute query on event data-set
-```curl
-curl "app.rakam.io/query/execute" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "query" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//query/execute \
+  --data '{"query":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//query/execute',
+  body: { query: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -6763,7 +6648,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//query/execute");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"query\":\"str\"}", ParameterType.RequestBody);
@@ -6797,22 +6682,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//query/execute',
-  body: { query: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -6887,12 +6756,26 @@ puts response.read_body
 
 
 ## Explain query
-```curl
-curl "app.rakam.io/query/explain" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "query" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//query/explain \
+  --data '{"query":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//query/explain',
+  body: { query: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -6908,7 +6791,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//query/explain");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"query\":\"str\"}", ParameterType.RequestBody);
@@ -6942,22 +6825,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//query/explain',
-  body: { query: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -7028,12 +6895,26 @@ puts response.read_body
 
 
 ## Test query
-```curl
-curl "app.rakam.io/query/metadata" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "query" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//query/metadata \
+  --data '{"query":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//query/metadata',
+  body: { query: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -7049,7 +6930,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//query/metadata");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"query\":\"str\"}", ParameterType.RequestBody);
@@ -7083,22 +6964,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//query/metadata',
-  body: { query: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -7177,14 +7042,26 @@ puts response.read_body
 Materialized view
 
 ## Create view
-```curl
-curl "app.rakam.io/materialized-view/create" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "table_name" : "str",
-  "name" : "str",
-  "query" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//materialized-view/create \
+  --data '{"table_name":"str","name":"str","query":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//materialized-view/create',
+  body: { table_name: 'str', name: 'str', query: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -7200,7 +7077,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//materialized-view/create");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\",\"name\":\"str\",\"query\":\"str\"}", ParameterType.RequestBody);
@@ -7234,22 +7111,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//materialized-view/create',
-  body: { table_name: 'str', name: 'str', query: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -7327,12 +7188,26 @@ puts response.read_body
 
 
 ## Delete materialized view
-```curl
-curl "app.rakam.io/materialized-view/delete" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "table_name" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//materialized-view/delete \
+  --data '{"table_name":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//materialized-view/delete',
+  body: { table_name: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -7348,7 +7223,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//materialized-view/delete");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
@@ -7382,22 +7257,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//materialized-view/delete',
-  body: { table_name: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -7470,12 +7329,26 @@ puts response.read_body
 
 
 ## Get view
-```curl
-curl "app.rakam.io/materialized-view/get" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "table_name" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//materialized-view/get \
+  --data '{"table_name":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//materialized-view/get',
+  body: { table_name: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -7491,7 +7364,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//materialized-view/get");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
@@ -7525,22 +7398,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//materialized-view/get',
-  body: { table_name: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -7615,8 +7472,23 @@ puts response.read_body
 
 
 ## List views
-```curl
-curl "app.rakam.io/materialized-view/list" -H "read_key: myread_key" -X POST
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//materialized-view/list
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//materialized-view/list' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -7630,7 +7502,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//materialized-view/list");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
@@ -7660,20 +7532,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//materialized-view/list' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -7735,10 +7593,26 @@ puts response.read_body
 
 
 ## Get schemas
-```curl
-curl "app.rakam.io/materialized-view/schema" -H "read_key: myread_key" -X POST -d @- << EOF 
-{ }
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//materialized-view/schema \
+  --data '{"names":["str"]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//materialized-view/schema',
+  body: { names: [ 'str' ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -7754,7 +7628,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//materialized-view/schema");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"names\":[\"str\"]}", ParameterType.RequestBody);
@@ -7788,22 +7662,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//materialized-view/schema',
-  body: { names: [ 'str' ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -7879,15 +7737,26 @@ puts response.read_body
 Continuous query
 
 ## Create stream
-```curl
-curl "app.rakam.io/continuous-query/create" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "continuous_query" : {
-    "name" : "str",
-    "query" : "str"
-  }
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//continuous-query/create \
+  --data '{"continuous_query":{}}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//continuous-query/create',
+  body: { continuous_query: {} },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -7903,7 +7772,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//continuous-query/create");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"continuous_query\":{}}", ParameterType.RequestBody);
@@ -7937,22 +7806,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//continuous-query/create',
-  body: { continuous_query: {} },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -8031,12 +7884,26 @@ Rakam will process data in batches keep the result of query in-memory all the ti
 Compared to reports, continuous queries continuously aggregate the data on the fly and the result is always available either in-memory or disk.
 
 ## Delete stream
-```curl
-curl "app.rakam.io/continuous-query/delete" -H "master_key: mymaster_key" -X POST -d @- << EOF 
-{
-  "table_name" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//continuous-query/delete \
+  --data '{"table_name":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//continuous-query/delete',
+  body: { table_name: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -8052,7 +7919,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//continuous-query/delete");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
@@ -8086,22 +7953,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//continuous-query/delete',
-  body: { table_name: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -8174,12 +8025,26 @@ puts response.read_body
 
 
 ## Get continuous query
-```curl
-curl "app.rakam.io/continuous-query/get" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "table_name" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//continuous-query/get \
+  --data '{"table_name":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//continuous-query/get',
+  body: { table_name: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -8195,7 +8060,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//continuous-query/get");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
@@ -8229,22 +8094,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//continuous-query/get',
-  body: { table_name: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -8318,8 +8167,23 @@ puts response.read_body
 
 
 ## List queries
-```curl
-curl "app.rakam.io/continuous-query/list" -H "read_key: myread_key" -X POST
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//continuous-query/list
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//continuous-query/list' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -8333,7 +8197,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//continuous-query/list");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
@@ -8363,20 +8227,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//continuous-query/list' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -8437,10 +8287,26 @@ puts response.read_body
 
 
 ## Get query schema
-```curl
-curl "app.rakam.io/continuous-query/schema" -H "read_key: myread_key" -X POST -d @- << EOF 
-{ }
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//continuous-query/schema \
+  --data '{"names":["str"]}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//continuous-query/schema',
+  body: { names: [ 'str' ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -8456,7 +8322,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//continuous-query/schema");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"names\":[\"str\"]}", ParameterType.RequestBody);
@@ -8490,22 +8356,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//continuous-query/schema',
-  body: { names: [ 'str' ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -8576,12 +8426,26 @@ puts response.read_body
 
 
 ## Test continuous query
-```curl
-curl "app.rakam.io/continuous-query/test" -H "read_key: myread_key" -X POST -d @- << EOF 
-{
-  "query" : "str"
-}
-EOF
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//continuous-query/test \
+  --data '{"query":"str"}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//continuous-query/test',
+  body: { query: 'str' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ```java
@@ -8597,7 +8461,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```c#
+```csharp
 var client = new RestClient("https://app.rakam.io//continuous-query/test");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{\"query\":\"str\"}", ParameterType.RequestBody);
@@ -8631,22 +8495,6 @@ func main() {
 	fmt.Println(string(body))
 
 }
-```
-
-```node
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//continuous-query/test',
-  body: { query: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-
 ```
 
 ```php
@@ -8872,7 +8720,7 @@ true
 |groupBy||false|[GroupBy](#groupby) array||
 |orderBy||false|[Ordering](#ordering) array||
 |limit||false|integer (int64)||
-|queryLocation||false|[NodeLocation](#nodelocation)||
+|queryLocation||false|[javascriptLocation](#javascriptlocation)||
 
 
 ### ProjectApiKeys
