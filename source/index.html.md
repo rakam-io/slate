@@ -50,6 +50,7 @@ Event Explorer
 ```shell
 curl --request POST \
   --url https://app.rakam.io//event-explorer/analyze \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"startDate":"str","endDate":"str","collections":["str"]}'
 ```
 
@@ -58,6 +59,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//event-explorer/analyze',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { startDate: 'str', endDate: 'str', collections: [ 'str' ] },
   json: true };
 
@@ -76,6 +78,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"startDate\":\"str\",\"endDa
 Request request = new Request.Builder()
   .url("https://app.rakam.io//event-explorer/analyze")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -84,6 +87,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//event-explorer/analyze");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -105,6 +109,8 @@ func main() {
 	payload := strings.NewReader("{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -130,6 +136,10 @@ $request->setRequestUrl('https://app.rakam.io//event-explorer/analyze');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -142,7 +152,9 @@ import requests
 url = "https://app.rakam.io//event-explorer/analyze"
 
 payload = "{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -158,6 +170,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}"
 
 response = http.request(request)
@@ -206,14 +219,16 @@ puts response.read_body
 
 ```shell
 curl --request GET \
-  --url https://app.rakam.io//event-explorer/extra_dimensions
+  --url https://app.rakam.io//event-explorer/extra_dimensions \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://app.rakam.io//event-explorer/extra_dimensions' };
+  url: 'https://app.rakam.io//event-explorer/extra_dimensions',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -228,6 +243,7 @@ OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
   .url("https://app.rakam.io//event-explorer/extra_dimensions")
   .get()
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -236,6 +252,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//event-explorer/extra_dimensions");
 var request = new RestRequest(Method.GET);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -253,6 +270,8 @@ func main() {
 	url := "https://app.rakam.io//event-explorer/extra_dimensions"
 
 	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -273,6 +292,10 @@ $request = new http\Client\Request;
 
 $request->setRequestUrl('https://app.rakam.io//event-explorer/extra_dimensions');
 $request->setRequestMethod('GET');
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -284,7 +307,9 @@ import requests
 
 url = "https://app.rakam.io//event-explorer/extra_dimensions"
 
-response = requests.request("GET", url)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("GET", url, headers=headers)
 
 print(response.text)
 ```
@@ -300,6 +325,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -326,6 +352,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//event-explorer/pre_calculate \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"collections":["str"],"dimensions":["str"],"aggregations":["COUNT"],"measures":["str"],"tableName":"str"}'
 ```
 
@@ -334,6 +361,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//event-explorer/pre_calculate',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: 
    { collections: [ 'str' ],
      dimensions: [ 'str' ],
@@ -357,6 +385,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"collections\":[\"str\"],\"d
 Request request = new Request.Builder()
   .url("https://app.rakam.io//event-explorer/pre_calculate")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -365,6 +394,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//event-explorer/pre_calculate");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"collections\":[\"str\"],\"dimensions\":[\"str\"],\"aggregations\":[\"COUNT\"],\"measures\":[\"str\"],\"tableName\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -386,6 +416,8 @@ func main() {
 	payload := strings.NewReader("{\"collections\":[\"str\"],\"dimensions\":[\"str\"],\"aggregations\":[\"COUNT\"],\"measures\":[\"str\"],\"tableName\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -411,6 +443,10 @@ $request->setRequestUrl('https://app.rakam.io//event-explorer/pre_calculate');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -423,7 +459,9 @@ import requests
 url = "https://app.rakam.io//event-explorer/pre_calculate"
 
 payload = "{\"collections\":[\"str\"],\"dimensions\":[\"str\"],\"aggregations\":[\"COUNT\"],\"measures\":[\"str\"],\"tableName\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -439,6 +477,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"collections\":[\"str\"],\"dimensions\":[\"str\"],\"aggregations\":[\"COUNT\"],\"measures\":[\"str\"],\"tableName\":\"str\"}"
 
 response = http.request(request)
@@ -477,6 +516,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//event-explorer/statistics \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"startDate":"str","endDate":"str"}'
 ```
 
@@ -485,6 +525,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//event-explorer/statistics',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { startDate: 'str', endDate: 'str' },
   json: true };
 
@@ -503,6 +544,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"startDate\":\"str\",\"endDa
 Request request = new Request.Builder()
   .url("https://app.rakam.io//event-explorer/statistics")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -511,6 +553,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//event-explorer/statistics");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"startDate\":\"str\",\"endDate\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -532,6 +575,8 @@ func main() {
 	payload := strings.NewReader("{\"startDate\":\"str\",\"endDate\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -557,6 +602,10 @@ $request->setRequestUrl('https://app.rakam.io//event-explorer/statistics');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -569,7 +618,9 @@ import requests
 url = "https://app.rakam.io//event-explorer/statistics"
 
 payload = "{\"startDate\":\"str\",\"endDate\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -585,6 +636,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"startDate\":\"str\",\"endDate\":\"str\"}"
 
 response = http.request(request)
@@ -636,6 +688,7 @@ Funnel Analyzer
 ```shell
 curl --request POST \
   --url https://app.rakam.io//funnel/analyze \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"steps":[{}],"startDate":"str","endDate":"str"}'
 ```
 
@@ -644,6 +697,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//funnel/analyze',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { steps: [ {} ], startDate: 'str', endDate: 'str' },
   json: true };
 
@@ -662,6 +716,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"steps\":[{}],\"startDate\":
 Request request = new Request.Builder()
   .url("https://app.rakam.io//funnel/analyze")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -670,6 +725,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//funnel/analyze");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"steps\":[{}],\"startDate\":\"str\",\"endDate\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -691,6 +747,8 @@ func main() {
 	payload := strings.NewReader("{\"steps\":[{}],\"startDate\":\"str\",\"endDate\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -716,6 +774,10 @@ $request->setRequestUrl('https://app.rakam.io//funnel/analyze');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -728,7 +790,9 @@ import requests
 url = "https://app.rakam.io//funnel/analyze"
 
 payload = "{\"steps\":[{}],\"startDate\":\"str\",\"endDate\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -744,6 +808,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"steps\":[{}],\"startDate\":\"str\",\"endDate\":\"str\"}"
 
 response = http.request(request)
@@ -797,6 +862,7 @@ Realtime
 ```shell
 curl --request POST \
   --url https://app.rakam.io//realtime/create \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"name":"str","measures":[{}],"table_name":"str","collections":["str"]}'
 ```
 
@@ -805,6 +871,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//realtime/create',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: 
    { name: 'str',
      measures: [ {} ],
@@ -827,6 +894,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"name\":\"str\",\"measures\"
 Request request = new Request.Builder()
   .url("https://app.rakam.io//realtime/create")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -835,6 +903,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//realtime/create");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collections\":[\"str\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -856,6 +925,8 @@ func main() {
 	payload := strings.NewReader("{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collections\":[\"str\"]}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -881,6 +952,10 @@ $request->setRequestUrl('https://app.rakam.io//realtime/create');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -893,7 +968,9 @@ import requests
 url = "https://app.rakam.io//realtime/create"
 
 payload = "{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collections\":[\"str\"]}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -909,6 +986,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collections\":[\"str\"]}"
 
 response = http.request(request)
@@ -947,6 +1025,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//realtime/delete \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"table_name":"str"}'
 ```
 
@@ -955,6 +1034,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//realtime/delete',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { table_name: 'str' },
   json: true };
 
@@ -973,6 +1053,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\"}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//realtime/delete")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -981,6 +1062,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//realtime/delete");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -1002,6 +1084,8 @@ func main() {
 	payload := strings.NewReader("{\"table_name\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -1027,6 +1111,10 @@ $request->setRequestUrl('https://app.rakam.io//realtime/delete');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -1039,7 +1127,9 @@ import requests
 url = "https://app.rakam.io//realtime/delete"
 
 payload = "{\"table_name\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -1055,6 +1145,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"table_name\":\"str\"}"
 
 response = http.request(request)
@@ -1088,6 +1179,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//realtime/get \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"table_name":"str","measure":{}}'
 ```
 
@@ -1096,6 +1188,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//realtime/get',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { table_name: 'str', measure: {} },
   json: true };
 
@@ -1114,6 +1207,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\",\"meas
 Request request = new Request.Builder()
   .url("https://app.rakam.io//realtime/get")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -1122,6 +1216,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//realtime/get");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"table_name\":\"str\",\"measure\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -1143,6 +1238,8 @@ func main() {
 	payload := strings.NewReader("{\"table_name\":\"str\",\"measure\":{}}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -1168,6 +1265,10 @@ $request->setRequestUrl('https://app.rakam.io//realtime/get');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -1180,7 +1281,9 @@ import requests
 url = "https://app.rakam.io//realtime/get"
 
 payload = "{\"table_name\":\"str\",\"measure\":{}}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -1196,6 +1299,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"table_name\":\"str\",\"measure\":{}}"
 
 response = http.request(request)
@@ -1232,13 +1336,16 @@ puts response.read_body
 
 ```shell
 curl --request POST \
-  --url https://app.rakam.io//realtime/list
+  --url https://app.rakam.io//realtime/list \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
 var request = require("request");
 
-var options = { method: 'POST', url: 'https://app.rakam.io//realtime/list' };
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//realtime/list',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1253,6 +1360,7 @@ OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
   .url("https://app.rakam.io//realtime/list")
   .post(null)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -1261,6 +1369,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//realtime/list");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -1278,6 +1387,8 @@ func main() {
 	url := "https://app.rakam.io//realtime/list"
 
 	req, _ := http.NewRequest("POST", url, nil)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -1298,6 +1409,10 @@ $request = new http\Client\Request;
 
 $request->setRequestUrl('https://app.rakam.io//realtime/list');
 $request->setRequestMethod('POST');
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -1309,7 +1424,9 @@ import requests
 
 url = "https://app.rakam.io//realtime/list"
 
-response = requests.request("POST", url)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, headers=headers)
 
 print(response.text)
 ```
@@ -1325,6 +1442,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -1357,6 +1475,7 @@ Retention Analyzer module
 ```shell
 curl --request POST \
   --url https://app.rakam.io//retention/analyze \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"first_action":{},"returning_action":{},"dimension":"str","date_unit":"DAY","startDate":"str","endDate":"str"}'
 ```
 
@@ -1365,6 +1484,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//retention/analyze',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: 
    { first_action: {},
      returning_action: {},
@@ -1389,6 +1509,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"first_action\":{},\"returni
 Request request = new Request.Builder()
   .url("https://app.rakam.io//retention/analyze")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -1397,6 +1518,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//retention/analyze");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"first_action\":{},\"returning_action\":{},\"dimension\":\"str\",\"date_unit\":\"DAY\",\"startDate\":\"str\",\"endDate\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -1418,6 +1540,8 @@ func main() {
 	payload := strings.NewReader("{\"first_action\":{},\"returning_action\":{},\"dimension\":\"str\",\"date_unit\":\"DAY\",\"startDate\":\"str\",\"endDate\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -1443,6 +1567,10 @@ $request->setRequestUrl('https://app.rakam.io//retention/analyze');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -1455,7 +1583,9 @@ import requests
 url = "https://app.rakam.io//retention/analyze"
 
 payload = "{\"first_action\":{},\"returning_action\":{},\"dimension\":\"str\",\"date_unit\":\"DAY\",\"startDate\":\"str\",\"endDate\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -1471,6 +1601,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"first_action\":{},\"returning_action\":{},\"dimension\":\"str\",\"date_unit\":\"DAY\",\"startDate\":\"str\",\"endDate\":\"str\"}"
 
 response = http.request(request)
@@ -1532,6 +1663,7 @@ User
 ```shell
 curl --request POST \
   --url https://app.rakam.io//user/batch \
+  --header 'write_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"id":{},"api":{},"data":[{}]}'
 ```
 
@@ -1540,6 +1672,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/batch',
+  headers: { write_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { id: {}, api: {}, data: [ {} ] },
   json: true };
 
@@ -1558,6 +1691,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"id\":{},\"api\":{},\"data\"
 Request request = new Request.Builder()
   .url("https://app.rakam.io//user/batch")
   .post(body)
+  .addHeader("write_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -1566,6 +1700,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//user/batch");
 var request = new RestRequest(Method.POST);
+request.AddHeader("write_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"id\":{},\"api\":{},\"data\":[{}]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -1587,6 +1722,8 @@ func main() {
 	payload := strings.NewReader("{\"id\":{},\"api\":{},\"data\":[{}]}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("write_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -1612,6 +1749,10 @@ $request->setRequestUrl('https://app.rakam.io//user/batch');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'write_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -1624,7 +1765,9 @@ import requests
 url = "https://app.rakam.io//user/batch"
 
 payload = "{\"id\":{},\"api\":{},\"data\":[{}]}"
-response = requests.request("POST", url, data=payload)
+headers = {'write_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -1640,6 +1783,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["write_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"id\":{},\"api\":{},\"data\":[{}]}"
 
 response = http.request(request)
@@ -1673,6 +1817,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//user/batch/create \
+  --header 'write_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"users":[null]}'
 ```
 
@@ -1681,6 +1826,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/batch/create',
+  headers: { write_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { users: [ null ] },
   json: true };
 
@@ -1699,6 +1845,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"users\":[null]}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//user/batch/create")
   .post(body)
+  .addHeader("write_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -1707,6 +1854,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//user/batch/create");
 var request = new RestRequest(Method.POST);
+request.AddHeader("write_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"users\":[null]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -1728,6 +1876,8 @@ func main() {
 	payload := strings.NewReader("{\"users\":[null]}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("write_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -1753,6 +1903,10 @@ $request->setRequestUrl('https://app.rakam.io//user/batch/create');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'write_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -1765,7 +1919,9 @@ import requests
 url = "https://app.rakam.io//user/batch/create"
 
 payload = "{\"users\":[null]}"
-response = requests.request("POST", url, data=payload)
+headers = {'write_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -1781,6 +1937,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["write_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"users\":[null]}"
 
 response = http.request(request)
@@ -1815,6 +1972,7 @@ Returns user ids. User id may be string or numeric.
 ```shell
 curl --request POST \
   --url https://app.rakam.io//user/batch_operations \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"api":{},"data":[{}]}'
 ```
 
@@ -1823,6 +1981,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/batch_operations',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { api: {}, data: [ {} ] },
   json: true };
 
@@ -1841,6 +2000,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"api\":{},\"data\":[{}]}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//user/batch_operations")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -1849,6 +2009,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//user/batch_operations");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"api\":{},\"data\":[{}]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -1870,6 +2031,8 @@ func main() {
 	payload := strings.NewReader("{\"api\":{},\"data\":[{}]}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -1895,6 +2058,10 @@ $request->setRequestUrl('https://app.rakam.io//user/batch_operations');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -1907,7 +2074,9 @@ import requests
 url = "https://app.rakam.io//user/batch_operations"
 
 payload = "{\"api\":{},\"data\":[{}]}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -1923,6 +2092,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"api\":{},\"data\":[{}]}"
 
 response = http.request(request)
@@ -2096,6 +2266,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//user/create_segment \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"name":"str","table_name":"str","cache_eviction":"str"}'
 ```
 
@@ -2104,6 +2275,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/create_segment',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { name: 'str', table_name: 'str', cache_eviction: 'str' },
   json: true };
 
@@ -2122,6 +2294,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"name\":\"str\",\"table_name
 Request request = new Request.Builder()
   .url("https://app.rakam.io//user/create_segment")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -2130,6 +2303,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//user/create_segment");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"name\":\"str\",\"table_name\":\"str\",\"cache_eviction\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -2151,6 +2325,8 @@ func main() {
 	payload := strings.NewReader("{\"name\":\"str\",\"table_name\":\"str\",\"cache_eviction\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -2176,6 +2352,10 @@ $request->setRequestUrl('https://app.rakam.io//user/create_segment');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -2188,7 +2368,9 @@ import requests
 url = "https://app.rakam.io//user/create_segment"
 
 payload = "{\"name\":\"str\",\"table_name\":\"str\",\"cache_eviction\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -2204,6 +2386,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"name\":\"str\",\"table_name\":\"str\",\"cache_eviction\":\"str\"}"
 
 response = http.request(request)
@@ -2241,6 +2424,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//user/get \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"user":{}}'
 ```
 
@@ -2249,6 +2433,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/get',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { user: {} },
   json: true };
 
@@ -2267,6 +2452,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"user\":{}}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//user/get")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -2275,6 +2461,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//user/get");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"user\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -2296,6 +2483,8 @@ func main() {
 	payload := strings.NewReader("{\"user\":{}}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -2321,6 +2510,10 @@ $request->setRequestUrl('https://app.rakam.io//user/get');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -2333,7 +2526,9 @@ import requests
 url = "https://app.rakam.io//user/get"
 
 payload = "{\"user\":{}}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -2349,6 +2544,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"user\":{}}"
 
 response = http.request(request)
@@ -2384,6 +2580,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//user/get_events \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"user":"str"}'
 ```
 
@@ -2392,6 +2589,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/get_events',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { user: 'str' },
   json: true };
 
@@ -2410,6 +2608,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"user\":\"str\"}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//user/get_events")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -2418,6 +2617,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//user/get_events");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"user\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -2439,6 +2639,8 @@ func main() {
 	payload := strings.NewReader("{\"user\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -2464,6 +2666,10 @@ $request->setRequestUrl('https://app.rakam.io//user/get_events');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -2476,7 +2682,9 @@ import requests
 url = "https://app.rakam.io//user/get_events"
 
 payload = "{\"user\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -2492,6 +2700,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"user\":\"str\"}"
 
 response = http.request(request)
@@ -2526,6 +2735,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//user/increment_property \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"api":{},"id":"str","property":"str","value":7}'
 ```
 
@@ -2534,6 +2744,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/increment_property',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { api: {}, id: 'str', property: 'str', value: 7 },
   json: true };
 
@@ -2552,6 +2763,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"api\":{},\"id\":\"str\",\"p
 Request request = new Request.Builder()
   .url("https://app.rakam.io//user/increment_property")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -2560,6 +2772,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//user/increment_property");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"api\":{},\"id\":\"str\",\"property\":\"str\",\"value\":7}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -2581,6 +2794,8 @@ func main() {
 	payload := strings.NewReader("{\"api\":{},\"id\":\"str\",\"property\":\"str\",\"value\":7}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -2606,6 +2821,10 @@ $request->setRequestUrl('https://app.rakam.io//user/increment_property');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -2618,7 +2837,9 @@ import requests
 url = "https://app.rakam.io//user/increment_property"
 
 payload = "{\"api\":{},\"id\":\"str\",\"property\":\"str\",\"value\":7}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -2634,6 +2855,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"api\":{},\"id\":\"str\",\"property\":\"str\",\"value\":7}"
 
 response = http.request(request)
@@ -2669,13 +2891,16 @@ puts response.read_body
 
 ```shell
 curl --request GET \
-  --url https://app.rakam.io//user/metadata
+  --url https://app.rakam.io//user/metadata \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
 var request = require("request");
 
-var options = { method: 'GET', url: 'https://app.rakam.io//user/metadata' };
+var options = { method: 'GET',
+  url: 'https://app.rakam.io//user/metadata',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -2690,6 +2915,7 @@ OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
   .url("https://app.rakam.io//user/metadata")
   .get()
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -2698,6 +2924,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//user/metadata");
 var request = new RestRequest(Method.GET);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -2715,6 +2942,8 @@ func main() {
 	url := "https://app.rakam.io//user/metadata"
 
 	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -2735,6 +2964,10 @@ $request = new http\Client\Request;
 
 $request->setRequestUrl('https://app.rakam.io//user/metadata');
 $request->setRequestMethod('GET');
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -2746,7 +2979,9 @@ import requests
 
 url = "https://app.rakam.io//user/metadata"
 
-response = requests.request("GET", url)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("GET", url, headers=headers)
 
 print(response.text)
 ```
@@ -2762,6 +2997,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -2786,6 +3022,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//user/search \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"columns":["str"],"filter":"str","event_filters":[{}],"sorting":{},"offset":"str","limit":4}'
 ```
 
@@ -2794,6 +3031,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/search',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: 
    { columns: [ 'str' ],
      filter: 'str',
@@ -2818,6 +3056,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"columns\":[\"str\"],\"filte
 Request request = new Request.Builder()
   .url("https://app.rakam.io//user/search")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -2826,6 +3065,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//user/search");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"columns\":[\"str\"],\"filter\":\"str\",\"event_filters\":[{}],\"sorting\":{},\"offset\":\"str\",\"limit\":4}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -2847,6 +3087,8 @@ func main() {
 	payload := strings.NewReader("{\"columns\":[\"str\"],\"filter\":\"str\",\"event_filters\":[{}],\"sorting\":{},\"offset\":\"str\",\"limit\":4}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -2872,6 +3114,10 @@ $request->setRequestUrl('https://app.rakam.io//user/search');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -2884,7 +3130,9 @@ import requests
 url = "https://app.rakam.io//user/search"
 
 payload = "{\"columns\":[\"str\"],\"filter\":\"str\",\"event_filters\":[{}],\"sorting\":{},\"offset\":\"str\",\"limit\":4}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -2900,6 +3148,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"columns\":[\"str\"],\"filter\":\"str\",\"event_filters\":[{}],\"sorting\":{},\"offset\":\"str\",\"limit\":4}"
 
 response = http.request(request)
@@ -3378,6 +3627,7 @@ User Action
 ```shell
 curl --request POST \
   --url https://app.rakam.io//user/action/email/batch \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"config":{}}'
 ```
 
@@ -3386,6 +3636,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/action/email/batch',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { config: {} },
   json: true };
 
@@ -3404,6 +3655,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"config\":{}}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//user/action/email/batch")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -3412,6 +3664,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//user/action/email/batch");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"config\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -3433,6 +3686,8 @@ func main() {
 	payload := strings.NewReader("{\"config\":{}}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -3458,6 +3713,10 @@ $request->setRequestUrl('https://app.rakam.io//user/action/email/batch');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -3470,7 +3729,9 @@ import requests
 url = "https://app.rakam.io//user/action/email/batch"
 
 payload = "{\"config\":{}}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -3486,6 +3747,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"config\":{}}"
 
 response = http.request(request)
@@ -3519,6 +3781,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//user/action/email/single \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"user":"str","config":{}}'
 ```
 
@@ -3527,6 +3790,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//user/action/email/single',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { user: 'str', config: {} },
   json: true };
 
@@ -3545,6 +3809,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"user\":\"str\",\"config\":{
 Request request = new Request.Builder()
   .url("https://app.rakam.io//user/action/email/single")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -3553,6 +3818,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//user/action/email/single");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"user\":\"str\",\"config\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -3574,6 +3840,8 @@ func main() {
 	payload := strings.NewReader("{\"user\":\"str\",\"config\":{}}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -3599,6 +3867,10 @@ $request->setRequestUrl('https://app.rakam.io//user/action/email/single');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -3611,7 +3883,9 @@ import requests
 url = "https://app.rakam.io//user/action/email/single"
 
 payload = "{\"user\":\"str\",\"config\":{}}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -3627,6 +3901,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"user\":\"str\",\"config\":{}}"
 
 response = http.request(request)
@@ -3664,7 +3939,8 @@ Recipe
 ```shell
 curl --request GET \
   --url https://app.rakam.io//recipe/export \
-  --header 'accept: str'
+  --header 'accept: str' \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
@@ -3672,7 +3948,9 @@ var request = require("request");
 
 var options = { method: 'GET',
   url: 'https://app.rakam.io//recipe/export',
-  headers: { accept: 'str' } };
+  headers: 
+   { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8',
+     accept: 'str' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -3688,6 +3966,7 @@ Request request = new Request.Builder()
   .url("https://app.rakam.io//recipe/export")
   .get()
   .addHeader("accept", "str")
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -3696,6 +3975,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//recipe/export");
 var request = new RestRequest(Method.GET);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddHeader("accept", "str");
 IRestResponse response = client.Execute(request);
 ```
@@ -3716,6 +3996,7 @@ func main() {
 	req, _ := http.NewRequest("GET", url, nil)
 
 	req.Header.Add("accept", "str")
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -3737,6 +4018,7 @@ $request = new http\Client\Request;
 $request->setRequestUrl('https://app.rakam.io//recipe/export');
 $request->setRequestMethod('GET');
 $request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8',
   'accept' => 'str'
 ));
 
@@ -3751,7 +4033,10 @@ import requests
 
 url = "https://app.rakam.io//recipe/export"
 
-headers = {'accept': 'str'}
+headers = {
+    'accept': "str",
+    'master_key': "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8"
+    }
 
 response = requests.request("GET", url, headers=headers)
 
@@ -3770,6 +4055,7 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(url)
 request["accept"] = 'str'
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -3799,13 +4085,16 @@ puts response.read_body
 
 ```shell
 curl --request POST \
-  --url https://app.rakam.io//recipe/install
+  --url https://app.rakam.io//recipe/install \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
 var request = require("request");
 
-var options = { method: 'POST', url: 'https://app.rakam.io//recipe/install' };
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//recipe/install',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -3820,6 +4109,7 @@ OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
   .url("https://app.rakam.io//recipe/install")
   .post(null)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -3828,6 +4118,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//recipe/install");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -3845,6 +4136,8 @@ func main() {
 	url := "https://app.rakam.io//recipe/install"
 
 	req, _ := http.NewRequest("POST", url, nil)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -3865,6 +4158,10 @@ $request = new http\Client\Request;
 
 $request->setRequestUrl('https://app.rakam.io//recipe/install');
 $request->setRequestMethod('POST');
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -3876,7 +4173,9 @@ import requests
 
 url = "https://app.rakam.io//recipe/install"
 
-response = requests.request("POST", url)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, headers=headers)
 
 print(response.text)
 ```
@@ -3892,6 +4191,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -3922,14 +4222,16 @@ System related actions
 
 ```shell
 curl --request GET \
-  --url https://app.rakam.io//admin/configurations
+  --url https://app.rakam.io//admin/configurations \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://app.rakam.io//admin/configurations' };
+  url: 'https://app.rakam.io//admin/configurations',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -3944,6 +4246,7 @@ OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
   .url("https://app.rakam.io//admin/configurations")
   .get()
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -3952,6 +4255,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//admin/configurations");
 var request = new RestRequest(Method.GET);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -3969,6 +4273,8 @@ func main() {
 	url := "https://app.rakam.io//admin/configurations"
 
 	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -3989,6 +4295,10 @@ $request = new http\Client\Request;
 
 $request->setRequestUrl('https://app.rakam.io//admin/configurations');
 $request->setRequestMethod('GET');
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -4000,7 +4310,9 @@ import requests
 
 url = "https://app.rakam.io//admin/configurations"
 
-response = requests.request("GET", url)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("GET", url, headers=headers)
 
 print(response.text)
 ```
@@ -4016,6 +4328,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -4039,14 +4352,16 @@ puts response.read_body
 
 ```shell
 curl --request GET \
-  --url https://app.rakam.io//admin/event_mappers
+  --url https://app.rakam.io//admin/event_mappers \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://app.rakam.io//admin/event_mappers' };
+  url: 'https://app.rakam.io//admin/event_mappers',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -4061,6 +4376,7 @@ OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
   .url("https://app.rakam.io//admin/event_mappers")
   .get()
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -4069,6 +4385,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//admin/event_mappers");
 var request = new RestRequest(Method.GET);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -4086,6 +4403,8 @@ func main() {
 	url := "https://app.rakam.io//admin/event_mappers"
 
 	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -4106,6 +4425,10 @@ $request = new http\Client\Request;
 
 $request->setRequestUrl('https://app.rakam.io//admin/event_mappers');
 $request->setRequestMethod('GET');
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -4117,7 +4440,9 @@ import requests
 
 url = "https://app.rakam.io//admin/event_mappers"
 
-response = requests.request("GET", url)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("GET", url, headers=headers)
 
 print(response.text)
 ```
@@ -4133,6 +4458,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -4157,6 +4483,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//admin/lock_key \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"lock_key":"str"}'
 ```
 
@@ -4165,6 +4492,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//admin/lock_key',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { lock_key: 'str' },
   json: true };
 
@@ -4183,6 +4511,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"lock_key\":\"str\"}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//admin/lock_key")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -4191,6 +4520,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//admin/lock_key");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"lock_key\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -4212,6 +4542,8 @@ func main() {
 	payload := strings.NewReader("{\"lock_key\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -4237,6 +4569,10 @@ $request->setRequestUrl('https://app.rakam.io//admin/lock_key');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -4249,7 +4585,9 @@ import requests
 url = "https://app.rakam.io//admin/lock_key"
 
 payload = "{\"lock_key\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -4265,6 +4603,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"lock_key\":\"str\"}"
 
 response = http.request(request)
@@ -4295,13 +4634,16 @@ true
 
 ```shell
 curl --request GET \
-  --url https://app.rakam.io//admin/types
+  --url https://app.rakam.io//admin/types \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
 var request = require("request");
 
-var options = { method: 'GET', url: 'https://app.rakam.io//admin/types' };
+var options = { method: 'GET',
+  url: 'https://app.rakam.io//admin/types',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -4316,6 +4658,7 @@ OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
   .url("https://app.rakam.io//admin/types")
   .get()
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -4324,6 +4667,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//admin/types");
 var request = new RestRequest(Method.GET);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -4341,6 +4685,8 @@ func main() {
 	url := "https://app.rakam.io//admin/types"
 
 	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -4361,6 +4707,10 @@ $request = new http\Client\Request;
 
 $request->setRequestUrl('https://app.rakam.io//admin/types');
 $request->setRequestMethod('GET');
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -4372,7 +4722,9 @@ import requests
 
 url = "https://app.rakam.io//admin/types"
 
-response = requests.request("GET", url)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("GET", url, headers=headers)
 
 print(response.text)
 ```
@@ -4388,6 +4740,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -4553,14 +4906,16 @@ puts response.read_body
 
 ```shell
 curl --request POST \
-  --url https://app.rakam.io//project/collection
+  --url https://app.rakam.io//project/collection \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://app.rakam.io//project/collection' };
+  url: 'https://app.rakam.io//project/collection',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -4575,6 +4930,7 @@ OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
   .url("https://app.rakam.io//project/collection")
   .post(null)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -4583,6 +4939,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//project/collection");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -4600,6 +4957,8 @@ func main() {
 	url := "https://app.rakam.io//project/collection"
 
 	req, _ := http.NewRequest("POST", url, nil)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -4620,6 +4979,10 @@ $request = new http\Client\Request;
 
 $request->setRequestUrl('https://app.rakam.io//project/collection');
 $request->setRequestMethod('POST');
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -4631,7 +4994,9 @@ import requests
 
 url = "https://app.rakam.io//project/collection"
 
-response = requests.request("POST", url)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, headers=headers)
 
 print(response.text)
 ```
@@ -4647,6 +5012,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -4810,14 +5176,16 @@ puts response.read_body
 
 ```shell
 curl --request POST \
-  --url https://app.rakam.io//project/create-api-keys
+  --url https://app.rakam.io//project/create-api-keys \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://app.rakam.io//project/create-api-keys' };
+  url: 'https://app.rakam.io//project/create-api-keys',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -4832,6 +5200,7 @@ OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
   .url("https://app.rakam.io//project/create-api-keys")
   .post(null)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -4840,6 +5209,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//project/create-api-keys");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -4857,6 +5227,8 @@ func main() {
 	url := "https://app.rakam.io//project/create-api-keys"
 
 	req, _ := http.NewRequest("POST", url, nil)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -4877,6 +5249,10 @@ $request = new http\Client\Request;
 
 $request->setRequestUrl('https://app.rakam.io//project/create-api-keys');
 $request->setRequestMethod('POST');
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -4888,7 +5264,9 @@ import requests
 
 url = "https://app.rakam.io//project/create-api-keys"
 
-response = requests.request("POST", url)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, headers=headers)
 
 print(response.text)
 ```
@@ -4904,6 +5282,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -4927,14 +5306,16 @@ puts response.read_body
 
 ```shell
 curl --request DELETE \
-  --url https://app.rakam.io//project/delete
+  --url https://app.rakam.io//project/delete \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
 var request = require("request");
 
 var options = { method: 'DELETE',
-  url: 'https://app.rakam.io//project/delete' };
+  url: 'https://app.rakam.io//project/delete',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -4949,6 +5330,7 @@ OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
   .url("https://app.rakam.io//project/delete")
   .delete(null)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -4957,6 +5339,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//project/delete");
 var request = new RestRequest(Method.DELETE);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -4974,6 +5357,8 @@ func main() {
 	url := "https://app.rakam.io//project/delete"
 
 	req, _ := http.NewRequest("DELETE", url, nil)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -4994,6 +5379,10 @@ $request = new http\Client\Request;
 
 $request->setRequestUrl('https://app.rakam.io//project/delete');
 $request->setRequestMethod('DELETE');
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -5005,7 +5394,9 @@ import requests
 
 url = "https://app.rakam.io//project/delete"
 
-response = requests.request("DELETE", url)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("DELETE", url, headers=headers)
 
 print(response.text)
 ```
@@ -5021,6 +5412,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Delete.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -5047,6 +5439,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//project/list \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"lock_key":"str"}'
 ```
 
@@ -5055,6 +5448,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/list',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { lock_key: 'str' },
   json: true };
 
@@ -5073,6 +5467,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"lock_key\":\"str\"}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//project/list")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -5081,6 +5476,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//project/list");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"lock_key\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -5102,6 +5498,8 @@ func main() {
 	payload := strings.NewReader("{\"lock_key\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -5127,6 +5525,10 @@ $request->setRequestUrl('https://app.rakam.io//project/list');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -5139,7 +5541,9 @@ import requests
 url = "https://app.rakam.io//project/list"
 
 payload = "{\"lock_key\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -5155,6 +5559,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"lock_key\":\"str\"}"
 
 response = http.request(request)
@@ -5328,6 +5733,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//project/schema \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"names":["str"]}'
 ```
 
@@ -5336,6 +5742,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/schema',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { names: [ 'str' ] },
   json: true };
 
@@ -5354,6 +5761,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"names\":[\"str\"]}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//project/schema")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -5362,6 +5770,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//project/schema");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"names\":[\"str\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -5383,6 +5792,8 @@ func main() {
 	payload := strings.NewReader("{\"names\":[\"str\"]}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -5408,6 +5819,10 @@ $request->setRequestUrl('https://app.rakam.io//project/schema');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -5420,7 +5835,9 @@ import requests
 url = "https://app.rakam.io//project/schema"
 
 payload = "{\"names\":[\"str\"]}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -5436,6 +5853,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"names\":[\"str\"]}"
 
 response = http.request(request)
@@ -5467,6 +5885,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//project/schema/add \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"collection":"str","fields":[{}]}'
 ```
 
@@ -5475,6 +5894,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/schema/add',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { collection: 'str', fields: [ {} ] },
   json: true };
 
@@ -5493,6 +5913,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"collection\":\"str\",\"fiel
 Request request = new Request.Builder()
   .url("https://app.rakam.io//project/schema/add")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -5501,6 +5922,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//project/schema/add");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"collection\":\"str\",\"fields\":[{}]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -5522,6 +5944,8 @@ func main() {
 	payload := strings.NewReader("{\"collection\":\"str\",\"fields\":[{}]}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -5547,6 +5971,10 @@ $request->setRequestUrl('https://app.rakam.io//project/schema/add');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -5559,7 +5987,9 @@ import requests
 url = "https://app.rakam.io//project/schema/add"
 
 payload = "{\"collection\":\"str\",\"fields\":[{}]}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -5575,6 +6005,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"collection\":\"str\",\"fields\":[{}]}"
 
 response = http.request(request)
@@ -5610,6 +6041,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//project/schema/add/custom \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"collection":"str","schema_type":"AVRO","schema":"str"}'
 ```
 
@@ -5618,6 +6050,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//project/schema/add/custom',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { collection: 'str', schema_type: 'AVRO', schema: 'str' },
   json: true };
 
@@ -5636,6 +6069,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"collection\":\"str\",\"sche
 Request request = new Request.Builder()
   .url("https://app.rakam.io//project/schema/add/custom")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -5644,6 +6078,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//project/schema/add/custom");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"collection\":\"str\",\"schema_type\":\"AVRO\",\"schema\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -5665,6 +6100,8 @@ func main() {
 	payload := strings.NewReader("{\"collection\":\"str\",\"schema_type\":\"AVRO\",\"schema\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -5690,6 +6127,10 @@ $request->setRequestUrl('https://app.rakam.io//project/schema/add/custom');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -5702,7 +6143,9 @@ import requests
 url = "https://app.rakam.io//project/schema/add/custom"
 
 payload = "{\"collection\":\"str\",\"schema_type\":\"AVRO\",\"schema\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -5718,6 +6161,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"collection\":\"str\",\"schema_type\":\"AVRO\",\"schema\":\"str\"}"
 
 response = http.request(request)
@@ -6617,6 +7061,7 @@ Analyze data
 ```shell
 curl --request POST \
   --url https://app.rakam.io//query/execute \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"query":"str"}'
 ```
 
@@ -6625,6 +7070,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//query/execute',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { query: 'str' },
   json: true };
 
@@ -6643,6 +7089,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"query\":\"str\"}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//query/execute")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -6651,6 +7098,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//query/execute");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"query\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -6672,6 +7120,8 @@ func main() {
 	payload := strings.NewReader("{\"query\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -6697,6 +7147,10 @@ $request->setRequestUrl('https://app.rakam.io//query/execute');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -6709,7 +7163,9 @@ import requests
 url = "https://app.rakam.io//query/execute"
 
 payload = "{\"query\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -6725,6 +7181,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"query\":\"str\"}"
 
 response = http.request(request)
@@ -6760,6 +7217,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//query/explain \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"query":"str"}'
 ```
 
@@ -6768,6 +7226,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//query/explain',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { query: 'str' },
   json: true };
 
@@ -6786,6 +7245,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"query\":\"str\"}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//query/explain")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -6794,6 +7254,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//query/explain");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"query\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -6815,6 +7276,8 @@ func main() {
 	payload := strings.NewReader("{\"query\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -6840,6 +7303,10 @@ $request->setRequestUrl('https://app.rakam.io//query/explain');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -6852,7 +7319,9 @@ import requests
 url = "https://app.rakam.io//query/explain"
 
 payload = "{\"query\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -6868,6 +7337,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"query\":\"str\"}"
 
 response = http.request(request)
@@ -6899,6 +7369,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//query/metadata \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"query":"str"}'
 ```
 
@@ -6907,6 +7378,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//query/metadata',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { query: 'str' },
   json: true };
 
@@ -6925,6 +7397,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"query\":\"str\"}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//query/metadata")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -6933,6 +7406,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//query/metadata");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"query\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -6954,6 +7428,8 @@ func main() {
 	payload := strings.NewReader("{\"query\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -6979,6 +7455,10 @@ $request->setRequestUrl('https://app.rakam.io//query/metadata');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -6991,7 +7471,9 @@ import requests
 url = "https://app.rakam.io//query/metadata"
 
 payload = "{\"query\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -7007,6 +7489,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"query\":\"str\"}"
 
 response = http.request(request)
@@ -7046,6 +7529,7 @@ Materialized view
 ```shell
 curl --request POST \
   --url https://app.rakam.io//materialized-view/create \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"table_name":"str","name":"str","query":"str"}'
 ```
 
@@ -7054,6 +7538,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//materialized-view/create',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { table_name: 'str', name: 'str', query: 'str' },
   json: true };
 
@@ -7072,6 +7557,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\",\"name
 Request request = new Request.Builder()
   .url("https://app.rakam.io//materialized-view/create")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -7080,6 +7566,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//materialized-view/create");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"table_name\":\"str\",\"name\":\"str\",\"query\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -7101,6 +7588,8 @@ func main() {
 	payload := strings.NewReader("{\"table_name\":\"str\",\"name\":\"str\",\"query\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -7126,6 +7615,10 @@ $request->setRequestUrl('https://app.rakam.io//materialized-view/create');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -7138,7 +7631,9 @@ import requests
 url = "https://app.rakam.io//materialized-view/create"
 
 payload = "{\"table_name\":\"str\",\"name\":\"str\",\"query\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -7154,6 +7649,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"table_name\":\"str\",\"name\":\"str\",\"query\":\"str\"}"
 
 response = http.request(request)
@@ -7192,6 +7688,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//materialized-view/delete \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"table_name":"str"}'
 ```
 
@@ -7200,6 +7697,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//materialized-view/delete',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { table_name: 'str' },
   json: true };
 
@@ -7218,6 +7716,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\"}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//materialized-view/delete")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -7226,6 +7725,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//materialized-view/delete");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -7247,6 +7747,8 @@ func main() {
 	payload := strings.NewReader("{\"table_name\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -7272,6 +7774,10 @@ $request->setRequestUrl('https://app.rakam.io//materialized-view/delete');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -7284,7 +7790,9 @@ import requests
 url = "https://app.rakam.io//materialized-view/delete"
 
 payload = "{\"table_name\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -7300,6 +7808,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"table_name\":\"str\"}"
 
 response = http.request(request)
@@ -7333,6 +7842,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//materialized-view/get \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"table_name":"str"}'
 ```
 
@@ -7341,6 +7851,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//materialized-view/get',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { table_name: 'str' },
   json: true };
 
@@ -7359,6 +7870,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\"}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//materialized-view/get")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -7367,6 +7879,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//materialized-view/get");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -7388,6 +7901,8 @@ func main() {
 	payload := strings.NewReader("{\"table_name\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -7413,6 +7928,10 @@ $request->setRequestUrl('https://app.rakam.io//materialized-view/get');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -7425,7 +7944,9 @@ import requests
 url = "https://app.rakam.io//materialized-view/get"
 
 payload = "{\"table_name\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -7441,6 +7962,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"table_name\":\"str\"}"
 
 response = http.request(request)
@@ -7475,14 +7997,16 @@ puts response.read_body
 
 ```shell
 curl --request POST \
-  --url https://app.rakam.io//materialized-view/list
+  --url https://app.rakam.io//materialized-view/list \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://app.rakam.io//materialized-view/list' };
+  url: 'https://app.rakam.io//materialized-view/list',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -7497,6 +8021,7 @@ OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
   .url("https://app.rakam.io//materialized-view/list")
   .post(null)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -7505,6 +8030,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//materialized-view/list");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -7522,6 +8048,8 @@ func main() {
 	url := "https://app.rakam.io//materialized-view/list"
 
 	req, _ := http.NewRequest("POST", url, nil)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -7542,6 +8070,10 @@ $request = new http\Client\Request;
 
 $request->setRequestUrl('https://app.rakam.io//materialized-view/list');
 $request->setRequestMethod('POST');
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -7553,7 +8085,9 @@ import requests
 
 url = "https://app.rakam.io//materialized-view/list"
 
-response = requests.request("POST", url)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, headers=headers)
 
 print(response.text)
 ```
@@ -7569,6 +8103,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -7597,6 +8132,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//materialized-view/schema \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"names":["str"]}'
 ```
 
@@ -7605,6 +8141,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//materialized-view/schema',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { names: [ 'str' ] },
   json: true };
 
@@ -7623,6 +8160,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"names\":[\"str\"]}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//materialized-view/schema")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -7631,6 +8169,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//materialized-view/schema");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"names\":[\"str\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -7652,6 +8191,8 @@ func main() {
 	payload := strings.NewReader("{\"names\":[\"str\"]}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -7677,6 +8218,10 @@ $request->setRequestUrl('https://app.rakam.io//materialized-view/schema');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -7689,7 +8234,9 @@ import requests
 url = "https://app.rakam.io//materialized-view/schema"
 
 payload = "{\"names\":[\"str\"]}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -7705,6 +8252,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"names\":[\"str\"]}"
 
 response = http.request(request)
@@ -7741,6 +8289,7 @@ Continuous query
 ```shell
 curl --request POST \
   --url https://app.rakam.io//continuous-query/create \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"continuous_query":{}}'
 ```
 
@@ -7749,6 +8298,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//continuous-query/create',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { continuous_query: {} },
   json: true };
 
@@ -7767,6 +8317,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"continuous_query\":{}}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//continuous-query/create")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -7775,6 +8326,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//continuous-query/create");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"continuous_query\":{}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -7796,6 +8348,8 @@ func main() {
 	payload := strings.NewReader("{\"continuous_query\":{}}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -7821,6 +8375,10 @@ $request->setRequestUrl('https://app.rakam.io//continuous-query/create');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -7833,7 +8391,9 @@ import requests
 url = "https://app.rakam.io//continuous-query/create"
 
 payload = "{\"continuous_query\":{}}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -7849,6 +8409,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"continuous_query\":{}}"
 
 response = http.request(request)
@@ -7888,6 +8449,7 @@ Compared to reports, continuous queries continuously aggregate the data on the f
 ```shell
 curl --request POST \
   --url https://app.rakam.io//continuous-query/delete \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"table_name":"str"}'
 ```
 
@@ -7896,6 +8458,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//continuous-query/delete',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { table_name: 'str' },
   json: true };
 
@@ -7914,6 +8477,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\"}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//continuous-query/delete")
   .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -7922,6 +8486,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//continuous-query/delete");
 var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -7943,6 +8508,8 @@ func main() {
 	payload := strings.NewReader("{\"table_name\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -7968,6 +8535,10 @@ $request->setRequestUrl('https://app.rakam.io//continuous-query/delete');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -7980,7 +8551,9 @@ import requests
 url = "https://app.rakam.io//continuous-query/delete"
 
 payload = "{\"table_name\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -7996,6 +8569,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"table_name\":\"str\"}"
 
 response = http.request(request)
@@ -8029,6 +8603,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//continuous-query/get \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"table_name":"str"}'
 ```
 
@@ -8037,6 +8612,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//continuous-query/get',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { table_name: 'str' },
   json: true };
 
@@ -8055,6 +8631,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\"}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//continuous-query/get")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -8063,6 +8640,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//continuous-query/get");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -8084,6 +8662,8 @@ func main() {
 	payload := strings.NewReader("{\"table_name\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -8109,6 +8689,10 @@ $request->setRequestUrl('https://app.rakam.io//continuous-query/get');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -8121,7 +8705,9 @@ import requests
 url = "https://app.rakam.io//continuous-query/get"
 
 payload = "{\"table_name\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -8137,6 +8723,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"table_name\":\"str\"}"
 
 response = http.request(request)
@@ -8170,14 +8757,16 @@ puts response.read_body
 
 ```shell
 curl --request POST \
-  --url https://app.rakam.io//continuous-query/list
+  --url https://app.rakam.io//continuous-query/list \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 ```
 
 ```javascript
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://app.rakam.io//continuous-query/list' };
+  url: 'https://app.rakam.io//continuous-query/list',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -8192,6 +8781,7 @@ OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
   .url("https://app.rakam.io//continuous-query/list")
   .post(null)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -8200,6 +8790,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//continuous-query/list");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -8217,6 +8808,8 @@ func main() {
 	url := "https://app.rakam.io//continuous-query/list"
 
 	req, _ := http.NewRequest("POST", url, nil)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -8237,6 +8830,10 @@ $request = new http\Client\Request;
 
 $request->setRequestUrl('https://app.rakam.io//continuous-query/list');
 $request->setRequestMethod('POST');
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -8248,7 +8845,9 @@ import requests
 
 url = "https://app.rakam.io//continuous-query/list"
 
-response = requests.request("POST", url)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, headers=headers)
 
 print(response.text)
 ```
@@ -8264,6 +8863,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 
 response = http.request(request)
 puts response.read_body
@@ -8291,6 +8891,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//continuous-query/schema \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"names":["str"]}'
 ```
 
@@ -8299,6 +8900,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//continuous-query/schema',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { names: [ 'str' ] },
   json: true };
 
@@ -8317,6 +8919,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"names\":[\"str\"]}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//continuous-query/schema")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -8325,6 +8928,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//continuous-query/schema");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"names\":[\"str\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -8346,6 +8950,8 @@ func main() {
 	payload := strings.NewReader("{\"names\":[\"str\"]}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -8371,6 +8977,10 @@ $request->setRequestUrl('https://app.rakam.io//continuous-query/schema');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -8383,7 +8993,9 @@ import requests
 url = "https://app.rakam.io//continuous-query/schema"
 
 payload = "{\"names\":[\"str\"]}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -8399,6 +9011,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"names\":[\"str\"]}"
 
 response = http.request(request)
@@ -8430,6 +9043,7 @@ puts response.read_body
 ```shell
 curl --request POST \
   --url https://app.rakam.io//continuous-query/test \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
   --data '{"query":"str"}'
 ```
 
@@ -8438,6 +9052,7 @@ var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://app.rakam.io//continuous-query/test',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
   body: { query: 'str' },
   json: true };
 
@@ -8456,6 +9071,7 @@ RequestBody body = RequestBody.create(mediaType, "{\"query\":\"str\"}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//continuous-query/test")
   .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -8464,6 +9080,7 @@ Response response = client.newCall(request).execute();
 ```csharp
 var client = new RestClient("https://app.rakam.io//continuous-query/test");
 var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
 request.AddParameter("undefined", "{\"query\":\"str\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -8485,6 +9102,8 @@ func main() {
 	payload := strings.NewReader("{\"query\":\"str\"}")
 
 	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -8510,6 +9129,10 @@ $request->setRequestUrl('https://app.rakam.io//continuous-query/test');
 $request->setRequestMethod('POST');
 $request->setBody($body);
 
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 
@@ -8522,7 +9145,9 @@ import requests
 url = "https://app.rakam.io//continuous-query/test"
 
 payload = "{\"query\":\"str\"}"
-response = requests.request("POST", url, data=payload)
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
@@ -8538,6 +9163,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
 request.body = "{\"query\":\"str\"}"
 
 response = http.request(request)
@@ -8720,7 +9346,7 @@ true
 |groupBy||false|[GroupBy](#groupby) array||
 |orderBy||false|[Ordering](#ordering) array||
 |limit||false|integer (int64)||
-|queryLocation||false|[javascriptLocation](#javascriptlocation)||
+|queryLocation||false|[NodeLocation](#nodelocation)||
 
 
 ### ProjectApiKeys
