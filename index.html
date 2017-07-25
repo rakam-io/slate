@@ -1036,14 +1036,18 @@ BasePath: /</p>
 <pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
   --url https://app.rakam.io//event-explorer/analyze <span class="se">\</span>
   --header <span class="s1">'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'</span> <span class="se">\</span>
-  --data <span class="s1">'{"startDate":"str","endDate":"str","collections":["str"]}'</span>
+  --data <span class="s1">'{"measure":{},"startDate":"str","endDate":"str","collections":["str"]}'</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">url</span><span class="p">:</span> <span class="s1">'https://app.rakam.io//event-explorer/analyze'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">read_key</span><span class="p">:</span> <span class="s1">'5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'</span> <span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span> <span class="p">{</span> <span class="na">startDate</span><span class="p">:</span> <span class="s1">'str'</span><span class="p">,</span> <span class="na">endDate</span><span class="p">:</span> <span class="s1">'str'</span><span class="p">,</span> <span class="na">collections</span><span class="p">:</span> <span class="p">[</span> <span class="s1">'str'</span> <span class="p">]</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> 
+   <span class="p">{</span> <span class="na">measure</span><span class="p">:</span> <span class="p">{},</span>
+     <span class="na">startDate</span><span class="p">:</span> <span class="s1">'str'</span><span class="p">,</span>
+     <span class="na">endDate</span><span class="p">:</span> <span class="s1">'str'</span><span class="p">,</span>
+     <span class="na">collections</span><span class="p">:</span> <span class="p">[</span> <span class="s1">'str'</span> <span class="p">]</span> <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
 
 <span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
@@ -1055,7 +1059,7 @@ BasePath: /</p>
 <pre class="highlight java"><code><span class="n">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OkHttpClient</span><span class="o">();</span>
 
 <span class="n">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
-<span class="n">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}"</span><span class="o">);</span>
+<span class="n">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\"measure\":{},\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}"</span><span class="o">);</span>
 <span class="n">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://app.rakam.io//event-explorer/analyze"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">body</span><span class="o">)</span>
@@ -1067,7 +1071,7 @@ BasePath: /</p>
 <pre class="highlight csharp"><code><span class="n">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://app.rakam.io//event-explorer/analyze"</span><span class="p">);</span>
 <span class="n">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"read_key"</span><span class="p">,</span> <span class="s">"5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"undefined"</span><span class="p">,</span> <span class="s">"{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"undefined"</span><span class="p">,</span> <span class="s">"{\"measure\":{},\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <pre class="highlight go"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
@@ -1083,7 +1087,7 @@ BasePath: /</p>
 
     </span><span class="n">url</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="s">"https://app.rakam.io//event-explorer/analyze"</span><span class="x">
 
-    </span><span class="n">payload</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">startDate</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">str</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">endDate</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">str</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">collections</span><span class="se">\"</span><span class="s">:[</span><span class="se">\"</span><span class="s">str</span><span class="se">\"</span><span class="s">]}"</span><span class="p">)</span><span class="x">
+    </span><span class="n">payload</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">measure</span><span class="se">\"</span><span class="s">:{},</span><span class="se">\"</span><span class="s">startDate</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">str</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">endDate</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">str</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">collections</span><span class="se">\"</span><span class="s">:[</span><span class="se">\"</span><span class="s">str</span><span class="se">\"</span><span class="s">]}"</span><span class="p">)</span><span class="x">
 
     </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span><span class="x"> </span><span class="n">url</span><span class="p">,</span><span class="x"> </span><span class="n">payload</span><span class="p">)</span><span class="x">
 
@@ -1105,7 +1109,7 @@ BasePath: /</p>
 <span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">http\Client\Request</span><span class="p">;</span>
 
 <span class="nv">$body</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">http\Message\Body</span><span class="p">;</span>
-<span class="nv">$body</span><span class="o">-&gt;</span><span class="na">append</span><span class="p">(</span><span class="s1">'{"startDate":"str","endDate":"str","collections":["str"]}'</span><span class="p">);</span>
+<span class="nv">$body</span><span class="o">-&gt;</span><span class="na">append</span><span class="p">(</span><span class="s1">'{"measure":{},"startDate":"str","endDate":"str","collections":["str"]}'</span><span class="p">);</span>
 
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setRequestUrl</span><span class="p">(</span><span class="s1">'https://app.rakam.io//event-explorer/analyze'</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setRequestMethod</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">);</span>
@@ -1124,7 +1128,7 @@ BasePath: /</p>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s">"https://app.rakam.io//event-explorer/analyze"</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">startDate</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">str</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">endDate</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">str</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">collections</span><span class="se">\"</span><span class="s">:[</span><span class="se">\"</span><span class="s">str</span><span class="se">\"</span><span class="s">]}"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">measure</span><span class="se">\"</span><span class="s">:{},</span><span class="se">\"</span><span class="s">startDate</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">str</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">endDate</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">str</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">collections</span><span class="se">\"</span><span class="s">:[</span><span class="se">\"</span><span class="s">str</span><span class="se">\"</span><span class="s">]}"</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'read_key'</span><span class="p">:</span> <span class="s">'5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'</span><span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
@@ -1142,7 +1146,7 @@ BasePath: /</p>
 
 <span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"read_key"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">startDate</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">str</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">endDate</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">str</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">collections</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">str</span><span class="se">\"</span><span class="s2">]}"</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">measure</span><span class="se">\"</span><span class="s2">:{},</span><span class="se">\"</span><span class="s2">startDate</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">str</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">endDate</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">str</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">collections</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">str</span><span class="se">\"</span><span class="s2">]}"</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
@@ -1182,7 +1186,7 @@ BasePath: /</p>
 </thead><tbody>
 <tr>
 <td>measure</td>
-<td>false</td>
+<td>true</td>
 <td><a href="#measure">Measure</a></td>
 <td></td>
 </tr>
@@ -5205,7 +5209,7 @@ BasePath: /</p>
 </tr>
 </tbody></table>
 
-<h2 id="create-api-keys">Create API Keys</h2>
+<h2 id="check-api-keys">Check API Keys</h2>
 <pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
   --url https://app.rakam.io//project/check-api-keys <span class="se">\</span>
   --data <span class="s1">'{"keys":[{}],"project":"str"}'</span>
