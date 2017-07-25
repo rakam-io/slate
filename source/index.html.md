@@ -26,7 +26,7 @@ We have language bindings in shell, javascript, java, csharp, go, php, python, r
 An analytics platform API that lets you create your own analytics services.
 
 ### Version
-Version: 0.7
+Version: 0.8
 
 ## Contact Information
 Email: contact@rakam.io
@@ -39,6 +39,795 @@ License url: http://www.apache.org/licenses/LICENSE-2.0.html
 ### URI scheme
 Host: app.rakam.io
 BasePath: /
+
+# Ab testing
+
+
+A/B Testing Module
+
+## Create test
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//ab-testing/create \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
+  --data '{"name":"str","variants":[{}],"goal":{}}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//ab-testing/create',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
+  body: { name: 'str', variants: [ {} ], goal: {} },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\"name\":\"str\",\"variants\":[{}],\"goal\":{}}");
+Request request = new Request.Builder()
+  .url("https://app.rakam.io//ab-testing/create")
+  .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+```csharp
+var client = new RestClient("https://app.rakam.io//ab-testing/create");
+var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
+request.AddParameter("undefined", "{\"name\":\"str\",\"variants\":[{}],\"goal\":{}}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://app.rakam.io//ab-testing/create"
+
+	payload := strings.NewReader("{\"name\":\"str\",\"variants\":[{}],\"goal\":{}}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+```php
+<?php
+
+$client = new http\Client;
+$request = new http\Client\Request;
+
+$body = new http\Message\Body;
+$body->append('{"name":"str","variants":[{}],"goal":{}}');
+
+$request->setRequestUrl('https://app.rakam.io//ab-testing/create');
+$request->setRequestMethod('POST');
+$request->setBody($body);
+
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
+$client->enqueue($request)->send();
+$response = $client->getResponse();
+
+echo $response->getBody();
+```
+
+```python
+import requests
+
+url = "https://app.rakam.io//ab-testing/create"
+
+payload = "{\"name\":\"str\",\"variants\":[{}],\"goal\":{}}"
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://app.rakam.io//ab-testing/create")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+request.body = "{\"name\":\"str\",\"variants\":[{}],\"goal\":{}}"
+
+response = http.request(request)
+puts response.read_body
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "message" : "str"
+}
+```
+
+### HTTP Request
+`POST /ab-testing/create`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|name|true|string||
+|variants|true|[Variant](#variant) array||
+|goal|true|[Goal](#goal)||
+|options|false|object||
+|id|false|integer (int32)||
+|collectionName|false|string||
+|connectorField|false|string||
+
+
+### Responses for status codes
+|200|403|
+|----|----|
+|[SuccessMessage](#successmessage)|[ErrorMessage](#errormessage)|
+
+
+## Delete report
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//ab-testing/delete \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
+  --data '{"id":4}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//ab-testing/delete',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
+  body: { id: 4 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\"id\":4}");
+Request request = new Request.Builder()
+  .url("https://app.rakam.io//ab-testing/delete")
+  .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+```csharp
+var client = new RestClient("https://app.rakam.io//ab-testing/delete");
+var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
+request.AddParameter("undefined", "{\"id\":4}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://app.rakam.io//ab-testing/delete"
+
+	payload := strings.NewReader("{\"id\":4}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+```php
+<?php
+
+$client = new http\Client;
+$request = new http\Client\Request;
+
+$body = new http\Message\Body;
+$body->append('{"id":4}');
+
+$request->setRequestUrl('https://app.rakam.io//ab-testing/delete');
+$request->setRequestMethod('POST');
+$request->setBody($body);
+
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
+$client->enqueue($request)->send();
+$response = $client->getResponse();
+
+echo $response->getBody();
+```
+
+```python
+import requests
+
+url = "https://app.rakam.io//ab-testing/delete"
+
+payload = "{\"id\":4}"
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://app.rakam.io//ab-testing/delete")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+request.body = "{\"id\":4}"
+
+response = http.request(request)
+puts response.read_body
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "message" : "str"
+}
+```
+
+### HTTP Request
+`POST /ab-testing/delete`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|id|true|integer (int32)||
+
+
+### Responses for status codes
+|200|403|
+|----|----|
+|[SuccessMessage](#successmessage)|[ErrorMessage](#errormessage)|
+
+
+## Get report
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//ab-testing/get \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
+  --data '{"id":4}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//ab-testing/get',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
+  body: { id: 4 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\"id\":4}");
+Request request = new Request.Builder()
+  .url("https://app.rakam.io//ab-testing/get")
+  .post(body)
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+```csharp
+var client = new RestClient("https://app.rakam.io//ab-testing/get");
+var request = new RestRequest(Method.POST);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
+request.AddParameter("undefined", "{\"id\":4}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://app.rakam.io//ab-testing/get"
+
+	payload := strings.NewReader("{\"id\":4}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+```php
+<?php
+
+$client = new http\Client;
+$request = new http\Client\Request;
+
+$body = new http\Message\Body;
+$body->append('{"id":4}');
+
+$request->setRequestUrl('https://app.rakam.io//ab-testing/get');
+$request->setRequestMethod('POST');
+$request->setBody($body);
+
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
+$client->enqueue($request)->send();
+$response = $client->getResponse();
+
+echo $response->getBody();
+```
+
+```python
+import requests
+
+url = "https://app.rakam.io//ab-testing/get"
+
+payload = "{\"id\":4}"
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://app.rakam.io//ab-testing/get")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+request.body = "{\"id\":4}"
+
+response = http.request(request)
+puts response.read_body
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "name" : "str",
+  "variants" : [ {
+    "name" : "str",
+    "weight" : 1,
+    "data" : "object"
+  } ],
+  "goal" : {
+    "collection" : "str"
+  }
+}
+```
+
+### HTTP Request
+`POST /ab-testing/get`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|id|true|integer (int32)||
+
+
+### Responses for status codes
+|200|403|
+|----|----|
+|[ABTestingReport](#abtestingreport)|[ErrorMessage](#errormessage)|
+
+
+## List reports
+
+```shell
+curl --request GET \
+  --url https://app.rakam.io//ab-testing/list \
+  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://app.rakam.io//ab-testing/list',
+  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+Request request = new Request.Builder()
+  .url("https://app.rakam.io//ab-testing/list")
+  .get()
+  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+```csharp
+var client = new RestClient("https://app.rakam.io//ab-testing/list");
+var request = new RestRequest(Method.GET);
+request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://app.rakam.io//ab-testing/list"
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+```php
+<?php
+
+$client = new http\Client;
+$request = new http\Client\Request;
+
+$request->setRequestUrl('https://app.rakam.io//ab-testing/list');
+$request->setRequestMethod('GET');
+$request->setHeaders(array(
+  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
+$client->enqueue($request)->send();
+$response = $client->getResponse();
+
+echo $response->getBody();
+```
+
+```python
+import requests
+
+url = "https://app.rakam.io//ab-testing/list"
+
+headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.text)
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://app.rakam.io//ab-testing/list")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+
+response = http.request(request)
+puts response.read_body
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[ {
+  "name" : "str",
+  "variants" : [ {
+    "name" : "str",
+    "weight" : 1,
+    "data" : "object"
+  } ],
+  "goal" : {
+    "collection" : "str"
+  }
+} ]
+```
+
+### HTTP Request
+`GET /ab-testing/list`
+### Responses for status codes
+|200|403|
+|----|----|
+|[ABTestingReport](#abtestingreport) array|[ErrorMessage](#errormessage)|
+
+
+## Update report
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//ab-testing/update \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
+  --data '{"name":"str","variants":[{}],"goal":{}}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//ab-testing/update',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
+  body: { name: 'str', variants: [ {} ], goal: {} },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\"name\":\"str\",\"variants\":[{}],\"goal\":{}}");
+Request request = new Request.Builder()
+  .url("https://app.rakam.io//ab-testing/update")
+  .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+```csharp
+var client = new RestClient("https://app.rakam.io//ab-testing/update");
+var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
+request.AddParameter("undefined", "{\"name\":\"str\",\"variants\":[{}],\"goal\":{}}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://app.rakam.io//ab-testing/update"
+
+	payload := strings.NewReader("{\"name\":\"str\",\"variants\":[{}],\"goal\":{}}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+```php
+<?php
+
+$client = new http\Client;
+$request = new http\Client\Request;
+
+$body = new http\Message\Body;
+$body->append('{"name":"str","variants":[{}],"goal":{}}');
+
+$request->setRequestUrl('https://app.rakam.io//ab-testing/update');
+$request->setRequestMethod('POST');
+$request->setBody($body);
+
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
+$client->enqueue($request)->send();
+$response = $client->getResponse();
+
+echo $response->getBody();
+```
+
+```python
+import requests
+
+url = "https://app.rakam.io//ab-testing/update"
+
+payload = "{\"name\":\"str\",\"variants\":[{}],\"goal\":{}}"
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://app.rakam.io//ab-testing/update")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+request.body = "{\"name\":\"str\",\"variants\":[{}],\"goal\":{}}"
+
+response = http.request(request)
+puts response.read_body
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "name" : "str",
+  "variants" : [ {
+    "name" : "str",
+    "weight" : 1,
+    "data" : "object"
+  } ],
+  "goal" : {
+    "collection" : "str"
+  }
+}
+```
+
+### HTTP Request
+`POST /ab-testing/update`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|name|true|string||
+|variants|true|[Variant](#variant) array||
+|goal|true|[Goal](#goal)||
+|options|false|object||
+|id|false|integer (int32)||
+|collectionName|false|string||
+|connectorField|false|string||
+
+
+### Responses for status codes
+|200|403|
+|----|----|
+|[ABTestingReport](#abtestingreport)|[ErrorMessage](#errormessage)|
+
 
 # Event explorer
 
@@ -204,8 +993,9 @@ puts response.read_body
 |grouping|false|[Reference](#reference)||
 |segment|false|[Reference](#reference)||
 |filterExpression|false|string||
-|startDate|true|string (date-time)||
-|endDate|true|string (date-time)||
+|startDate|true|string (date)||
+|endDate|true|string (date)||
+|timezone|false|[ZoneId](#zoneid)||
 |collections|true|string array||
 
 
@@ -668,8 +1458,9 @@ puts response.read_body
 |----|----|----|----|
 |collections|false|string array||
 |dimension|false|string||
-|startDate|true|string (date-time)||
-|endDate|true|string (date-time)||
+|startDate|true|string (date)||
+|endDate|true|string (date)||
+|timezone|false|[ZoneId](#zoneid)||
 
 
 ### Responses for status codes
@@ -843,6 +1634,10 @@ puts response.read_body
 |startDate|true|string (date)||
 |window|false|[FunnelWindow](#funnelwindow)||
 |endDate|true|string (date)||
+|connectors|false|string array||
+|strictOrdering|false|boolean||
+|approximate|false|boolean||
+|funnelType|false|enum (NORMAL, APPROXIMATE, ORDERED)||
 |timezone|false|string||
 
 
@@ -850,619 +1645,6 @@ puts response.read_body
 |200|403|
 |----|----|
 |[QueryResult](#queryresult)|[ErrorMessage](#errormessage)|
-
-
-# Realtime
-
-
-Realtime
-
-## Create report
-
-```shell
-curl --request POST \
-  --url https://app.rakam.io//realtime/create \
-  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
-  --data '{"name":"str","measures":[{}],"table_name":"str","collections":["str"]}'
-```
-
-```javascript
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//realtime/create',
-  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
-  body: 
-   { name: 'str',
-     measures: [ {} ],
-     table_name: 'str',
-     collections: [ 'str' ] },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```java
-OkHttpClient client = new OkHttpClient();
-
-MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collections\":[\"str\"]}");
-Request request = new Request.Builder()
-  .url("https://app.rakam.io//realtime/create")
-  .post(body)
-  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
-  .build();
-
-Response response = client.newCall(request).execute();
-```
-
-```csharp
-var client = new RestClient("https://app.rakam.io//realtime/create");
-var request = new RestRequest(Method.POST);
-request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
-request.AddParameter("undefined", "{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collections\":[\"str\"]}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go
-package main
-
-import (
-	"fmt"
-	"strings"
-	"net/http"
-	"io/ioutil"
-)
-
-func main() {
-
-	url := "https://app.rakam.io//realtime/create"
-
-	payload := strings.NewReader("{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collections\":[\"str\"]}")
-
-	req, _ := http.NewRequest("POST", url, payload)
-
-	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```php
-<?php
-
-$client = new http\Client;
-$request = new http\Client\Request;
-
-$body = new http\Message\Body;
-$body->append('{"name":"str","measures":[{}],"table_name":"str","collections":["str"]}');
-
-$request->setRequestUrl('https://app.rakam.io//realtime/create');
-$request->setRequestMethod('POST');
-$request->setBody($body);
-
-$request->setHeaders(array(
-  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-));
-
-$client->enqueue($request)->send();
-$response = $client->getResponse();
-
-echo $response->getBody();
-```
-
-```python
-import requests
-
-url = "https://app.rakam.io//realtime/create"
-
-payload = "{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collections\":[\"str\"]}"
-headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
-
-response = requests.request("POST", url, data=payload, headers=headers)
-
-print(response.text)
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://app.rakam.io//realtime/create")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-request = Net::HTTP::Post.new(url)
-request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-request.body = "{\"name\":\"str\",\"measures\":[{}],\"table_name\":\"str\",\"collections\":[\"str\"]}"
-
-response = http.request(request)
-puts response.read_body
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "message" : "str"
-}
-```
-
-### HTTP Request
-`POST /realtime/create`
-### Body Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|name|true|string||
-|measures|true|[Measure](#measure) array||
-|table_name|true|string||
-|collections|true|string array||
-|filter|false|string||
-|dimensions|false|string array||
-
-
-### Responses for status codes
-|200|403|
-|----|----|
-|[SuccessMessage](#successmessage)|[ErrorMessage](#errormessage)|
-
-
-## Delete report
-
-```shell
-curl --request POST \
-  --url https://app.rakam.io//realtime/delete \
-  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
-  --data '{"table_name":"str"}'
-```
-
-```javascript
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//realtime/delete',
-  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
-  body: { table_name: 'str' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```java
-OkHttpClient client = new OkHttpClient();
-
-MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\"}");
-Request request = new Request.Builder()
-  .url("https://app.rakam.io//realtime/delete")
-  .post(body)
-  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
-  .build();
-
-Response response = client.newCall(request).execute();
-```
-
-```csharp
-var client = new RestClient("https://app.rakam.io//realtime/delete");
-var request = new RestRequest(Method.POST);
-request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
-request.AddParameter("undefined", "{\"table_name\":\"str\"}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go
-package main
-
-import (
-	"fmt"
-	"strings"
-	"net/http"
-	"io/ioutil"
-)
-
-func main() {
-
-	url := "https://app.rakam.io//realtime/delete"
-
-	payload := strings.NewReader("{\"table_name\":\"str\"}")
-
-	req, _ := http.NewRequest("POST", url, payload)
-
-	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```php
-<?php
-
-$client = new http\Client;
-$request = new http\Client\Request;
-
-$body = new http\Message\Body;
-$body->append('{"table_name":"str"}');
-
-$request->setRequestUrl('https://app.rakam.io//realtime/delete');
-$request->setRequestMethod('POST');
-$request->setBody($body);
-
-$request->setHeaders(array(
-  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-));
-
-$client->enqueue($request)->send();
-$response = $client->getResponse();
-
-echo $response->getBody();
-```
-
-```python
-import requests
-
-url = "https://app.rakam.io//realtime/delete"
-
-payload = "{\"table_name\":\"str\"}"
-headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
-
-response = requests.request("POST", url, data=payload, headers=headers)
-
-print(response.text)
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://app.rakam.io//realtime/delete")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-request = Net::HTTP::Post.new(url)
-request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-request.body = "{\"table_name\":\"str\"}"
-
-response = http.request(request)
-puts response.read_body
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "message" : "str"
-}
-```
-
-### HTTP Request
-`POST /realtime/delete`
-### Body Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|table_name|true|string||
-
-
-### Responses for status codes
-|200|403|
-|----|----|
-|[SuccessMessage](#successmessage)|[ErrorMessage](#errormessage)|
-
-
-## Get report
-
-```shell
-curl --request POST \
-  --url https://app.rakam.io//realtime/get \
-  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
-  --data '{"table_name":"str","measure":{}}'
-```
-
-```javascript
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//realtime/get',
-  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
-  body: { table_name: 'str', measure: {} },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```java
-OkHttpClient client = new OkHttpClient();
-
-MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\",\"measure\":{}}");
-Request request = new Request.Builder()
-  .url("https://app.rakam.io//realtime/get")
-  .post(body)
-  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
-  .build();
-
-Response response = client.newCall(request).execute();
-```
-
-```csharp
-var client = new RestClient("https://app.rakam.io//realtime/get");
-var request = new RestRequest(Method.POST);
-request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
-request.AddParameter("undefined", "{\"table_name\":\"str\",\"measure\":{}}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go
-package main
-
-import (
-	"fmt"
-	"strings"
-	"net/http"
-	"io/ioutil"
-)
-
-func main() {
-
-	url := "https://app.rakam.io//realtime/get"
-
-	payload := strings.NewReader("{\"table_name\":\"str\",\"measure\":{}}")
-
-	req, _ := http.NewRequest("POST", url, payload)
-
-	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```php
-<?php
-
-$client = new http\Client;
-$request = new http\Client\Request;
-
-$body = new http\Message\Body;
-$body->append('{"table_name":"str","measure":{}}');
-
-$request->setRequestUrl('https://app.rakam.io//realtime/get');
-$request->setRequestMethod('POST');
-$request->setBody($body);
-
-$request->setHeaders(array(
-  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-));
-
-$client->enqueue($request)->send();
-$response = $client->getResponse();
-
-echo $response->getBody();
-```
-
-```python
-import requests
-
-url = "https://app.rakam.io//realtime/get"
-
-payload = "{\"table_name\":\"str\",\"measure\":{}}"
-headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
-
-response = requests.request("POST", url, data=payload, headers=headers)
-
-print(response.text)
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://app.rakam.io//realtime/get")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-request = Net::HTTP::Post.new(url)
-request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-request.body = "{\"table_name\":\"str\",\"measure\":{}}"
-
-response = http.request(request)
-puts response.read_body
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{ }
-```
-
-### HTTP Request
-`POST /realtime/get`
-### Body Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|table_name|true|string||
-|filter|false|string||
-|measure|true|[Measure](#measure)||
-|dimensions|false|string array||
-|aggregate|false|boolean||
-|date_start|false|string (date-time)||
-|date_end|false|string (date-time)||
-
-
-### Responses for status codes
-|200|400|403|
-|----|----|----|
-|[RealTimeQueryResult](#realtimequeryresult)|[ErrorMessage](#errormessage)|[ErrorMessage](#errormessage)|
-
-
-## List queries
-
-```shell
-curl --request POST \
-  --url https://app.rakam.io//realtime/list \
-  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-```
-
-```javascript
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//realtime/list',
-  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' } };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```java
-OkHttpClient client = new OkHttpClient();
-
-Request request = new Request.Builder()
-  .url("https://app.rakam.io//realtime/list")
-  .post(null)
-  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
-  .build();
-
-Response response = client.newCall(request).execute();
-```
-
-```csharp
-var client = new RestClient("https://app.rakam.io//realtime/list");
-var request = new RestRequest(Method.POST);
-request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
-IRestResponse response = client.Execute(request);
-```
-
-```go
-package main
-
-import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
-)
-
-func main() {
-
-	url := "https://app.rakam.io//realtime/list"
-
-	req, _ := http.NewRequest("POST", url, nil)
-
-	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```php
-<?php
-
-$client = new http\Client;
-$request = new http\Client\Request;
-
-$request->setRequestUrl('https://app.rakam.io//realtime/list');
-$request->setRequestMethod('POST');
-$request->setHeaders(array(
-  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-));
-
-$client->enqueue($request)->send();
-$response = $client->getResponse();
-
-echo $response->getBody();
-```
-
-```python
-import requests
-
-url = "https://app.rakam.io//realtime/list"
-
-headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
-
-response = requests.request("POST", url, headers=headers)
-
-print(response.text)
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://app.rakam.io//realtime/list")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-request = Net::HTTP::Post.new(url)
-request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-
-response = http.request(request)
-puts response.read_body
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[ {
-  "name" : "str",
-  "query" : "str"
-} ]
-```
-
-### HTTP Request
-`POST /realtime/list`
-### Responses for status codes
-|200|403|
-|----|----|
-|[ContinuousQuery](#continuousquery) array|[ErrorMessage](#errormessage)|
 
 
 # Retention
@@ -3621,313 +3803,6 @@ puts response.read_body
 
 
 User Action
-
-## Apply batch operation
-
-```shell
-curl --request POST \
-  --url https://app.rakam.io//user/action/email/batch \
-  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
-  --data '{"config":{}}'
-```
-
-```javascript
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/action/email/batch',
-  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
-  body: { config: {} },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```java
-OkHttpClient client = new OkHttpClient();
-
-MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\"config\":{}}");
-Request request = new Request.Builder()
-  .url("https://app.rakam.io//user/action/email/batch")
-  .post(body)
-  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
-  .build();
-
-Response response = client.newCall(request).execute();
-```
-
-```csharp
-var client = new RestClient("https://app.rakam.io//user/action/email/batch");
-var request = new RestRequest(Method.POST);
-request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
-request.AddParameter("undefined", "{\"config\":{}}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go
-package main
-
-import (
-	"fmt"
-	"strings"
-	"net/http"
-	"io/ioutil"
-)
-
-func main() {
-
-	url := "https://app.rakam.io//user/action/email/batch"
-
-	payload := strings.NewReader("{\"config\":{}}")
-
-	req, _ := http.NewRequest("POST", url, payload)
-
-	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```php
-<?php
-
-$client = new http\Client;
-$request = new http\Client\Request;
-
-$body = new http\Message\Body;
-$body->append('{"config":{}}');
-
-$request->setRequestUrl('https://app.rakam.io//user/action/email/batch');
-$request->setRequestMethod('POST');
-$request->setBody($body);
-
-$request->setHeaders(array(
-  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-));
-
-$client->enqueue($request)->send();
-$response = $client->getResponse();
-
-echo $response->getBody();
-```
-
-```python
-import requests
-
-url = "https://app.rakam.io//user/action/email/batch"
-
-payload = "{\"config\":{}}"
-headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
-
-response = requests.request("POST", url, data=payload, headers=headers)
-
-print(response.text)
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://app.rakam.io//user/action/email/batch")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-request = Net::HTTP::Post.new(url)
-request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-request.body = "{\"config\":{}}"
-
-response = http.request(request)
-puts response.read_body
-```
-
-> The above command returns JSON structured like this:
-
-```json
-1
-```
-
-### HTTP Request
-`POST /user/action/email/batch`
-### Body Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|filter|false|string||
-|event_filters|false|[EventFilter](#eventfilter) array||
-|config|true|[EmailActionConfig](#emailactionconfig)||
-
-
-### Responses for status codes
-|200|403|
-|----|----|
-|integer (int64)|[ErrorMessage](#errormessage)|
-
-
-## Perform action for single user
-
-```shell
-curl --request POST \
-  --url https://app.rakam.io//user/action/email/single \
-  --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
-  --data '{"user":"str","config":{}}'
-```
-
-```javascript
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://app.rakam.io//user/action/email/single',
-  headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
-  body: { user: 'str', config: {} },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```java
-OkHttpClient client = new OkHttpClient();
-
-MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\"user\":\"str\",\"config\":{}}");
-Request request = new Request.Builder()
-  .url("https://app.rakam.io//user/action/email/single")
-  .post(body)
-  .addHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
-  .build();
-
-Response response = client.newCall(request).execute();
-```
-
-```csharp
-var client = new RestClient("https://app.rakam.io//user/action/email/single");
-var request = new RestRequest(Method.POST);
-request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
-request.AddParameter("undefined", "{\"user\":\"str\",\"config\":{}}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go
-package main
-
-import (
-	"fmt"
-	"strings"
-	"net/http"
-	"io/ioutil"
-)
-
-func main() {
-
-	url := "https://app.rakam.io//user/action/email/single"
-
-	payload := strings.NewReader("{\"user\":\"str\",\"config\":{}}")
-
-	req, _ := http.NewRequest("POST", url, payload)
-
-	req.Header.Add("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```php
-<?php
-
-$client = new http\Client;
-$request = new http\Client\Request;
-
-$body = new http\Message\Body;
-$body->append('{"user":"str","config":{}}');
-
-$request->setRequestUrl('https://app.rakam.io//user/action/email/single');
-$request->setRequestMethod('POST');
-$request->setBody($body);
-
-$request->setHeaders(array(
-  'read_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-));
-
-$client->enqueue($request)->send();
-$response = $client->getResponse();
-
-echo $response->getBody();
-```
-
-```python
-import requests
-
-url = "https://app.rakam.io//user/action/email/single"
-
-payload = "{\"user\":\"str\",\"config\":{}}"
-headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
-
-response = requests.request("POST", url, data=payload, headers=headers)
-
-print(response.text)
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://app.rakam.io//user/action/email/single")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-request = Net::HTTP::Post.new(url)
-request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-request.body = "{\"user\":\"str\",\"config\":{}}"
-
-response = http.request(request)
-puts response.read_body
-```
-
-> The above command returns JSON structured like this:
-
-```json
-true
-```
-
-### HTTP Request
-`POST /user/action/email/single`
-### Body Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|user|true|string||
-|config|true|[EmailActionConfig](#emailactionconfig)||
-
-
-### Responses for status codes
-|200|403|
-|----|----|
-|boolean|[ErrorMessage](#errormessage)|
-
 
 # Recipe
 
@@ -6625,7 +6500,7 @@ puts response.read_body
 
 
 
-Bulk API requires master_key as api key and designed to handle large value of data. The endpoint also accepts application/avro and text/csv formats. You need need to set 'collection' and 'master_key' query parameters if the content-type is not application/json.
+Bulk API requires master_key as api key and built for importing the data without modifying (enrichment / sanitization http://rakam.io/doc/buremba/rakam-wiki/master/Event-Mappers). This endpoint is also more efficient then batch endpoint.The endpoint also accepts application/avro and text/csv formats. You need need to set 'collection' and 'master_key' query parameters if the content-type is not application/json.
 
 ## Collect bulk events from remote
 
@@ -7204,6 +7079,7 @@ puts response.read_body
 |sampling|false|[QuerySampling](#querysampling)||
 |default_schema|false|string|collection|
 |limit|false|integer (int32)||
+|timezone|false|[ZoneId](#zoneid)||
 
 
 ### Responses for status codes
@@ -7524,6 +7400,161 @@ puts response.read_body
 
 Materialized view
 
+## Change materialized view
+
+```shell
+curl --request POST \
+  --url https://app.rakam.io//materialized-view/change \
+  --header 'master_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
+  --data '{"table_name":"str","real_time":true}'
+```
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://app.rakam.io//materialized-view/change',
+  headers: { master_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
+  body: { table_name: 'str', real_time: true },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\"table_name\":\"str\",\"real_time\":true}");
+Request request = new Request.Builder()
+  .url("https://app.rakam.io//materialized-view/change")
+  .post(body)
+  .addHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+
+```csharp
+var client = new RestClient("https://app.rakam.io//materialized-view/change");
+var request = new RestRequest(Method.POST);
+request.AddHeader("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
+request.AddParameter("undefined", "{\"table_name\":\"str\",\"real_time\":true}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://app.rakam.io//materialized-view/change"
+
+	payload := strings.NewReader("{\"table_name\":\"str\",\"real_time\":true}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("master_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+```php
+<?php
+
+$client = new http\Client;
+$request = new http\Client\Request;
+
+$body = new http\Message\Body;
+$body->append('{"table_name":"str","real_time":true}');
+
+$request->setRequestUrl('https://app.rakam.io//materialized-view/change');
+$request->setRequestMethod('POST');
+$request->setBody($body);
+
+$request->setHeaders(array(
+  'master_key' => '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+));
+
+$client->enqueue($request)->send();
+$response = $client->getResponse();
+
+echo $response->getBody();
+```
+
+```python
+import requests
+
+url = "https://app.rakam.io//materialized-view/change"
+
+payload = "{\"table_name\":\"str\",\"real_time\":true}"
+headers = {'master_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://app.rakam.io//materialized-view/change")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["master_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
+request.body = "{\"table_name\":\"str\",\"real_time\":true}"
+
+response = http.request(request)
+puts response.read_body
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "message" : "str"
+}
+```
+
+### HTTP Request
+`POST /materialized-view/change`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|table_name|true|string||
+|real_time|true|boolean||
+
+
+### Responses for status codes
+|200|403|
+|----|----|
+|[SuccessMessage](#successmessage)|[ErrorMessage](#errormessage)|
+
+
 ## Create view
 
 ```shell
@@ -7674,6 +7705,7 @@ puts response.read_body
 |query|true|string||
 |update_interval|false|string||
 |incremental|false|boolean||
+|real_time|false|boolean||
 |options|false|object||
 
 
@@ -9209,14 +9241,6 @@ true
 |continuous_queries||false|[ContinuousQuery](#continuousquery) array||
 
 
-### RealTimeQueryResult
-|name|description|required|schema|default|
-|----|----|----|----|----|
-|start||false|integer (int64)||
-|end||false|integer (int64)||
-|result||false|object||
-
-
 ### FunnelWindow
 |name|description|required|schema|default|
 |----|----|----|----|----|
@@ -9232,6 +9256,13 @@ true
 |error||true|[QueryError](#queryerror)||
 |properties||true|object||
 |failed||false|boolean||
+
+
+### Goal
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|collection||true|string||
+|filter||false|string||
 
 
 ### ContinuousQuery
@@ -9262,8 +9293,27 @@ true
 ### Measure
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|column||true|string||
+|column||false|string||
 |aggregation||true|enum (COUNT, COUNT_UNIQUE, SUM, MINIMUM, MAXIMUM, AVERAGE, APPROXIMATE_UNIQUE)||
+
+
+### ABTestingReport
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|name||true|string||
+|variants||true|[Variant](#variant) array||
+|goal||true|[Goal](#goal)||
+|options||false|object||
+|id||false|integer (int32)||
+|collectionName||false|string||
+|connectorField||false|string||
+
+
+### ZoneId
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|id||false|string||
+|rules||false|[ZoneRules](#zonerules)||
 
 
 ### BatchUserOperations
@@ -9323,16 +9373,6 @@ true
 |tableName||true|string||
 
 
-### EmailActionConfig
-|name|description|required|schema|default|
-|----|----|----|----|----|
-|title||true|string||
-|content||true|string||
-|columnName||false|string||
-|defaultValues||false|object||
-|richText||false|boolean||
-
-
 ### RetentionAction
 |name|description|required|schema|default|
 |----|----|----|----|----|
@@ -9380,7 +9420,16 @@ true
 |library|Optional library information for statistics|false|[Library](#library)||
 |api_version||false|string||
 |upload_time||false|integer (int64)||
+|uuid|Optional UUID for deduplication|false|string||
 |checksum|Optional checksum for verify the body content|false|string||
+
+
+### Variant
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|name||true|string||
+|weight||true|integer (int32)||
+|data||true|object||
 
 
 ### SchemaField
@@ -9446,6 +9495,7 @@ true
 |query||true|string||
 |update_interval||false|string||
 |incremental||false|boolean||
+|real_time||false|boolean||
 |options||false|object||
 
 
