@@ -840,7 +840,7 @@ Event Explorer
 curl --request POST \
   --url https://app.rakam.io//event-explorer/analyze \
   --header 'read_key: 5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' \
-  --data '{"startDate":"str","endDate":"str","collections":["str"]}'
+  --data '{"measure":{},"startDate":"str","endDate":"str","collections":["str"]}'
 ```
 
 ```javascript
@@ -849,7 +849,11 @@ var request = require("request");
 var options = { method: 'POST',
   url: 'https://app.rakam.io//event-explorer/analyze',
   headers: { read_key: '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8' },
-  body: { startDate: 'str', endDate: 'str', collections: [ 'str' ] },
+  body: 
+   { measure: {},
+     startDate: 'str',
+     endDate: 'str',
+     collections: [ 'str' ] },
   json: true };
 
 request(options, function (error, response, body) {
@@ -863,7 +867,7 @@ request(options, function (error, response, body) {
 OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}");
+RequestBody body = RequestBody.create(mediaType, "{\"measure\":{},\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}");
 Request request = new Request.Builder()
   .url("https://app.rakam.io//event-explorer/analyze")
   .post(body)
@@ -877,7 +881,7 @@ Response response = client.newCall(request).execute();
 var client = new RestClient("https://app.rakam.io//event-explorer/analyze");
 var request = new RestRequest(Method.POST);
 request.AddHeader("read_key", "5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8");
-request.AddParameter("undefined", "{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}", ParameterType.RequestBody);
+request.AddParameter("undefined", "{\"measure\":{},\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -895,7 +899,7 @@ func main() {
 
 	url := "https://app.rakam.io//event-explorer/analyze"
 
-	payload := strings.NewReader("{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}")
+	payload := strings.NewReader("{\"measure\":{},\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -919,7 +923,7 @@ $client = new http\Client;
 $request = new http\Client\Request;
 
 $body = new http\Message\Body;
-$body->append('{"startDate":"str","endDate":"str","collections":["str"]}');
+$body->append('{"measure":{},"startDate":"str","endDate":"str","collections":["str"]}');
 
 $request->setRequestUrl('https://app.rakam.io//event-explorer/analyze');
 $request->setRequestMethod('POST');
@@ -940,7 +944,7 @@ import requests
 
 url = "https://app.rakam.io//event-explorer/analyze"
 
-payload = "{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}"
+payload = "{\"measure\":{},\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}"
 headers = {'read_key': '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'}
 
 response = requests.request("POST", url, data=payload, headers=headers)
@@ -960,7 +964,7 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Post.new(url)
 request["read_key"] = '5o5efo7u3s46jbplbe2h0b8ub2jf4nt06t4k8gadqmjh2lqvmao6fpjdtsijfha8'
-request.body = "{\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}"
+request.body = "{\"measure\":{},\"startDate\":\"str\",\"endDate\":\"str\",\"collections\":[\"str\"]}"
 
 response = http.request(request)
 puts response.read_body
@@ -989,7 +993,7 @@ puts response.read_body
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|measure|false|[Measure](#measure)||
+|measure|true|[Measure](#measure)||
 |grouping|false|[Reference](#reference)||
 |segment|false|[Reference](#reference)||
 |filterExpression|false|string||
@@ -4637,7 +4641,7 @@ puts response.read_body
 |object|[ErrorMessage](#errormessage)|
 
 
-## Create API Keys
+## Check API Keys
 
 ```shell
 curl --request POST \
